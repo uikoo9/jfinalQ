@@ -45,7 +45,7 @@
 		<!--<![endif]-->
 		
 		<!-- qiao.js -->
-		<script type="text/javascript" src="${base}/UIS/qiao/qiao.min.js"></script>
+		<script type="text/javascript" src="${base}/UIS/web/js/qiao.min.js"></script>
 		
 		<!-- uis -------------------------------------------------------------------------------------------->
 		<#list uis as ui>
