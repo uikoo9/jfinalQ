@@ -35,13 +35,13 @@
 		<!-- js -------------------------------------------------------------------------------------------->
 		<!-- jquery -->
 		<!--[if lt IE 9]>
-		<script type="text/javascript" src="${base}/UIS/jquery/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 		<![endif]-->
 		<!--[if gte IE 9]>
-		<script type="text/javascript" src="${base}/UIS/jquery/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<![endif]-->
 		<!--[if !IE]><!-->
-		<script type="text/javascript" src="${base}/UIS/jquery/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 		<!--<![endif]-->
 		
 		<!-- qiao.js -->
