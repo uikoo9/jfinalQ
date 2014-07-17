@@ -53,8 +53,8 @@ function md5code(){
 		$submit.attr('disabled',null);
 		
 		if(res && res.success){
-			$('div.resdiv:eq(0) span').html('<strong>' + code + '</strong>');
-			$('div.resdiv:eq(1) span').html('<strong>' + res.msg + '</strong>');
+			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
+			$('p.resp:eq(1) span').html('<strong>' + res.msg + '</strong>');
 			$panel.show();
 		}else{
 			alert('ajax fail!');
