@@ -8,10 +8,17 @@ function submitCode(){
 	if(!code){
 		$('div.form-group').addClass('has-error');
 	}else{
+		var $input 	= $('input[type="text"]');
+		var $submit = $('input[type="submit"]');
+		
+		$input.attr('disabled',	'disabled');
+		$submit.attr('disabled','disabled');
 		var res = qiao.ajax({
 			url : 'md5/md5',
 			data : {code:code}
 		});
+		$input.attr('disabled',	null);
+		$submit.attr('disabled',null);
 		
 		if(res && res.success){
 			$('div.resdiv:eq(0) span').html('<strong>' + code + '</strong>');

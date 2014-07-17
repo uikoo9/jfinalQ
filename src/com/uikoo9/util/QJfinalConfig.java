@@ -17,7 +17,7 @@ public class QJfinalConfig extends JFinalConfig{
 
 	@Override
 	public void configConstant(Constants me) {
-		me.setDevMode(false);
+		me.setDevMode(true);
 	}
 
 	@Override
