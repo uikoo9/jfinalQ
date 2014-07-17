@@ -23,7 +23,7 @@ public class ProMd5Controller extends Controller{
 	 */
 	public void md5(){
 		String code = getPara("code");
-		QJson qjson = new QJson(false, "please enter code!");
+		QJson qjson = new QJson(false, "md5 error!");
 		
 		if(QStringUtil.notEmpty(code)){
 			try {

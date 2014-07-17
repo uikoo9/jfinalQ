@@ -8,22 +8,18 @@ function submitCode(){
 	if(!code){
 		$('div.form-group').addClass('has-error');
 	}else{
-		$.ajax({
+		var res = qiao.ajax({
 			url : 'md5/md5',
-			data : {code:code},
-			type : 'post',
-			dataType : 'json'
-		}).done(function(json){
-			if(json && json.success){
-				$('div.resdiv:eq(0) span').html('<strong>' + code + '</strong>');
-				$('div.resdiv:eq(1) span').html('<strong>' + json.msg + '</strong>');
-				$panel.show();
-			}else{
-				alert('fail');
-			}
-		}).fail(function(){
-			alert('fail');
+			data : {code:code}
 		});
+		
+		if(res && res.success){
+			$('div.resdiv:eq(0) span').html('<strong>' + code + '</strong>');
+			$('div.resdiv:eq(1) span').html('<strong>' + res.msg + '</strong>');
+			$panel.show();
+		}else{
+			alert('ajax fail!');
+		}
 	}
 	
 	return false;

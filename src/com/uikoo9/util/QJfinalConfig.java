@@ -7,6 +7,7 @@ import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.uikoo9.controller.ProMd5Controller;
+import com.uikoo9.controller.UcenterIndexController;
 
 /**
  * jfinal config
@@ -32,7 +33,8 @@ public class QJfinalConfig extends JFinalConfig{
 
 	@Override
 	public void configRoute(Routes me) {
-		me.add("/", ProMd5Controller.class);
+		me.add("/", 	UcenterIndexController.class);
+		me.add("/md5", 	ProMd5Controller.class);
 	}
 
 }
