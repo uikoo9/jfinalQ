@@ -17,16 +17,12 @@ div.row {
 <@body>
 	<div class="container">
 		<div class="row">
-			<form class="form-horizontal" role="form">
-				<div class="form-group form-group-lg">
-					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
-						<input class="form-control input-lg" type="text" id="md5Input" name="code" required placeholder="Enter code">
-					</div>
-					<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-						<input class="btn btn-primary btn-block btn-lg" type="submit" value="MD5"/>
-					</div>
-				</div>
-			</form>
+			<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 inputdiv">
+				<input type="text" class="form-control input-lg" id="md5input" name="code" required placeholder="Enter code">
+			</div>
+			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+				<button type="button" class="btn btn-primary btn-block btn-lg" id="md5btn">MD5</button>
+			</div>
 		</div>
 		<div class="row">
 			<div class="panel panel-default" style="display:none;">

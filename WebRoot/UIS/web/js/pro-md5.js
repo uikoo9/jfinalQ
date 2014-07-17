@@ -1,15 +1,36 @@
-// bind submit
-qiao.on('form','submit',submitCode);
-function submitCode(){
+$(function(){
+	// auto focus
+	$('#md5input').focus();
+	
+	// bind
+	$(document).off('focus', '#md5input').on('focus', '#md5input', resetInput);
+	$(document).off('keydown', '#md5input').on('keydown', '#md5input', md5keydown);
+	$(document).off('click', '#md5btn').on('click', '#md5btn', md5code);
+});
+
+// reset input
+function resetInput(){
+	$('.inputdiv').removeClass('has-error');
+}
+
+// key down
+function md5keydown(e){
+	if(e.keyCode == 13) md5code();
+}
+
+// submit code
+function md5code(){
 	var $panel = $('div.panel');
 	$panel.hide();
 	
-	var code = $.trim($('#md5Input').val());
+	var code = $.trim($('#md5input').val());
 	if(!code){
-		$('div.form-group').addClass('has-error');
+		$('.inputdiv').addClass('has-error');
 	}else{
-		var $input 	= $('input[type="text"]');
-		var $submit = $('input[type="submit"]');
+		resetInput();
+		
+		var $input 	= $('#md5input');
+		var $submit = $('#md5btn');
 		
 		$input.attr('disabled',	'disabled');
 		$submit.attr('disabled','disabled');
@@ -28,12 +49,4 @@ function submitCode(){
 			alert('ajax fail!');
 		}
 	}
-	
-	return false;
-}
-
-// bind input focus and reset status
-qiao.on('#md5Input','focus',resetStatus);
-function resetStatus(){
-	$('div.form-group').removeClass('has-error');
 }

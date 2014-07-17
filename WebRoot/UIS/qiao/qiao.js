@@ -154,13 +154,6 @@ qiao.con = function(obj){
 };
 
 /**
- * 事件动态绑定
- */
-qiao.on = function(obj, event, func){
-	$(document).off(event, obj).on(event, obj, func);
-};
-
-/**
  * 禁用某事件
  */
 qiao.forbidden = function(obj, events){
