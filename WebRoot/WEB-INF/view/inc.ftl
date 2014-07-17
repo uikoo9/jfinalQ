@@ -27,6 +27,12 @@
 		<meta http-equiv="cache-control" content="no-cache">
 		<meta http-equiv="expires" content="0">
 		
+		<!-- for search----------------------------------------------------------------------------------------->
+		<meta name="keywords" content="MD5,md5,查询" />
+		<meta name="description" content="MD5在线免费查询" />
+		<meta name="author" contect="uikoo9">
+		<meta name="robots" contect="all">
+		
 		<!-- favicon.ico ----------------------------------------------------------------------------------------->
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="bookmark"/> 
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
