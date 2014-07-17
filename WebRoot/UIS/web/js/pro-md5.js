@@ -1,16 +1,30 @@
 $(function(){
+	$input 	= $('#md5input');
+	$submit = $('#md5btn');
+	$panel 	= $('div.panel');
+	
 	// auto focus
-	$('#md5input').focus();
+	$input.focus();
 	
 	// bind
 	$(document).off('focus', '#md5input').on('focus', '#md5input', resetInput);
 	$(document).off('keydown', '#md5input').on('keydown', '#md5input', md5keydown);
 	$(document).off('click', '#md5btn').on('click', '#md5btn', md5code);
+	
+	// tooltip
+	$input.tooltip({
+		title : 'please enter code!',
+		trigger : 'manual',
+		container : 'body',
+		placement : 'bottom',
+	});
 });
+
 
 // reset input
 function resetInput(){
 	$('.inputdiv').removeClass('has-error');
+	$input.tooltip('hide');
 }
 
 // key down
@@ -20,17 +34,14 @@ function md5keydown(e){
 
 // submit code
 function md5code(){
-	var $panel = $('div.panel');
 	$panel.hide();
 	
-	var code = $.trim($('#md5input').val());
+	var code = $.trim($input.val());
 	if(!code){
 		$('.inputdiv').addClass('has-error');
+		$input.tooltip('show');
 	}else{
 		resetInput();
-		
-		var $input 	= $('#md5input');
-		var $submit = $('#md5btn');
 		
 		$input.attr('disabled',	'disabled');
 		$submit.attr('disabled','disabled');
