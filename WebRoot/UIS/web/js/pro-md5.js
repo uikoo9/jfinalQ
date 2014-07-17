@@ -55,7 +55,7 @@ function md5code(){
 		if(res && res.success){
 			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
 			$('p.resp:eq(1) span').html('<strong>' + res.msg + '</strong>');
-			$panel.show();
+			$panel.slideDown('slow');
 		}else{
 			alert('ajax fail!');
 		}
