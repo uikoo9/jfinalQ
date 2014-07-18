@@ -1,124 +1,3 @@
-/**
- * 扩展一些js默认的方法
- * 1.string.contains
- * 2.string.startWith
- * 3.string.endWith
- * 4.string.inArray
- */
-String.prototype.contains = function(s){
-	return this.indexOf(s) != -1;
-};
-String.prototype.startWith=function(s){  
-    if(this && s && this.length > s.length){
-    	if(this.substr(0,s.length)==s){  
-    		return true;
-    	}  
-    }
-    
-    return false;
-};
-String.prototype.endWith=function(s){  
-    if(this && s && this.length > s.length){
-    	if(this.substring(this.length-s.length)==s){
-    		return true;
-    	}
-    }
-    
-    return false;
-};
-String.prototype.inArray = function(array){
-	if(this && array){
-		for(var i=0; i<array.length; i++){
-			if(this == array[i]){
-				return true;
-			}
-		}
-	}
-	
-	return false;
-};
-
-/**
- * jquery的一些常用方法
- * 1.qser
- */
-$.fn.qser = function(){
-	var obj = {};
-	
-	var objs = $(this).serializeArray();
-	if(objs.length != 0){
-		for(var i=0; i<objs.length; i++){
-			obj[objs[i].name] = objs[i].value;
-		}
-	}
-
-	return obj;
-};
-
-/**
- * 常用方法
- * 1.qiao.ajax(options);
- */
-var qiao = $.extend({}, qiao);
-qiao.ajax = function(options){
-	if(!options){
-		alert('need options');
-	}else{
-		var doptions = {
-			url 	: '',
-			data 	: {},
-			type 	: 'post',
-			dataType: 'json',
-			async 	: false
-		};
-		
-		if(typeof options == 'string'){
-			doptions.url = options;
-		}else{
-			$.extend(doptions, options);
-		}
-		
-		var res;
-		$.ajax(doptions).done(function(obj){
-			res = obj;
-		});
-		
-		return res;
-	}
-};
-
-/**
- * 常用方法
- * 1.qiao.ajax(options);
- */
-var qiao = $.extend({}, qiao);
-qiao.ajax = function(options){
-	if(!options){
-		alert('need options');
-	}else{
-		var doptions = {
-			url 	: '',
-			data 	: {},
-			type 	: 'post',
-			dataType: 'json',
-			async 	: false
-		};
-		
-		if(typeof options == 'string'){
-			doptions.url = options;
-		}else{
-			$.extend(doptions, options);
-		}
-		
-		var res;
-		$.ajax(doptions).done(function(obj){
-			res = obj;
-		});
-		
-		return res;
-	}
-};
-
 // pro-md5.js
 $(function(){
 	$input 	= $('#md5input');
@@ -150,9 +29,15 @@ $(function(){
 		$input.attr('disabled',	null);
 		$submit.text('MD5').attr('disabled',null);
 	});
+	
+	$('#test').modal({
+		close : true
+	});
 });
 
-
+function test(){
+	$('#test').modal('show');
+}
 // reset input
 function resetInput(){
 	$('.inputdiv').removeClass('has-error');
@@ -175,7 +60,7 @@ function md5code(){
 	}else{
 		resetInput();
 		
-		var res = qiao.ajax({
+		var res = uikoo9.ajax({
 			url : 'md5/md5',
 			data : {code:code}
 		});

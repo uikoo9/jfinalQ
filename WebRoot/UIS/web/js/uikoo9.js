@@ -57,10 +57,10 @@ $.fn.qser = function(){
 
 /**
  * 常用方法
- * 1.qiao.ajax(options);
+ * 1.uikoo9.ajax(options);
  */
-var qiao = $.extend({}, qiao);
-qiao.ajax = function(options){
+var uikoo9 = $.extend({}, uikoo9);
+uikoo9.ajax = function(options){
 	if(!options){
 		alert('need options');
 	}else{
@@ -85,4 +85,114 @@ qiao.ajax = function(options){
 		
 		return res;
 	}
+};
+
+/**
+ * bs插件封装
+ * 1.uikoo9.bs.alert
+ * 2.uikoo9.bs.confirm
+ */ 
+uikoo9.bs = {};
+uikoo9.bs.msgoptions = {
+	url 	: '',
+	fade	: 'fade',
+	close	: true,
+	title	: 'title',
+	btn		: false,
+	okbtn	: '确定',
+	qubtn	: '取消',
+	msg		: 'msg',
+	big		: false,
+	show	: false,
+	remote	: false,
+	backdrop: 'static',
+	keyboard: true
+};
+// bs msg str
+uikoo9.bs.msgstr = function(opt){
+	var start = '<div class="modal '+opt.fade+'" id="bsmodal" tabindex="-1" role="dialog" aria-labelledby="bsmodaltitle" aria-hidden="true">';
+	if(opt.big){
+		start += '<div class="modal-dialog modal-lg"><div class="modal-content">';
+	}else{
+		start += '<div class="modal-dialog"><div class="modal-content">';
+	}
+	var end = '</div></div></div>';
+	
+	var head = '<div class="modal-header">';
+	if(opt.close){
+		head += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+	}
+	head += '<h3 class="modal-title" id="bsmodaltitle">'+opt.title+'</h3></div>';
+	var body = '<div class="modal-body"><p><h4>'+opt.msg+'</h4></p></div>';
+	var foot = '<div class="modal-footer"><button type="button" class="btn btn-primary bsok">'+opt.okbtn+'</button>';
+	if(opt.btn){
+		foot += '<button type="button" class="btn btn-default bscancel">'+opt.qubtn+'</button>';
+	}
+	foot += '</div>';
+	
+	return start + head + body + foot + end;
+};
+// bs msg alert
+uikoo9.bs.alert = function(options, func){
+	// options
+	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	if(typeof options == 'string'){
+		opt.msg = options;
+	}else{
+		$.extend(opt, options);
+	}
+	
+	// add
+	$('body').append(uikoo9.bs.msgstr(opt));
+	
+	// init
+	var $modal = $('#bsmodal'); 
+	$modal.modal(opt);
+	
+	// bind
+	$(document).on('click', 'button.bsok', function(){
+		if(func) func();
+		$modal.modal('hide');
+	});
+	$(document).on('hidden.bs.modal', '#bsmodal', function(){
+		$modal.remove();
+	});
+	
+	// show
+	$modal.modal('show');
+};
+// bs msg confirm
+uikoo9.bs.confirm = function(options, ok, cancel){
+	// options
+	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	if(typeof options == 'string'){
+		opt.msg = options;
+	}else{
+		$.extend(opt, options);
+	}
+	opt.btn = true;
+	opt.title = '确认操作';
+	
+	// append
+	$('body').append(uikoo9.bs.msgstr(opt));
+	
+	// init
+	var $modal = $('#bsmodal'); 
+	$modal.modal(opt);
+	
+	// bind
+	$(document).on('click', 'button.bsok', function(){
+		if(ok) ok();
+		$modal.modal('hide');
+	});
+	$(document).on('click', 'button.bscancel', function(){
+		if(cancel) cancel();
+		$modal.modal('hide');
+	});
+	$(document).on('hidden.bs.modal', '#bsmodal', function(){
+		$modal.remove();
+	});
+	
+	// show
+	$modal.modal('show');
 };

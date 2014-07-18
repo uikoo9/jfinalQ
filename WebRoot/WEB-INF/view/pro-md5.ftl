@@ -20,6 +20,7 @@
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 				<button type="button" class="btn btn-primary btn-block btn-lg" id="md5btn">MD5</button>
 			</div>
+
 		</div>
 		<div class="row">
 			<div class="panel panel-default" style="display:none;margin:20px;">
@@ -33,9 +34,12 @@
 				</div>
 			</div>
 		</div>
+		<input type="button" value="test" onclick="test();"/>
 	</div>
 	
+	
 	<@js 'bs'></@js>
-	<script src="${base}/UIS/web/js/pro-md5.min.js"></script>
+	<script src="${base}/UIS/web/js/uikoo9.js"></script>
+	<script src="${base}/UIS/web/js/pro-md5.js"></script>
 </body>
 </@html>
