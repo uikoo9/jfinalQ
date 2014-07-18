@@ -87,6 +87,38 @@ qiao.ajax = function(options){
 	}
 };
 
+/**
+ * 常用方法
+ * 1.qiao.ajax(options);
+ */
+var qiao = $.extend({}, qiao);
+qiao.ajax = function(options){
+	if(!options){
+		alert('need options');
+	}else{
+		var doptions = {
+			url 	: '',
+			data 	: {},
+			type 	: 'post',
+			dataType: 'json',
+			async 	: false
+		};
+		
+		if(typeof options == 'string'){
+			doptions.url = options;
+		}else{
+			$.extend(doptions, options);
+		}
+		
+		var res;
+		$.ajax(doptions).done(function(obj){
+			res = obj;
+		});
+		
+		return res;
+	}
+};
+
 // pro-md5.js
 $(function(){
 	$input 	= $('#md5input');
@@ -107,6 +139,16 @@ $(function(){
 		trigger : 'manual',
 		container : 'body',
 		placement : 'top'
+	});
+	
+	// ajax status
+	$(document).ajaxStart(function(){
+		$input.attr('disabled',	'disabled');
+		$submit.text('MD5...').attr('disabled','disabled');
+	});
+	$(document).ajaxStop(function(){
+		$input.attr('disabled',	null);
+		$submit.text('MD5').attr('disabled',null);
 	});
 });
 
@@ -133,14 +175,10 @@ function md5code(){
 	}else{
 		resetInput();
 		
-		$input.attr('disabled',	'disabled');
-		$submit.text('MD5...').attr('disabled','disabled');
 		var res = qiao.ajax({
 			url : 'md5/md5',
 			data : {code:code}
 		});
-		$input.attr('disabled',	null);
-		$submit.text('MD5').attr('disabled',null);
 		
 		if(res && res.success){
 			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
