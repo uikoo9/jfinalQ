@@ -24,20 +24,15 @@ $(function(){
 	$(document).ajaxStart(function(){
 		$input.attr('disabled',	'disabled');
 		$submit.text('MD5...').attr('disabled','disabled');
+		uikoo9.bs.dialog('loading...');
 	});
 	$(document).ajaxStop(function(){
 		$input.attr('disabled',	null);
 		$submit.text('MD5').attr('disabled',null);
-	});
-	
-	$('#test').modal({
-		close : true
+		$('#bsmodal').modal('hide');
 	});
 });
 
-function test(){
-	$('#test').modal('show');
-}
 // reset input
 function resetInput(){
 	$('.inputdiv').removeClass('has-error');

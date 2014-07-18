@@ -91,13 +91,16 @@ uikoo9.ajax = function(options){
  * bs插件封装
  * 1.uikoo9.bs.alert
  * 2.uikoo9.bs.confirm
+ * 3.uikoo9.bs.msg
  */ 
 uikoo9.bs = {};
 uikoo9.bs.msgoptions = {
 	url 	: '',
 	fade	: 'fade',
 	close	: true,
+	head	: true,
 	title	: 'title',
+	foot	: false,
 	btn		: false,
 	okbtn	: '确定',
 	qubtn	: '取消',
@@ -130,10 +133,16 @@ uikoo9.bs.msgstr = function(opt){
 	}
 	foot += '</div>';
 	
-	return start + head + body + foot + end;
+	var modal = start;
+	if(opt.head) modal += head;
+	modal += body;
+	if(opt.foot) modal += foot;
+	modal += end;
+	
+	return modal;
 };
-// bs msg alert
-uikoo9.bs.alert = function(options, func){
+//bs msg
+uikoo9.bs.msg = function(options, ok, cancel){
 	// options
 	var opt = $.extend({}, uikoo9.bs.msgoptions);
 	if(typeof options == 'string'){
@@ -141,37 +150,6 @@ uikoo9.bs.alert = function(options, func){
 	}else{
 		$.extend(opt, options);
 	}
-	
-	// add
-	$('body').append(uikoo9.bs.msgstr(opt));
-	
-	// init
-	var $modal = $('#bsmodal'); 
-	$modal.modal(opt);
-	
-	// bind
-	$(document).on('click', 'button.bsok', function(){
-		if(func) func();
-		$modal.modal('hide');
-	});
-	$(document).on('hidden.bs.modal', '#bsmodal', function(){
-		$modal.remove();
-	});
-	
-	// show
-	$modal.modal('show');
-};
-// bs msg confirm
-uikoo9.bs.confirm = function(options, ok, cancel){
-	// options
-	var opt = $.extend({}, uikoo9.bs.msgoptions);
-	if(typeof options == 'string'){
-		opt.msg = options;
-	}else{
-		$.extend(opt, options);
-	}
-	opt.btn = true;
-	opt.title = '确认操作';
 	
 	// append
 	$('body').append(uikoo9.bs.msgstr(opt));
@@ -195,4 +173,47 @@ uikoo9.bs.confirm = function(options, ok, cancel){
 	
 	// show
 	$modal.modal('show');
+};
+// bs msg alert
+uikoo9.bs.alert = function(options, func){
+	// options
+	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	if(typeof options == 'string'){
+		opt.msg = options;
+	}else{
+		$.extend(opt, options);
+	}
+	opt.foot = true;
+	opt.btn  = true;
+	opt.title = '提示';
+	
+	uikoo9.bs.msg(opt, func);
+};
+// bs msg confirm
+uikoo9.bs.confirm = function(options, ok, cancel){
+	// options
+	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	if(typeof options == 'string'){
+		opt.msg = options;
+	}else{
+		$.extend(opt, options);
+	}
+	opt.btn = true;
+	opt.title = '确认操作';
+	
+	uikoo9.bs.msg(opt, ok, cancel);
+};
+// bs msg dialog
+uikoo9.bs.dialog = function(options){
+	// options
+	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	if(typeof options == 'string'){
+		opt.msg = options;
+	}else{
+		$.extend(opt, options);
+	}
+	opt.head = false;
+	opt.foot = false;
+	
+	uikoo9.bs.msg(opt);
 };
