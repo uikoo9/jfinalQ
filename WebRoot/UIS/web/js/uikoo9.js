@@ -178,14 +178,15 @@ uikoo9.bs.msg = function(options, ok, cancel){
 uikoo9.bs.alert = function(options, func){
 	// options
 	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	opt.foot = true;
+	opt.btn  = true;
+	opt.title = '提示';
+
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
-	opt.foot = true;
-	opt.btn  = true;
-	opt.title = '提示';
 	
 	uikoo9.bs.msg(opt, func);
 };
@@ -193,13 +194,14 @@ uikoo9.bs.alert = function(options, func){
 uikoo9.bs.confirm = function(options, ok, cancel){
 	// options
 	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	opt.btn = true;
+	opt.title = '确认操作';
+
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
-	opt.btn = true;
-	opt.title = '确认操作';
 	
 	uikoo9.bs.msg(opt, ok, cancel);
 };
@@ -207,13 +209,14 @@ uikoo9.bs.confirm = function(options, ok, cancel){
 uikoo9.bs.dialog = function(options){
 	// options
 	var opt = $.extend({}, uikoo9.bs.msgoptions);
+	opt.head = false;
+	opt.foot = false;
+	
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
-	opt.head = false;
-	opt.foot = false;
 	
 	uikoo9.bs.msg(opt);
 };
