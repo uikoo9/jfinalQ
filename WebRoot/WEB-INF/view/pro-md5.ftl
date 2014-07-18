@@ -2,19 +2,12 @@
 <@html>
 <@head 'bs'>
 <title>uikoo9.com</title>
-<style type="text/css">
-body {
-	background-color: #eee;
-	padding-top: 30px;
-}
-</style>
-<script src="${base}/UIS/web/js/pro-md5.js"></script>
 </@head>
 
-<@body>
+<body style="background-color:#eee;padding-top:30px;">
 	<div class="container">
 		<div class="row">
-			<blockquote>
+			<blockquote class="blockquote-reverse">
 				<h1>MD5</h1>
 				<p>Message Digest Algorithm MD5（消息摘要算法）为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。</p>
 				<footer>百度百科</footer>
@@ -41,5 +34,8 @@ body {
 			</div>
 		</div>
 	</div>
-</@body>
+	
+	<@js 'bs'></@js>
+	<script src="${base}/UIS/web/js/pro-md5.min.js"></script>
+</body>
 </@html>

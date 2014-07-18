@@ -1,3 +1,93 @@
+/**
+ * 扩展一些js默认的方法
+ * 1.string.contains
+ * 2.string.startWith
+ * 3.string.endWith
+ * 4.string.inArray
+ */
+String.prototype.contains = function(s){
+	return this.indexOf(s) != -1;
+};
+String.prototype.startWith=function(s){  
+    if(this && s && this.length > s.length){
+    	if(this.substr(0,s.length)==s){  
+    		return true;
+    	}  
+    }
+    
+    return false;
+};
+String.prototype.endWith=function(s){  
+    if(this && s && this.length > s.length){
+    	if(this.substring(this.length-s.length)==s){
+    		return true;
+    	}
+    }
+    
+    return false;
+};
+String.prototype.inArray = function(array){
+	if(this && array){
+		for(var i=0; i<array.length; i++){
+			if(this == array[i]){
+				return true;
+			}
+		}
+	}
+	
+	return false;
+};
+
+/**
+ * jquery的一些常用方法
+ * 1.qser
+ */
+$.fn.qser = function(){
+	var obj = {};
+	
+	var objs = $(this).serializeArray();
+	if(objs.length != 0){
+		for(var i=0; i<objs.length; i++){
+			obj[objs[i].name] = objs[i].value;
+		}
+	}
+
+	return obj;
+};
+
+/**
+ * 常用方法
+ * 1.qiao.ajax(options);
+ */
+var qiao = $.extend({}, qiao);
+qiao.ajax = function(options){
+	if(!options){
+		alert('need options');
+	}else{
+		var doptions = {
+			url 	: '',
+			data 	: {},
+			type 	: 'post',
+			dataType: 'json',
+			async 	: false
+		};
+		
+		if(typeof options == 'string'){
+			doptions.url = options;
+		}else{
+			$.extend(doptions, options);
+		}
+		
+		var res;
+		$.ajax(doptions).done(function(obj){
+			res = obj;
+		});
+		
+		return res;
+	}
+};
+
+// pro-md5.js
 $(function(){
 	$input 	= $('#md5input');
 	$submit = $('#md5btn');
@@ -16,7 +106,7 @@ $(function(){
 		title : 'please enter code!',
 		trigger : 'manual',
 		container : 'body',
-		placement : 'bottom',
+		placement : 'top'
 	});
 });
 
@@ -44,18 +134,18 @@ function md5code(){
 		resetInput();
 		
 		$input.attr('disabled',	'disabled');
-		$submit.attr('disabled','disabled');
+		$submit.text('MD5...').attr('disabled','disabled');
 		var res = qiao.ajax({
 			url : 'md5/md5',
 			data : {code:code}
 		});
 		$input.attr('disabled',	null);
-		$submit.attr('disabled',null);
+		$submit.text('MD5').attr('disabled',null);
 		
 		if(res && res.success){
 			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
 			$('p.resp:eq(1) span').html('<strong>' + res.msg + '</strong>');
-			$panel.slideDown('slow');
+			$panel.slideDown();
 		}else{
 			alert('ajax fail!');
 		}
