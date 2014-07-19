@@ -37,7 +37,6 @@
 	
 	
 	<@js 'bs'></@js>
-	<script src="${base}/UIS/web/js/uikoo9.js"></script>
-	<script src="${base}/UIS/web/js/pro-md5.js"></script>
+	<script src="${base}/UIS/web/js/pro-md5.min.js"></script>
 </body>
 </@html>
