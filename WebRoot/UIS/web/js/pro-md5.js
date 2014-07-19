@@ -19,16 +19,6 @@ $(function(){
 		container : 'body',
 		placement : 'top'
 	});
-	
-	// ajax status
-	$(document).ajaxStart(function(){
-		$input.attr('disabled',	'disabled');
-		$submit.text('MD5...').attr('disabled','disabled');
-	});
-	$(document).ajaxStop(function(){
-		$input.attr('disabled',	null);
-		$submit.text('MD5').attr('disabled',null);
-	});
 });
 
 // reset input
@@ -53,10 +43,14 @@ function md5code(){
 	}else{
 		resetInput();
 		
+		$input.attr('disabled',	'disabled');
+		$submit.text('MD5...').attr('disabled','disabled');
 		var res = uikoo9.ajax({
 			url : 'md5/md5',
 			data : {code:code}
 		});
+		$input.attr('disabled',	null);
+		$submit.text('MD5').attr('disabled',null);
 		
 		if(res && res.success){
 			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
