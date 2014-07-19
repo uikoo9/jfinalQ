@@ -36,7 +36,8 @@
 	</div>
 	
 	
-	<@js 'bs'></@js>
+	<@js 'bs'>
 	<script src="${base}/UIS/web/js/pro-md5.min.js"></script>
+	</@js>
 </body>
 </@html>
