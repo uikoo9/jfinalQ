@@ -83,11 +83,6 @@ public class QFileUtil {
 		return res;
 	}
 	
-	public static String getRootPath(){
-		String utilPath = getJarPath();
-		return utilPath;
-	}
-	
 	public static final List<String> fileList = new ArrayList<String>();
 	/**
 	 * 获取某路径下的所有文件的绝对路径
