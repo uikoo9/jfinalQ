@@ -47,7 +47,29 @@
 
 <#-- js -->
 <#macro js uis...>
-	<!-- sea.js -->
-	<script src="${base}/UIS/seajs-3.2.0/sea.js"></script>	
+	<!-- jquery -->
+	<!--[if lt IE 9]>
+	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]>
+	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<![endif]-->
+	<!--[if !IE]><!-->
+	<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<!--<![endif]-->
+	
+	<!-- uis -->
+	<#list uis as ui>
+		<#if ui=='bs'>
+	<!-- bootstrap -->
+	<!-- less than ie9 need some js -->
+	<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.0/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+	<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+		</#if>
+	</#list>
+	
 	<#nested>
 </#macro>

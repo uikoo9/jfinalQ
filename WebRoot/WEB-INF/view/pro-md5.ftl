@@ -37,7 +37,9 @@
 	
 	
 	<@js 'bs'>
-	<script src="${base}/UIS/web/js/pro-md5.min.js"></script>
+	<script type="text/javascript">
+	seajs.use('./UIS/web/js/test.js');
+	</script>
 	</@js>
 </body>
 </@html>
