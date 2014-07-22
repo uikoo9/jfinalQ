@@ -46,8 +46,8 @@
 </#macro>
 
 <#-- js -->
-<#macro js uis...>
-	<!-- sea.js -->
-	<script src="${base}/UIS/seajs-3.2.0/sea.js"></script>	
+<#macro js>
+	<!-- require.js -->
+	<script src="${base}/WUI/require.js"></script>	
 	<#nested>
 </#macro>
