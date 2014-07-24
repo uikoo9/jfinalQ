@@ -36,10 +36,6 @@
 	</div>
 	
 	
-	<@js 'bs'>
-	<script type="text/javascript">
-	seajs.use('./UIS/web/js/test.js');
-	</script>
-	</@js>
+	<@js main='${base}/WUI/web/js/pro-md5.js'></@js>
 </body>
 </@html>

@@ -18,6 +18,7 @@ public class UcenterIndexController extends Controller{
 	
 	public void test(){
 		setAttr("test", QFileUtil.getJarPath());
+		
 		QFileUtil.getAllFiles(QFileUtil.getJarPath().split("classes")[0] + "classes");
 		setAttr("files", QFileUtil.fileList);
 		

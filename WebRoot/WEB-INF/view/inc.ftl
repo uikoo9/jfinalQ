@@ -46,8 +46,8 @@
 </#macro>
 
 <#-- js -->
-<#macro js>
+<#macro js main>
 	<!-- require.js -->
-	<script src="${base}/WUI/require.js"></script>	
+	<script src="${base}/WUI/lib/require.js" data-main="${main}"></script>
 	<#nested>
 </#macro>
