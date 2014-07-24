@@ -36,7 +36,7 @@
 			<#if ui=='bs'>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+		<link rel="stylesheet" href="${base}/WUI/bootstrap/bootstrap-3.2.0.min.css">
 			</#if>
 		</#list>
 		
@@ -53,7 +53,6 @@
 	requirejs.config({
 	    baseUrl: 'WUI',
 	    paths:{
-	        webjs : 'web/js',
 	        jquery : 'jquery/jquery-1.11.0.min',
 	        bootstrap : 'bootstrap/bootstrap-3.2.0.min',
 	        uikoo9 : 'uikoo9/uikoo9'
