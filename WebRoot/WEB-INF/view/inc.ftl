@@ -48,18 +48,18 @@
 <#-- js -->
 <#macro js main>
 	<!-- require.js -->
-	<script type="text/javascript" src="${base}/WUI/require.js"></script>
+	<script type="text/javascript" src="${base}/WUI/requirejs/require.js"></script>
 	<script type="text/javascript">
 	requirejs.config({
 	    baseUrl: 'WUI',
 	    paths:{
-	        app : 'web/js',
+	        webjs : 'web/js',
 	        jquery : 'jquery/jquery-1.11.0.min',
-	        uikoo9 : 'uikoo9/uikoo9',
-	        bootstrap : 'bootstrap/bootstrap-3.2.0.min'
+	        bootstrap : 'bootstrap/bootstrap-3.2.0.min',
+	        uikoo9 : 'uikoo9/uikoo9'
 	    },
 	    shim:{
-		    backbone: {
+		    bootstrap: {
 	            deps: ['jquery'],
 	            exports: 'bs'
 	        },
