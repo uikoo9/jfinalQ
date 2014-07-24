@@ -1,21 +1,16 @@
-define(function(require){
+define(function(require,exports){
 	var $ = require('jquery');
 	
-	/**
-	 * 常用方法
-	 * 1.uikoo9.ajax(options);
-	 */
-	var uikoo9 = $.extend({}, uikoo9);
-	uikoo9.ajax = function(options){
+	exports.ajax = function(options){
 		if(!options){
 			alert('need options');
 		}else{
 			var doptions = {
-					url 	: '',
-					data 	: {},
-					type 	: 'post',
-					dataType: 'json',
-					async 	: false
+				url 	: '',
+				data 	: {},
+				type 	: 'post',
+				dataType: 'json',
+				async 	: false
 			};
 			
 			if(typeof options == 'string'){

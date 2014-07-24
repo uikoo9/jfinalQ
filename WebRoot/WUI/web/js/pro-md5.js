@@ -1,15 +1,5 @@
-require.config({
-	baseUrl : 'WUI/lib',
-	paths: {
-        jquery: 'jquery-1.11.0.min',
-        bootstrap: 'bootstrap-3.2.0.min',
-    }
-});
-
-require(['jquery', 'bootstrap'], function($, bs) {
-	var uikoo9 = require('uikoo9');
-    // pro-md5.js
-    $(function(){
+require(['jquery','uikoo9','bootstrap'], function($,uikoo9){
+	$(function(){
     	$input 	= $('#md5input');
     	$submit = $('#md5btn');
     	$panel 	= $('div.panel');

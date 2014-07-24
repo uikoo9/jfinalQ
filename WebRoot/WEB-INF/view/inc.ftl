@@ -48,6 +48,24 @@
 <#-- js -->
 <#macro js main>
 	<!-- require.js -->
-	<script src="${base}/WUI/lib/require.js" data-main="${main}"></script>
+	<script type="text/javascript" src="${base}/WUI/require.js"></script>
+	<script type="text/javascript">
+	requirejs.config({
+	    baseUrl: 'WUI',
+	    paths:{
+	        app : 'web/js',
+	        jquery : 'jquery/jquery-1.11.0.min',
+	        uikoo9 : 'uikoo9/uikoo9',
+	        bootstrap : 'bootstrap/bootstrap-3.2.0.min'
+	    },
+	    shim:{
+		    backbone: {
+	            deps: ['jquery'],
+	            exports: 'bs'
+	        },
+	    }
+	});
+	</script>
+	<script type="text/javascript" src="${main}"></script>
 	<#nested>
 </#macro>
