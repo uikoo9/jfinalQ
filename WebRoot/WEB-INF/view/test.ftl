@@ -5,7 +5,6 @@
 </@head>
 
 <body style="background-color:#eee;padding-top:30px;">
-	<input type="hidden" value="test" />
 	<div class="container">
 		<div class="row">
 			jarpath:<h1>${test}</h1>
@@ -17,6 +16,5 @@
 			</#list>
 		</div>
 	</div>
-	<@js main='${base}/WUI/web/js/test.js'></@js>
 </body>
 </@html>
