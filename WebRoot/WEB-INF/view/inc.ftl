@@ -36,7 +36,7 @@
 			<#if ui=='bs'>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="${base}/WUI/bootstrap/bootstrap-3.2.0.min.css">
+		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 			</#if>
 		</#list>
 		
@@ -48,19 +48,18 @@
 <#-- js -->
 <#macro js main>
 	<!-- require.js -->
-	<script type="text/javascript" src="${base}/WUI/requirejs/require.js"></script>
+	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
 	<script type="text/javascript">
 	requirejs.config({
 	    baseUrl: 'WUI',
 	    paths:{
-	        jquery : 'jquery/jquery-1.11.0.min',
-	        bootstrap : 'bootstrap/bootstrap-3.2.0.min',
+	        jquery : 'http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min',
+	        bootstrap : 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
 	        uikoo9 : 'uikoo9/uikoo9'
 	    },
 	    shim:{
 		    bootstrap: {
-	            deps: ['jquery'],
-	            exports: 'bs'
+	            deps: ['jquery']
 	        },
 	    }
 	});

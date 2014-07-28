@@ -7,7 +7,7 @@
 <body style="background-color:#eee;padding-top:30px;" data="1">
 	<div class="container">
 		<div class="row">
-			<blockquote class="blockquote-reverse">
+			<blockquote>
 				<h1>MD5</h1>
 				<p>Message Digest Algorithm MD5（消息摘要算法）为计算机安全领域广泛使用的一种散列函数，用以提供消息的完整性保护。</p>
 				<footer>百度百科</footer>
