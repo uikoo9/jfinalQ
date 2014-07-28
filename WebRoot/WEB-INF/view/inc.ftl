@@ -59,7 +59,8 @@
 	    },
 	    shim:{
 		    bootstrap: {
-	            deps: ['jquery']
+	            deps: ['jquery'],
+	            exports:'bs'
 	        },
 	    }
 	});
