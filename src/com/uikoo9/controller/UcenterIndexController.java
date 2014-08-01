@@ -2,11 +2,13 @@ package com.uikoo9.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.util.QFileUtil;
+import com.uikoo9.util.jfinal.QActionMap;
 
 /**
  * 首页跳转controller
  * @author uikoo9
  */
+@QActionMap("/")
 public class UcenterIndexController extends Controller{
 	
 	/**

@@ -4,11 +4,13 @@ import com.jfinal.core.Controller;
 import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.QJson;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.jfinal.QActionMap;
 
 /**
  * project md5 controller
  * @author uikoo9
  */
+@QActionMap("/md5")
 public class ProMd5Controller extends Controller{
 	
 	/**
