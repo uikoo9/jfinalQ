@@ -61,7 +61,7 @@
 		    bootstrap: {
 	            deps: ['jquery'],
 	            exports:'bs'
-	        },
+	        }
 	    }
 	});
 	</script>

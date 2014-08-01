@@ -35,7 +35,6 @@
 		</div>
 	</div>
 	
-	
 	<@js main='${base}/WUI/web/js/pro-md5.min.js'></@js>
 </body>
 </@html>
