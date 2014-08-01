@@ -7,13 +7,7 @@
 <body style="background-color:#eee;padding-top:30px;">
 	<div class="container">
 		<div class="row">
-			jarpath:<h1>${test}</h1>
-		</div>
-		<div class="row">
-			filelist:
-			<#list files as file>
-				<p>${file}</p>
-			</#list>
+			<h1>${test}</h1>
 		</div>
 	</div>
 </body>
