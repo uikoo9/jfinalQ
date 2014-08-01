@@ -1,7 +1,8 @@
 package com.uikoo9.controller;
 
 import com.jfinal.core.Controller;
-import com.uikoo9.util.QFileUtil;
+import com.jfinal.plugin.spring.Inject;
+import com.uikoo9.service.TestServiceI;
 import com.uikoo9.util.jfinal.QActionMap;
 
 /**
@@ -11,6 +12,9 @@ import com.uikoo9.util.jfinal.QActionMap;
 @QActionMap("/")
 public class UcenterIndexController extends Controller{
 	
+	@Inject.BY_TYPE
+	private TestServiceI testService;
+	
 	/**
 	 * 跳转到首页 
 	 */
@@ -19,10 +23,7 @@ public class UcenterIndexController extends Controller{
 	}
 	
 	public void test(){
-		setAttr("test", QFileUtil.getJarPath());
-		
-		QFileUtil.getAllFiles(QFileUtil.getJarPath().split("classes")[0] + "classes");
-		setAttr("files", QFileUtil.fileList);
+		setAttr("test", testService.test());
 		
 		render("/WEB-INF/view/test.ftl");
 	}

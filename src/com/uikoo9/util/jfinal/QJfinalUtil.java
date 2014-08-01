@@ -94,7 +94,6 @@ public class QJfinalUtil {
 		try {
 			QFileUtil.getAllFiles(QFileUtil.getJarPath().split("classes")[0] + "classes");
 			for(String s : QFileUtil.fileList){
-				System.out.println(s);
 				if(s.endsWith("Controller.class")){
 					String classPath = s.split("classes")[1].replace(File.separator, ".");
 					String className = classPath.substring(1, classPath.length() - 6); 
