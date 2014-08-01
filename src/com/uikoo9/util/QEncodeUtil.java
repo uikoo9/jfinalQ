@@ -1,6 +1,8 @@
 package com.uikoo9.util;
 
 import java.math.BigInteger;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
@@ -15,17 +17,19 @@ import sun.misc.BASE64Encoder;
 /**
  * 编码工具类
  * 1.将byte[]转为各种进制的字符串
- * 2.base 64 encode
- * 3.base 64 decode
- * 4.获取byte[]的md5值
- * 5.获取字符串md5值
- * 6.结合base64实现md5加密
- * 7.AES加密
- * 8.AES加密为base 64 code
- * 9.AES解密
- * 10.将base 64 code AES解密
+ * 2.url encode
+ * 3.url decode
+ * 4.base 64 encode
+ * 5.base 64 decode
+ * 6.获取byte[]的md5值
+ * 7.获取字符串md5值
+ * 8.结合base64实现md5加密
+ * 9.AES加密
+ * 10.AES加密为base 64 code
+ * 11.AES解密
+ * 12.将base 64 code AES解密
  * @author uikoo9
- * @version 0.0.8.20140601
+ * @version 0.0.9.20140610
  */
 public class QEncodeUtil {
 	
@@ -37,6 +41,26 @@ public class QEncodeUtil {
 	 */
 	public static String binary(byte[] bytes, int radix){
 		return new BigInteger(1, bytes).toString(radix);// 这里的1代表正数
+	}
+	
+	/**
+	 * 对string进行url编码
+	 * @param s
+	 * @return
+	 * @throws Exception
+	 */
+	public static String urlEncode(String s) throws Exception{
+		return URLEncoder.encode(s, "UTF-8");
+	}
+	
+	/**
+	 * 对string进行url解码
+	 * @param s
+	 * @return
+	 * @throws Exception
+	 */
+	public static String urlDecode(String s) throws Exception{
+		return URLDecoder.decode(s, "UTF-8");
 	}
 	
 	/**

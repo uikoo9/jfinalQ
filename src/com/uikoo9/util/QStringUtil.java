@@ -8,15 +8,17 @@ import java.util.List;
  * 字符串工具类
  * 1.字符串判空
  * 2.字符串非空
- * 3.将s转为字符串
- * 4.将s转为int
- * 5.分隔字符串
- * 6.首字母大写
- * 7.首字母小写
- * 8.分隔符最后一个字符串
- * 9.将驼峰命名的字符串拆分
+ * 3.校验字符串数组中任一字符串为空
+ * 4.校验一个字符串数组中的字符串都不为空
+ * 5.将s转为字符串
+ * 6.将s转为int
+ * 7.分隔字符串
+ * 8.首字母大写
+ * 9.首字母小写
+ * 10.分隔符最后一个字符串
+ * 11.将驼峰命名的字符串拆分
  * @author uikoo9
- * @version 0.0.2.20140523
+ * @version 0.0.3.20140702
  */
 public class QStringUtil {
 
@@ -36,6 +38,36 @@ public class QStringUtil {
 	 */
 	public static boolean notEmpty(String s){
 		return s != null && !s.trim().equals("") ? true : false;
+	}
+	
+	/**
+	 * 校验字符串数组中任一字符串为空
+	 * @param ss
+	 * @return
+	 */
+	public static boolean anyoneEmpty(String[] ss){
+		if(ss.length == 0) return true;
+		
+		for(String s : ss){
+			if(isEmpty(s)) return true;
+		}
+		
+		return false;
+	}
+	
+	/**
+	 * 校验一个字符串数组中的字符串都不为空
+	 * @param ss
+	 * @return
+	 */
+	public static boolean allNotEmpty(String[] ss){
+		if(ss.length == 0) return false;
+		
+		for(String s : ss){
+			if(isEmpty(s)) return false;
+		}
+		
+		return true;
 	}
 	
 	/**

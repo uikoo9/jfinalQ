@@ -16,7 +16,7 @@ import java.util.Properties;
  * 5.获取某文件夹下的所有文件的路径
  * 6.删除文件
  * @author uikoo9
- * @version 0.0.2.20140423
+ * @version 0.0.3.20140801
  */
 public class QFileUtil {
 	

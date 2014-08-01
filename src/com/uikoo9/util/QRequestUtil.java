@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServletRequest;
  * Request工具类
  * 1.获取request中一些常用的信息
  * 2.获取项目的绝对路径
+ * 3.判断是否盗链
  * @author uikoo9
- * @version 0.0.2.20140603
+ * @version 0.0.4.20140617
  */
 public class QRequestUtil {
 	
@@ -45,12 +46,25 @@ public class QRequestUtil {
 	 * @return
 	 */
 	public static String getHttpPath(HttpServletRequest request){
-		StringBuilder path = new StringBuilder("http://");
+		StringBuilder path = new StringBuilder();
+		
+		path.append(request.getScheme() + "://");
 		path.append(request.getServerName() + ":");
 		path.append(request.getServerPort());
 		path.append(request.getContextPath());
 		
 		return path.toString();
+	}
+	
+	/**
+	 * 判断是否盗链
+	 * @param request
+	 * @return
+	 */
+	public static boolean isHotLinking(HttpServletRequest request){
+		String referer = request.getHeader("referer");
+		
+		return (referer == null || !referer.contains(request.getServerName())) ? true : false; 
 	}
 	
 }
