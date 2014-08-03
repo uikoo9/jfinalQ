@@ -68,3 +68,26 @@
 	<script type="text/javascript" src="${main}"></script>
 	<#nested>
 </#macro>
+
+<#-- bsheader -->
+<#macro bsheader pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
+	<nav role="navigation" class="navbar navbar-default navbar-fixed-${pos}">
+		<div class="container">
+			<div class="navbar-header">
+				<button data-target="#bsheader" data-toggle="collapse" class="navbar-toggle" type="button">
+					<span class="sr-only">导航条</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="${shref}" class="navbar-brand"><strong class="text-primary">${sname}</strong></a>
+			</div>
+			
+			<div class="collapse navbar-collapse" id="bsheader">
+				<ul class="nav navbar-nav">
+					<#nested>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</#macro>
