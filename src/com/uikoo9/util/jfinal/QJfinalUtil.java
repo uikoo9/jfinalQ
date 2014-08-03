@@ -26,7 +26,7 @@ import com.uikoo9.util.easyui.QDatagrid;
 /**
  * jfinal util
  * @author uikoo9
- * @version 0.0.3.20140803
+ * @version 0.0.4.20140803
  */
 public class QJfinalUtil {
 	
@@ -68,7 +68,7 @@ public class QJfinalUtil {
 			try{
 				con = QDbUtil.getCon(properties);
 				
-				QFileUtil.getAllFiles(QFileUtil.getJarPath().split("classes")[0] + "classes");
+				QFileUtil.getAllFiles(QFileUtil.getJarPath().split("WEB-INF")[0] + "WEB-INF/classes");
 				for(String s : QFileUtil.fileList){
 					s = s.replace(File.separator, ".");
 					if(s.contains("com.uikoo9.web") && s.contains("model")){
@@ -103,7 +103,8 @@ public class QJfinalUtil {
 	@SuppressWarnings("unchecked")
 	public static void initController(Routes me){
 		try {
-			QFileUtil.getAllFiles(QFileUtil.getJarPath().split("classes")[0] + "classes");
+			System.out.println("++" + QFileUtil.getJarPath());
+			QFileUtil.getAllFiles(QFileUtil.getJarPath().split("WEB-INF")[0] + "WEB-INF/classes");
 			for(String s : QFileUtil.fileList){
 				if(s.endsWith("Controller.class")){
 					String classPath = s.split("classes")[1].replace(File.separator, ".");
