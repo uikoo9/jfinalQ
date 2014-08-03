@@ -14,7 +14,7 @@ public class UcenterIndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/pro-md5.ftl");
+		render("/WEB-INF/view/pro-index.ftl");
 	}
 	
 }
