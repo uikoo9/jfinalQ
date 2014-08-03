@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.jfinal.config.Constants;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
 import com.jfinal.core.Controller;
@@ -25,9 +26,19 @@ import com.uikoo9.util.easyui.QDatagrid;
 /**
  * jfinal util
  * @author uikoo9
- * @version 0.0.2.20140522
+ * @version 0.0.3.20140803
  */
 public class QJfinalUtil {
+	
+	/**
+	 * 初始化配置
+	 * @param me
+	 * @param path
+	 */
+	public static void initConfig(Constants me, String path){
+		Properties properties = QFileUtil.readProperties(path);
+		me.setDevMode(Boolean.parseBoolean(properties.getProperty("devMode")));
+	}
 	
 	/**
 	 * 初始化spring
