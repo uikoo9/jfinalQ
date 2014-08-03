@@ -16,11 +16,11 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.Record;
 import com.jfinal.plugin.c3p0.C3p0Plugin;
 import com.jfinal.plugin.spring.SpringPlugin;
-import com.uikoo9.util.QDatagrid;
 import com.uikoo9.util.QDbUtil;
 import com.uikoo9.util.QFileUtil;
 import com.uikoo9.util.QPage;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.easyui.QDatagrid;
 
 /**
  * jfinal util
