@@ -27,4 +27,12 @@ define(function(require,exports){
 			return res;
 		}
 	};
+	
+	exports.to = function(url){
+		if(url){
+			window.location.href = url;
+		}else{
+			alert('need url');
+		}
+	};
 });

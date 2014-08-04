@@ -1,8 +1,6 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head 'bs'>
-<title>uikoo9.com</title>
-</@head>
+<@head ui='bs'></@head>
 
 <body style="background-color:#eee;padding-top:30px;" data="1">
 	<div class="container">

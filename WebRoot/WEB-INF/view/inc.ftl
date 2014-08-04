@@ -7,7 +7,7 @@
 </#macro>
 
 <#-- head -->
-<#macro head uis...>
+<#macro head title='qiaowenbin.com' ui=''>
 	<head>
 		<!-- 编码 -->
 		<meta charset="UTF-8" />
@@ -26,19 +26,20 @@
 		<meta name="author" contect="uikoo9">
 		<meta name="robots" contect="all">
 		
+		<!-- title -->
+		<title>${title}</title>
+		
 		<!-- favicon.ico -->
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="bookmark"/> 
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
 		
 		<!-- uis -->
-		<#list uis as ui>
-			<#if ui=='bs'>
+		<#if ui=='bs'>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-			</#if>
-		</#list>
+		</#if>
 		
 		<!-- mine -->
 		<#nested>
@@ -70,7 +71,7 @@
 </#macro>
 
 <#-- bsheader -->
-<#macro bsheader pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
+<#macro bsheader pos='top' sname='qiaowenbin.com' shref='http://qiaowenbin.com/'>
 	<nav role="navigation" class="navbar navbar-default navbar-fixed-${pos}">
 		<div class="container">
 			<div class="navbar-header">
@@ -90,4 +91,26 @@
 			</div>
 		</div>
 	</nav>
+</#macro>
+
+<#-- bstile -->
+<#macro bstile title='' desc='' buttons=''>
+	<#if title != ''><h1>${title}</h1></#if>
+	<#if desc != ''><p>${desc}</p></#if>
+	<p><#nested></p>
+</#macro>
+
+<#-- bsicon -->
+<#macro bsicon icon=''>
+	<#if icon != ''>
+		<span class="glyphicon glyphicon-${icon}"></span>
+	</#if>
+</#macro>
+
+<#-- bsbutton -->
+<#macro bsbutton type="default" size='' icon='' dis=false href='javascript:void(0);'>
+	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}">
+		<@bsicon icon=icon></@bsicon>
+		<#nested>
+	</a>
 </#macro>
