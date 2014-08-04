@@ -4,12 +4,18 @@
 <title>uikoo9.com</title>
 </@head>
 
-<body style="padding-top:50px;">
+<body style="padding-top:51px;">
 	<@bsheader>
 		<li><a href="#">JavaSE</a></li>
 		<li><a href="#">JavaEE</a></li>
 		<li><a href="#">About Me</a></li>
 	</@bsheader>
+	<div class="jumbotron">
+		<div class="container">
+		  <h1>uikoo9.com</h1>
+		  <p>ideas + coder = ?</p>
+		</div>
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-3">
@@ -17,15 +23,43 @@
 				<p>Java实现的锁频软件，Windows XP下屏蔽所有按键。</p>
 			</div>
 			<div class="col-sm-3">
+				<h3>QRunner</h3>
+				<p>只需简单几步，让所有程序都从win+r启动~</p>
+			</div>
+			<div class="col-sm-3">
 				<h3>QGcoder</h3>
 				<p>JavaEE代码生成器，可以生成servlet+jsp，ssh2，jfinal等框架对应的代码。</p>
 			</div>
 			<div class="col-sm-3">
-				<h3>Qencrypt</h3>
+				<h3>QEncrypt</h3>
 				<p>加密JavaEE项目，目前适用于非spring项目，可自定义加密解密算法，无需修改java环境。</p>
 			</div>
-			
-			
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-3">
@@ -42,7 +76,33 @@
 			</div>
 			<div class="col-sm-3">
 				<h3>QAccount</h3>
-				<p>简介的记账系统，为您提供最简洁，最便于操作的记账系统。</p>
+				<p>简单的记账系统，为您提供最简洁，最便于操作的记账系统。</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<button type="button" class="btn btn-primary">详情</button>
+					<button type="button" class="btn btn-primary">访问 </button>
+				</p>
 			</div>
 		</div>
 	</div>
