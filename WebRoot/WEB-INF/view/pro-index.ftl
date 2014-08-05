@@ -19,7 +19,7 @@
 		<div class="row">
 			<div class="col-sm-4">
 				<@bstile title='MD5' desc='MD5在线查询'>
-					<@bsbutton type='primary' href='http://localhost/com/md5'>访问</@bsbutton>
+					<@bsbutton type='primary' href='http://qiaowenbin.com/md5'>访问</@bsbutton>
 					<@bsbutton type='primary' dis=true>详情</@bsbutton>
 				</@bstile>
 			</div>
@@ -62,6 +62,8 @@
 		-->
 	</div>
 	
+	<#-- 
 	<@js main='${base}/WUI/web/js/pro-index.js'></@js>
+	-->
 </body>
 </@html>
