@@ -70,12 +70,12 @@
 	<#nested>
 </#macro>
 
-<#-- bsheader -->
-<#macro bsheader pos='top' sname='qiaowenbin.com' shref='http://qiaowenbin.com/'>
-	<nav role="navigation" class="navbar navbar-default navbar-fixed-${pos}">
+<#-- bsnav -->
+<#macro bsnav pos='top' sname='qiaowenbin.com' shref='http://qiaowenbin.com/'>
+	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:0;">
 		<div class="container">
 			<div class="navbar-header">
-				<button data-target="#bsheader" data-toggle="collapse" class="navbar-toggle" type="button">
+				<button data-target="#bsnav" data-toggle="collapse" class="navbar-toggle" type="button">
 					<span class="sr-only">导航条</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -84,7 +84,7 @@
 				<a href="${shref}" class="navbar-brand"><strong class="text-primary">${sname}</strong></a>
 			</div>
 			
-			<div class="collapse navbar-collapse" id="bsheader">
+			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
 					<#nested>
 				</ul>

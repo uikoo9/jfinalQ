@@ -5,6 +5,6 @@
         bootstrap: 'empty:',
         uikoo9: 'uikoo9/uikoo9'
     },
-    name:'web/js/pro-md5',
-	out:'../web/js/pro-md5.min.js'
+    name:'web/js/pro-index',
+	out:'../web/js/pro-index.min.js'
 })

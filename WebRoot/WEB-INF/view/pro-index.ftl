@@ -2,17 +2,17 @@
 <@html>
 <@head ui='bs'></@head>
 
-<body style="padding-top:51px;">
-	<@bsheader>
+<body>
+	<@bsnav>
 		<li><a href="#">JavaSE</a></li>
 		<li><a href="#">JavaEE</a></li>
 		<li><a href="#">Blogs</a></li>
 		<li><a href="#">About Me</a></li>
-	</@bsheader>
+	</@bsnav>
 	<div class="jumbotron">
 		<div class="container">
-			  <h1>qiaowenbin.com</h1>
-			  <p>ideas + coder = ?</p>
+			<h1>qiaowenbin.com</h1>
+			<p>ideas + coder = ?</p>
 		</div>
 	</div>
 	<div class="container">
@@ -65,8 +65,6 @@
 		-->
 	</div>
 	
-	<#-- 
-	<@js main='${base}/WUI/web/js/pro-index.js'></@js>
-	-->
+	<@js main='${base}/WUI/web/js/pro-index.min.js'></@js>
 </body>
 </@html>

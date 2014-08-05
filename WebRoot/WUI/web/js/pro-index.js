@@ -1,2 +1,2 @@
-//require(['jquery','uikoo9','bootstrap'], function($,uikoo9){
-//});
+require(['jquery','uikoo9','bootstrap'], function($,uikoo9){
+});
