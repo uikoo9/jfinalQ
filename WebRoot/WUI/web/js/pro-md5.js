@@ -46,7 +46,7 @@ require(['jquery','uikoo9','bootstrap'], function($,uikoo9){
     		$input.attr('disabled',	'disabled');
     		$submit.text('MD5...').attr('disabled','disabled');
     		var res = uikoo9.ajax({
-    			url : 'md5/md5',
+    			url : $('body').data('base') + '/md5/md5',
     			data : {code:code}
     		});
     		$input.attr('disabled',	null);

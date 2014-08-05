@@ -2,7 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<body style="background-color:#eee;padding-top:30px;" data="1">
+<body style="background-color:#eee;padding-top:30px;" data-base="${base}">
 	<div class="container">
 		<div class="row">
 			<blockquote>
