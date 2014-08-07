@@ -11,7 +11,7 @@
 	</@bsnav>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>qiaowenbin.com</h1>
+			<h1>uikoo9.com</h1>
 			<p>ideas + coder = ?</p>
 		</div>
 	</div>
@@ -22,7 +22,7 @@
 					<#-- 
 					<@bsbutton type='primary' href='http://localhost/com/md5'>访问</@bsbutton>
 					-->
-					<@bsbutton type='primary' href='http://qiaowenbin.com/md5'>访问</@bsbutton>
+					<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>
 					<@bsbutton type='primary' dis=true>详情</@bsbutton>
 				</@bstile>
 			</div>

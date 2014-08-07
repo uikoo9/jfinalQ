@@ -7,7 +7,7 @@
 </#macro>
 
 <#-- head -->
-<#macro head title='qiaowenbin.com' ui=''>
+<#macro head title='uikoo9.com' ui=''>
 	<head>
 		<!-- 编码 -->
 		<meta charset="UTF-8" />
@@ -71,7 +71,7 @@
 </#macro>
 
 <#-- bsnav -->
-<#macro bsnav pos='top' sname='qiaowenbin.com' shref='http://qiaowenbin.com/'>
+<#macro bsnav pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
 	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:0;">
 		<div class="container">
 			<div class="navbar-header">
