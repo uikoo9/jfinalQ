@@ -2,8 +2,8 @@ package com.uikoo9.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.util.QEncodeUtil;
-import com.uikoo9.util.QJson;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QActionMap;
 
 /**
