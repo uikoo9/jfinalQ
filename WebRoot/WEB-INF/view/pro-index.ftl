@@ -17,14 +17,11 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4">
-				<@bstile title='MD5' desc='MD5在线查询'>
-					<#-- 
-					<@bsbutton type='primary' href='http://localhost/com/md5'>访问</@bsbutton>
-					-->
+			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="text-align:center;">
+				<@bsnail title='MD5' desc='MD5在线查询'>
 					<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>
 					<@bsbutton type='primary' dis=true>详情</@bsbutton>
-				</@bstile>
+				</@bsnail>
 			</div>
 			<!-- 
 			<div class="col-sm-4">

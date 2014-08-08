@@ -93,24 +93,29 @@
 	</nav>
 </#macro>
 
-<#-- bstile -->
-<#macro bstile title='' desc='' buttons=''>
-	<#if title != ''><h1>${title}</h1></#if>
-	<#if desc != ''><p>${desc}</p></#if>
-	<p><#nested></p>
+<#-- bsnail -->
+<#macro bsnail src='' alt='' title='' desc=''>
+	<div class="thumbnail" >
+		<#if src != ''>
+			<img src="${src}" alt="${alt}">
+		</#if>
+		<div class="caption">
+			<#if title != ''><h1 class="text-primary">${title}</h1></#if>
+			<#if desc != ''><p>${desc}</p></#if>
+			<p><#nested></p>
+		</div>
+	</div>
 </#macro>
-
-<#-- bsicon -->
-<#macro bsicon icon=''>
-	<#if icon != ''>
-		<span class="glyphicon glyphicon-${icon}"></span>
-	</#if>
-</#macro>
-
 <#-- bsbutton -->
 <#macro bsbutton type="default" size='' icon='' dis=false href='javascript:void(0);'>
 	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}">
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
 	</a>
+</#macro>
+<#-- bsicon -->
+<#macro bsicon icon=''>
+	<#if icon != ''>
+		<span class="glyphicon glyphicon-${icon}"></span>
+	</#if>
 </#macro>
