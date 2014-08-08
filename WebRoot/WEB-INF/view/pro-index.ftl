@@ -17,51 +17,46 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="text-align:center;">
-				<@bsnail title='MD5' desc='MD5在线查询'>
-					<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>
-					<@bsbutton type='primary' dis=true>详情</@bsbutton>
-				</@bsnail>
-			</div>
-			<!-- 
-			<div class="col-sm-4">
-				<h3>QLocker</h3>
-				<p>Java实现的锁频软件，Windows XP下屏蔽所有按键。</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>QRunner</h3>
-				<p>只需简单几步，让所有程序都从win+r启动~</p>
-			</div>
-			-->
-		</div>
-		<!-- 
-		<div class="row">
-			<div class="col-sm-4">
-				<h3>QGcoder</h3>
-				<p>JavaEE代码生成器，可以生成servlet+jsp，ssh2，jfinal等框架对应的代码。</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>QEncrypt</h3>
-				<p>加密JavaEE项目，目前适用于非spring项目，可自定义加密解密算法，无需修改java环境。</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>DISC</h3>
-				<p>DISC研究的是可辨认的正常的人类行为。</p>
-			</div>
+			<@bsnail title='MD5' desc='MD5在线查询'>
+				<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+			<@bsnail title='QLocker' desc='Java实现的锁频软件，Windows XP下屏蔽所有按键。'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+			<@bsnail title='QRunner' desc='只需简单几步，让所有程序都从win+r启动~'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
 		</div>
 		<div class="row">
-			<div class="col-sm-4">
-				<h3>Success Dairy</h3>
-				<p>成功日记，记录每次成功的瞬间！</p>
-			</div>
-			<div class="col-sm-4">
-				<h3>QAccount</h3>
-				<p>简单的记账系统，为您提供最简洁，最便于操作的记账系统。</p>
-			</div>
+			<@bsnail title='QGcoder' desc='JavaEE代码生成器，可以生成servlet+jsp，ssh2，jfinal等框架对应的代码。'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+			<@bsnail title='QEncrypt' desc='加密JavaEE项目，目前适用于非spring项目，可自定义加密解密算法，无需修改java环境。'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+			<@bsnail title='DISC' desc='DISC研究的是可辨认的正常的人类行为。'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
 		</div>
-		-->
+		<div class="row">
+			<@bsnail title='Success Dairy' desc='成功日记，记录每次成功的瞬间！'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+			<@bsnail title='QAccount' desc='为您提供最简洁，最便于操作的记账系统。'>
+				<@bsbutton type='primary' dis=true href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' dis=true>详情</@bsbutton>
+			</@bsnail>
+		</div>
 	</div>
-	
+
+	<@bsfoot></@bsfoot>
 	<@js main='${base}/WUI/web/js/pro-index.min.js'></@js>
 </body>
 </@html>

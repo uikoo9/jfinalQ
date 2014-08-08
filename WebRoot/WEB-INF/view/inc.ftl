@@ -95,20 +95,22 @@
 
 <#-- bsnail -->
 <#macro bsnail src='' alt='' title='' desc=''>
-	<div class="thumbnail" >
-		<#if src != ''>
-			<img src="${src}" alt="${alt}">
-		</#if>
-		<div class="caption">
-			<#if title != ''><h1 class="text-primary">${title}</h1></#if>
-			<#if desc != ''><p>${desc}</p></#if>
-			<p><#nested></p>
+	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:center;">
+		<div class="thumbnail" style="height:190px;">
+			<#if src != ''>
+				<img src="${src}" alt="${alt}">
+			</#if>
+			<div class="caption">
+				<#if title != ''><h1>${title}</h1></#if>
+				<#if desc != ''><p>${desc}</p></#if>
+				<p><#nested></p>
+			</div>
 		</div>
 	</div>
 </#macro>
 <#-- bsbutton -->
 <#macro bsbutton type="default" size='' icon='' dis=false href='javascript:void(0);'>
-	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}">
+	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" target="_blank">
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
 	</a>
@@ -118,4 +120,16 @@
 	<#if icon != ''>
 		<span class="glyphicon glyphicon-${icon}"></span>
 	</#if>
+</#macro>
+
+<#-- bsfoot -->
+<#macro bsfoot height='60' color='#f5f5f5'>
+	<div class="footer" style="width:100%;height:${height}px;background-color:${color};text-align:center;">
+		<div class="container">
+			<p class="text-muted" style="margin: 20px 0;">
+				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
+			</p>
+		</div>
+	</div>
 </#macro>
