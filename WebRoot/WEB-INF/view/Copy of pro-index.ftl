@@ -4,12 +4,12 @@
 
 <body>
 	<@bsnav>
-		<li><a href="#">JavaSE</a></li>
-		<li><a href="#">JavaEE</a></li>
-		<li><a href="#">Blogs</a></li>
-		<li><a href="#">About Me</a></li>
+		<li><a href="#" style="color:#FFCC33;">JavaSE</a></li>
+		<li><a href="#" style="color:#FFCC33;">JavaEE</a></li>
+		<li><a href="#" style="color:#FFCC33;">Blogs</a></li>
+		<li><a href="#" style="color:#FFCC33;">About Me</a></li>
 	</@bsnav>
-	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
+	<div class="jumbotron" style="background-color:#FFCC33;color:#FFFFFF;text-align:center;padding-top:100px;padding-bottom:100px;">
 		<div class="container">
 			<h1>uikoo9.com</h1>
 			<p>ideas + coder = ?</p>
