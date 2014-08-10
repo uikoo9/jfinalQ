@@ -57,7 +57,8 @@
 		<@bsfoot></@bsfoot>
 	</#if>
 	<#if js != ''>
-		<@requirejs js=js></@requirejs>
+		<!-- require.js -->
+		<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js/${js}.js"></script>
 	</#if>
 </body>
 </#macro>
@@ -99,29 +100,6 @@
 			</p>
 		</div>
 	</div>
-</#macro>
-
-<#-- js -->
-<#macro requirejs js>
-	<!-- require.js -->
-	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
-	<script type="text/javascript">
-	requirejs.config({
-	    baseUrl: 'WUI',
-	    paths:{
-	        jquery : 'http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min',
-	        bootstrap : 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-	        uikoo9 : 'uikoo9/uikoo9'
-	    },
-	    shim:{
-		    bootstrap: {
-	            deps: ['jquery'],
-	            exports:'bs'
-	        }
-	    }
-	});
-	</script>
-	<script type="text/javascript" src="${js}"></script>
 </#macro>
 
 <#-- bsnail -->

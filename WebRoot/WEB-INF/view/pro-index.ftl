@@ -2,7 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<@bsbody js='${base}/WUI/web/js/pro-index.min.js'>
+<@bsbody js='pro-index'>
 	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 		<div class="container">
 			<h1>uikoo9.com</h1>

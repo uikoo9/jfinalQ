@@ -2,7 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<@bsbody js='${base}/WUI/web/js/man.js'>
+<@bsbody js='man'>
 	
 </@bsbody>	
 </@html>

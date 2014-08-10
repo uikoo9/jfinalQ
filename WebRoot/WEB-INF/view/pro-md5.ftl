@@ -2,7 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<@bsbody style='background-color:#eee;padding-top:30px;' nav=false foot=false js='${base}/WUI/web/js/pro-md5.min.js'>
+<@bsbody style='background-color:#eee;padding-top:30px;' nav=false foot=false js='pro-md5.min'>
 	<div class="container">
 		<div class="row">
 			<blockquote>
