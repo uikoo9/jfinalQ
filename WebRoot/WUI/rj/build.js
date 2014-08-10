@@ -2,8 +2,8 @@
     baseUrl: "../js-src",
     paths: {
         jquery: 'empty:',
-        bootstrap: 'empty:',
+        bootstrap: 'empty:'
     },
-    name:'pro-md5',
-	out:'../js-min/pro-md5.min.js'
+    name:'pro-index',
+	out:'../js-min/pro-index.min.js'
 })
