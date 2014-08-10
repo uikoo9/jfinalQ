@@ -46,28 +46,20 @@
 	</head>
 </#macro>
 
-<#-- js -->
-<#macro js main>
-	<!-- require.js -->
-	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
-	<script type="text/javascript">
-	requirejs.config({
-	    baseUrl: 'WUI',
-	    paths:{
-	        jquery : 'http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min',
-	        bootstrap : 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-	        uikoo9 : 'uikoo9/uikoo9'
-	    },
-	    shim:{
-		    bootstrap: {
-	            deps: ['jquery'],
-	            exports:'bs'
-	        }
-	    }
-	});
-	</script>
-	<script type="text/javascript" src="${main}"></script>
+<#-- bsbody -->
+<#macro bsbody style='' class='' nav=true foot=true js=''>
+<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
+	<#if nav>
+		<@bsnav></@bsnav>
+	</#if>
 	<#nested>
+	<#if foot>
+		<@bsfoot></@bsfoot>
+	</#if>
+	<#if js != ''>
+		<@requirejs js=js></@requirejs>
+	</#if>
+</body>
 </#macro>
 
 <#-- bsnav -->
@@ -86,11 +78,50 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
+					<li><a href="#">JavaSE</a></li>
+					<li><a href="#">JavaEE</a></li>
+					<li><a href="#">Blogs</a></li>
+					<li><a href="#">About Me</a></li>
 					<#nested>
 				</ul>
 			</div>
 		</div>
 	</nav>
+</#macro>
+
+<#-- bsfoot -->
+<#macro bsfoot height='60' color='#f5f5f5'>
+	<div class="footer" style="width:100%;height:${height}px;background-color:${color};text-align:center;">
+		<div class="container">
+			<p class="text-muted" style="margin: 20px 0;">
+				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
+			</p>
+		</div>
+	</div>
+</#macro>
+
+<#-- js -->
+<#macro requirejs js>
+	<!-- require.js -->
+	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
+	<script type="text/javascript">
+	requirejs.config({
+	    baseUrl: 'WUI',
+	    paths:{
+	        jquery : 'http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min',
+	        bootstrap : 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
+	        uikoo9 : 'uikoo9/uikoo9'
+	    },
+	    shim:{
+		    bootstrap: {
+	            deps: ['jquery'],
+	            exports:'bs'
+	        }
+	    }
+	});
+	</script>
+	<script type="text/javascript" src="${js}"></script>
 </#macro>
 
 <#-- bsnail -->
@@ -120,16 +151,4 @@
 	<#if icon != ''>
 		<span class="glyphicon glyphicon-${icon}"></span>
 	</#if>
-</#macro>
-
-<#-- bsfoot -->
-<#macro bsfoot height='60' color='#f5f5f5'>
-	<div class="footer" style="width:100%;height:${height}px;background-color:${color};text-align:center;">
-		<div class="container">
-			<p class="text-muted" style="margin: 20px 0;">
-				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
-				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
-			</p>
-		</div>
-	</div>
 </#macro>

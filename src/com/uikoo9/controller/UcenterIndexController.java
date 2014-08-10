@@ -17,4 +17,11 @@ public class UcenterIndexController extends Controller{
 		render("/WEB-INF/view/pro-index.ftl");
 	}
 	
+	/**
+	 * 跳转到后台管理页面
+	 */
+	public void man(){
+		render("/WEB-INF/view/man.ftl");
+	}
+	
 }

@@ -2,7 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<body style="background-color:#eee;padding-top:30px;" data-base="${base}">
+<@bsbody style='background-color:#eee;padding-top:30px;' nav=false foot=false js='${base}/WUI/web/js/pro-md5.min.js'>
 	<div class="container">
 		<div class="row">
 			<blockquote>
@@ -32,7 +32,5 @@
 			</div>
 		</div>
 	</div>
-	
-	<@js main='${base}/WUI/web/js/pro-md5.min.js'></@js>
-</body>
+</@bsbody>
 </@html>

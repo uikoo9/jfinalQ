@@ -2,13 +2,7 @@
 <@html>
 <@head ui='bs'></@head>
 
-<body>
-	<@bsnav>
-		<li><a href="#">JavaSE</a></li>
-		<li><a href="#">JavaEE</a></li>
-		<li><a href="#">Blogs</a></li>
-		<li><a href="#">About Me</a></li>
-	</@bsnav>
+<@bsbody js='${base}/WUI/web/js/pro-index.min.js'>
 	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 		<div class="container">
 			<h1>uikoo9.com</h1>
@@ -55,8 +49,5 @@
 			</@bsnail>
 		</div>
 	</div>
-
-	<@bsfoot></@bsfoot>
-	<@js main='${base}/WUI/web/js/pro-index.min.js'></@js>
-</body>
+</@bsbody>
 </@html>
