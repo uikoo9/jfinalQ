@@ -57,8 +57,11 @@
 		<@bsfoot></@bsfoot>
 	</#if>
 	<#if js != ''>
-		<!-- require.js -->
-		<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js/${js}.js"></script>
+		<#if js?contains('.min')>
+			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/js-min/${js}"></script>
+		<#else>
+			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/js-src/${js}"></script>
+		</#if>
 	</#if>
 </body>
 </#macro>
