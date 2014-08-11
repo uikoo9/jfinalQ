@@ -4,6 +4,6 @@
         jquery: 'empty:',
         bootstrap: 'empty:'
     },
-    name:'pro-index',
-	out:'../js-min/pro-index.min.js'
+    name:'pro-md5',
+	out:'../js-min/pro-md5.min.js'
 })

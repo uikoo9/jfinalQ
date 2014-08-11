@@ -16,7 +16,7 @@
 				<input type="text" class="form-control input-lg" id="md5input" name="code" required placeholder="Enter code">
 			</div>
 			<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-				<button type="button" class="btn btn-primary btn-block btn-lg" id="md5btn">MD5</button>
+				<button type="button" class="btn btn-primary btn-block btn-lg" id="md5btn" data-loading-text="MD5...">MD5</button>
 			</div>
 		</div>
 		<div class="row">
