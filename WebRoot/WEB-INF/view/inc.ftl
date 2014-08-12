@@ -1,3 +1,4 @@
+<#-- inc-common ----------------------------------------------------------------------------------------------->
 <#-- html -->
 <#macro html>
 	<!DOCTYPE html>
@@ -34,7 +35,6 @@
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
 		
-		<!-- uis -->
 		<#if ui=='bs'>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -51,6 +51,18 @@
 	</head>
 </#macro>
 
+<#-- rj -->
+<#macro rj js>
+	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
+	<script type="text/javascript" src="${base}/WUI/rj/config.js"></script>
+	<#if js?contains('.min')>
+		<script type="text/javascript" src="${base}/WUI/web/js-min/${js}.js"></script>
+	<#else>
+		<script type="text/javascript" src="${base}/WUI/web/js-src/${js}.js"></script>
+	</#if>
+</#macro>
+
+<#-- inc-bs ----------------------------------------------------------------------------------------------->
 <#-- bsbody -->
 <#macro bsbody style='' class='' nav=true foot=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
@@ -62,11 +74,7 @@
 		<@bsfoot></@bsfoot>
 	</#if>
 	<#if js != ''>
-		<#if js?contains('.min')>
-			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js-min/${js}"></script>
-		<#else>
-			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js-src/${js}"></script>
-		</#if>
+		<@rj js=js></@rj>
 	</#if>
 </body>
 </#macro>
@@ -138,3 +146,5 @@
 		<span class="glyphicon glyphicon-${icon}"></span>
 	</#if>
 </#macro>
+
+<#-- inc-eui ----------------------------------------------------------------------------------------------->

@@ -1,8 +1,8 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head ui='bs'></@head>
+<@head ui='eui'></@head>
 
-<@bsbody js='man'>
-	
-</@bsbody>	
+<body id="test">
+	<@rj js='man'/>
+</body>
 </@html>

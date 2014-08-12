@@ -1,4 +1,4 @@
-require(['../../rj/config','jquery','../../qiao/qiao','bootstrap'], function(config, $, qiao){
+require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
 	$(function(){
     	$input 	= $('#md5input');
     	$submit = $('#md5btn');

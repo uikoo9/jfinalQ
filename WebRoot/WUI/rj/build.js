@@ -1,9 +1,12 @@
 ({
-    baseUrl: "../web/js-src",
-    paths: {
-        jquery: 'empty:',
-        bootstrap: 'empty:'
+	baseUrl : '../',
+    paths : {
+        jquery 		: 'empty:',
+        bootstrap 	: 'empty:',
+    	easyui 		: 'empty:',
+    	qiao 		: 'qiao/qiao',
+    	eui 		: 'qiao/qiao.eui'
     },
-    name:'pro-md5',
-	out:'../web/js-min/pro-md5.min.js'
+    name :'web/js-src/pro-md5',
+	out :'../web/js-min/pro-md5.min.js'
 })

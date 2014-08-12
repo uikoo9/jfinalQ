@@ -41,7 +41,9 @@
  * @version 0.0.6.20140614
  */
 define(function(require,exports){
-	var $ = require('jquery');
+	var $ 		= require('jquery');
+	var easyui 	= require('easyui'); 
+	var qiao	= require('qiao');
 	
 	/**
 	 * 01.easyui parser
