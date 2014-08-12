@@ -2,7 +2,8 @@
 <@html>
 <@head ui='eui'></@head>
 
-<body id="test">
+<body>
+	<div id="test" style="border:solid 1px black;width:100px;height:100px;"></div>
 	<@rj js='man'/>
 </body>
 </@html>
