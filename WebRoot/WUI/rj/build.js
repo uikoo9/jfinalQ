@@ -1,9 +1,9 @@
 ({
-    baseUrl: "../js-src",
+    baseUrl: "../web/js-src",
     paths: {
         jquery: 'empty:',
         bootstrap: 'empty:'
     },
     name:'pro-md5',
-	out:'../js-min/pro-md5.min.js'
+	out:'../web/js-min/pro-md5.min.js'
 })

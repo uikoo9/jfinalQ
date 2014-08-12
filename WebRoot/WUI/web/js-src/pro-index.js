@@ -1,1 +1,1 @@
-require(['../rj/config','bootstrap'], function(){});
+require(['../../rj/config','bootstrap'], function(){});
