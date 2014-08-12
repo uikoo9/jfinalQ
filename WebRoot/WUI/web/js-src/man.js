@@ -1,5 +1,6 @@
 require(['jquery', 'eui'], function($, eui){
 	$(function(){
-		$('#test').qaddTab('test', 'md5');
+		$('#tt').tabs();
+		$('#tt').qaddTab('test', 'md5');
 	});
 });
