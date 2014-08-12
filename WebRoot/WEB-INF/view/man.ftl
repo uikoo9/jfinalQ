@@ -4,6 +4,6 @@
 
 <body>
 	<div id="test" style="border:solid 1px black;width:100px;height:100px;"></div>
-	<@rj js='man'/>
+	<@rj js='man.min'/>
 </body>
 </@html>
