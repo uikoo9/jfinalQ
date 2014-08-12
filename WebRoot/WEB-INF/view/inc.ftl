@@ -40,6 +40,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 		</#if>
+		<#if ui=='eui'>
+		<!-- easyui -->
+		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.3.6/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.3.6/themes/icon.css">
+		</#if>
 		
 		<!-- mine -->
 		<#nested>
@@ -58,9 +63,9 @@
 	</#if>
 	<#if js != ''>
 		<#if js?contains('.min')>
-			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/js-min/${js}"></script>
+			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js-min/${js}"></script>
 		<#else>
-			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/js-src/${js}"></script>
+			<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js" data-main="${base}/WUI/web/js-src/${js}"></script>
 		</#if>
 	</#if>
 </body>

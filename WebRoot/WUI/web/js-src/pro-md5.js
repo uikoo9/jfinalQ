@@ -1,4 +1,4 @@
-require(['../rj/config','jquery','../uikoo9/uikoo9','bootstrap'], function(config, $, uikoo9){
+require(['../rj/config','jquery','../qiao/qiao','bootstrap'], function(config, $, qiao){
 	$(function(){
     	$input 	= $('#md5input');
     	$submit = $('#md5btn');
@@ -45,7 +45,7 @@ require(['../rj/config','jquery','../uikoo9/uikoo9','bootstrap'], function(confi
     		
     		$input.attr('disabled',	'disabled');
     		$submit.button('loading');
-    		var res = uikoo9.ajax({
+    		var res = qiao.ajax({
     			url : 'md5/md5',
     			data : {code:code}
     		});
