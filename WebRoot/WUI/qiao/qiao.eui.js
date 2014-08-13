@@ -43,6 +43,7 @@
 define(function(require,exports){
 	var $ 		= require('jquery');
 	var easyui 	= require('easyui'); 
+	var easyuizh= require('easyuizh'); 
 	var qiao	= require('qiao');
 	
 	/**
@@ -820,24 +821,38 @@ define(function(require,exports){
 	 *  events : onSubmit,success,onBeforeLoad,onLoadSuccess,onLoadError
 	 *  properties : novalidate,ajax,queryParams,url
 	 * eg:
-	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
-	 * 	$('#test').qresize();
+	 * 	<form id="ff" method="post"></form>
+	 * 	$('#ff').qform(url, function(data){alert(data);});
 	 */
-	$.fn.qform = function(options){
+	$.fn.qform = function(options, success){
 		if(!options){
 			alert('need options');
-		}else if(typeof options == 'string'){
-			if(options == 'validate'){
-				return $(this).form(options);
-			}else{
-				$(this).form(options);
-			}
 		}else{
-			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.form.defaults);
-			$.extend(defaultOptions, options);
-			
-			$(this).form(defaultOptions);
+			if(success){
+				var defaultOptions = {};
+				$.extend(defaultOptions, $.fn.form.defaults);
+				defaultOptions.url 		= options;
+				defaultOptions.success 	= success;
+				defaultOptions.onSubmit = function(){
+					if(!$(this).form('validate')) return false;
+				};
+				
+				$(this).form(defaultOptions);
+			}else{
+				if(typeof options == 'string'){
+					if(options == 'validate'){
+						return $(this).form(options);
+					}else{
+						$(this).form(options);
+					}
+				}else{
+					var defaultOptions = {};
+					$.extend(defaultOptions, $.fn.form.defaults);
+					$.extend(defaultOptions, options);
+					
+					$(this).form(defaultOptions);
+				}
+			}
 		}
 	};
 	

@@ -1,17 +1,8 @@
-require(['jquery', 'eui'], function($, eui){
+require(['jquery', 'easyui', 'eui'], function($, easyui, eui){
 	$(function(){
 		var form = $('#ff');
-		form.qform({
-			url:'',
-			onSubmit: function(){
-				if(!form.qform('validate')){
-					alert(1);
-					return false;
-				}
-			},
-			success:function(data){
-				alert(data);
-			}
+		form.qform('11', function(data){
+			alert(data);
 		});
 	});
 	
