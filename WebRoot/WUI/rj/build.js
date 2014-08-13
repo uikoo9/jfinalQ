@@ -3,7 +3,7 @@
     paths : {
         jquery 		: 'empty:',
         bootstrap 	: 'empty:',
-    	easyui 		: 'easyui-1.3.6/jquery.easyui.min',
+    	easyui 		: 'empty:',
     	qiao 		: 'qiao/qiao',
     	eui 		: 'qiao/qiao.eui'
     },

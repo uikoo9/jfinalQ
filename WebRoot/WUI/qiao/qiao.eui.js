@@ -43,7 +43,6 @@
 define(function(require,exports){
 	var $ 		= require('jquery');
 	var easyui 	= require('easyui'); 
-	var easyuizh= require('easyuizh'); 
 	var qiao	= require('qiao');
 	
 	/**
@@ -857,32 +856,48 @@ define(function(require,exports){
 	};
 	
 	/**
-	 * 19.easyui resizable
+	 * 19.easyui validatebox
 	 * options : 
-	 * 	method : options,enable,disable
-	 *  events : onStartResize,onResize,onStopResize
-	 *  properties : disabled,handles,minWidth,minHeight,maxWidth,maxHeight,edge
+	 * 	method : options,destroy,validate,isValid,enableValidation,disableValidation
+	 *  events : onBeforeValidate,onValidate
+	 *  properties : required,validType,delay,missingMessage,invalidMessage,tipPosition,deltaX,novalidate
 	 * eg:
-	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
-	 * 	$('#test').qresize();
+	 * 	<input id="vv">
+	 * 	$('#vv').qval('val:r,email');
 	 */
-	$.fn.qresize = function(options){
+	$.fn.qval = function(options){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
-			if(options == 'options'){
-				return $(this).resizable(options);
+			if(options.inArray['options','isValid']){
+				return $(this).validatebox(options);
+			}else if(options.startWith('val:')){
+				var array = [];
+				
+				var required = false;
+				var vals = options.substring(4,options.length).split(',');
+				console.log(vals);
+				for(var i=0; i<vals.length; i++){
+					array.push(vals[i]);
+					if(vals[i] == 'r') required = true;
+				}
+				
+				$(this).validatebox({
+					required : required,
+					validType : array
+				});
 			}else{
-				$(this).resizable(options);
+				$(this).validatebox(options);
 			}
 		}else{
 			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.resizable.defaults);
+			$.extend(defaultOptions, $.fn.validatebox.defaults);
 			$.extend(defaultOptions, options);
 			
-			$(this).resizable(defaultOptions);
+			$(this).validatebox(defaultOptions);
 		}
 	};
+	
 	/**
 	 * 20.easyui resizable
 	 * options : 

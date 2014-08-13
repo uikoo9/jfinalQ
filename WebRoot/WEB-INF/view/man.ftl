@@ -3,6 +3,7 @@
 <@head ui='eui'></@head>
 
 <body>
+	<input id="vv">
 	<@rj js='man'/>
 </body>
 </@html>
