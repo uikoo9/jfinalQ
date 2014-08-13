@@ -3,17 +3,17 @@
 <@head ui='eui'></@head>
 
 <body>
-	    <div id="tt" class="easyui-tabs" style="width:500px;height:250px;">
-    <div title="Tab1" style="padding:20px;display:none;">
-    tab1
+	<form id="ff" method="post">
+    <div>
+    <label for="name">Name:</label>
+    <input class="easyui-validatebox" type="text" name="name" data-options="required:true" />
     </div>
-    <div title="Tab2" data-options="closable:true" style="overflow:auto;padding:20px;display:none;">
-    tab2
+    <div>
+    <label for="email">Email:</label>
+    <input class="easyui-validatebox" type="text" name="email" data-options="validType:'email'" />
     </div>
-    <div title="Tab3" data-options="iconCls:'icon-reload',closable:true" style="padding:20px;display:none;">
-    tab3
-    </div>
-    </div>
+    <input type="button" value="submit"/>
+    </form>
 	<@rj js='man'/>
 </body>
 </@html>

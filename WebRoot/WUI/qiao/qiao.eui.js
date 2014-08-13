@@ -814,32 +814,33 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 18.easyui resizable
+	 * 18.easyui form
 	 * options : 
-	 * 	method : options,enable,disable
-	 *  events : onStartResize,onResize,onStopResize
-	 *  properties : disabled,handles,minWidth,minHeight,maxWidth,maxHeight,edge
+	 * 	method : submit,load,clear,reset,validate,enableValidation,disableValidation
+	 *  events : onSubmit,success,onBeforeLoad,onLoadSuccess,onLoadError
+	 *  properties : novalidate,ajax,queryParams,url
 	 * eg:
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
 	 */
-	$.fn.qresize = function(options){
+	$.fn.qform = function(options){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
-			if(options == 'options'){
-				return $(this).resizable(options);
+			if(options == 'validate'){
+				return $(this).form(options);
 			}else{
-				$(this).resizable(options);
+				$(this).form(options);
 			}
 		}else{
 			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.resizable.defaults);
+			$.extend(defaultOptions, $.fn.form.defaults);
 			$.extend(defaultOptions, options);
 			
-			$(this).resizable(defaultOptions);
+			$(this).form(defaultOptions);
 		}
 	};
+	
 	/**
 	 * 19.easyui resizable
 	 * options : 
