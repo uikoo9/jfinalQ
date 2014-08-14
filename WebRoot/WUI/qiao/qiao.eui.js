@@ -948,12 +948,18 @@ define(function(require,exports){
 	 * api:
 	 * 	http://www.jeasyui.com/documentation/combo.php
 	 */
-	$.fn.qresize = function(options){
+	$.fn.qcbo = function(options){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
-			if(options == 'options'){
+			if(options.inArray(['options','panel','textbox','isValid','getText','getValues','getValue'])){
 				return $(this).combo(options);
+			}else if(options.inArray(['readonly','unreadonly'])){
+				if(options == 'readonly'){
+					$(this).combo('readonly',true);
+				}else{
+					$(this).combo('readonly',false);
+				}
 			}else{
 				$(this).combo(options);
 			}
@@ -965,6 +971,7 @@ define(function(require,exports){
 			$(this).combo(defaultOptions);
 		}
 	};
+	
 	/**
 	 * 22.easyui resizable
 	 * options : 
