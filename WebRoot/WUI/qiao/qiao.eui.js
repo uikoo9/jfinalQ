@@ -43,6 +43,7 @@
 define(function(require,exports){
 	var $ 		= require('jquery');
 	var easyui 	= require('easyui'); 
+	var easyuizh= require('easyuizh'); 
 	var qiao	= require('qiao');
 	
 	/**
@@ -232,7 +233,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 06.easyui pagination
+	 * 06.easyui pagination(extends linkbutton)
 	 * options : 
 	 * 	method : options,loading,loaded,refresh,select
 	 *  events : onSelectPage,onBeforeRefresh,onRefresh,onChangePageSize
@@ -262,7 +263,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 07.easyui searchbox
+	 * 07.easyui searchbox(extends textbox,menubutton)
 	 * options : 
 	 * 	method : options,menu,textbox,getValue,setValue,getName,selectName,destroy,resize,disable,enable,clear,reset
 	 *  properties : width,height,prompt,value,menu,searcher,disabled
@@ -457,7 +458,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 11.easyui tabs
+	 * 11.easyui tabs(extends panel,linkbutton)
 	 * options : 
 	 * 	method : options,tabs,resize,add,close,getTab,getTabIndex,getSelected,select,unselect,showHeader,hideHeader,exists,update,enableTab,disableTab,scrollBy
 	 *  events : onLoad,onSelect,onUnselect,onBeforeClose,onClose,onAdd,onUpdate,onContextMenu
@@ -523,7 +524,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 12.easyui accordion
+	 * 12.easyui accordion(extends panel)
 	 * options : 
 	 * 	method : options,panels,resize,getSelected,getSelections,getPanel,getPanelIndex,select,unselect,add,remove
 	 *  events : onSelect,onUnselect,onAdd,onBeforeRemove,onRemove
@@ -557,7 +558,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 13.easyui layout
+	 * 13.easyui layout(extends panel,resizable)
 	 * options : 
 	 * 	method : resize,panel,collapse,expand,add,remove
 	 *  properties : fit||title,region,border,split,iconCls,href,collapsible,minWidth,minHeight,maxWidth,maxHeight
@@ -738,7 +739,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 16.easyui menubutton
+	 * 16.easyui menubutton(extends menu,linkbutton)
 	 * options : 
 	 * 	method : options,enable,disable,destroy
 	 *  properties : plain,menu,menuAlign,duration
@@ -776,7 +777,7 @@ define(function(require,exports){
 	};
 
 	/**
-	 * 17.easyui splitbutton
+	 * 17.easyui splitbutton(extends menubutton)
 	 * options : 
 	 * 	method : options,enable,disable,destroy
 	 *  properties : plain,menu,duration
@@ -856,7 +857,7 @@ define(function(require,exports){
 	};
 	
 	/**
-	 * 19.easyui validatebox
+	 * 19.easyui validatebox(extends tooltip)
 	 * options : 
 	 * 	method : options,destroy,validate,isValid,enableValidation,disableValidation
 	 *  events : onBeforeValidate,onValidate
@@ -899,11 +900,11 @@ define(function(require,exports){
 	};
 	
 	/**
-	 * 20.easyui resizable
+	 * 20.easyui textbox(extends validatebox,linkbutton)
 	 * options : 
-	 * 	method : options,enable,disable
-	 *  events : onStartResize,onResize,onStopResize
-	 *  properties : disabled,handles,minWidth,minHeight,maxWidth,maxHeight,edge
+	 * 	method : options,textbox,button,destroy,resize,disable,enable,readonly,clear,reset,setText,getText,setValue,getValue,getIcon
+	 *  events : onChange,onResize,onClickButton,onClickIcon
+	 *  properties : width,height,prompt,value,type,multiline,editable,disabled,readonly,icons,iconCls,iconAlign,iconWidth,buttonText,buttonIcon,buttonAlign
 	 * eg:
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
@@ -913,16 +914,16 @@ define(function(require,exports){
 			alert('need options');
 		}else if(typeof options == 'string'){
 			if(options == 'options'){
-				return $(this).resizable(options);
+				return $(this).textbox(options);
 			}else{
-				$(this).resizable(options);
+				$(this).textbox(options);
 			}
 		}else{
 			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.resizable.defaults);
+			$.extend(defaultOptions, $.fn.textbox.defaults);
 			$.extend(defaultOptions, options);
 			
-			$(this).resizable(defaultOptions);
+			$(this).textbox(defaultOptions);
 		}
 	};
 	/**

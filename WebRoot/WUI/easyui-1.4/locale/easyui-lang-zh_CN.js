@@ -68,3 +68,6 @@ if ($.fn.datetimebox && $.fn.datebox){
 		missingMessage: $.fn.datebox.defaults.missingMessage
 	});
 }
+if ($.fn.datetimespinner){
+	$.fn.datetimespinner.defaults.selections = [[0,4],[5,7],[8,10],[11,13],[14,16],[17,19]]
+}

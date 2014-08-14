@@ -42,8 +42,9 @@
 		</#if>
 		<#if ui=='eui'>
 		<!-- easyui -->
-		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.3.6/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.3.6/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/color.css">
 		</#if>
 		
 		<!-- mine -->

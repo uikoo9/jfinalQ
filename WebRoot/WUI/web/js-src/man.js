@@ -1,5 +1,9 @@
 require(['jquery', 'easyui', 'eui'], function($, easyui, eui){
 	$(function(){
-	    $('#vv').qval('val:r,email');
+	    $('#tb').textbox({
+	        buttonText:'Search',
+	        iconCls:'icon-man',
+	        iconAlign:'left'
+	    });
 	});
 });
