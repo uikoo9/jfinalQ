@@ -909,12 +909,18 @@ define(function(require,exports){
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
 	 */
-	$.fn.qresize = function(options){
+	$.fn.qtxt = function(options){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
-			if(options == 'options'){
+			if(options.inArray(['options','textbox','button','getText','getValue','getIcon'])){
 				return $(this).textbox(options);
+			}else if(options.inArray(['readonly','unreadonly'])){
+				if(options == 'readonly'){
+					$(this).textbox('readonly',true);
+				}else{
+					$(this).textbox('readonly',false);
+				}
 			}else{
 				$(this).textbox(options);
 			}
@@ -926,6 +932,7 @@ define(function(require,exports){
 			$(this).textbox(defaultOptions);
 		}
 	};
+	
 	/**
 	 * 21.easyui resizable
 	 * options : 

@@ -4,6 +4,6 @@
 
 <body>
 	<input id="tb" type="text" style="width:300px">
-	<@rj js='man.min'/>
+	<@rj js='man'/>
 </body>
 </@html>
