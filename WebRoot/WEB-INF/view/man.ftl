@@ -3,7 +3,7 @@
 <@head ui='eui'></@head>
 
 <body>
-	<input id="tb" type="text" style="width:300px">
+	<input id="cc" value="001">
 	<@rj js='man'/>
 </body>
 </@html>

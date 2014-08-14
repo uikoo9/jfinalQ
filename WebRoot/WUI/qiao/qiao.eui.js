@@ -19,26 +19,29 @@
  * 17.easyui splitbutton
  * 18.easyui form
  * 19.easyui validatebox
- * 20.easyui combo
- * 21.easyui combobox
- * 22.easyui combotree
- * 23.easyui combogrid
- * 24.easyui numberbox
- * 25.easyui datebox
- * 26.easyui datetimebox
- * 27.easyui calendar
- * 28.easyui spinner
- * 29.easyui numberspinner
- * 30.easyui timespinner
- * 31.easyui slider
- * 32.easyui window
- * 33.easyui dialog
- * 34.easyui messager
- * 35.easyui datagrid
- * 36.easyui propertygrid
- * 37.easyui tree
- * 38.easyui treegrid
- * @version 0.0.6.20140614
+ * 20.easyui textbox
+ * 21.easyui combo
+ * 22.easyui combobox
+ * 23.easyui combotree
+ * 24.easyui combogrid
+ * 25.easyui numberbox
+ * 26.easyui datebox
+ * 27.easyui datetimebox
+ * 28.easyui datetimespinner
+ * 29.easyui calendar
+ * 30.easyui spinner
+ * 31.easyui numberspinner
+ * 32.easyui timespinner
+ * 33.easyui slider
+ * 34.easyui filebox
+ * 35.easyui window
+ * 36.easyui dialog
+ * 37.easyui messager
+ * 38.easyui datagrid
+ * 39.easyui propertygrid
+ * 40.easyui tree
+ * 41.easyui treegrid
+ * @version 0.0.7.20140814
  */
 define(function(require,exports){
 	var $ 		= require('jquery');
@@ -934,30 +937,32 @@ define(function(require,exports){
 	};
 	
 	/**
-	 * 21.easyui resizable
+	 * 21.easyui combo(extends textbox,panel)
 	 * options : 
-	 * 	method : options,enable,disable
-	 *  events : onStartResize,onResize,onStopResize
-	 *  properties : disabled,handles,minWidth,minHeight,maxWidth,maxHeight,edge
+	 * 	method : options,panel,textbox,destroy,resize,showPanel,hidePanel,disable,enable,readonly,validate,isValid,clear,reset,getText,setText,getValues,setValues,getValue,setValue
+	 *  events : onShowPanel,onHidePanel,onChange
+	 *  properties : width,height,panelWidth,panelHeight,panelMinWidth,panelMaxWidth,panelMinHeight,panelMaxHeight,panelAlign,multiple,selectOnNavigation,separator,editable,disabled,readonly,hasDownArrow,value,delay,keyHandler
 	 * eg:
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
+	 * api:
+	 * 	http://www.jeasyui.com/documentation/combo.php
 	 */
 	$.fn.qresize = function(options){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
 			if(options == 'options'){
-				return $(this).resizable(options);
+				return $(this).combo(options);
 			}else{
-				$(this).resizable(options);
+				$(this).combo(options);
 			}
 		}else{
 			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.resizable.defaults);
+			$.extend(defaultOptions, $.fn.combo.defaults);
 			$.extend(defaultOptions, options);
 			
-			$(this).resizable(defaultOptions);
+			$(this).combo(defaultOptions);
 		}
 	};
 	/**
