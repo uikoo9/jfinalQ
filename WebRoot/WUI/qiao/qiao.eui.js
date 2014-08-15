@@ -912,18 +912,18 @@ define(function(require,exports){
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
 	 */
-	$.fn.qtxt = function(options){
+	$.fn.qtxt = function(options, value){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
 			if(options.inArray(['options','textbox','button','getText','getValue','getIcon'])){
-				return $(this).textbox(options);
-			}else if(options.inArray(['readonly','unreadonly'])){
-				if(options == 'readonly'){
-					$(this).textbox('readonly',true);
+				if(options == 'getIcon'){
+					return $(this).textbox(options, value);
 				}else{
-					$(this).textbox('readonly',false);
+					return $(this).textbox(options);
 				}
+			}else if(options.inArray(['readonly','resize','setText','setValue',''])){
+				$(this).textbox(options,value);
 			}else{
 				$(this).textbox(options);
 			}
@@ -943,23 +943,22 @@ define(function(require,exports){
 	 *  events : onShowPanel,onHidePanel,onChange
 	 *  properties : width,height,panelWidth,panelHeight,panelMinWidth,panelMaxWidth,panelMinHeight,panelMaxHeight,panelAlign,multiple,selectOnNavigation,separator,editable,disabled,readonly,hasDownArrow,value,delay,keyHandler
 	 * eg:
-	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
-	 * 	$('#test').qresize();
+	 * 	<input id="cc" value="001">
+	 * 	$('#cc').qcbo({
+	        required:true,
+	        multiple:true
+	    });
 	 * api:
 	 * 	http://www.jeasyui.com/documentation/combo.php
 	 */
-	$.fn.qcbo = function(options){
+	$.fn.qcbo = function(options,value){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
 			if(options.inArray(['options','panel','textbox','isValid','getText','getValues','getValue'])){
 				return $(this).combo(options);
-			}else if(options.inArray(['readonly','unreadonly'])){
-				if(options == 'readonly'){
-					$(this).combo('readonly',true);
-				}else{
-					$(this).combo('readonly',false);
-				}
+			}else if(options.inArray(['readonly','resize','setText','setValues','setValue'])){
+				$(this).combo(options,value);
 			}else{
 				$(this).combo(options);
 			}
@@ -973,32 +972,35 @@ define(function(require,exports){
 	};
 	
 	/**
-	 * 22.easyui resizable
+	 * 22.easyui combobox
 	 * options : 
-	 * 	method : options,enable,disable
-	 *  events : onStartResize,onResize,onStopResize
-	 *  properties : disabled,handles,minWidth,minHeight,maxWidth,maxHeight,edge
+	 * 	method : options,getData,loadData,reload,setValues,setValue,clear,select,unselect
+	 *  events : onBeforeLoad,onLoadSuccess,onLoadError,onSelect,onUnselect
+	 *  properties : valueField,textField,groupField,groupFormatter,mode,url,method,data,filter,formatter,loader,loadFilter
 	 * eg:
 	 * 	<div id="test" style="height:20px; width:20px; border:1px solid black;"></div>
 	 * 	$('#test').qresize();
 	 */
-	$.fn.qresize = function(options){
+	$.fn.qcbox = function(options,value){
 		if(!options){
 			alert('need options');
 		}else if(typeof options == 'string'){
-			if(options == 'options'){
-				return $(this).resizable(options);
+			if(options.inArray(['options','getData'])){
+				return $(this).combobox(options);
+			}else if(options.inArray(['loadData','reload','setValues','setValue','select','unselect'])){
+				$(this).combobox(options,value);
 			}else{
-				$(this).resizable(options);
+				$(this).combobox(options);
 			}
 		}else{
 			var defaultOptions = {};
-			$.extend(defaultOptions, $.fn.resizable.defaults);
+			$.extend(defaultOptions, $.fn.combobox.defaults);
 			$.extend(defaultOptions, options);
 			
-			$(this).resizable(defaultOptions);
+			$(this).combobox(defaultOptions);
 		}
 	};
+	
 	/**
 	 * 23.easyui resizable
 	 * options : 
