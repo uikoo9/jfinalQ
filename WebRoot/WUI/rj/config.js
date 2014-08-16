@@ -8,8 +8,6 @@ requirejs.config({
         bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
         easyui 		: 'easyui-1.4/jquery.easyui.min',
         easyuizh	: 'easyui-1.4/locale/easyui-lang-zh_CN',
-        qiao 		: 'qiao/qiao',
-        eui			: 'qiao/qiao.eui'
     },
     shim : {
 	    bootstrap : {

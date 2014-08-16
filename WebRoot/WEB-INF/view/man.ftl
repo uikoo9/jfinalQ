@@ -3,7 +3,7 @@
 <@head ui='eui'></@head>
 
 <body>
-	<input id="cc" value="001">
+	<a id="dd" href="javascript:void(0)">Click here</a>
 	<@rj js='man'/>
 </body>
 </@html>

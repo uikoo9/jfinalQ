@@ -1,8 +1,4 @@
-require(['jquery', 'easyui', 'eui'], function($, easyui, eui){
+require(['jquery', 'easyui', 'qiao'], function($, easyui, qiao){
 	$(function(){
-	    $('#cc').qcbo({
-	        required:true,
-	        multiple:true
-	    });
 	});
 });

@@ -62,7 +62,7 @@ define(function(require, exports){
 	 * 封装一些常用方法
 	 * 1.ajax
 	 * 2.to
-	 * 3.
+	 * 3.con
 	 */
 	exports.ajax = function(options){
 		if(!options){
@@ -95,6 +95,23 @@ define(function(require, exports){
 			window.location.href = url;
 		}else{
 			alert('need url');
+		}
+	};
+	exports.to = function(obj){
+		console.log(obj);
+	};
+	exports.eui = function(obj, method, options, value, func){
+		if(obj && method && options){
+			if(typeof options == 'string'){
+				alert("$('"+obj+"')."+method+"(options,"+value+");");
+				return eval("$('"+obj+"')."+method+"(options,"+value+");");
+			}else{
+				var defaultOptions = {};
+				$.extend(defaultOptions, eval("$.fn."+method+".defaults"));
+				$.extend(defaultOptions, options);
+				
+				eval("$('"+obj+"')."+method+"(defaultOptions);")
+			}
 		}
 	};
 });
