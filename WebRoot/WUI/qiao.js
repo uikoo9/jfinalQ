@@ -97,7 +97,7 @@ define(function(require, exports){
 			alert('need url');
 		}
 	};
-	exports.to = function(obj){
+	exports.con = function(obj){
 		console.log(obj);
 	};
 	
