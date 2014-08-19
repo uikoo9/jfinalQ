@@ -19,6 +19,8 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     		container : 'body',
     		placement : 'top'
     	});
+    	
+    	spinner.stop();
     });
 
     // reset input
@@ -42,7 +44,8 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     		$input.tooltip('show');
     	}else{
     		resetInput();
-    		
+
+    		spinner.spin(document.body);
     		$input.attr('disabled',	'disabled');
     		$submit.button('loading');
     		var res = qiao.ajax({
@@ -51,6 +54,7 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     		});
     		$input.attr('disabled',	null).focus();
     		$submit.button('reset');
+    		spinner.stop();
     		
     		if(res && res.success){
     			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');

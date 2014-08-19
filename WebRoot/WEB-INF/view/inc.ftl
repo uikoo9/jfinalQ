@@ -47,7 +47,8 @@
 		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/color.css">
 		</#if>
 		
-		<!-- mine -->
+		<!-- spin.js -->
+		<script type="text/javascript" src="${base}/WUI/spin/spin.min.js"></script>
 		<#nested>
 	</head>
 </#macro>
@@ -55,6 +56,7 @@
 <#-- body -->
 <#macro body style='' class='' js=''>
 	<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
+		<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
 		<#nested>
 		<#if js!=''><@rj js=js/></#if>
 	</body>
@@ -75,6 +77,7 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' nav=true foot=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
+	<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
 	<#if nav><@bsnav/></#if>
 	<#nested>
 	<#if foot><@bsfoot/></#if>

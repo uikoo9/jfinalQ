@@ -1,1 +1,3 @@
-require(['bootstrap'], function(bs){});
+require(['bootstrap'], function(bs){
+	spinner.stop();
+});

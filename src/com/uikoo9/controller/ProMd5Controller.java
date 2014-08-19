@@ -22,11 +22,11 @@ public class ProMd5Controller extends Controller{
 	
 	/**
 	 * 将code md5加密
+	 * @throws InterruptedException 
 	 */
-	public void md5(){
+	public void md5() throws InterruptedException{
 		String code = getPara("code");
 		QJson qjson = new QJson(false, "md5 error!");
-		
 		if(QStringUtil.notEmpty(code)){
 			try {
 				qjson.setMsg(QEncodeUtil.md5Encrypt(code));

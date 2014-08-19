@@ -6,6 +6,6 @@
         easyui 		: 'empty:',
         easyuizh	: 'empty:',
     },
-    name :'web/js-src/pro-md5',
-	out :'../web/js-min/pro-md5.min.js'
+    name :'web/js-src/man-index',
+	out :'../web/js-min/man-index.min.js'
 })

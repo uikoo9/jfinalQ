@@ -102,7 +102,7 @@ define(function(require, exports){
 	};
 	
 	/**
-	 * easyui常用的数据结构
+	 * easyui相关方法
 	 */
 	exports.panel = function(title, href){
 		var options = {
