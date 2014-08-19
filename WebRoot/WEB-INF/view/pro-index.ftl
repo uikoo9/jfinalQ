@@ -3,13 +3,20 @@
 <@head ui='bs'></@head>
 
 <@bsbody js='pro-index.min'>
+	<!-- 
 	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 		<div class="container">
 			<h1>uikoo9.com</h1>
 			<p>ideas + coder = ?</p>
 		</div>
 	</div>
+	-->
 	<div class="container">
+		<div class="row">
+			<@bslun 'demo1','demo2'></@bslun>
+		</div>
+		<div class="row">&nbsp;</div>
+		<div class="row">&nbsp;</div>
 		<div class="row">
 			<@bsnail title='MD5' desc='MD5在线查询'>
 				<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>

@@ -52,6 +52,14 @@
 	</head>
 </#macro>
 
+<#-- body -->
+<#macro body style='' class='' js=''>
+	<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
+		<#nested>
+		<#if js!=''><@rj js=js/></#if>
+	</body>
+</#macro>
+
 <#-- rj -->
 <#macro rj js>
 	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
@@ -67,16 +75,10 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' nav=true foot=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<#if nav>
-		<@bsnav></@bsnav>
-	</#if>
+	<#if nav><@bsnav/></#if>
 	<#nested>
-	<#if foot>
-		<@bsfoot></@bsfoot>
-	</#if>
-	<#if js != ''>
-		<@rj js=js></@rj>
-	</#if>
+	<#if foot><@bsfoot/></#if>
+	<#if js!=''><@rj js=js/></#if>
 </body>
 </#macro>
 
@@ -116,6 +118,37 @@
 				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
 			</p>
 		</div>
+	</div>
+</#macro>
+
+<#-- bslun -->
+<#macro bslun pics...>
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+			<#list pics as pic>
+				<li data-target="#carousel-example-generic" data-slide-to="${pic_index}" <#if pic_index == 0>class="active"</#if>></li>
+			</#list>
+		</ol>
+		
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<#list pics as pic>
+				<div class="item <#if pic_index == 0>active</#if>">
+					<img src="${base}/WUI/web/css/img/${pic}.jpg" alt="${pic}">
+				</div>
+			</#list>
+		</div>
+		
+		<!-- Controls -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
 </#macro>
 
