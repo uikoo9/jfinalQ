@@ -8,7 +8,7 @@
 </#macro>
 
 <#-- head -->
-<#macro head title='uikoo9.com' ui=''>
+<#macro head title='uikoo9.com' bs=true>
 	<head>
 		<!-- 编码 -->
 		<meta charset="UTF-8" />
@@ -35,31 +35,16 @@
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
 		
-		<#if ui=='bs'>
+		<#if bs>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-		</#if>
-		<#if ui=='eui'>
-		<!-- easyui -->
-		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/default/easyui.css">
-		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/icon.css">
-		<link rel="stylesheet" type="text/css" href="${base}/WUI/easyui-1.4/themes/color.css">
 		</#if>
 		
 		<!-- spin.js -->
 		<script type="text/javascript" src="${base}/WUI/spin/spin.min.js"></script>
 		<#nested>
 	</head>
-</#macro>
-
-<#-- body -->
-<#macro body style='' class='' js=''>
-	<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-		<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
-		<#nested>
-		<#if js!=''><@rj js=js/></#if>
-	</body>
 </#macro>
 
 <#-- rj -->
@@ -75,18 +60,18 @@
 
 <#-- inc-bs ----------------------------------------------------------------------------------------------->
 <#-- bsbody -->
-<#macro bsbody style='' class='' nav=true foot=true js=''>
+<#macro bsbody style='' class='' head=true foot=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
 	<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
-	<#if nav><@bsnav/></#if>
+	<#if head><@bshead/></#if>
 	<#nested>
 	<#if foot><@bsfoot/></#if>
 	<#if js!=''><@rj js=js/></#if>
 </body>
 </#macro>
 
-<#-- bsnav -->
-<#macro bsnav pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
+<#-- bshead -->
+<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
 	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:0;">
 		<div class="container">
 			<div class="navbar-header">
@@ -183,5 +168,3 @@
 		<span class="glyphicon glyphicon-${icon}"></span>
 	</#if>
 </#macro>
-
-<#-- inc-eui ----------------------------------------------------------------------------------------------->

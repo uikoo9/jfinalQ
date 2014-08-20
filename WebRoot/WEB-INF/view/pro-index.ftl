@@ -1,6 +1,6 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head ui='bs'></@head>
+<@head></@head>
 
 <@bsbody js='pro-index.min'>
 	<!-- 

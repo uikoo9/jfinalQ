@@ -1,7 +1,4 @@
-require(['jquery', 'easyui', 'easyuizh', 'qiao'], function($, easyui, easyuizh, qiao){
+require(['jquery', 'qiao'], function($, qiao){
 	$(function(){
-		$.parser.auto = false;
-		$.parser.onComplete = function(ctx){spinner.stop();};
-		$.parser.parse();
 	});
 });

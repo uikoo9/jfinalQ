@@ -1,8 +1,8 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head ui='bs'></@head>
+<@head></@head>
 
-<@bsbody style='background-color:#eee;padding-top:30px;' nav=false foot=false js='pro-md5.min'>
+<@bsbody style='background-color:#eee;padding-top:30px;' head=false foot=false js='pro-md5.min'>
 	<div class="container">
 		<div class="row">
 			<blockquote>
