@@ -109,6 +109,12 @@
 	</div>
 </#macro>
 
+<#-- 
+colnum 
+这个布局相关，因为涉及到四种设备，所以还是手动写比较好
+col-xs-12 col-sm-12 col-md-12 col-lg-12
+-->
+
 <#-- bslun -->
 <#macro bslun pics...>
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -167,4 +173,109 @@
 	<#if icon != ''>
 		<span class="glyphicon glyphicon-${icon}"></span>
 	</#if>
+</#macro>
+
+<#-- bspanel -->
+<#macro bspanel title="">
+	<div class="panel panel-default" style="height:100%;">
+		<#if title!=''><div class="panel-heading">${title}</div></#if>
+		<div class="panel-body">
+			<#nested>
+		</div>
+	</div>
+</#macro>
+
+<#-- bstable -->
+<#macro bstable>
+	<div class="table-responsive">
+		<table class="table table-striped table-bordered table-hover">
+			<#nested>
+		</table>
+	</div>
+</#macro>
+
+<#-- bspage -->
+<#macro bspage page id=''>
+	<div class="col-xs-12 col-sm-10 col-md-10 col-lg-6" style='padding-left:0px;padding-right:0px;'>
+		<div class="input-group">
+			<span class="input-group-addon">第</span>
+			<input type="text" class="form-control crudpage" value="${page.currentPage}">
+			<span class="input-group-addon">页（共${page.totalPage}页）每页</span>
+			<input type="text" class="form-control crudsize" value="${page.pageSize}">
+			<span class="input-group-addon">条（共${page.totalRecord}条）</span>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1" style='padding-left:0px;padding-right:0px;'>
+		<div class="input-group">
+			<button type="button" class="btn btn-primary" onclick="javascript:bfsu.go({id:'${id}'});">GO</button>
+		</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style='padding-left:0px;padding-right:0px;'>
+		<ul class="pagination" style="margin:0;">
+			<#assign pagenum = page.totalPage>
+			<#if pagenum gt 1>
+				<li <#if page.currentPage == 1>class="disabled"</#if>>
+					<a href="javascript:bfsu.page({id:'${id}',currentPage:1});" class="crud crudfirst">
+						<@bsicon icon="step-backward"/>
+					</a>
+				</li>
+				<li <#if page.currentPage == 1>class="disabled"</#if>>
+					<a href="javascript:bfsu.page({id:'${id}',currentPage:${page.currentPage-1}});" class="crud crudprev">
+						<@bsicon icon="chevron-left"/>
+					</a>
+				</li>
+				<#if pagenum lte 3>
+					<#list 1..pagenum as pn>
+						<li <#if page.currentPage == pn>class="active"</#if>>
+							<a href="javascript:bfsu.page({id:'${id}',currentPage:${pn}});" class="cruda">${pn}</a>
+						</li>
+					</#list>
+				</#if>
+				<#if pagenum gt 3>
+					<#if page.currentPage lt 2>
+						<#list 1..pagenum as pn>
+							<#if pn lt 3>
+								<li <#if page.currentPage == pn>class="active"</#if>>
+									<a href="javascript:bfsu.page({id:'${id}',currentPage:${pn}});" class="cruda">${pn}</a>
+								</li>
+							</#if>
+								
+						</#list>
+					</#if>
+					<#if page.currentPage gte 2>
+						<#if page.currentPage-1 gt 0>
+							<li class="disabled">
+								<a href="javascript:void(0);">...</a>
+							</li>
+							
+						</#if>
+						<#list 1..pagenum as pn>
+							<#if (page.currentPage-1 <= pn)&&(pn <= page.currentPage+1)>
+								<li <#if page.currentPage == pn>class="active"</#if>>
+									<a href="javascript:bfsu.page({id:'${id}',currentPage:${pn}});" class="cruda">${pn}</a>
+								</li>
+							</#if>
+								
+						</#list>
+					</#if>
+					<#if page.currentPage+1 lt pagenum>
+						<li class="disabled">
+							<a href="javascript:void(0);">...</a>
+						</li>
+					</#if>
+				</#if>
+				
+				<li <#if page.currentPage == pagenum>class="disabled"</#if>>
+					<a href="javascript:bfsu.page({id:'${id}',currentPage:${page.currentPage+1}});" class="crud crudnext">
+						<@bsicon icon="chevron-right"/>
+					</a>
+				</li>
+				<li	<#if page.currentPage == pagenum>class="disabled"</#if>>
+					<a href="javascript:bfsu.page({id:'${id}',currentPage:${page.totalPage}});" class="crud crudlast" data="page:${pagenum}">
+						<@bsicon icon="step-forward"/>
+					</a>
+				</li>
+			</#if>
+		</ul>
+	</div>
 </#macro>
