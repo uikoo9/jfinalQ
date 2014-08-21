@@ -8,8 +8,8 @@ import com.uikoo9.util.jfinal.QActionMap;
  * 首页跳转controller
  * @author uikoo9
  */
-@QActionMap("/")
-public class UcenterIndexController extends Controller{
+@QActionMap("/menu")
+public class UcenterMenuController extends Controller{
 	
 	/**
 	 * 跳转到首页 
@@ -19,12 +19,12 @@ public class UcenterIndexController extends Controller{
 	}
 	
 	/**
-	 * 跳转到后台管理页面
+	 * ucenter menu list
 	 */
-	public void man(){
-		setAttr("menus", Db.find("select * from ucenter_menu"));
+	public void list() {
+		setAttr("rows", Db.find("select * from ucenter_menu"));
 		
-		render("/WEB-INF/view/man-index.ftl");
+		render("/WEB-INF/view/menu-list.ftl");
 	}
 	
 }

@@ -62,7 +62,7 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true menus='' js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
+	<script>var base = '${base}';var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
 	
 	<#if head><@bshead/></#if>
 	
@@ -129,7 +129,7 @@
 	<#if menus != ''>
 		<div class="list-group">
 			<#list menus as menu>
-				<a href="javascript:void(0);" class="list-group-item" data="${menu.data}">${menu.text}</a>
+				<a href="javascript:void(0);" class="list-group-item menus" data="url:${menu.url};">${menu.text}</a>
 			</#list>
 		</div>
 	</#if>
@@ -187,6 +187,7 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 		</div>
 	</div>
 </#macro>
+
 <#-- bsbutton -->
 <#macro bsbutton type="default" size='' icon='' dis=false href='javascript:void(0);'>
 	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" target="_blank">
@@ -194,6 +195,7 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 		<#nested>
 	</a>
 </#macro>
+
 <#-- bsicon -->
 <#macro bsicon icon=''>
 	<#if icon != ''>
@@ -202,10 +204,10 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bspanel -->
-<#macro bspanel title="">
+<#macro bspanel title='' id=''>
 	<div class="panel panel-default" style="height:100%;">
 		<#if title!=''><div class="panel-heading">${title}</div></#if>
-		<div class="panel-body">
+		<div class="panel-body" <#if id!=''>id="${id}"</#if>>
 			<#nested>
 		</div>
 	</div>
@@ -218,6 +220,27 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 			<#nested>
 		</table>
 	</div>
+</#macro>
+
+<#-- inc-crud ----------------------------------------------------------------------------------------------->
+<#-- list -->
+<#macro list id='' importTable=true page=page>
+	<#if importTable>
+		<@table>
+			<#nested>
+		</@table>
+	<#else>
+		<#nested>
+	</#if>
+	<#if page!="">
+		<#if page.items?size gt 0>
+		<@pagination id=id page=page></@pagination>
+		<#else>
+		<ol class="breadcrumb">
+	  		<li>没有数据！</li>
+		</ol>
+		</#if>
+	</#if>
 </#macro>
 
 <#-- bspage -->

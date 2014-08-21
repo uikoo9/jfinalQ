@@ -44,6 +44,7 @@ define(function(require, exports){
 	/**
 	 * jquery的一些常用方法
 	 * 1.qser
+	 * 2.qdata
 	 */
 	$.fn.qser = function(){
 		var obj = {};
@@ -57,12 +58,29 @@ define(function(require, exports){
 
 		return obj;
 	};
+	$.fn.qdata = function(){
+		var res = {};
+		
+		var data = $(this).attr('data');
+		if(data){
+			var options = data.split(';');
+			for(var i=0; i<options.length; i++){
+				if(options[i]){
+					var opt = options[i].split(':');
+					res[opt[0]] = opt[1];
+				}
+			}
+		}
+		
+		return res;
+	};
 	
 	/**
 	 * 封装一些常用方法
 	 * 1.ajax
 	 * 2.to
 	 * 3.con
+	 * 4.on
 	 */
 	exports.ajax = function(options){
 		if(!options){
@@ -81,6 +99,7 @@ define(function(require, exports){
 			}else{
 				$.extend(doptions, options);
 			}
+			doptions.url = base + doptions.url;
 			
 			var res;
 			$.ajax(doptions).done(function(obj){
@@ -99,5 +118,17 @@ define(function(require, exports){
 	};
 	exports.con = function(obj){
 		console.log(obj);
+	};
+	exports.on = function(obj, event, func){
+		$(document).off(event, obj).on(event, obj, func);
+	};
+	
+	/**
+	 * crud相关方法
+	 * 1.html
+	 */
+	exports.html = function(url, target){
+		var obj = target ? target : '#maindiv';
+		$(obj).append(exports.ajax({url:url,dataType:'html'}));
 	};
 });
