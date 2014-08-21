@@ -2,11 +2,6 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='man-index'>
-	<div class="container">
-		<div class="row">
-			<div class="col-"></div>
-		</div>
-	</div>
+<@bsbody menus=menus js='man-index'>
 </@bsbody>
 </@html>

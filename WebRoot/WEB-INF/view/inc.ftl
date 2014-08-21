@@ -60,19 +60,34 @@
 
 <#-- inc-bs ----------------------------------------------------------------------------------------------->
 <#-- bsbody -->
-<#macro bsbody style='' class='' head=true foot=true js=''>
+<#macro bsbody style='' class='' head=true foot=true menus='' js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
 	<script>var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
+	
 	<#if head><@bshead/></#if>
-	<#nested>
+	
+	<#if menus != ''>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+					<@bsmenu menus=menus/>
+				</div>
+				<#nested>
+			</div>
+		</div>
+	<#else>
+		<#nested>
+	</#if>
+	
 	<#if foot><@bsfoot/></#if>
+	
 	<#if js!=''><@rj js=js/></#if>
 </body>
 </#macro>
 
 <#-- bshead -->
 <#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
-	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:0;">
+	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:20px;">
 		<div class="container">
 			<div class="navbar-header">
 				<button data-target="#bsnav" data-toggle="collapse" class="navbar-toggle" type="button">
@@ -109,6 +124,17 @@
 	</div>
 </#macro>
 
+<#-- bsmenu -->
+<#macro bsmenu menus=''>
+	<#if menus != ''>
+		<div class="list-group">
+			<#list menus as menu>
+				<a href="javascript:void(0);" class="list-group-item" data="${menu.data}">${menu.text}</a>
+			</#list>
+		</div>
+	</#if>
+</#macro>
+
 <#-- 
 colnum 
 这个布局相关，因为涉及到四种设备，所以还是手动写比较好
@@ -117,7 +143,7 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 
 <#-- bslun -->
 <#macro bslun pics...>
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-bottom:20px;">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
 			<#list pics as pic>
