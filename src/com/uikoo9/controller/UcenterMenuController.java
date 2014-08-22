@@ -15,7 +15,7 @@ public class UcenterMenuController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/pro-index.ftl");
+		render("/WEB-INF/view/menu-index.ftl");
 	}
 	
 	/**

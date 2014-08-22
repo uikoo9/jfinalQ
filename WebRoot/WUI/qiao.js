@@ -127,8 +127,14 @@ define(function(require, exports){
 	 * crud相关方法
 	 * 1.html
 	 */
-	exports.html = function(url, target){
-		var obj = target ? target : '#maindiv';
-		$(obj).append(exports.ajax({url:url,dataType:'html'}));
+	exports.crud = function(url, target){
+		var obj = target ? target : '#cruddiv';
+		$(obj).empty().append(exports.ajax({url:url,dataType:'html'}));
+		
+		var $list = $(obj).find('table');
+		if($list.length > 0){
+			var listurl = $list.qdata().url;
+			$list.empty().append(exports.ajax({url:listurl,dataType:'html'}));
+		}
 	};
 });

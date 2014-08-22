@@ -214,9 +214,9 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bstable -->
-<#macro bstable>
+<#macro bstable url=''>
 	<div class="table-responsive">
-		<table class="table table-striped table-bordered table-hover">
+		<table class="table table-striped table-bordered table-hover" <#if url!=''>data="url:${url}"</#if>>
 			<#nested>
 		</table>
 	</div>
