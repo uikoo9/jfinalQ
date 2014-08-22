@@ -45,16 +45,16 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     	}else{
     		resetInput();
 
-    		spinner.spin(document.body);
+    		qmask();
     		$input.attr('disabled',	'disabled');
     		$submit.button('loading');
     		var res = qiao.ajax({
-    			url : 'md5/md5',
+    			url : '/md5/md5',
     			data : {code:code}
     		});
     		$input.attr('disabled',	null).focus();
     		$submit.button('reset');
-    		spinner.stop();
+    		qhide();
     		
     		if(res && res.success){
     			$('p.resp:eq(0) span').html('<strong>' + code + '</strong>');
