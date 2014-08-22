@@ -20,7 +20,7 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     		placement : 'top'
     	});
     	
-    	spinner.stop();
+    	qhide();
     });
 
     // reset input

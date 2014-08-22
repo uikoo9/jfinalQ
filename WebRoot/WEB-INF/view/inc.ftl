@@ -41,8 +41,9 @@
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 		</#if>
 		
-		<!-- spin.js -->
-		<script type="text/javascript" src="${base}/WUI/spin/spin.min.js"></script>
+		<!-- base -->
+		<script type="text/javascript">base = '${base}';</script>
+		
 		<#nested>
 	</head>
 </#macro>
@@ -62,8 +63,8 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true menus='' js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<script>var base = '${base}';var spinner = new Spinner({className:'myspinner'}).spin(document.body);</script>
-	
+	<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
+
 	<#if head><@bshead/></#if>
 	
 	<#if menus != ''>
@@ -189,7 +190,7 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bsbutton -->
-<#macro bsbutton type="default" size='' icon='' dis=false href='javascript:void(0);'>
+<#macro bsbutton type="primary" size='' icon='' dis=false href='javascript:void(0);'>
 	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" target="_blank">
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
