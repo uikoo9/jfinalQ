@@ -21,10 +21,14 @@ public class UcenterMenuController extends Controller{
 	/**
 	 * ucenter menu list
 	 */
-	public void list() {
+	public void list(){
 		setAttr("rows", Db.find("select * from ucenter_menu"));
 		
 		render("/WEB-INF/view/menu-list.ftl");
+	}
+	
+	public void add(){
+		render("/WEB-INF/view/menu-save.ftl");
 	}
 	
 }

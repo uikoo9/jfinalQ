@@ -1,13 +1,6 @@
-require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
+require(['jquery', 'bootstrap', 'qiao', 'qiaocrud'], function($, bs, qiao, crud){
 	$(function(){
-		qiao.on('.menus','click',function(){
-			var $this = $(this);
-			var url = $this.qdata().url;
-			
-			$this.siblings().removeClass('active').end().addClass('active');
-			if(url) qiao.crud(url);
-		});
-		
+		crud.crud();
 		qhide();
 	});
 });

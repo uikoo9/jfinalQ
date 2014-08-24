@@ -6,7 +6,7 @@ document.body.appendChild(background);
 // 创建并添加loading.gif
 var loading = document.createElement('img');
 loading.src = base + '/WUI/qmask/loading.gif';
-loading.style.cssText = 'display:none;position:absolute;top:30%;left:40%;width:200px;height:200px;z-index:1002;overflow:auto;';
+loading.style.cssText = 'display:none;position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;z-index:1002;overflow:auto;';
 document.body.appendChild(loading);
 
 // 开启

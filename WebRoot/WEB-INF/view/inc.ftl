@@ -190,8 +190,8 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bsbutton -->
-<#macro bsbutton type="primary" size='' icon='' dis=false href='javascript:void(0);'>
-	<a class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" target="_blank">
+<#macro bsbutton type="primary" size='' icon='' dis=false href='javascript:void(0);' id=''>
+	<a <#if id!=''>id="${id}"</#if> class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" <#if href!='javascript:void(0);'>target="_blank"</#if>>
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
 	</a>
