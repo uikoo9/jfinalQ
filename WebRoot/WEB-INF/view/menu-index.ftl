@@ -1,9 +1,33 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@bspanel>
 	<p>
-		<@bsbutton data='url:/menu/savep;'id='addBtn'>添加</@bsbutton>
-		<@bsbutton>删除</@bsbutton>
-		<@bsbutton type='success'>查询</@bsbutton>
+		<@bsbutton class='addBtn' icon='plus'>添加</@bsbutton>
+		<@bsbutton class='delBtn' icon='remove'>删除</@bsbutton>
+		<@bsbutton class='queBtn' icon='search'>查询</@bsbutton>
+		<@bsbutton class='relBtn' icon='repeat'>重置</@bsbutton>
 	</p>
-	<@bstable url='/menu/list'></@bstable>
+	<p>${querystr}</p>
+	<@bstable>
+		<thead>
+		    <tr>
+		        <th><input type="checkbox" class="allcheck"/></th>
+		        <th>text</th>
+		        <th>url</th>
+		        <th>操作</th>
+		    </tr>
+		</thead>
+		<tbody>
+		    <#list rows?if_exists as row>
+			    <tr data="id:${row.id};">
+			        <td><input type="checkbox" class="onecheck"/></td>
+			        <td>${row.text}</td>
+			        <td>${row.url}</td>
+			        <td>
+			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
+			        	<@bsbutton size='xs' icon='remove' class='delbtn' type='danger'/>
+			        </td>
+			    </tr>
+		    </#list>
+		</tbody>
+	</@bstable>
 </@bspanel>

@@ -76,32 +76,41 @@ define(function(require, exports){
 	 * 3.con
 	 * 4.on
 	 */
+	exports.ajaxoptions = {
+		url 	: '',
+		data 	: {},
+		type 	: 'post',
+		dataType: 'json',
+		async 	: false
+	};
+	exports.ajaxopt = function(options){
+		var opt = $.extend({}, exports.ajaxoptions);
+		if(typeof options == 'string'){
+			opt.url = options;
+		}else{
+			$.extend(opt, options);
+		}
+		
+		return opt;
+	};
 	exports.ajax = function(options){
 		if(!options){
 			alert('need options');
 		}else{
-			var doptions = {
-				url 	: '',
-				data 	: {},
-				type 	: 'post',
-				dataType: 'json',
-				async 	: false
-			};
-			
-			if(typeof options == 'string'){
-				doptions.url = options;
-			}else{
-				$.extend(doptions, options);
-			}
-			doptions.url = base + doptions.url;
+			var opt = exports.ajaxopt(options);
+			opt.url = base + opt.url;
 			
 			var res;
-			$.ajax(doptions).done(function(obj){
-				res = obj;
-			});
-			
+			$.ajax(opt).done(function(obj){res = obj;});
 			return res;
 		}
+	};
+	exports.html = function(options, target){
+		var opt = exports.ajaxopt(options);
+		opt.dataType = 'html';
+		
+		var obj = target ? target : '#cruddiv';
+		$(obj).empty().append(exports.ajax(opt));
 	};
 	exports.to = function(url){
 		if(url){

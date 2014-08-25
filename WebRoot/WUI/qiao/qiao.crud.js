@@ -8,38 +8,79 @@ define(function(require, exports){
 	var qiao = require('qiao');
 	var qiaobs = require('qiaobs');
 	
+	exports.url = '';
 	exports.crud = function(){
+		// menu click
 		qiao.on('.menus', 'click', function(){
-			var $this = $(this);
-			var url = $this.qdata().url;
-			
-			$this.siblings().removeClass('active').end().addClass('active');
-			if(url) exports.index(url);
+			var url = $(this).qdata().url;
+			if(url){
+				$(this).siblings().removeClass('active').end().addClass('active');
+				
+				exports.url = url;
+				exports.list();
+			}
 		});
 		
-		qiao.on('#addBtn', 'click', function(){
-			qiaobs.dialog({title:'添加',url:$(this).qdata().url},exports.save);
+		// check
+		qiao.on('.allcheck', 'change', function(){
+			$('.onecheck').prop('checked',$(this).prop('checked'));
 		});
-	};
-	exports.index = function(url, target){
-		var obj = target ? target : '#cruddiv';
-		$(obj).empty().append(qiao.ajax({url:url,dataType:'html'}));
 		
-		exports.list(target);
+		// add
+		qiao.on('.addBtn', 'click', function(){exports.savep('添加')});
+		// edit
+		qiao.on('.editbtn','click', function(){exports.savep('修改',$(this).parents('tr').qdata().id)});
+		// search
+		qiao.on('.queBtn', 'click', function(){exports.savep('查询')});
+		qiao.on('.relBtn', 'click', function(){exports.list();});
+		// del
+		qiao.on('.delBtn', 'click', function(){exports.del();});
+		qiao.on('.delbtn', 'click', function(){exports.del($(this).parents('tr').qdata().id);});
 	};
-	exports.list = function(target){
-		var obj = target ? target : '#cruddiv';
+	exports.list = function(data){
+		var opt = {url:exports.url + 'index'};
+		if(data) opt.data = data;
 		
-		var $list = $(obj).find('table');
-		if($list.length > 0){
-			var listurl = $list.qdata().url;
-			$list.empty().append(qiao.ajax({url:listurl,dataType:'html'}));
+		qiao.html(opt);
+	};
+	exports.savep = function(title, id){
+		if(title == '查询'){
+			qiaobs.dialog({title:title,url:exports.url + 'savep'}, function(){
+				exports.list($('#bsmodal').find('form').qser());	
+			});
+		}else{
+			var url = id ? (exports.url + 'savep?id=' + id) : (exports.url + 'savep');
+			qiaobs.dialog({title:title,url:url}, function(){
+				exports.save();
+			});
 		}
 	};
 	exports.save = function(){
-		var $form = $('#crudform');
-		
-		var res = qiao.ajax({url:$form.qdata().url,data:$form.qser()});
+		var res = qiao.ajax({url:exports.url+'save',data:$('#bsmodal').find('form').qser()});
+		qiaobs.msg(res.msg);
 		exports.list();
+	};
+	exports.del = function(id){
+		var ids = [];
+		
+		if(id){
+			ids.push(id);
+		}else{
+			$('.onecheck').each(function(){
+				if($(this).prop('checked')){
+					ids.push($(this).parents('tr').qdata().id);
+				}
+			});
+		}
+		
+		if(!ids.length){
+			qiaobs.alert('请选择要删除的记录！');
+		}else{
+			qiaobs.confirm('确认要删除所选记录吗？',function(){
+				var res = qiao.ajax({url:exports.url+'del',data:{ids:ids.join(',')}});
+				qiaobs.msg(res.msg);
+				exports.list();
+			});
+		}
 	};
 });

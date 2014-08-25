@@ -3,6 +3,7 @@
  * 1.alert
  * 2.confirm
  * 3.dialog
+ * 4.msg
  * @author qiaowenbin
  * @version 0.0.4.20140824
  */
@@ -56,6 +57,7 @@ define(function(require, exports){
 		}else{
 			$.extend(opt, options);
 		}
+		opt.title = '提示';
 		
 		// add
 		$('body').append(exports.modalstr(opt));
@@ -136,5 +138,30 @@ define(function(require, exports){
 		
 		// show
 		$modal.modal('show');
+	};
+	exports.msgoptions = {
+		msg  : 'msg',
+		type : 'info',
+		time : 2000
+	};
+	exports.msgstr = function(msg, type){
+		return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
+	};
+	exports.msg = function(options){
+		var opt = $.extend({},exports.msgoptions);
+		
+		if(typeof options == 'string'){
+			opt.msg = options;
+		}else{
+			$.extend(opt, exports.msgoptions);
+		}
+		
+		$('body').prepend(exports.msgstr(opt.msg,opt.type));
+		$('#bsalert').slideDown();
+		setTimeout(function(){
+			$('#bsalert').slideUp(function(){
+				$('#bsalert').remove();
+			});
+		},opt.time);
 	};
 });

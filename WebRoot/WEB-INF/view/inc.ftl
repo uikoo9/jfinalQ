@@ -68,7 +68,7 @@
 	<script type="text/javascript">var qmask = new Qmask(); qmask.qmask();</script>
 
 	<#if head><@bshead/></#if>
-	
+
 	<#if menus != ''>
 		<div class="container">
 			<div class="row">
@@ -192,13 +192,13 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bsbutton -->
-<#macro bsbutton dis=false type="primary" href='javascript:void(0);' size='' icon='' data='' id=''>
+<#macro bsbutton dis=false type="primary" href='javascript:void(0);' size='' icon='' class='' data='' id='' >
 	<a 	<#if id!=''>id="${id}"</#if> 
 		<#if data!=''>data="${data}"</#if>
 		<#if dis>disabled="disabled"</#if> 
 		<#if href!='javascript:void(0);'>target="_blank"</#if>
 		href="${href}" 
-		class="btn btn-${type} <#if size != ''>btn-${size}</#if>" 
+		class="btn btn-${type} <#if size != ''>btn-${size}</#if> <#if class!=''>${class}</#if>" 
 	>
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
