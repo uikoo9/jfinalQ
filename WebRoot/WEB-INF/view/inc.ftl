@@ -44,6 +44,8 @@
 		<!-- base -->
 		<script type="text/javascript">base = '${base}';</script>
 		
+		<!-- qmask -->
+		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
 		<#nested>
 	</head>
 </#macro>
@@ -63,7 +65,7 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true menus='' js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
+	<script type="text/javascript">var qmask = new Qmask(); qmask.qmask();</script>
 
 	<#if head><@bshead/></#if>
 	

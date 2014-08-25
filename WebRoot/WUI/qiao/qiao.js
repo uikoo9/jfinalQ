@@ -12,13 +12,7 @@ define(function(require, exports){
 		return this.indexOf(s) != -1;
 	};
 	String.prototype.startWith=function(s){  
-	    if(this && s && this.length > s.length){
-	    	if(this.substr(0,s.length)==s){  
-	    		return true;
-	    	}  
-	    }
-	    
-	    return false;
+	    return this.indexOf(text) == 0;
 	};
 	String.prototype.endWith=function(s){  
 	    if(this && s && this.length > s.length){

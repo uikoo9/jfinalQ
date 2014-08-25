@@ -1,25 +1,30 @@
-// 创建并添加遮罩
-var background = document.createElement('div');
-background.style.cssText = 'display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-color:white;z-index:1001;-moz-opacity:0.7;opacity:.70;filter:alpha(opacity=70);';
-document.body.appendChild(background);
-
-// 创建并添加loading.gif
-var loading = document.createElement('img');
-loading.src = base + '/WUI/qmask/loading.gif';
-loading.style.cssText = 'display:none;position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;z-index:1002;overflow:auto;';
-document.body.appendChild(loading);
-
-// 开启
-qmask();
-
-// 开启方法
-function qmask(){
-	background.style.display = 'block';
-	loading.style.display = 'block';
-}
-
-// 隐藏方法
-function qhide(){
-	background.style.display = 'none';
-	loading.style.display = 'none';
+function Qmask(options){
+	var o = new Object();
+	
+	o.background = document.createElement('div');
+	o.background.style.cssText = 'display:none;position:absolute;top:0;left:0;width:100%;height:100%;background-color:white;z-index:1001;';
+	
+	o.loading = document.createElement('img');
+	o.loading.src = base + '/WUI/qmask/loading.gif';
+	o.loading.style.cssText = 'display:none;position:absolute;top:50%;left:50%;width:200px;height:200px;margin:-100px 0 0 -100px;z-index:1002;overflow:auto;';
+	
+	o.qmask = function(){
+		this.background.style.display = 'block';
+		this.loading.style.display = 'block';
+	};
+	o.qhide = function(){
+		this.background.style.display = 'none';
+		this.loading.style.display = 'none';
+	};
+	
+	if(options){
+		if(options.hasOwnProperty('bgcss')) o.background.style.cssText = options.bgcss;
+		if(options.hasOwnProperty('loadingcss')) o.loading.style.cssText = options.loadingcss;
+		if(options.hasOwnProperty('loadingimg')) o.loading.src = base + options.loadingimg;
+	}
+	
+	document.body.appendChild(o.background);
+	document.body.appendChild(o.loading);
+	
+	return o;
 }

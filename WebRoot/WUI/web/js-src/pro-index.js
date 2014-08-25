@@ -1,3 +1,3 @@
 require(['bootstrap'], function(bs){
-	qhide();
+	qmask.qhide();
 });
