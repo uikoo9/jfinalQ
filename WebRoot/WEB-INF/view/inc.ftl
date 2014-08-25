@@ -264,15 +264,6 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 
 <#-- bspage -->
 <#macro bspage page id=''>
-	<div class="col-xs-12 col-sm-10 col-md-10 col-lg-6" style='padding-left:0px;padding-right:0px;'>
-		<div class="input-group">
-			<span class="input-group-addon">第</span>
-			<input type="text" class="form-control crudpage" value="${page.currentPage}">
-			<span class="input-group-addon">页（共${page.totalPage}页）每页</span>
-			<input type="text" class="form-control crudsize" value="${page.pageSize}">
-			<span class="input-group-addon">条（共${page.totalRecord}条）</span>
-		</div>
-	</div>
 	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1" style='padding-left:0px;padding-right:0px;'>
 		<div class="input-group">
 			<button type="button" class="btn btn-primary" onclick="javascript:bfsu.go({id:'${id}'});">GO</button>
@@ -333,6 +324,7 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 					</#if>
 				</#if>
 				
+					<a href="javascript:qiao.test();">test</a>
 				<li <#if page.currentPage == pagenum>class="disabled"</#if>>
 					<a href="javascript:bfsu.page({id:'${id}',currentPage:${page.currentPage+1}});" class="crud crudnext">
 						<@bsicon icon="chevron-right"/>

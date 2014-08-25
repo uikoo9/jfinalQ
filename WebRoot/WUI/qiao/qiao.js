@@ -12,16 +12,14 @@ define(function(require, exports){
 		return this.indexOf(s) != -1;
 	};
 	String.prototype.startWith=function(s){  
-	    return this.indexOf(text) == 0;
+	    return this.indexOf(s) == 0;
 	};
-	String.prototype.endWith=function(s){  
-	    if(this && s && this.length > s.length){
-	    	if(this.substring(this.length-s.length)==s){
-	    		return true;
-	    	}
-	    }
-	    
-	    return false;
+	String.prototype.endWith=function(s){
+		if(this.length == 0){
+			return false;
+		}else{
+			return this.indexOf(s) == this.length - 1;
+		}
 	};
 	String.prototype.inArray = function(array){
 		if(this && array){

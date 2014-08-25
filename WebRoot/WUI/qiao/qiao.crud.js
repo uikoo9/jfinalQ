@@ -22,9 +22,7 @@ define(function(require, exports){
 		});
 		
 		// check
-		qiao.on('.allcheck', 'change', function(){
-			$('.onecheck').prop('checked',$(this).prop('checked'));
-		});
+		qiao.on('.allcheck', 'change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
 		
 		// add
 		qiao.on('.addBtn', 'click', function(){exports.savep('添加')});
