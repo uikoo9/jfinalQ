@@ -192,8 +192,14 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 </#macro>
 
 <#-- bsbutton -->
-<#macro bsbutton type="primary" size='' icon='' dis=false href='javascript:void(0);' id=''>
-	<a <#if id!=''>id="${id}"</#if> class="btn btn-${type} <#if size != ''>btn-${size}</#if>" <#if dis>disabled="disabled"</#if> href="${href}" <#if href!='javascript:void(0);'>target="_blank"</#if>>
+<#macro bsbutton dis=false type="primary" href='javascript:void(0);' size='' icon='' data='' id=''>
+	<a 	<#if id!=''>id="${id}"</#if> 
+		<#if data!=''>data="${data}"</#if>
+		<#if dis>disabled="disabled"</#if> 
+		<#if href!='javascript:void(0);'>target="_blank"</#if>
+		href="${href}" 
+		class="btn btn-${type} <#if size != ''>btn-${size}</#if>" 
+	>
 		<@bsicon icon=icon></@bsicon>
 		<#nested>
 	</a>
@@ -222,6 +228,16 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 		<table class="table table-striped table-bordered table-hover" <#if url!=''>data="url:${url}"</#if>>
 			<#nested>
 		</table>
+	</div>
+</#macro>
+
+<#-- bsinput -->
+<#macro bsinput type='text' title='title' name='name' value=''>
+	<div class="form-group">
+		<label for="id-${name}" class="control-label col-xs-3 col-sm-2 col-md-2 col-lg-2">${title}</label>
+		<div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+			<input type="${type}" name="${name}" value="${value}" placeholder="${title}" class="form-control" id="id-${name}">
+		</div>
 	</div>
 </#macro>
 

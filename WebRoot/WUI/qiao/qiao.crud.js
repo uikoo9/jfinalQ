@@ -18,17 +18,28 @@ define(function(require, exports){
 		});
 		
 		qiao.on('#addBtn', 'click', function(){
-			qiaobs.dialog({url:'/menu/add'});
+			qiaobs.dialog({title:'添加',url:$(this).qdata().url},exports.save);
 		});
 	};
 	exports.index = function(url, target){
 		var obj = target ? target : '#cruddiv';
 		$(obj).empty().append(qiao.ajax({url:url,dataType:'html'}));
 		
+		exports.list(target);
+	};
+	exports.list = function(target){
+		var obj = target ? target : '#cruddiv';
+		
 		var $list = $(obj).find('table');
 		if($list.length > 0){
 			var listurl = $list.qdata().url;
 			$list.empty().append(qiao.ajax({url:listurl,dataType:'html'}));
 		}
+	};
+	exports.save = function(){
+		var $form = $('#crudform');
+		
+		var res = qiao.ajax({url:$form.qdata().url,data:$form.qser()});
+		exports.list();
 	};
 });
