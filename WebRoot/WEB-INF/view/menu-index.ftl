@@ -6,7 +6,7 @@
 		<@bsbutton class='queBtn' icon='search'>查询</@bsbutton>
 		<@bsbutton class='relBtn' icon='repeat'>重置</@bsbutton>
 	</p>
-	<p>${querystr}</p>
+	<p>${qpage.str}</p>
 	<@bstable>
 		<thead>
 		    <tr>
@@ -17,7 +17,7 @@
 		    </tr>
 		</thead>
 		<tbody>
-		    <#list rows?if_exists as row>
+		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.text}</td>
@@ -30,4 +30,5 @@
 		    </#list>
 		</tbody>
 	</@bstable>
+	<@bspage page=qpage></@bspage>
 </@bspanel>
