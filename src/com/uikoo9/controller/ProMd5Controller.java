@@ -29,6 +29,7 @@ public class ProMd5Controller extends Controller{
 		QJson qjson = new QJson(false, "md5 error!");
 		if(QStringUtil.notEmpty(code)){
 			try {
+				Thread.sleep(5000);
 				qjson.setMsg(QEncodeUtil.md5Encrypt(code));
 				qjson.setSuccess(true);
 			} catch (Exception e) {

@@ -21,19 +21,21 @@ define(function(require, exports){
 			}
 		});
 		
-		// check
-		qiao.on('.allcheck', 'change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
-		
-		// add
+	};
+	exports.bind = function(){
+		// crud
+		qiao.on('.allcheck','change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
 		qiao.on('.addBtn', 'click', function(){exports.savep('添加')});
-		// edit
 		qiao.on('.editbtn','click', function(){exports.savep('修改',$(this).parents('tr').qdata().id)});
-		// search
 		qiao.on('.queBtn', 'click', function(){exports.savep('查询')});
 		qiao.on('.relBtn', 'click', function(){exports.list();});
-		// del
 		qiao.on('.delBtn', 'click', function(){exports.del();});
 		qiao.on('.delbtn', 'click', function(){exports.del($(this).parents('tr').qdata().id);});
+		
+		// page
+		qiao.on('.crudfirst', 'click', function(){
+			alert(1);
+		});
 	};
 	exports.list = function(data){
 		var opt = {url:exports.url + 'index'};

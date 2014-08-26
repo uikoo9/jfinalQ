@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody style='background-color:#eee;padding-top:30px;' head=false foot=false js='pro-md5.min'>
+<@bsbody style='background-color:#eee;padding-top:30px;' head=false foot=false js='pro-md5'>
 	<div class="container">
 		<div class="row">
 			<blockquote>

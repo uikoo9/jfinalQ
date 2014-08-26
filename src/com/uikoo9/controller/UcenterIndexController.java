@@ -23,7 +23,6 @@ public class UcenterIndexController extends Controller{
 	 */
 	public void man(){
 		setAttr("menus", Db.find("select * from ucenter_menu"));
-		
 		render("/WEB-INF/view/man-index.ftl");
 	}
 	

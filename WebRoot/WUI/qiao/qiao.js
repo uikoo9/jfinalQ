@@ -70,9 +70,11 @@ define(function(require, exports){
 	/**
 	 * 封装一些常用方法
 	 * 1.ajax
-	 * 2.to
-	 * 3.con
-	 * 4.on
+	 * 2.html
+	 * 3.ajaxinit
+	 * 4.to
+	 * 5.con
+	 * 6.on
 	 */
 	exports.ajaxoptions = {
 		url 	: '',
@@ -109,6 +111,15 @@ define(function(require, exports){
 		
 		var obj = target ? target : '#cruddiv';
 		$(obj).empty().append(exports.ajax(opt));
+	};
+	exports.ajaxinit = function(){
+		qmask.qhide();
+    	$(document).ajaxStart(function(){
+    		qmask.qmask();
+    	});
+    	$(document).ajaxStop(function(){
+    		qmask.qhide();
+    	});
 	};
 	exports.to = function(url){
 		if(url){

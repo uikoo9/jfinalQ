@@ -275,12 +275,12 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 		<#assign pagenum = page.totalPage>
 		<#if pagenum gt 1>
 			<li <#if page.pageNumber == 1>class="disabled"</#if>>
-				<a href="" class="crud crudfirst">
+				<a href="javascript:void(0);" class="crud crudfirst">
 					<@bsicon icon="step-backward"/>
 				</a>
 			</li>
 			<li <#if page.pageNumber == 1>class="disabled"</#if>>
-				<a href="" class="crud crudprev">
+				<a href="javascript:void(0);" class="crud crudprev">
 					<@bsicon icon="chevron-left"/>
 				</a>
 			</li>
