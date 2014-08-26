@@ -6,20 +6,20 @@ import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QJfinalUtil;
 
 /**
- * 用户中心-菜单controller
+ * 用户中心-用户controller
  * @author uikoo9
  */
-@QActionMap("/ucenter/menu")
-public class UcenterMenuController extends Controller{
+@QActionMap("/ucenter/user")
+public class UcenterUserController extends Controller{
 	
-	private final String tableName = "ucenter_menu";
+	private final String tableName = "ucenter_user";
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
 		setAttr("qpage", QJfinalUtil.list(getParaMap(), tableName));
-		render("/WEB-INF/view/ucenter-menu-index.ftl");
+		render("/WEB-INF/view/ucenter-user-index.ftl");
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class UcenterMenuController extends Controller{
 	 */
 	public void savep(){
 		setAttr("row", QJfinalUtil.get(getPara("id"), tableName));
-		render("/WEB-INF/view/ucenter-menu-input.ftl");
+		render("/WEB-INF/view/ucenter-user-input.ftl");
 	}
 	
 	/**

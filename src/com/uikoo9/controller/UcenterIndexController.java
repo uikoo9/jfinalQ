@@ -5,7 +5,7 @@ import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.util.jfinal.QActionMap;
 
 /**
- * 首页跳转controller
+ * 用户中心-首页controller
  * @author uikoo9
  */
 @QActionMap("/")

@@ -108,7 +108,27 @@
 					<li><a href="#">JavaEE</a></li>
 					<li><a href="#">Blogs</a></li>
 					<li><a href="#">About Me</a></li>
-					<#nested>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<#if (Session.loginInfo)??>
+						<li><a href="javascript:void(0);">uikoo9</a></li>
+					<#else>
+						<li class="dropdown <#if errorMsg?exists>open</#if>">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
+							<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
+								<@bsform action='${base}/ucenter/login/login'>
+									<@bsinput col=false name='username' title='用户名' value='${username!}'/>
+									<@bsinput col=false name='password' title='密码' type='password'/>
+									<div class="form-group"><input class="btn btn-lg btn-primary btn-block" type="submit" value="登录"/></div>
+									<#if errorMsg??>
+										<div class="form-group">
+											<h5 class="text-danger">${errorMsg}</h5>
+										</div>
+									</#if>
+								</@bsform>
+							</div>	
+						</li>
+					</#if>
 				</ul>
 			</div>
 		</div>
@@ -225,11 +245,20 @@
 	</div>
 </#macro>
 
+<#-- bsform -->
+<#macro bsform h=false l=false class='' data='' id='' action=''>
+	<form class="form<#if h>-horizontal</#if><#if l>-inline</#if> <#if class!=''>${class}</#if>" role="form"
+		<#if data!=''>${data}</#if> <#if id!=''>${id}</#if> <#if action!=''>${action}</#if>
+	>
+		<#nested>
+	</form>
+</#macro>
+
 <#-- bsinput -->
-<#macro bsinput type='text' title='title' name='name' value=''>
+<#macro bsinput type='text' title='title' name='name' value='' col=true>
 	<div class="form-group">
-		<label for="id-${name}" class="control-label col-xs-3 col-sm-2 col-md-2 col-lg-2">${title}</label>
-		<div class="col-xs-9 col-sm-10 col-md-10 col-lg-10">
+		<label for="id-${name}" class="control-label <#if col>col-xs-3 col-sm-2 col-md-2 col-lg-2</#if>">${title}</label>
+		<div class="<#if col>col-xs-9 col-sm-10 col-md-10 col-lg-10</#if>">
 			<input type="${type}" name="${name}" value="${value}" placeholder="${title}" class="form-control" id="id-${name}">
 		</div>
 	</div>
