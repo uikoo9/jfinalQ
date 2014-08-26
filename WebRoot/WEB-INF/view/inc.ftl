@@ -110,7 +110,7 @@
 					<li><a href="#">About Me</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<#if (Session.loginInfo)??>
+					<#if (Session.user)??>
 						<li><a href="javascript:void(0);">uikoo9</a></li>
 					<#else>
 						<li class="dropdown <#if errorMsg?exists>open</#if>">
@@ -247,8 +247,11 @@
 
 <#-- bsform -->
 <#macro bsform h=false l=false class='' data='' id='' action=''>
-	<form class="form<#if h>-horizontal</#if><#if l>-inline</#if> <#if class!=''>${class}</#if>" role="form"
-		<#if data!=''>${data}</#if> <#if id!=''>${id}</#if> <#if action!=''>${action}</#if>
+	<form class="form<#if h>-horizontal</#if><#if l>-inline</#if> <#if class!=''>${class}</#if>" 
+		role="form" method="post" 
+		<#if data!=''>data="${data}"</#if> 
+		<#if id!=''>id="${id}"</#if> 
+		<#if action!=''>action="${action}"</#if>
 	>
 		<#nested>
 	</form>
