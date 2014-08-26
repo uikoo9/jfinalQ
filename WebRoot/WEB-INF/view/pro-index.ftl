@@ -17,7 +17,7 @@
 		</div>
 		<div class="row">
 			<@bsnail title='MD5' desc='MD5在线查询'>
-				<@bsbutton type='primary' href='http://uikoo9.com/md5'>访问</@bsbutton>
+				<@bsbutton type='primary' href='http://uikoo9.com/pro/md5'>访问</@bsbutton>
 				<@bsbutton type='primary' dis=true>详情</@bsbutton>
 			</@bsnail>
 			<@bsnail title='QLocker' desc='Java实现的锁频软件，Windows XP下屏蔽所有按键。'>

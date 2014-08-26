@@ -21,9 +21,9 @@ public class UcenterIndexController extends Controller{
 	/**
 	 * 跳转到后台管理页面
 	 */
-	public void man(){
+	public void ucenter(){
 		setAttr("menus", Db.find("select * from ucenter_menu"));
-		render("/WEB-INF/view/man-index.ftl");
+		render("/WEB-INF/view/ucenter-index.ftl");
 	}
 	
 }

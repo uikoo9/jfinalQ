@@ -9,7 +9,7 @@ import com.uikoo9.util.jfinal.QJfinalUtil;
  * 首页跳转controller
  * @author uikoo9
  */
-@QActionMap("/menu")
+@QActionMap("/ucenter/menu")
 public class UcenterMenuController extends Controller{
 	
 	private final String tableName = "ucenter_menu";
@@ -19,7 +19,7 @@ public class UcenterMenuController extends Controller{
 	 */
 	public void index(){
 		setAttr("qpage", QJfinalUtil.list(getParaMap(), tableName));
-		render("/WEB-INF/view/menu-index.ftl");
+		render("/WEB-INF/view/ucenter-menu-index.ftl");
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class UcenterMenuController extends Controller{
 	 */
 	public void savep(){
 		setAttr("row", QJfinalUtil.get(getPara("id"), tableName));
-		render("/WEB-INF/view/menu-input.ftl");
+		render("/WEB-INF/view/ucenter-menu-input.ftl");
 	}
 	
 	/**

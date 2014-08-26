@@ -258,11 +258,11 @@
 
 <#-- bspage -->
 <#macro bspage page>
-	<div class="row">
-		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-			<ul class="pagination" style="margin:0;">
-				<#assign pagenum = page.totalPage>
-				<#if pagenum gt 1>
+	<#assign pagenum = page.totalPage>
+	<#if pagenum gt 1>
+		<div class="row">
+			<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+				<ul class="pagination" style="margin:0;">
 					<li <#if page.pageNumber == 1>class="disabled"</#if>>
 						<@bsbutton icon='step-backward' class='crud crudfirst'/>
 					</li>
@@ -314,18 +314,18 @@
 					<li	<#if page.pageNumber == pagenum>class="disabled"</#if>>
 						<@bsbutton icon='step-forward' class='crud crudlast' data='page:${pagenum};'/>
 					</li>
-				</#if>
-			</ul>
-		</div>
-		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-			<div class="input-group">
-				<input type="text" class="form-control crudinput">
-				<span class="input-group-btn">
-					<button class="btn btn-primary crudgo" type="button" data="page:${page.totalPage};">走你</button>
-				</span>
+				</ul>
+			</div>
+			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+				<div class="input-group">
+					<input type="text" class="form-control crudinput">
+					<span class="input-group-btn">
+						<button class="btn btn-primary crudgo" type="button" data="page:${page.totalPage};">走你</button>
+					</span>
+				</div>
 			</div>
 		</div>
-	</div>
+	</#if>
 </#macro>
 
 <#-- 

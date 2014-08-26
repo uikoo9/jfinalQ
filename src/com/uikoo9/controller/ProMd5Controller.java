@@ -1,8 +1,8 @@
 package com.uikoo9.controller;
 
 import com.jfinal.core.Controller;
-import com.uikoo9.util.QEncodeUtil;
-import com.uikoo9.util.QStringUtil;
+import com.jfinal.plugin.spring.Inject;
+import com.uikoo9.service.ProMd5ServiceI;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QActionMap;
 
@@ -10,8 +10,11 @@ import com.uikoo9.util.jfinal.QActionMap;
  * project md5 controller
  * @author uikoo9
  */
-@QActionMap("/md5")
+@QActionMap("/pro/md5")
 public class ProMd5Controller extends Controller{
+	
+	@Inject.BY_TYPE
+	private ProMd5ServiceI proMd5Service;
 	
 	/**
 	 * 跳转到md5首页
@@ -24,20 +27,8 @@ public class ProMd5Controller extends Controller{
 	 * 将code md5加密
 	 * @throws InterruptedException 
 	 */
-	public void md5() throws InterruptedException{
-		String code = getPara("code");
-		QJson qjson = new QJson(false, "md5 error!");
-		if(QStringUtil.notEmpty(code)){
-			try {
-				Thread.sleep(5000);
-				qjson.setMsg(QEncodeUtil.md5Encrypt(code));
-				qjson.setSuccess(true);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		
-		renderJson(qjson);
+	public void encode(){
+		renderJson(new QJson(proMd5Service.encode(getPara("code"))));
 	}
 	
 }

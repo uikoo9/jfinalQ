@@ -24,7 +24,7 @@
 			        <td>${row.url}</td>
 			        <td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
-			        	<@bsbutton size='xs' icon='remove' class='delbtn' type='danger'/>
+			        	<@bsbutton size='xs' icon='remove' class='delbtn'/>
 			        </td>
 			    </tr>
 		    </#list>
