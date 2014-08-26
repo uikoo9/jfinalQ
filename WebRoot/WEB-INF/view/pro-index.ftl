@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='pro-index'>
+<@bsbody js='pro-index.min'>
 	<!-- 
 	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 		<div class="container">

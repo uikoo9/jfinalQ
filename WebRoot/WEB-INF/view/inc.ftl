@@ -138,12 +138,6 @@
 	</#if>
 </#macro>
 
-<#-- 
-colnum 
-这个布局相关，因为涉及到四种设备，所以还是手动写比较好
-col-xs-12 col-sm-12 col-md-12 col-lg-12
--->
-
 <#-- bslun -->
 <#macro bslun pics...>
 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="margin-bottom:20px;">
@@ -264,77 +258,78 @@ col-xs-12 col-sm-12 col-md-12 col-lg-12
 
 <#-- bspage -->
 <#macro bspage page>
-	<#-- 
-	<div class="col-xs-12 col-sm-2 col-md-2 col-lg-1" style='padding-left:0px;padding-right:0px;'>
-		<div class="input-group">
-			<button type="button" class="btn btn-primary">GO</button>
+	<div class="row">
+		<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+			<ul class="pagination" style="margin:0;">
+				<#assign pagenum = page.totalPage>
+				<#if pagenum gt 1>
+					<li <#if page.pageNumber == 1>class="disabled"</#if>>
+						<@bsbutton icon='step-backward' class='crud crudfirst'/>
+					</li>
+					<li <#if page.pageNumber == 1>class="disabled"</#if>>
+						<@bsbutton icon='chevron-left' class='crud crudprev'/>
+					</li>
+					<#if pagenum lte 3>
+						<#list 1..pagenum as pn>
+							<li <#if page.pageNumber == pn>class="active"</#if>>
+								<a href="javascript:void(0);" class="cruda">${pn}</a>
+							</li>
+						</#list>
+					</#if>
+					<#if pagenum gt 3>
+						<#if page.pageNumber lt 2>
+							<#list 1..pagenum as pn>
+								<#if pn lt 3>
+									<li <#if page.pageNumber == pn>class="active"</#if>>
+										<a href="javascript:void(0);" class="cruda">${pn}</a>
+									</li>
+								</#if>
+							</#list>
+						</#if>
+						<#if page.pageNumber gte 2>
+							<#if page.pageNumber-1 gt 0>
+								<li class="disabled">
+									<a href="javascript:void(0);">...</a>
+								</li>
+							</#if>
+							<#list 1..pagenum as pn>
+								<#if (page.pageNumber-1 <= pn)&&(pn <= page.pageNumber+1)>
+									<li <#if page.pageNumber == pn>class="active"</#if>>
+										<a href="javascript:void(0);" class="cruda">${pn}</a>
+									</li>
+								</#if>
+									
+							</#list>
+						</#if>
+						<#if page.pageNumber+1 lt pagenum>
+							<li class="disabled">
+								<a href="javascript:void(0);">...</a>
+							</li>
+						</#if>
+					</#if>
+					
+					<li <#if page.pageNumber == pagenum>class="disabled"</#if>>
+						<@bsbutton icon='chevron-right' class='crud crudnext'/>
+					</li>
+					<li	<#if page.pageNumber == pagenum>class="disabled"</#if>>
+						<@bsbutton icon='step-forward' class='crud crudlast' data='page:${pagenum};'/>
+					</li>
+				</#if>
+			</ul>
+		</div>
+		<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			<div class="input-group">
+				<input type="text" class="form-control crudinput">
+				<span class="input-group-btn">
+					<button class="btn btn-primary crudgo" type="button" data="page:${page.totalPage};">走你</button>
+				</span>
+			</div>
 		</div>
 	</div>
-	-->
-	<ul class="pagination" style="margin:0;">
-		<#assign pagenum = page.totalPage>
-		<#if pagenum gt 1>
-			<li <#if page.pageNumber == 1>class="disabled"</#if>>
-				<a href="javascript:void(0);" class="crud crudfirst">
-					<@bsicon icon="step-backward"/>
-				</a>
-			</li>
-			<li <#if page.pageNumber == 1>class="disabled"</#if>>
-				<a href="javascript:void(0);" class="crud crudprev">
-					<@bsicon icon="chevron-left"/>
-				</a>
-			</li>
-			<#if pagenum lte 3>
-				<#list 1..pagenum as pn>
-					<li <#if page.pageNumber == pn>class="active"</#if>>
-						<a href="" class="cruda">${pn}</a>
-					</li>
-				</#list>
-			</#if>
-			<#if pagenum gt 3>
-				<#if page.pageNumber lt 2>
-					<#list 1..pagenum as pn>
-						<#if pn lt 3>
-							<li <#if page.pageNumber == pn>class="active"</#if>>
-								<a href="" class="cruda">${pn}</a>
-							</li>
-						</#if>
-							
-					</#list>
-				</#if>
-				<#if page.pageNumber gte 2>
-					<#if page.pageNumber-1 gt 0>
-						<li class="disabled">
-							<a href="javascript:void(0);">...</a>
-						</li>
-						
-					</#if>
-					<#list 1..pagenum as pn>
-						<#if (page.pageNumber-1 <= pn)&&(pn <= page.pageNumber+1)>
-							<li <#if page.pageNumber == pn>class="active"</#if>>
-								<a href="" class="cruda">${pn}</a>
-							</li>
-						</#if>
-							
-					</#list>
-				</#if>
-				<#if page.pageNumber+1 lt pagenum>
-					<li class="disabled">
-						<a href="javascript:void(0);">...</a>
-					</li>
-				</#if>
-			</#if>
-			
-			<li <#if page.pageNumber == pagenum>class="disabled"</#if>>
-				<a href="" class="crud crudnext">
-					<@bsicon icon="chevron-right"/>
-				</a>
-			</li>
-			<li	<#if page.pageNumber == pagenum>class="disabled"</#if>>
-				<a href="" class="crud crudlast" data="page:${pagenum}">
-					<@bsicon icon="step-forward"/>
-				</a>
-			</li>
-		</#if>
-	</ul>
 </#macro>
+
+<#-- 
+column 
+这个布局相关，因为涉及到四种设备，所以还是手动写比较好
+col-xs-12 col-sm-12 col-md-12 col-lg-12
+-->

@@ -30,5 +30,5 @@
 		    </#list>
 		</tbody>
 	</@bstable>
-	<@bspage page=qpage></@bspage>
+	<@bspage page=qpage/>
 </@bspanel>

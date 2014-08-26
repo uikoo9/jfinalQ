@@ -15,33 +15,33 @@ define(function(require, exports){
 			var url = $(this).qdata().url;
 			if(url){
 				$(this).siblings().removeClass('active').end().addClass('active');
-				
 				exports.url = url;
 				exports.list();
 			}
 		});
-		
+		exports.bindcrud();
+		exports.bindpage();
 	};
-	exports.bind = function(){
-		// crud
+	exports.bindcrud = function(){
 		qiao.on('.allcheck','change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
 		qiao.on('.addBtn', 'click', function(){exports.savep('添加')});
 		qiao.on('.editbtn','click', function(){exports.savep('修改',$(this).parents('tr').qdata().id)});
 		qiao.on('.queBtn', 'click', function(){exports.savep('查询')});
-		qiao.on('.relBtn', 'click', function(){exports.list();});
+		qiao.on('.relBtn', 'click', function(){exports.reset();});
 		qiao.on('.delBtn', 'click', function(){exports.del();});
 		qiao.on('.delbtn', 'click', function(){exports.del($(this).parents('tr').qdata().id);});
-		
-		// page
-		qiao.on('.crudfirst', 'click', function(){
-			alert(1);
-		});
 	};
+	exports.listopt = {pageNumber:1};
 	exports.list = function(data){
-		var opt = {url:exports.url + 'index'};
-		if(data) opt.data = data;
+		var opt = {url : exports.url + 'index'};
+		if(data) $.extend(exports.listopt, data);
+		opt.data = exports.listopt;
 		
 		qiao.html(opt);
+	};
+	exports.reset = function(){
+		exports.listopt = {pageNumber:1};
+		exports.list();
 	};
 	exports.savep = function(title, id){
 		if(title == '查询'){
@@ -82,5 +82,39 @@ define(function(require, exports){
 				exports.list();
 			});
 		}
+	};
+	exports.bindpage = function(){
+		qiao.on('.crudfirst', 'click', function(){
+			if(!$(this).parent().hasClass('disabled')){
+				exports.reset();
+			}
+		});
+		qiao.on('.crudprev', 'click', function(){
+			if(!$(this).parent().hasClass('disabled')){
+				exports.list({pageNumber:exports.listopt.pageNumber - 1});
+			}
+		});
+		qiao.on('.crudnext', 'click', function(){
+			if(!$(this).parent().hasClass('disabled')){
+				exports.list({pageNumber:exports.listopt.pageNumber + 1});
+			}
+		});
+		qiao.on('.crudlast', 'click', function(){
+			if(!$(this).parent().hasClass('disabled')){
+				exports.list({pageNumber:$(this).qdata().page});
+			}
+		});
+		qiao.on('.cruda', 'click', function(){
+			if(!$(this).parent().hasClass('disabled')){
+				exports.list({pageNumber:parseInt($(this).text())});
+			}
+		});
+		qiao.on('.crudgo', 'click', function(){
+			var page = parseInt($('.crudinput').val());
+			var total = parseInt($(this).qdata().page);
+			if(page >= 1 && page <= total){
+				exports.list({pageNumber:page});
+			}
+		});
 	};
 });
