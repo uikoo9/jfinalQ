@@ -1,5 +1,7 @@
 package com.uikoo9;
 
+import com.uikoo9.util.QFileUtil;
+
 /**
  * 常量
  * @author uikoo9
@@ -64,8 +66,7 @@ public class QContants {
 	 * @param url
 	 * @return
 	 */
-//	public static final String BASE_URL = "http://uikoo9.com";
-	public static final String BASE_URL = "http://localhost/com";
+	public static final String BASE_URL = QFileUtil.readProperties("/config.properties").getProperty("baseUrl");
 	public static String url(String url){
 		return BASE_URL + url;
 	}

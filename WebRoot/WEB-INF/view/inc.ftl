@@ -42,7 +42,9 @@
 		</#if>
 		
 		<!-- base -->
-		<script type="text/javascript">base = '${base}';</script>
+		<script type="text/javascript">
+			base = '${base}';
+		</script>
 		
 		<!-- qmask -->
 		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
