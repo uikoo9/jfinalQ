@@ -116,15 +116,11 @@
 						<li class="dropdown <#if errorMsg?exists>open</#if>">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
 							<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
-								<@bsform action='${base}/ucenter/login/login'>
+								<@bsform class='loginform'>
 									<@bsinput col=false name='username' title='用户名' value='${username!}'/>
 									<@bsinput col=false name='password' title='密码' type='password'/>
-									<div class="form-group"><input class="btn btn-lg btn-primary btn-block" type="submit" value="登录"/></div>
-									<#if errorMsg??>
-										<div class="form-group">
-											<h5 class="text-danger">${errorMsg}</h5>
-										</div>
-									</#if>
+									<div class="form-group"><input class="btn btn-lg btn-primary btn-block loginbtn" type="button" value="登录"/></div>
+									<div class="form-group"><h5 class="text-danger"></h5></div>
 								</@bsform>
 							</div>	
 						</li>

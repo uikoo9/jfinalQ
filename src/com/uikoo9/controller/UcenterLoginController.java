@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.spring.Inject;
 import com.uikoo9.QContants;
 import com.uikoo9.service.UcenterLoginServiceI;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QActionMap;
 
 /**
@@ -21,14 +22,7 @@ public class UcenterLoginController extends Controller{
 	 */
 	public void login(){
 		setAttr(QContants.C_USERNAME, getPara(QContants.C_USERNAME));
-		
-		String errorMsg = ucenterLoginService.login(getParaMap(), getSession(true));
-		if(errorMsg == null){
-			redirect(QContants.url(QContants.U_UCENTER));
-		}else{
-			setAttr(QContants.C_ERRORMSG, errorMsg);
-			render(QContants.P_PRO_INDEX);
-		}
+		renderJson(new QJson(ucenterLoginService.login(getParaMap(), getSession(true))));
 	}
 	
 	/**

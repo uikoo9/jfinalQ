@@ -28,7 +28,7 @@ public class UcenterLoginServiceImpl implements UcenterLoginServiceI{
 			List<Record> users = Db.find(QContants.SQL_UCENTER_USER_LOGIN, username, password);
 			if(users != null && users.size() == 1){
 				session.setAttribute(QContants.C_USER, users.get(0));
-				return null;
+				return QContants.T_SUC;
 			}else{
 				return QContants.T_LOGIN_FAIL;
 			}

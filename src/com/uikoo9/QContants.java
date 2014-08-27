@@ -16,8 +16,6 @@ public class QContants {
 	public static final String C_USERNAME	= "username";
 	public static final String C_PASSWORD	= "password";
 	
-	public static final String C_ERRORMSG	= "errorMsg";
-
 	public static final String C_ID			= "id";
 	public static final String C_IDS		= "ids";
 	public static final String C_ROW		= "row";
@@ -26,6 +24,7 @@ public class QContants {
 	/**
 	 * 提示信息
 	 */
+	public static final String T_SUC		= "suc";
 	public static final String T_MD5_FAIL	= "md5 encode fail！";
 	public static final String T_MD5_REQ	= "please enter sth.";
 	public static final String T_LOGIN_FAIL	= "用户名或密码错误！";
@@ -36,7 +35,6 @@ public class QContants {
 	 */
 	public static final String U_BASE			= "/";
 	public static final String U_PRO_MD5		= "/pro/md5";
-	public static final String U_UCENTER		= "/ucenter";
 	public static final String U_UCENTER_MENU	= "/ucenter/menu";
 	public static final String U_UCENTER_USER	= "/ucenter/user";
 	public static final String U_UCENTER_LOGIN	= "/ucenter/login";
