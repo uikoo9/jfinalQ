@@ -2,6 +2,7 @@ package com.uikoo9.controller;
 
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.spring.Inject;
+import com.uikoo9.QContants;
 import com.uikoo9.service.UcenterLoginServiceI;
 import com.uikoo9.util.jfinal.QActionMap;
 
@@ -9,7 +10,7 @@ import com.uikoo9.util.jfinal.QActionMap;
  * 用户中心-登录controller
  * @author uikoo9
  */
-@QActionMap("/ucenter/login")
+@QActionMap(QContants.U_UCENTER_LOGIN)
 public class UcenterLoginController extends Controller{
 	
 	@Inject.BY_TYPE
@@ -19,14 +20,14 @@ public class UcenterLoginController extends Controller{
 	 * 跳转到md5首页
 	 */
 	public void login(){
-		setAttr("username", getPara("username"));
+		setAttr(QContants.C_USERNAME, getPara(QContants.C_USERNAME));
 		
 		String errorMsg = ucenterLoginService.login(getParaMap(), getSession(true));
 		if(errorMsg == null){
-			redirect("/ucenter");
+			redirect(QContants.url(QContants.U_UCENTER));
 		}else{
-			setAttr("errorMsg", errorMsg);
-			render("/WEB-INF/view/pro-index.ftl");
+			setAttr(QContants.C_ERRORMSG, errorMsg);
+			render(QContants.P_PRO_INDEX);
 		}
 	}
 	
@@ -34,8 +35,8 @@ public class UcenterLoginController extends Controller{
 	 * 退出登录
 	 */
 	public void logout(){
-		removeSessionAttr("user");
-		redirect("/");
+		removeSessionAttr(QContants.C_USER);
+		redirect(QContants.url(QContants.U_BASE));
 	}
 	
 }
