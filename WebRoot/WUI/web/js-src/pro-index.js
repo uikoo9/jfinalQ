@@ -20,7 +20,7 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
 		
 		if(res){
 			if(res.msg == 'suc'){
-				qiao.to(base + '/ucenter');
+				qiao.to(baseurl + '/ucenter');
 			}else{
 				$h5.text(res.msg);
 			}
