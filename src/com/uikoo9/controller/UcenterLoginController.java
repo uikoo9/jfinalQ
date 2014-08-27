@@ -23,13 +23,19 @@ public class UcenterLoginController extends Controller{
 		
 		String errorMsg = ucenterLoginService.login(getParaMap(), getSession(true));
 		if(errorMsg == null){
-			setSessionAttr("user", "1");
-			System.out.println(getSessionAttr("user"));
 			redirect("/ucenter");
 		}else{
 			setAttr("errorMsg", errorMsg);
 			render("/WEB-INF/view/pro-index.ftl");
 		}
+	}
+	
+	/**
+	 * 退出登录
+	 */
+	public void logout(){
+		removeSessionAttr("user");
+		redirect("/");
 	}
 	
 }

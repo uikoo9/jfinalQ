@@ -110,8 +110,8 @@
 					<li><a href="#">About Me</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<#if (Session.user)??>
-						<li><a href="javascript:void(0);">uikoo9</a></li>
+					<#if (session.user)??>
+						<li><a href="${base}/ucenter/login/logout">退出</a></li>
 					<#else>
 						<li class="dropdown <#if errorMsg?exists>open</#if>">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
