@@ -63,24 +63,19 @@
 
 <#-- inc-bs ----------------------------------------------------------------------------------------------->
 <#-- bsbody -->
-<#macro bsbody style='' class='' head=true foot=true menus='' js=''>
+<#macro bsbody style='' class='' head=true foot=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
 	<script type="text/javascript">var qmask = new Qmask(); qmask.qmask();</script>
 
 	<#if head><@bshead/></#if>
 
-	<#if menus != ''>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-					<@bsmenu menus=menus/>
-				</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
 				<#nested>
 			</div>
 		</div>
-	<#else>
-		<#nested>
-	</#if>
+	</div>
 	
 	<#if foot><@bsfoot/></#if>
 	
@@ -108,12 +103,22 @@
 					<li><a href="#">JavaEE</a></li>
 					<li><a href="#">Blogs</a></li>
 					<li><a href="#">About Me</a></li>
+					<#if (session.user)??>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">后台管理<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<#list menus as menu>
+									<li role="presentation" style="padding:10px;" class="menus" data="url:${menu.url};"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="javascript:void(0);">${menu.text}</a></li>
+								</#list>
+							</ul>
+						</li>
+					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if (session.user)??>
 						<li><a href="${base}/ucenter/login/logout">退出</a></li>
 					<#else>
-						<li class="dropdown <#if errorMsg?exists>open</#if>">
+						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
 							<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
 								<@bsform class='loginform'>

@@ -2,7 +2,6 @@
 <@html>
 <@head></@head>
 
-<@bsbody menus=menus js='ucenter-index.min'>
-	<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" id="cruddiv"></div>
+<@bsbody js='ucenter-index.min'>
 </@bsbody>
 </@html>

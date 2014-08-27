@@ -14,7 +14,6 @@ define(function(require, exports){
 		qiao.on('.menus', 'click', function(){
 			var url = $(this).qdata().url;
 			if(url){
-				$(this).siblings().removeClass('active').end().addClass('active');
 				exports.url = url;
 				exports.list();
 			}
