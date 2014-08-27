@@ -66,7 +66,8 @@ public class QContants {
 	 * @param url
 	 * @return
 	 */
-	public static final String BASE_URL = "http://uikoo9.com";
+//	public static final String BASE_URL = "http://uikoo9.com";
+	public static final String BASE_URL = "http://localhost/com";
 	public static String url(String url){
 		return BASE_URL + url;
 	}

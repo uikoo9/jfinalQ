@@ -23,7 +23,7 @@ public class UcenterIndexController extends Controller{
 	 * 跳转到后台管理页面
 	 */
 	public void ucenter(){
-		setAttr(QContants.C_MENUS, Db.find(QContants.SQL_UCENTER_MENU));
+		setAttr(QContants.C_MENUS, Db.find(QContants.SQL_UCENTER_MENU_ALL));
 		render(QContants.P_UCENTER_INDEX);
 	}
 	
