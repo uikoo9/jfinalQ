@@ -65,11 +65,7 @@ define(function(require, exports){
 		if(id){
 			ids.push(id);
 		}else{
-			$('.onecheck').each(function(){
-				if($(this).prop('checked')){
-					ids.push($(this).parents('tr').qdata().id);
-				}
-			});
+			$('.onecheck:checked').each(function(){ids.push($(this).parents('tr').qdata().id);});
 		}
 		
 		if(!ids.length){

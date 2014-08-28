@@ -20,6 +20,7 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
 		
 		if(res){
 			if(res.msg == 'suc'){
+				$h5.text('登录成功，正在跳转。。。');
 				qiao.to(baseurl + '/ucenter');
 			}else{
 				$h5.text(res.msg);
