@@ -103,7 +103,7 @@
 					<li><a href="#">JavaEE</a></li>
 					<li><a href="#">Blogs</a></li>
 					<li><a href="#">About Me</a></li>
-					<#if (session.user)??>
+					<#if (session.user)?? && menus??>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">后台管理<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
