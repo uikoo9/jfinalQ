@@ -145,7 +145,7 @@ define(function(require, exports){
 		time : 2000
 	};
 	exports.msgstr = function(msg, type){
-		return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
+		return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;position:fixed;top:0;left:0;width:100%;z-index:2001;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
 	};
 	exports.msg = function(options){
 		var opt = $.extend({},exports.msgoptions);
