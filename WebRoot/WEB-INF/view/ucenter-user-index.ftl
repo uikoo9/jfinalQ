@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/inc.ftl"/>
+<#include "/WEB-INF/view/base/inc.ftl"/>
 <@bspanel>
 	<p>
 		<@bsbutton class='addBtn' icon='plus'>添加</@bsbutton>
