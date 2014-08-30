@@ -1,8 +1,10 @@
 ({
 	baseUrl : '../',
     paths : {
-        jquery 		: 'empty:',
-        bootstrap 	: 'empty:',
+    	jquery 		: 'empty:',
+    	bootstrap 	: 'empty:',
+//    	jquery 		: 'jquery/jquery-1.11.1.min',
+//    	bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
         qiao		: 'qiao/qiao',
         qiaobs		: 'qiao/qiao.bs',
     	qiaocrud	: 'qiao/qiao.crud'

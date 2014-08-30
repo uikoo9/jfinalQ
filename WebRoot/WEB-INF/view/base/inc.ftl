@@ -39,6 +39,11 @@
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+		<!--<link rel="stylesheet" href="${base}/WUI/bootstrap-3.2.0/bootstrap.min.css">-->
+		<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 		</#if>
 		
 		<!-- base -->
@@ -53,7 +58,7 @@
 <#-- rj -->
 <#macro rj js>
 	<script type="text/javascript" src="http://cdn.staticfile.org/require.js/2.1.14/require.min.js"></script>
-	<script type="text/javascript" src="${base}/WUI/rj/config.js"></script>
+	<!--<script type="text/javascript" src="${base}/WUI/rj/require.js"></script>-->
 	<#if js?contains('.min')>
 		<script type="text/javascript" src="${base}/WUI/web/js-min/${js}.js"></script>
 	<#else>
