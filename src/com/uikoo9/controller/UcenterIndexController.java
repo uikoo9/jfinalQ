@@ -1,16 +1,16 @@
 package com.uikoo9.controller;
 
-import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.QContants;
 import com.uikoo9.util.jfinal.QActionMap;
+import com.uikoo9.util.jfinal.QController;
 
 /**
  * 用户中心-首页controller
  * @author uikoo9
  */
 @QActionMap(QContants.U_BASE)
-public class UcenterIndexController extends Controller{
+public class UcenterIndexController extends QController{
 	
 	/**
 	 * 跳转到首页 

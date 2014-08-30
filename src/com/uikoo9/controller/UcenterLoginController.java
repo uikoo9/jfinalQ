@@ -1,18 +1,18 @@
 package com.uikoo9.controller;
 
-import com.jfinal.core.Controller;
 import com.jfinal.plugin.spring.Inject;
 import com.uikoo9.QContants;
 import com.uikoo9.service.UcenterLoginServiceI;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QActionMap;
+import com.uikoo9.util.jfinal.QController;
 
 /**
  * 用户中心-登录controller
  * @author uikoo9
  */
 @QActionMap(QContants.U_UCENTER_LOGIN)
-public class UcenterLoginController extends Controller{
+public class UcenterLoginController extends QController{
 	
 	@Inject.BY_TYPE
 	private UcenterLoginServiceI ucenterLoginService;
