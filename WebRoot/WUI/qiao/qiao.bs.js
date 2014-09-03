@@ -153,7 +153,7 @@ define(function(require, exports){
 		if(typeof options == 'string'){
 			opt.msg = options;
 		}else{
-			$.extend(opt, exports.msgoptions);
+			$.extend(opt, options);
 		}
 		
 		$('body').prepend(exports.msgstr(opt.msg,opt.type));
