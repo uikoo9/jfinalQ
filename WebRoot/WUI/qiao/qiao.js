@@ -123,7 +123,7 @@ define(function(require, exports){
 	};
 	exports.to = function(url){
 		if(url){
-			window.location.href = url;
+			window.location.href = base + url;
 		}else{
 			alert('need url');
 		}
