@@ -10,7 +10,7 @@ import com.uikoo9.util.jfinal.QController;
  * @author uikoo9
  */
 @QActionMap(QContants.U_BASE)
-public class UcenterIndexController extends QController{
+public class IndexController extends QController{
 	
 	/**
 	 * 跳转到首页 

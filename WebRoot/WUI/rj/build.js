@@ -3,11 +3,7 @@
     paths : {
     	jquery 		: 'empty:',
     	bootstrap 	: 'empty:',
-//    	jquery 		: 'jquery/jquery-1.11.1.min',
-//    	bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
-        qiao		: 'qiao/qiao',
-        qiaobs		: 'qiao/qiao.bs',
-    	qiaocrud	: 'qiao/qiao.crud'
+        qiao		: 'qiao.min',
     },
 //    name :'web/js-src/pro-index',
 //	out :'../web/js-min/pro-index.min.js'

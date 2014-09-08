@@ -12,7 +12,7 @@ import com.uikoo9.util.jfinal.QController;
  * @author uikoo9
  */
 @QActionMap(QContants.U_UCENTER_LOGIN)
-public class UcenterLoginController extends QController{
+public class LoginController extends QController{
 	
 	@Inject.BY_TYPE
 	private UcenterLoginServiceI ucenterLoginService;
