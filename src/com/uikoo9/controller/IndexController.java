@@ -16,7 +16,14 @@ public class IndexController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render(QContants.P_PRO_INDEX);
+		render(QContants.P_HOME);
+	}
+	
+	/**
+	 * 未登录跳转
+	 */
+	public void home(){
+		render(QContants.P_HOME);
 	}
 	
 	/**
@@ -24,7 +31,7 @@ public class IndexController extends QController{
 	 */
 	public void ucenter(){
 		setAttr(QContants.C_MENUS, Db.find(QContants.SQL_UCENTER_MENU_ALL));
-		render(QContants.P_UCENTER_INDEX);
+		render(QContants.P_MANAGE);
 	}
 	
 }

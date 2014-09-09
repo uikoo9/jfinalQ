@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-com.ftl"/>
+<#include "/WEB-INF/view/base/inc.ftl"/>
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true row=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>

@@ -36,17 +36,17 @@ public class QContants {
 	 * controller url
 	 */
 	public static final String U_BASE			= "/";
+	public static final String U_LOGIN			= "/login";
 	public static final String U_PRO_MD5		= "/pro/md5";
 	public static final String U_UCENTER_MENU	= "/ucenter/menu";
 	public static final String U_UCENTER_USER	= "/ucenter/user";
-	public static final String U_UCENTER_LOGIN	= "/ucenter/login";
 	
 	/**
 	 * 页面地址
 	 */
-	public static final String P_PRO_INDEX 			= "/WEB-INF/view/pro-index.ftl";
+	public static final String P_HOME				= "/WEB-INF/view/home.ftl";
 	public static final String P_PRO_MD5_INDEX 		= "/WEB-INF/view/pro-md5.ftl";
-	public static final String P_UCENTER_INDEX 		= "/WEB-INF/view/ucenter-index.ftl";
+	public static final String P_MANAGE		 		= "/WEB-INF/view/manage.ftl";
 	public static final String P_UCENTER_MENU_INDEX	= "/WEB-INF/view/ucenter-menu-index.ftl";
 	public static final String P_UCENTER_MENU_INPUT	= "/WEB-INF/view/ucenter-menu-input.ftl";
 	public static final String P_UCENTER_USER_INDEX	= "/WEB-INF/view/ucenter-user-index.ftl";

@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.QContants;
-import com.uikoo9.service.UcenterLoginServiceI;
+import com.uikoo9.service.LoginServiceI;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.jfinal.QJfinalUtil;
 
 @Service
-public class UcenterLoginServiceImpl implements UcenterLoginServiceI{
+public class LoginServiceImpl implements LoginServiceI{
 	
 	/* (non-Javadoc)
 	 * @see com.uikoo9.service.UcenterLoginServiceI#login(java.util.Map, javax.servlet.http.HttpSession)
