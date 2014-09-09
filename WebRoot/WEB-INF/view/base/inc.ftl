@@ -62,7 +62,7 @@
 		    paths : {
 		    	jquery 		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
       			bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-		        qiao		: 'qiao.min',
+		        qiao		: 'qiao.min'
 		    },
 		    shim : {
 			    bootstrap : {
