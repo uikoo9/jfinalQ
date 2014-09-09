@@ -2,6 +2,6 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='ucenter-index.min'>
+<@bsbody js='manage.min'>
 </@bsbody>
 </@html>
