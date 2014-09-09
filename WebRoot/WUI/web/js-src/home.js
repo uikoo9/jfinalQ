@@ -14,14 +14,14 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
 		var $h5 = $form.find('h5');
 		
 		var res = qiao.ajax({
-			url : '/ucenter/login/login',
+			url : '/login/login',
 			data : $form.qser()
 		});
 		
 		if(res){
 			if(res.msg == 'suc'){
 				$h5.text('登录成功，正在跳转。。。');
-				qiao.to(baseurl + '/ucenter');
+				qiao.to(baseurl + '/manage');
 			}else{
 				$h5.text(res.msg);
 			}

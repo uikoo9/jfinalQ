@@ -57,7 +57,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if (session.user)??>
-						<li><a href="${base}/ucenter/login/logout">退出</a></li>
+						<li><a href="${base}/login/logout">退出</a></li>
 					<#else>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
