@@ -13,6 +13,8 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 		        <th>text</th>
 		        <th>url</th>
+		        <th>创建时间</th>
+		        <th>创建人</th>
 		        <th>操作</th>
 		    </tr>
 		</thead>
@@ -22,6 +24,8 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.text}</td>
 			        <td>${row.url}</td>
+			        <td>${row.cdate}</td>
+			        <td>${row.cuser_name}</td>
 			        <td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
 			        	<@bsbutton size='xs' icon='remove' class='delbtn'/>
