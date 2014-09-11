@@ -1,12 +1,5 @@
 <#include "/WEB-INF/view/base/inc-com.ftl"/>
-<@bspanel>
-	<p>
-		<@bsbutton class='addBtn' icon='plus'>添加</@bsbutton>
-		<@bsbutton class='delBtn' icon='remove'>删除</@bsbutton>
-		<@bsbutton class='queBtn' icon='search'>查询</@bsbutton>
-		<@bsbutton class='relBtn' icon='repeat'>重置</@bsbutton>
-	</p>
-	<p>${qpage.str}</p>
+<@bslist qpage=qpage>
 	<@bstable>
 		<thead>
 		    <tr>
@@ -34,5 +27,4 @@
 		    </#list>
 		</tbody>
 	</@bstable>
-	<@bspage page=qpage/>
-</@bspanel>
+</@bslist>

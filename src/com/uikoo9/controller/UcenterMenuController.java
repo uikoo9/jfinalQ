@@ -15,7 +15,7 @@ public class UcenterMenuController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr(QContants.C_QPAGE, list(getParaMap(), QContants.SQL_UCENTER_MENU));
+		setAttr(QContants.C_QPAGE, list(getParaMap(), QContants.TABLE_UCENTER_MENU));
 		render(QContants.P_UCENTER_MENU_INDEX);
 	}
 	
@@ -23,7 +23,7 @@ public class UcenterMenuController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.C_ROW, get(getPara(QContants.C_ID), QContants.SQL_UCENTER_MENU));
+		setAttr(QContants.C_ROW, get(getPara(QContants.C_ID), QContants.TABLE_UCENTER_MENU));
 		render(QContants.P_UCENTER_MENU_INPUT);
 	}
 	
@@ -31,14 +31,14 @@ public class UcenterMenuController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(getParaMap(), QContants.SQL_UCENTER_MENU));
+		renderJson(save(getParaMap(), QContants.TABLE_UCENTER_MENU));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara(QContants.C_IDS), QContants.SQL_UCENTER_MENU));
+		renderJson(del(getPara(QContants.C_IDS), QContants.TABLE_UCENTER_MENU));
 	}
 	
 }

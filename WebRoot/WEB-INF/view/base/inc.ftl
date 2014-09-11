@@ -299,6 +299,23 @@
 	</#if>
 </#macro>
 
+<#-- bslist -->
+<#macro bslist btn=true qpage=''>
+	<@bspanel>
+		<#if btn>
+			<p>
+				<@bsbutton class='addBtn' icon='plus'>添加</@bsbutton>
+				<@bsbutton class='delBtn' icon='remove'>删除</@bsbutton>
+				<@bsbutton class='queBtn' icon='search'>查询</@bsbutton>
+				<@bsbutton class='relBtn' icon='repeat'>重置</@bsbutton>
+			</p>
+		</#if>
+		<p>${qpage.str}</p>
+		<#nested>
+		<@bspage page=qpage/>
+	</@bspanel>
+</#macro>
+
 <#-- 
 column 
 这个布局相关，因为涉及到四种设备，所以还是手动写比较好
