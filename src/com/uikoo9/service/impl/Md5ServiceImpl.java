@@ -3,15 +3,15 @@ package com.uikoo9.service.impl;
 import org.springframework.stereotype.Service;
 
 import com.uikoo9.QContants;
-import com.uikoo9.service.ProMd5ServiceI;
+import com.uikoo9.service.Md5ServiceI;
 import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.QStringUtil;
 
 @Service
-public class ProMd5ServiceImpl implements ProMd5ServiceI{
+public class Md5ServiceImpl implements Md5ServiceI{
 	
 	/* (non-Javadoc)
-	 * @see com.uikoo9.service.ProMd5ServiceI#encode(java.lang.String)
+	 * @see com.uikoo9.service.Md5ServiceI#encode(java.lang.String)
 	 */
 	public String encode(String code){
 		if(QStringUtil.notEmpty(code)){

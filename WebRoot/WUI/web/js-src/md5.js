@@ -48,7 +48,7 @@ require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
     		$input.attr('disabled',	'disabled');
     		$submit.button('loading');
     		var res = qiao.ajax({
-    			url : '/pro/md5/encode',
+    			url : '/md5/encode',
     			data : {code:code}
     		});
     		$input.attr('disabled',	null).focus();

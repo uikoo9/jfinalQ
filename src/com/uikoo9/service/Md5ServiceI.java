@@ -1,6 +1,6 @@
 package com.uikoo9.service;
 
-public interface ProMd5ServiceI {
+public interface Md5ServiceI {
 	
 	/**
 	 * md5编码

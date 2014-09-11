@@ -5,10 +5,10 @@
         bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
         qiao		: 'qiao'
     },
-    name :'web/js-src/home',
-	out :'../web/js-min/home.min.js'
-//	name :'web/js-src/pro-md5',
-//	out :'../web/js-min/pro-md5.min.js'
-//	name :'web/js-src/manage',
-//	out :'../web/js-min/manage.min.js'
+//    name :'web/js-src/home',
+//	out :'../web/js-min/home.min.js'
+//	name :'web/js-src/md5',
+//	out :'../web/js-min/md5.min.js'
+	name :'web/js-src/manage',
+	out :'../web/js-min/manage.min.js'
 })
