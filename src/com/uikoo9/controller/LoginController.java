@@ -21,7 +21,7 @@ public class LoginController extends QController{
 	 * 跳转到md5首页
 	 */
 	public void login(){
-		setAttr(QContants.C_USERNAME, getPara(QContants.C_USERNAME));
+		setAttr(QContants.V_USERNAME, getPara(QContants.V_USERNAME));
 		renderJson(new QJson(loginService.login(getParaMap(), getSession(true))));
 	}
 	
@@ -29,7 +29,7 @@ public class LoginController extends QController{
 	 * 退出登录
 	 */
 	public void logout(){
-		removeSessionAttr(QContants.C_USER);
+		removeSessionAttr(QContants.V_USER);
 		redirect(QContants.url(QContants.U_BASE));
 	}
 	

@@ -15,7 +15,7 @@ public class UcenterUserController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr(QContants.C_QPAGE, list(getParaMap(), QContants.TABLE_UCENTER_USER));
+		setAttr(QContants.V_QPAGE, list(getParaMap(), QContants.TABLE_UCENTER_USER));
 		render(QContants.P_UCENTER_USER_INDEX);
 	}
 	
@@ -23,7 +23,7 @@ public class UcenterUserController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.C_ROW, get(getPara(QContants.C_ID), QContants.TABLE_UCENTER_USER));
+		setAttr(QContants.V_ROW, get(getPara(QContants.V_ID), QContants.TABLE_UCENTER_USER));
 		render(QContants.P_UCENTER_USER_INPUT);
 	}
 	
@@ -38,7 +38,7 @@ public class UcenterUserController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara(QContants.C_IDS), QContants.TABLE_UCENTER_USER));
+		renderJson(del(getPara(QContants.V_IDS), QContants.TABLE_UCENTER_USER));
 	}
 	
 }

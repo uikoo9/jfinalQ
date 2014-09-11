@@ -29,7 +29,7 @@ public class Md5Controller extends QController{
 	 * @throws InterruptedException 
 	 */
 	public void encode(){
-		renderJson(new QJson(md5Service.encode(getPara(QContants.C_CODE))));
+		renderJson(new QJson(md5Service.encode(getPara(QContants.V_CODE))));
 	}
 	
 }

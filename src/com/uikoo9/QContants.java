@@ -9,19 +9,21 @@ import com.uikoo9.util.QFileUtil;
 public class QContants {
 	
 	/**
-	 * 常量
+	 * 变量
 	 */
-	public static final String C_CODE		= "code";
-	public static final String C_MENUS 		= "menus";
+	public static final String V_CODE		= "code";
+	public static final String V_MENUS 		= "menus";
 	
-	public static final String C_USER 		= "user";
-	public static final String C_USERNAME	= "username";
-	public static final String C_PASSWORD	= "password";
+	public static final String V_USER 		= "user";
+	public static final String V_USERNAME	= "username";
+	public static final String V_PASSWORD	= "password";
 	
-	public static final String C_ID			= "id";
-	public static final String C_IDS		= "ids";
-	public static final String C_ROW		= "row";
-	public static final String C_QPAGE		= "qpage";
+	public static final String V_ID			= "id";
+	public static final String V_IDS		= "ids";
+	public static final String V_ROW		= "row";
+	public static final String V_QPAGE		= "qpage";
+	
+	public static final String V_TYPES		= "types";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
@@ -87,9 +89,25 @@ public class QContants {
 	 * @param url
 	 * @return
 	 */
-	public static final String BASE_URL = QFileUtil.readProperties("/config.properties").getProperty("baseUrl");
+	public static final String BASE_URL = QFileUtil.CONFIG.getProperty("baseUrl");
 	public static String url(String url){
 		return BASE_URL + url;
 	}
+	// end-----------------------------------------------------------------------------------------
+	
+	/**
+	 * 常量
+	 */
+	public static final String C_COMMON_YES					= "000101";
+	public static final String C_COMMON_NO					= "000102";
+	public static final String[] C_COMMON_YESNO				= new String[]{C_COMMON_YES,C_COMMON_NO};
+
+	public static final String C_UCENTER_USER_TYPE_CUSTOM	= "010101";
+	public static final String C_UCENTER_USER_TYPE_ADMIN	= "010102";
+	public static final String[] C_UCENTER_USER_TYPE 		= new String[]{C_UCENTER_USER_TYPE_CUSTOM,C_UCENTER_USER_TYPE_ADMIN};
+	
+	public static final String C_PRO_TYPE_JAVASE			= "020101";
+	public static final String C_PRO_TYPE_JAVAEE			= "020202";
+	public static final String[] C_PRO_TYPE 				= new String[]{C_PRO_TYPE_JAVASE,C_PRO_TYPE_JAVAEE};
 	
 }

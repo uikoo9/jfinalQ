@@ -1,6 +1,7 @@
 package com.uikoo9.controller;
 
 import com.uikoo9.QContants;
+import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
 
@@ -15,7 +16,7 @@ public class ProDetailController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr(QContants.C_QPAGE, list(getParaMap(), QContants.TABLE_PRO_DETAIL));
+		setAttr(QContants.V_QPAGE, list(getParaMap(), QContants.TABLE_PRO_DETAIL));
 		render(QContants.P_PRO_DETAIL_INDEX);
 	}
 	
@@ -23,7 +24,8 @@ public class ProDetailController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.C_ROW, get(getPara(QContants.C_ID), QContants.TABLE_PRO_DETAIL));
+		setAttr(QContants.V_TYPES, QContantsUtil.list(QContants.C_PRO_TYPE));
+		setAttr(QContants.V_ROW, get(getPara(QContants.V_ID), QContants.TABLE_PRO_DETAIL));
 		render(QContants.P_PRO_DETAIL_INPUT);
 	}
 	
@@ -38,7 +40,7 @@ public class ProDetailController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara(QContants.C_IDS), QContants.TABLE_PRO_DETAIL));
+		renderJson(del(getPara(QContants.V_IDS), QContants.TABLE_PRO_DETAIL));
 	}
 	
 }

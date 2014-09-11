@@ -30,7 +30,7 @@ public class IndexController extends QController{
 	 * 跳转到后台管理页面
 	 */
 	public void manage(){
-		setAttr(QContants.C_MENUS, Db.find(QContants.SQL_UCENTER_MENU_ALL));
+		setAttr(QContants.V_MENUS, Db.find(QContants.SQL_UCENTER_MENU_ALL));
 		render(QContants.P_MANAGE);
 	}
 	
