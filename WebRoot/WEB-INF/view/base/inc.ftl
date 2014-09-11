@@ -190,16 +190,6 @@
 </#macro>
 
 <#-- bsinput -->
-<#macro bsinput type='text' title='title' name='name' value='' col=true>
-	<div class="form-group">
-		<label for="id-${name}" class="control-label <#if col>col-xs-3 col-sm-2 col-md-2 col-lg-2</#if>">${title}</label>
-		<div class="<#if col>col-xs-9 col-sm-10 col-md-10 col-lg-10</#if>">
-			<input type="${type}" name="${name}" value="${value}" placeholder="${title}" class="form-control" id="id-${name}">
-		</div>
-	</div>
-</#macro>
-
-<#-- bsinput -->
 <#macro bsinput type='text' title='title' name='name' value='' lg=false col=true input=true>
 	<#if input>
 		<div class="form-group">
@@ -219,12 +209,29 @@
 </#macro>
 
 <#-- bsradios -->
+<#--
+like this:
+<@bsradios name='row.pro_type' ck='${(row.pro_type)!"020101"}' list=types/>
+-->
 <#macro bsradios list name ck>
 	<#list list as item>
 		<label class="radio-inline">
 			<input type="radio" name="${name}" value="${item.value}" <#if item.value == ck>checked</#if>>${item.text}
 		</label>
 	</#list>
+</#macro>
+
+<#-- bsselects -->
+<#--
+like this:
+<@bsselects name='row.pro_type' ck='${(row.pro_type)!"020101"}' list=types/>
+-->
+<#macro bsselects list name ck>
+	<select class="form-control" name="${name}">
+		<#list list as item>
+			<option value="${item.value}" <#if item.value == ck>selected</#if>>${item.text}</option>
+		</#list>
+	</select>
 </#macro>
 
 <#-- bspage -->

@@ -107,7 +107,7 @@ public class QContants {
 	public static final String[] C_UCENTER_USER_TYPE 		= new String[]{C_UCENTER_USER_TYPE_CUSTOM,C_UCENTER_USER_TYPE_ADMIN};
 	
 	public static final String C_PRO_TYPE_JAVASE			= "020101";
-	public static final String C_PRO_TYPE_JAVAEE			= "020202";
+	public static final String C_PRO_TYPE_JAVAEE			= "020102";
 	public static final String[] C_PRO_TYPE 				= new String[]{C_PRO_TYPE_JAVASE,C_PRO_TYPE_JAVAEE};
 	
 }

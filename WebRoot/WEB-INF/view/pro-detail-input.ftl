@@ -5,10 +5,6 @@
 	<@bsinput title='项目地址' name='row.pro_url'	 value='${(row.pro_url)!}'/>
 	<@bsinput title='源码地址' name='row.pro_src'  value='${(row.pro_src)!}'/>
 	<@bsinput title='项目类型' input=false>
-		<select class="form-control" name='row.pro_type'>
-			<#list types as type>
-				<option value="${type.value}" <#if row?? && row.pro_type == type.value>selected</#if>>${type.text}</option>
-			</#list>
-		</select>
+		<@bsradios name='row.pro_type' ck='${(row.pro_type)!"020101"}' list=types/>
 	</@bsinput>
 </form>
