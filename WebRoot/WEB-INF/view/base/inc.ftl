@@ -62,7 +62,7 @@
 		    paths : {
 		    	jquery		: 'jquery/jquery-1.11.1.min',
 		        bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
-		        qiao		: 'qiao.min'
+		        qiao		: 'qiao'
 		    },
 		    shim : {
 			    bootstrap : {

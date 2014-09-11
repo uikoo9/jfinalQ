@@ -1,7 +1,6 @@
 package com.uikoo9.controller;
 
 import com.uikoo9.QContants;
-import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
 
@@ -32,14 +31,14 @@ public class UcenterMenuController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(new QJson(save(getParaMap(), QContants.SQL_UCENTER_MENU)));
+		renderJson(save(getParaMap(), QContants.SQL_UCENTER_MENU));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(new QJson(del(getPara(QContants.C_IDS), QContants.SQL_UCENTER_MENU)));
+		renderJson(del(getPara(QContants.C_IDS), QContants.SQL_UCENTER_MENU));
 	}
 	
 }
