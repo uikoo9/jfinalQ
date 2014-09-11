@@ -24,6 +24,7 @@ public class QContants {
 	public static final String V_QPAGE		= "qpage";
 	
 	public static final String V_TYPES		= "types";
+	public static final String V_PROS		= "pros";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
@@ -63,6 +64,8 @@ public class QContants {
 	
 	public static final String P_PRO_DETAIL_INDEX	= "/WEB-INF/view/pro-detail-index.ftl";
 	public static final String P_PRO_DETAIL_INPUT	= "/WEB-INF/view/pro-detail-input.ftl";
+	public static final String P_PRO_VERSION_INDEX	= "/WEB-INF/view/pro-version-index.ftl";
+	public static final String P_PRO_VERSION_INPUT	= "/WEB-INF/view/pro-version-input.ftl";
 	
 	public static final String P_MD5		 		= "/WEB-INF/view/md5.ftl";
 	// end-----------------------------------------------------------------------------------------
@@ -74,6 +77,7 @@ public class QContants {
 	public static final String TABLE_UCENTER_USER			= "ucenter_user";
 
 	public static final String TABLE_PRO_DETAIL				= "pro_detail";
+	public static final String TABLE_PRO_VERSION			= "pro_version";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
@@ -82,6 +86,9 @@ public class QContants {
 	public static final String SQL_UCENTER_MENU_ALL		= "select * from ucenter_menu";
 	public static final String SQL_UCENTER_USER_ALL		= "select * from ucenter_user";
 	public static final String SQL_UCENTER_USER_LOGIN	= "select * from ucenter_user where username=? and password=?";
+	
+	public static final String SQL_PRO_DETAIL_ALL		= "select * from pro_detail";
+	public static final String SQL_PRO_VERSION_WITH_PRO	= " (select pv.*,pd.pro_name pname from pro_version pv, pro_detail pd where pv.pro_id=pd.id ) as pdv ";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
