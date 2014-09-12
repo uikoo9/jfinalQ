@@ -8,7 +8,7 @@
 			</#list>
 		</select>
 	</@bsinput>
-	<@bsinput title='版本代号' name='row.ver_code'	 value='${(row.ver_code)!}'/>
+	<@bsinput title='版本代号' name='row.ver_code' value='${(row.ver_code)!}'/>
 	<@bsinput title='版本详情' input=false>
 		<textarea class="form-control" rows="5" style="resize:none;" name='row.ver_desc' placeholder='版本详情'>${(row.ver_desc)!}</textarea>
 	</@bsinput>
