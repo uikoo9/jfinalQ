@@ -1,4 +1,77 @@
 <#include "/WEB-INF/view/base/inc.ftl"/>
+<#-- head -->
+<#macro head title='uikoo9.com' bs=true>
+	<head>
+		<!-- 编码 -->
+		<meta charset="UTF-8" />
+		
+		<!-- ie -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
+		
+		<!-- 缓存关闭 -->
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		
+		<!-- for search-->
+		<meta name="keywords" content="MD5,md5,查询" />
+		<meta name="description" content="MD5在线免费查询" />
+		<meta name="author" contect="uikoo9">
+		<meta name="robots" contect="all">
+		
+		<!-- title -->
+		<title>${title}</title>
+		
+		<!-- favicon.ico -->
+		<link href="${base}/favicon.ico" type="image/x-icon" rel="bookmark"/> 
+		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
+		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
+		
+		<!-- base -->
+		<script type="text/javascript">base = '${base}';baseurl = '${baseurl}';</script>
+
+		<#if bs>
+		<!-- bootstrap -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="${base}/WUI/bootstrap-3.2.0/bootstrap.min.css">
+		<!--[if lt IE 9]>
+		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		</#if>
+		
+		<!-- qmask -->
+		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
+		<#nested>
+	</head>
+</#macro>
+
+<#-- rj -->
+<#macro rj js>
+	<script type="text/javascript" src="${base}/WUI/rj/require.js"></script>
+	<script type="text/javascript">
+		requirejs.config({
+			baseUrl : '${base}/WUI',
+		    paths : {
+		    	jquery		: 'jquery/jquery-1.11.1.min',
+		        bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
+		        qiao		: 'qiao'
+		    },
+		    shim : {
+			    bootstrap : {
+		            deps : ['jquery'],
+		            exports :'bs'
+		        }
+		    }
+		});
+	</script>
+	<#if js?contains('.min')>
+		<script type="text/javascript" src="${base}/WUI/web/js-min/${js}.js"></script>
+	<#else>
+		<script type="text/javascript" src="${base}/WUI/web/js-src/${js}.js"></script>
+	</#if>
+</#macro>
+
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true row=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
