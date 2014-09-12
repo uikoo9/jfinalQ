@@ -6,7 +6,6 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 		        <th>所属项目</th>
 		        <th>版本号</th>
-		        <th>版本详情</th>
 		        <th>创建时间</th>
 		        <th>创建人</th>
 		        <th>操作</th>
@@ -18,7 +17,6 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.pname}</td>
 			        <td>${row.ver_code}</td>
-			        <td>${row.ver_desc}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>
