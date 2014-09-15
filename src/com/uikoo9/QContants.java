@@ -23,8 +23,8 @@ public class QContants {
 	public static final String V_ROW		= "row";
 	public static final String V_QPAGE		= "qpage";
 	
-	public static final String V_TYPES		= "types";
 	public static final String V_PROS		= "pros";
+	public static final String V_PROTYPES	= "protypes";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**

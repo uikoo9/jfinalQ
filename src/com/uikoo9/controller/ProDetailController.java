@@ -24,7 +24,7 @@ public class ProDetailController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.V_TYPES, QContantsUtil.list(QContants.C_PRO_TYPE));
+		setAttr(QContants.V_PROTYPES, QContantsUtil.list(QContants.C_PRO_TYPE));
 		setAttr(QContants.V_ROW, get(getPara(QContants.V_ID), QContants.TABLE_PRO_DETAIL));
 		render(QContants.P_PRO_DETAIL_INPUT);
 	}

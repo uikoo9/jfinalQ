@@ -113,8 +113,11 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<li><a href="#">JavaSE</a></li>
-					<li><a href="#">JavaEE</a></li>
+					<#if protypes??>
+						<#list protypes as item>
+							<li><a href="javascript:void(0);">${item.text}</a></li>
+						</#list>
+					</#if>
 					<li><a href="#">Blogs</a></li>
 					<li><a href="#">About Me</a></li>
 					<#if (session.user)?? && menus??>
