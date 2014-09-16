@@ -115,7 +115,7 @@
 				<ul class="nav navbar-nav">
 					<#if protypes??>
 						<#list protypes as item>
-							<li><a href="javascript:void(0);">${item.text}</a></li>
+							<li><a href="${baseurl}/project/${item.value}">${item.text}</a></li>
 						</#list>
 					</#if>
 					<li><a href="#">Blogs</a></li>

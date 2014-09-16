@@ -43,6 +43,7 @@ public class QContants {
 	public static final String U_BASE			= "/";
 	public static final String U_LOGIN			= "/login";
 	public static final String U_MD5			= "/md5";
+	public static final String U_PROJECT		= "/project";
 	
 	public static final String U_UCENTER_MENU	= "/ucenter/menu";
 	public static final String U_UCENTER_USER	= "/ucenter/user";
