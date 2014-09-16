@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='home'>
+<@bsbody js='home.min'>
 	<!-- 
 	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 		<div class="container">

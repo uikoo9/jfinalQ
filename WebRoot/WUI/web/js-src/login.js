@@ -4,12 +4,8 @@ define(function(require, exports){
 	var qiao = require('qiao');
 	
 	exports.init = function(options){
-		$(function(){
-			qiao.on('.loginbtn', 'click', exports.login);
-			qiao.on('.loginform', 'keydown', function(e){if(e.keyCode == 13) exports.login();});
-			
-			qiao.ajaxinit();
-		});
+		qiao.on('.loginbtn', 'click', exports.login);
+		qiao.on('.loginform', 'keydown', function(e){if(e.keyCode == 13) exports.login();});
 	};
 	
 	exports.login = function(){
