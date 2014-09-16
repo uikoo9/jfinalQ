@@ -55,7 +55,8 @@
 		    paths : {
 		    	jquery		: 'jquery/jquery-1.11.1.min',
 		        bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
-		        qiao		: 'qiao'
+		        qiao		: 'qiao',
+		        login		: 'web/js-src/login'
 		    },
 		    shim : {
 			    bootstrap : {

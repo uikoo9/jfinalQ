@@ -57,6 +57,7 @@ public class QContants {
 	 */
 	public static final String P_HOME				= "/WEB-INF/view/home.ftl";
 	public static final String P_MANAGE		 		= "/WEB-INF/view/manage.ftl";
+	public static final String P_PROJECT	 		= "/WEB-INF/view/project.ftl";
 	
 	public static final String P_UCENTER_MENU_INDEX	= "/WEB-INF/view/ucenter-menu-index.ftl";
 	public static final String P_UCENTER_MENU_INPUT	= "/WEB-INF/view/ucenter-menu-input.ftl";

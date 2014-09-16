@@ -85,6 +85,24 @@
 	</#if>
 </#macro>
 
+<#-- bspro -->
+<#macro bspro rate='0'>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" aria-valuenow="${rate}" aria-valuemin="0" aria-valuemax="100" style="width:${rate}%;">${rate}%</div>
+	</div>
+</#macro>
+
+<#-- bsul -->
+<#macro bsul lis>
+	<#if list??>
+		<ul class="list-group">
+			<#list lis as li>
+				<li class="list-group-item">${li.text}</li>
+			</#list>
+		</ul>
+	</#if>
+</#macro>
+
 <#-- bspanel -->
 <#macro bspanel type='default' title='' id=''>
 	<div class="panel panel-${type}" style="height:100%;">
