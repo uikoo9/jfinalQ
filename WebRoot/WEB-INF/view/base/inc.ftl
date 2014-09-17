@@ -116,8 +116,8 @@
 <#-- bsrow -->
 <#macro bsrow title='title' desc='desc'>
 	<div class="row">
-		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 text-right">${title}：</div>
-		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">${desc}</div>
+		<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">${title}：</div>
+		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9"><#nested></div>
 	</div>
 </#macro>
 
