@@ -14,8 +14,7 @@ public class UcenterUserController extends BaseController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		test(UcenterUserModel.class);
-		setAttr("qpage", list(getParaMap(), "t_ucenter_user"));
+		list(UcenterUserModel.class);
 		render("/WEB-INF/view/ucenter-user-index.ftl");
 	}
 	

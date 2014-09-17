@@ -13,12 +13,28 @@ import com.uikoo9.util.QFileUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.crud.QPage;
+import com.uikoo9.util.crud.QTable;
 import com.uikoo9.util.jfinal.QJfinalUtil;
 
 public class BaseController extends Controller{
 	
-	public void test(Class<? extends Model<?>> modelClass){
-		System.out.println(modelClass);
+	/**
+	 * 分页
+	 * @param modelClass model
+	 */
+	public void list(Class<? extends Model<?>> modelClass){
+		String sql = QJfinalUtil.addWhere(modelClass.getAnnotation(QTable.class).value(), getModel(modelClass));
+
+		QPage qpage = new QPage();
+		Page<Record> page = Db.paginate(getParaToInt("pageNumber"), 10, "select * ", sql);
+		qpage.setList(page.getList());
+		qpage.setTotalPage(page.getTotalPage());
+		qpage.setTotalRow(page.getTotalRow());
+		setAttr("qpage", qpage);
+		
+		if(Boolean.parseBoolean(QFileUtil.CONFIG.getProperty("static"))){
+			setAttr("util", QJfinalUtil.getStaticClass("com.uikoo9.util.contants.QContantsUtil"));
+		}
 	}
 	
 	/**
@@ -99,41 +115,4 @@ public class BaseController extends Controller{
 		}
 	}
 	
-	/**
-	 * 查询分页
-	 * @param paras 参数
-	 * @param tableName 表名
-	 * @return 查询列表
-	 */
-	public QPage list(Map<String, String[]> paras, String tableName){
-		StringBuilder sql = new StringBuilder("from " + tableName);
-		StringBuilder str = new StringBuilder("<strong>");
-		Set<String> keys = paras.keySet();
-		for(String key : keys){
-			String value = QJfinalUtil.value(paras, key);
-			if(key.startsWith("row.") && !"row.id".equals(key) && QStringUtil.notEmpty(value)){
-				sql.append(" and " + key.substring(4) + " like '%" + value + "%'");
-				str.append("，" + key.substring(4) + "（" + value + "）");
-			}
-		}
-		
-		
-		QPage qpage = new QPage();
-		String pageNumber = QJfinalUtil.value(paras, "pageNumber");
-		qpage.setPageNumber(QStringUtil.isEmpty(pageNumber) ? 1 : Integer.parseInt(pageNumber));
-		qpage.setPageSize(10);
-		
-		Page<Record> page = Db.paginate(qpage.getPageNumber(), qpage.getPageSize(), "select * ", sql.toString().replaceFirst("and", "where"));
-		qpage.setList(page.getList());
-		qpage.setTotalPage(page.getTotalPage());
-		qpage.setTotalRow(page.getTotalRow());
-		str.append("，共查询到" + qpage.getTotalRow() + "条记录。</strong>");
-		qpage.setStr(str.toString().replaceFirst("，", ""));
-		
-		if(Boolean.parseBoolean(QFileUtil.CONFIG.getProperty("static"))){
-			setAttr("util", QJfinalUtil.getStaticClass("com.uikoo9.util.contants.QContantsUtil"));
-		}
-		
-		return qpage;
-	}
 }
