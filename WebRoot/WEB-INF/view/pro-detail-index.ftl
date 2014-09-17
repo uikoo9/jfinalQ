@@ -19,8 +19,8 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${util.get(row.pro_type)}</td>
 			        <td>${row.pro_name}</td>
-			        <td>${row.pro_url}</td>
-			        <td>${row.pro_src}</td>
+			        <td>${(row.pro_url)!}</td>
+			        <td>${(row.pro_src)!}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>

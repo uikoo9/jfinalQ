@@ -2,7 +2,6 @@ package com.uikoo9.controller;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.model.ProVersionModel;
-import com.uikoo9.model.UcenterUserModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -17,7 +16,7 @@ public class ProVersionController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-//		setAttr("qpage", list(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
+		setAttr("qpage", list(ProVersionModel.class, " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
 		render("/WEB-INF/view/pro-version-index.ftl");
 	}
 	

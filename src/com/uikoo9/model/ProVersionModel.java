@@ -13,4 +13,7 @@ public class ProVersionModel extends Model<ProVersionModel>{
 	
 	public static final ProVersionModel dao = new ProVersionModel();
 	
+	public ProDetailModel getDetailModel(){
+		return ProDetailModel.dao.findById(get("pro_id"));
+	}
 }
