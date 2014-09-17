@@ -75,22 +75,22 @@ public class QContants {
 	/**
 	 * table name
 	 */
-	public static final String TABLE_UCENTER_MENU			= "ucenter_menu";
-	public static final String TABLE_UCENTER_USER			= "ucenter_user";
+	public static final String TABLE_UCENTER_MENU			= "t_ucenter_menu";
+	public static final String TABLE_UCENTER_USER			= "t_ucenter_user";
 
-	public static final String TABLE_PRO_DETAIL				= "pro_detail";
-	public static final String TABLE_PRO_VERSION			= "pro_version";
+	public static final String TABLE_PRO_DETAIL				= "t_pro_detail";
+	public static final String TABLE_PRO_VERSION			= "t_pro_version";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
 	 * sql语句
 	 */
-	public static final String SQL_UCENTER_MENU_ALL		= "select * from ucenter_menu";
-	public static final String SQL_UCENTER_USER_ALL		= "select * from ucenter_user";
-	public static final String SQL_UCENTER_USER_LOGIN	= "select * from ucenter_user where username=? and password=?";
+	public static final String SQL_UCENTER_MENU_ALL		= "select * from t_ucenter_menu";
+	public static final String SQL_UCENTER_USER_ALL		= "select * from t_ucenter_user";
+	public static final String SQL_UCENTER_USER_LOGIN	= "select * from t_ucenter_user where username=? and password=?";
 	
-	public static final String SQL_PRO_DETAIL_ALL		= "select * from pro_detail";
-	public static final String SQL_PRO_VERSION_WITH_PRO	= " (select pv.*,pd.pro_name pname from pro_version pv, pro_detail pd where pv.pro_id=pd.id ) as pdv ";
+	public static final String SQL_PRO_DETAIL_ALL		= "select * from t_pro_detail";
+	public static final String SQL_PRO_VERSION_WITH_PRO	= " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv ";
 	// end-----------------------------------------------------------------------------------------
 	
 	/**
