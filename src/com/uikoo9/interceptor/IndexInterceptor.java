@@ -13,7 +13,7 @@ public class IndexInterceptor implements Interceptor{
 		Controller controller = ai.getController();
 		
 		// protypes
-		controller.setAttr(QContants.V_PROTYPES, QContantsUtil.list(QContants.C_PRO_TYPE));
+		controller.setAttr("protypes", QContantsUtil.list(QContants.C_PRO_TYPE));
 		
 		ai.invoke();
 	}

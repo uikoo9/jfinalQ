@@ -1,44 +1,43 @@
 package com.uikoo9.controller;
 
-import com.uikoo9.QContants;
-import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
  * 用户中心-用户controller
  * @author uikoo9
  */
-@QActionMap(QContants.U_UCENTER_USER)
+@QControllerUrl("/ucenter/user")
 public class UcenterUserController extends QController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr(QContants.V_QPAGE, list(getParaMap(), QContants.TABLE_UCENTER_USER));
-		render(QContants.P_UCENTER_USER_INDEX);
+		setAttr("qpage", list(getParaMap(), "t_ucenter_user"));
+		render("/WEB-INF/view/ucenter-user-index.ftl");
 	}
 	
 	/**
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.V_ROW, get(getPara(QContants.V_ID), QContants.TABLE_UCENTER_USER));
-		render(QContants.P_UCENTER_USER_INPUT);
+		setAttr("row", get(getPara("id"), "t_ucenter_user"));
+		render("/WEB-INF/view/ucenter-user-input.ftl");
 	}
 	
 	/**
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(getParaMap(), QContants.TABLE_UCENTER_USER));
+		renderJson(save(getParaMap(), "t_ucenter_user"));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara(QContants.V_IDS), QContants.TABLE_UCENTER_USER));
+		renderJson(del(getPara("id"), "t_ucenter_user"));
 	}
 	
 }

@@ -2,7 +2,6 @@ package com.uikoo9.service.impl;
 
 import org.springframework.stereotype.Service;
 
-import com.uikoo9.QContants;
 import com.uikoo9.service.Md5ServiceI;
 import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.QStringUtil;
@@ -19,11 +18,11 @@ public class Md5ServiceImpl implements Md5ServiceI{
 				return QEncodeUtil.md5Encrypt(code);
 			} catch (Exception e) {
 				e.printStackTrace();
-				return QContants.T_MD5_FAIL;
+				return "md5 encode fail！";
 			}
 		}
 		
-		return QContants.T_MD5_REQ;
+		return "please enter sth.";
 	}
 	
 }

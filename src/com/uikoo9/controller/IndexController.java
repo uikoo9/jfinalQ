@@ -2,39 +2,38 @@ package com.uikoo9.controller;
 
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.Db;
-import com.uikoo9.QContants;
 import com.uikoo9.interceptor.IndexInterceptor;
-import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
  * 用户中心-首页controller
  * @author uikoo9
  */
-@QActionMap(QContants.U_BASE)
+
+@QControllerUrl("/")
 @Before(IndexInterceptor.class)
 public class IndexController extends QController{
-	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render(QContants.P_HOME);
+		render("/WEB-INF/view/home.ftl");
 	}
 	
 	/**
 	 * 未登录跳转
 	 */
 	public void home(){
-		render(QContants.P_HOME);
+		render("/WEB-INF/view/home.ftl");
 	}
 	
 	/**
 	 * 跳转到后台管理页面
 	 */
 	public void manage(){
-		setAttr(QContants.V_MENUS, Db.find(QContants.SQL_UCENTER_MENU_ALL));
-		render(QContants.P_MANAGE);
+		setAttr("menus", Db.find("select * from t_ucenter_menu"));
+		render("/WEB-INF/view/manage.ftl");
 	}
 	
 }

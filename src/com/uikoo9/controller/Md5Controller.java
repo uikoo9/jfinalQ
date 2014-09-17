@@ -1,17 +1,16 @@
 package com.uikoo9.controller;
 
 import com.jfinal.plugin.spring.Inject;
-import com.uikoo9.QContants;
 import com.uikoo9.service.Md5ServiceI;
 import com.uikoo9.util.crud.QJson;
-import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
  * project md5 controller
  * @author uikoo9
  */
-@QActionMap(QContants.U_MD5)
+@QControllerUrl("/md5")
 public class Md5Controller extends QController{
 	
 	@Inject.BY_TYPE
@@ -21,7 +20,7 @@ public class Md5Controller extends QController{
 	 * 跳转到md5首页
 	 */
 	public void index(){
-		render(QContants.P_MD5);
+		render("/WEB-INF/view/md5.ftl");
 	}
 	
 	/**
@@ -29,7 +28,7 @@ public class Md5Controller extends QController{
 	 * @throws InterruptedException 
 	 */
 	public void encode(){
-		renderJson(new QJson(md5Service.encode(getPara(QContants.V_CODE))));
+		renderJson(new QJson(md5Service.encode(getPara("code"))));
 	}
 	
 }

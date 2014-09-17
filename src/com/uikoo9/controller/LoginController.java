@@ -1,17 +1,17 @@
 package com.uikoo9.controller;
 
 import com.jfinal.plugin.spring.Inject;
-import com.uikoo9.QContants;
 import com.uikoo9.service.LoginServiceI;
 import com.uikoo9.util.crud.QJson;
-import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.jfinal.QJfinalUtil;
 
 /**
  * 用户中心-登录controller
  * @author uikoo9
  */
-@QActionMap(QContants.U_LOGIN)
+@QControllerUrl("/login")
 public class LoginController extends QController{
 	
 	@Inject.BY_TYPE
@@ -21,7 +21,7 @@ public class LoginController extends QController{
 	 * 跳转到md5首页
 	 */
 	public void login(){
-		setAttr(QContants.V_USERNAME, getPara(QContants.V_USERNAME));
+		setAttr("username", getPara("username"));
 		renderJson(new QJson(loginService.login(getParaMap(), getSession(true))));
 	}
 	
@@ -29,8 +29,8 @@ public class LoginController extends QController{
 	 * 退出登录
 	 */
 	public void logout(){
-		removeSessionAttr(QContants.V_USER);
-		redirect(QContants.url(QContants.U_BASE));
+		removeSessionAttr("user");
+		redirect(QJfinalUtil.url("/"));
 	}
 	
 }

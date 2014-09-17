@@ -1,46 +1,45 @@
 package com.uikoo9.controller;
 
 import com.jfinal.plugin.activerecord.Db;
-import com.uikoo9.QContants;
-import com.uikoo9.util.jfinal.QActionMap;
 import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
  * 项目明细controller
  * @author uikoo9
  */
-@QActionMap(QContants.U_PRO_VERSION)
+@QControllerUrl("/pro/version")
 public class ProVersionController extends QController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr(QContants.V_QPAGE, list(getParaMap(), QContants.SQL_PRO_VERSION_WITH_PRO));
-		render(QContants.P_PRO_VERSION_INDEX);
+		setAttr("qpage", list(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
+		render("/WEB-INF/view/pro-version-index.ftl");
 	}
 	
 	/**
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr(QContants.V_PROS, Db.find(QContants.SQL_PRO_DETAIL_ALL));
-		setAttr(QContants.V_ROW, get(getPara(QContants.V_ID), QContants.TABLE_PRO_VERSION));
-		render(QContants.P_PRO_VERSION_INPUT);
+		setAttr("pros", Db.find("select * from t_pro_detail"));
+		setAttr("row", get(getPara("id"), "t_pro_version"));
+		render("/WEB-INF/view/pro-version-input.ftl");
 	}
 	
 	/**
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(getParaMap(), QContants.TABLE_PRO_VERSION));
+		renderJson(save(getParaMap(), "t_pro_version"));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara(QContants.V_IDS), QContants.TABLE_PRO_VERSION));
+		renderJson(del(getPara("id"), "t_pro_version"));
 	}
 	
 }
