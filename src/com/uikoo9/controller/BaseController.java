@@ -23,7 +23,7 @@ public class BaseController extends Controller{
 	 * @param modelClass model
 	 */
 	public void list(Class<? extends Model<?>> modelClass){
-		String sql = QJfinalUtil.addWhere(modelClass.getAnnotation(QTable.class).value(), getModel(modelClass));
+		String sql = QJfinalUtil.addWhere(modelClass.getAnnotation(QTable.class).value(), getModel(modelClass, "row"));
 
 		QPage qpage = new QPage();
 		Page<Record> page = Db.paginate(getParaToInt("pageNumber"), 10, "select * ", sql);
