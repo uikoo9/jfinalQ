@@ -9,8 +9,8 @@ import com.uikoo9.util.crud.QTable;
  */
 @QTable("t_pro_version")
 @SuppressWarnings("serial")
-public class ProVersion extends Model<ProVersion>{
+public class ProVersionModel extends Model<ProVersionModel>{
 	
-	public static final ProVersion dao = new ProVersion();
+	public static final ProVersionModel dao = new ProVersionModel();
 	
 }

@@ -1,6 +1,6 @@
 package com.uikoo9.controller;
 
-import com.uikoo9.util.jfinal.QController;
+import com.uikoo9.model.UcenterUserModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
@@ -8,12 +8,13 @@ import com.uikoo9.util.jfinal.QControllerUrl;
  * @author uikoo9
  */
 @QControllerUrl("/ucenter/user")
-public class UcenterUserController extends QController{
+public class UcenterUserController extends BaseController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
+		test(UcenterUserModel.class);
 		setAttr("qpage", list(getParaMap(), "t_ucenter_user"));
 		render("/WEB-INF/view/ucenter-user-index.ftl");
 	}

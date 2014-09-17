@@ -9,8 +9,8 @@ import com.uikoo9.util.crud.QTable;
  */
 @QTable("t_ucenter_user")
 @SuppressWarnings("serial")
-public class UcenterUser extends Model<UcenterUser>{
+public class UcenterUserModel extends Model<UcenterUserModel>{
 
-	public static final UcenterUser dao = new UcenterUser();
+	public static final UcenterUserModel dao = new UcenterUserModel();
 	
 }

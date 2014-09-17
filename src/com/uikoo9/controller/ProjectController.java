@@ -3,7 +3,7 @@ package com.uikoo9.controller;
 import com.jfinal.aop.Before;
 import com.uikoo9.QContants;
 import com.uikoo9.interceptor.IndexInterceptor;
-import com.uikoo9.model.ProDetail;
+import com.uikoo9.model.ProDetailModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -16,7 +16,7 @@ public class ProjectController extends QController{
 	public void index(){
 		String type = getPara(0);
 		if(QStringUtil.isIn(type, QContants.C_PRO_TYPE)){
-			setAttr("details", ProDetail.dao.find("select * from t_pro_detail where pro_type=?", type));
+			setAttr("details", ProDetailModel.dao.find("select * from t_pro_detail where pro_type=?", type));
 			render("/WEB-INF/view/project.ftl");
 		}else{
 			redirect(QJfinalUtil.url("/"));
