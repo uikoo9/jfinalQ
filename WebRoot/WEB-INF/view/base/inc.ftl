@@ -270,7 +270,7 @@ like this:
 				<@bsbutton class='relBtn' icon='repeat'>重置</@bsbutton>
 			</p>
 		</#if>
-		<p>${(qpage.str)!}</p>
+		<p><strong>${(qpage.str)!}</strong></p>
 		<#nested>
 		<@bspage page=qpage/>
 	</@bspanel>

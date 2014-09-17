@@ -1,6 +1,8 @@
 package com.uikoo9.controller;
 
 import com.jfinal.plugin.activerecord.Db;
+import com.uikoo9.model.ProVersionModel;
+import com.uikoo9.model.UcenterUserModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -15,7 +17,7 @@ public class ProVersionController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", list(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
+//		setAttr("qpage", list(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
 		render("/WEB-INF/view/pro-version-index.ftl");
 	}
 	
@@ -24,7 +26,8 @@ public class ProVersionController extends QController{
 	 */
 	public void savep(){
 		setAttr("pros", Db.find("select * from t_pro_detail"));
-		setAttr("row", get(getPara("id"), "t_pro_version"));
+		setAttr("row", getRow(ProVersionModel.class));
+		
 		render("/WEB-INF/view/pro-version-input.ftl");
 	}
 	
@@ -32,14 +35,14 @@ public class ProVersionController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(getParaMap(), "t_pro_version"));
+		renderJson(save(ProVersionModel.class));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara("id"), "t_pro_version"));
+		renderJson(del(ProVersionModel.class));
 	}
 	
 }

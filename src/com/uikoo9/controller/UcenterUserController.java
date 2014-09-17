@@ -1,6 +1,7 @@
 package com.uikoo9.controller;
 
 import com.uikoo9.model.UcenterUserModel;
+import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
 /**
@@ -8,13 +9,13 @@ import com.uikoo9.util.jfinal.QControllerUrl;
  * @author uikoo9
  */
 @QControllerUrl("/ucenter/user")
-public class UcenterUserController extends BaseController{
+public class UcenterUserController extends QController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		list(UcenterUserModel.class);
+		setAttr("qpage", list(UcenterUserModel.class));
 		render("/WEB-INF/view/ucenter-user-index.ftl");
 	}
 	
@@ -22,7 +23,7 @@ public class UcenterUserController extends BaseController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr("row", get(getPara("id"), "t_ucenter_user"));
+		setAttr("row", getRow(UcenterUserModel.class));
 		render("/WEB-INF/view/ucenter-user-input.ftl");
 	}
 	
@@ -30,14 +31,14 @@ public class UcenterUserController extends BaseController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(getParaMap(), "t_ucenter_user"));
+		renderJson(save(UcenterUserModel.class));
 	}
 	
 	/**
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(getPara("id"), "t_ucenter_user"));
+		renderJson(del(UcenterUserModel.class));
 	}
 	
 }
