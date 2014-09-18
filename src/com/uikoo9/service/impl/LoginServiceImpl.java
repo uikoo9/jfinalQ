@@ -24,7 +24,7 @@ public class LoginServiceImpl implements LoginServiceI{
 		String password = QJfinalUtil.value(paras, "password");
 		
 		if(QStringUtil.allNotEmpty(new String[]{username,password})){
-			List<Record> users = Db.find("select * from t_ucenter_user where username=? and password=?", username, password);
+			List<Record> users = Db.find("select * from t_ucenter_user where user_name=? and user_key=?", username, password);
 			if(users != null && users.size() == 1){
 				session.setAttribute("user", users.get(0));
 				return "suc";

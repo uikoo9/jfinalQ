@@ -126,7 +126,7 @@
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">后台管理<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<#list menus as menu>
-									<li role="presentation" style="padding:10px;" class="menus" data="url:${menu.url};"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="javascript:void(0);">${menu.text}</a></li>
+									<li role="presentation" style="padding:10px;" class="menus" data="url:${menu.menu_url};"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="javascript:void(0);">${menu.menu_text}</a></li>
 								</#list>
 							</ul>
 						</li>

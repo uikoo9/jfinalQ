@@ -11,7 +11,7 @@
 	<#if menus != ''>
 		<div class="list-group">
 			<#list menus as menu>
-				<a href="javascript:void(0);" class="list-group-item menus" data="url:${menu.url};">${menu.text}</a>
+				<a href="javascript:void(0);" class="list-group-item menus" data="url:${menu.menu_url};">${menu.menu_text}</a>
 			</#list>
 		</div>
 	</#if>

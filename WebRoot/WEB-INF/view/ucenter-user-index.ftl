@@ -15,8 +15,8 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
-			        <td>${row.username}</td>
-			        <td>${row.password}</td>
+			        <td>${row.user_name}</td>
+			        <td>${row.user_key}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>
