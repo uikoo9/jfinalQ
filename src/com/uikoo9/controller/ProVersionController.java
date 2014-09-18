@@ -16,7 +16,7 @@ public class ProVersionController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", list(ProVersionModel.class, " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv "));
+		setAttr("qpage", listBySql(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_id=pd.id ) as pdv ", "pdv"));
 		render("/WEB-INF/view/pro-version-index.ftl");
 	}
 	
