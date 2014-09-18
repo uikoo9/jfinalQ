@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody row=false js='project'>
+<@bsbody row=false js='project.min'>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-2 col-md-3 col-lg-3">
