@@ -1,5 +1,7 @@
 package com.uikoo9.manage.ucenter.model;
 
+import java.util.List;
+
 import com.jfinal.plugin.activerecord.Model;
 import com.uikoo9.util.crud.QTable;
 
@@ -13,4 +15,11 @@ public class UcenterMenuModel extends Model<UcenterMenuModel>{
 	
 	public static final UcenterMenuModel dao = new UcenterMenuModel();
 	
+	/**
+	 * find all
+	 * @return
+	 */
+	public List<UcenterMenuModel> findAll(){
+		return dao.find("select * from t_ucenter_menu order by id desc");
+	}
 }

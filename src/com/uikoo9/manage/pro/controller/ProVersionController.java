@@ -1,9 +1,10 @@
 package com.uikoo9.manage.pro.controller;
 
-import com.jfinal.plugin.activerecord.Db;
+import com.jfinal.aop.Before;
 import com.uikoo9.manage.pro.model.ProVersionModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.z.interceptor.ProDetailsInterceptor;
 
 /**
  * 项目明细controller
@@ -23,10 +24,9 @@ public class ProVersionController extends QController{
 	/**
 	 * 跳转到保存修改页 
 	 */
+	@Before(ProDetailsInterceptor.class)
 	public void savep(){
-		setAttr("pros", Db.find("select * from t_pro_detail"));
 		setAttr("row", getRow(ProVersionModel.class));
-		
 		render("/WEB-INF/view/pro-version-input.ftl");
 	}
 	

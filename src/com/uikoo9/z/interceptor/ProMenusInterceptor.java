@@ -5,23 +5,20 @@ import java.util.List;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
-import com.jfinal.core.Controller;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.z.QContants;
 import com.uikoo9.z.dto.ProMenuDTO;
 
 /**
- * 拦截器，添加项目菜单
+ * 注入项目菜单
  * @author uikoo9
  */
 public class ProMenusInterceptor implements Interceptor{
 
 	@Override
 	public void intercept(ActionInvocation ai) {
-		Controller controller = ai.getController();
-		controller.setAttr("promenus", findProMenuDTO());
-		
+		ai.getController().setAttr("proMenus", findProMenuDTO());
 		ai.invoke();
 	}
 	private List<ProMenuDTO> findProMenuDTO(){

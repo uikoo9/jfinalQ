@@ -1,9 +1,10 @@
 package com.uikoo9.common.controller;
 
 import com.jfinal.aop.Before;
-import com.jfinal.plugin.activerecord.Db;
+import com.uikoo9.manage.ucenter.model.UcenterMenuModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.z.interceptor.ProDetailsInterceptor;
 import com.uikoo9.z.interceptor.ProMenusInterceptor;
 
 /**
@@ -24,7 +25,7 @@ public class IndexController extends QController{
 	/**
 	 * 未登录跳转
 	 */
-	@Before(ProMenusInterceptor.class)
+	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void home(){
 		render("/WEB-INF/view/home.ftl");
 	}
@@ -33,7 +34,7 @@ public class IndexController extends QController{
 	 * 跳转到后台管理页面
 	 */
 	public void manage(){
-		setAttr("menus", Db.find("select * from t_ucenter_menu"));
+		setAttr("menus", UcenterMenuModel.dao.findAll());
 		render("/WEB-INF/view/manage.ftl");
 	}
 	

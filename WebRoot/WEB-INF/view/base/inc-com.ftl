@@ -119,7 +119,7 @@
 							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_text}</a></li>
 						</#list>
 					<#else>
-						<#list promenus?if_exists as item>
+						<#list proMenus?if_exists as item>
 							<#if item.pros?? && item.pros?size gt 0>
 								<li class="dropdown">
 									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
