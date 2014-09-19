@@ -1,4 +1,4 @@
-package com.uikoo9.common.dto;
+package com.uikoo9.z.dto;
 
 import java.util.List;
 

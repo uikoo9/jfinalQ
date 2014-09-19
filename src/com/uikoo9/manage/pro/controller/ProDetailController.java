@@ -1,10 +1,10 @@
 package com.uikoo9.manage.pro.controller;
 
-import com.uikoo9.QContants;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.z.QContants;
 
 /**
  * 项目明细controller

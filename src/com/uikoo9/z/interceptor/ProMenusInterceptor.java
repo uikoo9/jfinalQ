@@ -1,4 +1,4 @@
-package com.uikoo9.common.interceptor;
+package com.uikoo9.z.interceptor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,18 +6,20 @@ import java.util.List;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
-import com.uikoo9.QContants;
-import com.uikoo9.common.dto.ProMenuDTO;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
+import com.uikoo9.z.QContants;
+import com.uikoo9.z.dto.ProMenuDTO;
 
-public class IndexInterceptor implements Interceptor{
+/**
+ * 拦截器，添加项目菜单
+ * @author uikoo9
+ */
+public class ProMenusInterceptor implements Interceptor{
 
 	@Override
 	public void intercept(ActionInvocation ai) {
 		Controller controller = ai.getController();
-		
-		// protypes
 		controller.setAttr("promenus", findProMenuDTO());
 		
 		ai.invoke();
