@@ -16,7 +16,7 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	public static final ProDetailModel dao = new ProDetailModel();
 	
 	public List<ProVersionModel> versions(){
-		return ProVersionModel.dao.find("select * from t_pro_version where pro_detail_id=?", get("id"));
+		return ProVersionModel.dao.find("select * from t_pro_version where pro_detail_id=? order by id desc", get("id"));
 	}
 	
 }
