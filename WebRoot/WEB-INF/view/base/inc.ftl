@@ -51,7 +51,7 @@
 <#-- bsnail -->
 <#macro bsnail src='' alt='' title='' desc=''>
 	<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="text-align:center;">
-		<div class="thumbnail" style="height:190px;">
+		<div class="thumbnail">
 			<#if src != ''>
 				<img src="${src}" alt="${alt}">
 			</#if>

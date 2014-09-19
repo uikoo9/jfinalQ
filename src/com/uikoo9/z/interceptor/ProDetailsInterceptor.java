@@ -12,7 +12,7 @@ public class ProDetailsInterceptor implements Interceptor{
 	
 	@Override
 	public void intercept(ActionInvocation ai) {
-		ai.getController().setAttr("prosDetails", ProDetailModel.dao.findAll());
+		ai.getController().setAttr("proDetails", ProDetailModel.dao.findAll("order by id"));
 		ai.invoke();
 	}
 	

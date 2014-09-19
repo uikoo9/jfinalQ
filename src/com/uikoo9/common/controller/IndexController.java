@@ -17,7 +17,7 @@ public class IndexController extends QController{
 	/**
 	 * 跳转到首页 
 	 */
-	@Before(ProMenusInterceptor.class)
+	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void index(){
 		render("/WEB-INF/view/home.ftl");
 	}
