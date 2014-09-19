@@ -33,7 +33,7 @@
 		<#if bs>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<link rel="stylesheet" href="${base}/WUI/bootstrap-3.2.0/bootstrap.min.css">
+		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 		<!--[if lt IE 9]>
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -53,8 +53,8 @@
 		requirejs.config({
 			baseUrl : '${base}/WUI',
 		    paths : {
-		    	jquery		: 'jquery/jquery-1.11.1.min',
-		        bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
+		    	jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
+		        bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
 		        qiao		: 'qiao',
 		        login		: 'web/js-src/login'
 		    },
@@ -170,3 +170,14 @@
 		</div>
 	</div>
 </#macro>
+
+<#-- 
+本地js
+<link rel="stylesheet" href="${base}/WUI/bootstrap-3.2.0/bootstrap.min.css">
+jquery		: 'jquery/jquery-1.11.1.min',
+bootstrap 	: 'bootstrap-3.2.0/bootstrap.min',
+cdn js
+<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
+bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
+-->
