@@ -114,31 +114,27 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<#list promenus?if_exists as item>
-						<#if item.pros?? && item.pros?size gt 0>
-							<li class="dropdown">
-								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<#list item.pros?if_exists as pro>
-										<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/project/${pro.id}">${pro.pro_name}</a></li>
-									</#list>
-								</ul>
-							</li>
-						<#else>
-							<li><a href="javascript:void(0);">${item.text}</a></li>
-						</#if>
-					</#list>
-					<li><a href="#">Blogs</a></li>
-					<li><a href="#">About Me</a></li>
 					<#if (session.user)?? && menus??>
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">后台管理<span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<#list menus as menu>
-									<li role="presentation" style="padding:10px;" class="menus" data="url:${menu.menu_url};"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="javascript:void(0);">${menu.menu_text}</a></li>
-								</#list>
-							</ul>
-						</li>
+						<#list menus as menu>
+							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_text}</a></li>
+						</#list>
+					<#else>
+						<#list promenus?if_exists as item>
+							<#if item.pros?? && item.pros?size gt 0>
+								<li class="dropdown">
+									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
+									<ul class="dropdown-menu" role="menu">
+										<#list item.pros?if_exists as pro>
+											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/project/${pro.id}">${pro.pro_name}</a></li>
+										</#list>
+									</ul>
+								</li>
+							<#else>
+								<li><a href="javascript:void(0);">${item.text}</a></li>
+							</#if>
+						</#list>
+						<li><a href="#">Blogs</a></li>
+						<li><a href="#">About Me</a></li>
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
