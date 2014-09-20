@@ -16,7 +16,7 @@ public class UcenterUserController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", list(UcenterUserModel.class));
-		render("/WEB-INF/view/ucenter-user-index.ftl");
+		render("/WEB-INF/view/manage/ucenter/ucenter-user-index.ftl");
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class UcenterUserController extends QController{
 	 */
 	public void savep(){
 		setAttr("row", getRow(UcenterUserModel.class));
-		render("/WEB-INF/view/ucenter-user-input.ftl");
+		render("/WEB-INF/view/manage/ucenter/ucenter-user-input.ftl");
 	}
 	
 	/**

@@ -19,7 +19,7 @@ public class IndexController extends QController{
 	 */
 	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void index(){
-		render("/WEB-INF/view/home.ftl");
+		render("/WEB-INF/view/fore/home.ftl");
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class IndexController extends QController{
 	 */
 	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void home(){
-		render("/WEB-INF/view/home.ftl");
+		render("/WEB-INF/view/fore/home.ftl");
 	}
 	
 	/**
@@ -35,7 +35,7 @@ public class IndexController extends QController{
 	 */
 	public void manage(){
 		setAttr("menus", UcenterMenuModel.dao.findAll());
-		render("/WEB-INF/view/manage.ftl");
+		render("/WEB-INF/view/manage/manage.ftl");
 	}
 	
 }

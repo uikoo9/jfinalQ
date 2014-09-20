@@ -18,7 +18,7 @@ public class ProDetailController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", list(ProDetailModel.class));
-		render("/WEB-INF/view/pro-detail-index.ftl");
+		render("/WEB-INF/view/manage/pro/pro-detail-index.ftl");
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public class ProDetailController extends QController{
 		setAttr("protypes", QContantsUtil.list(QContants.C_PRO_TYPE));
 		setAttr("row", getRow(ProDetailModel.class));
 		
-		render("/WEB-INF/view/pro-detail-input.ftl");
+		render("/WEB-INF/view/manage/pro/pro-detail-input.ftl");
 	}
 	
 	/**

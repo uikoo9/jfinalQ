@@ -17,7 +17,7 @@ public class ProjectController extends QController{
 			ProDetailModel detail = ProDetailModel.dao.findById(id); 
 			if(detail != null){
 				setAttr("detail", detail);	
-				render("/WEB-INF/view/project.ftl");
+				render("/WEB-INF/view/fore/project.ftl");
 				return;
 			}
 		}

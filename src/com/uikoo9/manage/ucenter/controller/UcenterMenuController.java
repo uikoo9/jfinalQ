@@ -16,7 +16,7 @@ public class UcenterMenuController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", list(UcenterMenuModel.class));
-		render("/WEB-INF/view/ucenter-menu-index.ftl");
+		render("/WEB-INF/view/manage/ucenter/ucenter-menu-index.ftl");
 	}
 	
 	/**
@@ -24,7 +24,7 @@ public class UcenterMenuController extends QController{
 	 */
 	public void savep(){
 		setAttr("row", getRow(UcenterMenuModel.class));
-		render("/WEB-INF/view/ucenter-menu-input.ftl");
+		render("/WEB-INF/view/manage/ucenter/ucenter-menu-input.ftl");
 	}
 	
 	/**

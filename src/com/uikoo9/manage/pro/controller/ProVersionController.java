@@ -18,7 +18,7 @@ public class ProVersionController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", listBySql(getParaMap(), " (select pv.*,pd.pro_name pname from t_pro_version pv, t_pro_detail pd where pv.pro_detail_id=pd.id ) as pdv ", "pdv"));
-		render("/WEB-INF/view/pro-version-index.ftl");
+		render("/WEB-INF/view/manage/pro/pro-version-index.ftl");
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class ProVersionController extends QController{
 	@Before(ProDetailsInterceptor.class)
 	public void savep(){
 		setAttr("row", getRow(ProVersionModel.class));
-		render("/WEB-INF/view/pro-version-input.ftl");
+		render("/WEB-INF/view/manage/pro/pro-version-input.ftl");
 	}
 	
 	/**
