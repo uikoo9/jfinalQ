@@ -4,6 +4,7 @@
 		<thead>
 		    <tr>
 		        <th><input type="checkbox" class="allcheck"/></th>
+		        <th>项目序号</th>
 		        <th>项目类型</th>
 		        <th>项目名称</th>
 		        <th>项目地址</th>
@@ -17,6 +18,7 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
+			        <td>${row.pro_sn}</td>
 			        <td>${util.get(row.pro_type)}</td>
 			        <td>${row.pro_name}</td>
 			        <td>${(row.pro_url)!}</td>

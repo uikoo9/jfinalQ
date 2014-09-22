@@ -4,6 +4,7 @@
 		<thead>
 		    <tr>
 		        <th><input type="checkbox" class="allcheck"/></th>
+		        <th>菜单序号</th>
 		        <th>菜单名称</th>
 		        <th>菜单地址</th>
 		        <th>创建时间</th>
@@ -15,6 +16,7 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
+			        <td>${row.menu_sn}</td>
 			        <td>${row.menu_text}</td>
 			        <td>${row.menu_url}</td>
 			        <td>${row.cdate}</td>

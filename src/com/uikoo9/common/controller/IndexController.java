@@ -34,7 +34,7 @@ public class IndexController extends QController{
 	 * 跳转到后台管理页面
 	 */
 	public void manage(){
-		setAttr("menus", UcenterMenuModel.dao.findAll());
+		setAttr("menus", UcenterMenuModel.dao.findAll("order by menu_sn"));
 		render("/WEB-INF/view/manage/manage.ftl");
 	}
 	
