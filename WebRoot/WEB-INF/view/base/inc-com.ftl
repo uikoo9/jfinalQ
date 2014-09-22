@@ -42,6 +42,9 @@
 		
 		<!-- qmask -->
 		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
+		
+		<!-- baidutongji -->
+		<style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
 		<#nested>
 	</head>
 </#macro>
