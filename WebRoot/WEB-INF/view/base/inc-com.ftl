@@ -71,6 +71,10 @@
 	<#else>
 		<script type="text/javascript" src="${base}/WUI/web/js-src/${js}.js"></script>
 	</#if>
+	<script type="text/javascript">
+		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7117ec605df94953bcc641e344d24b95' type='text/javascript'%3E%3C/script%3E"));
+	</script>
 </#macro>
 
 <#-- bsbody -->
