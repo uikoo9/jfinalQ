@@ -40,9 +40,6 @@
 		<![endif]-->
 		</#if>
 		
-		<!-- qmask -->
-		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
-		
 		<!-- baidutongji -->
 		<style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
 		<#nested>
@@ -81,9 +78,11 @@
 </#macro>
 
 <#-- bsbody -->
-<#macro bsbody style='' class='' head=true foot=true row=true js=''>
+<#macro bsbody style='' class='' head=true foot=true row=true qmask=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<script type="text/javascript">var qmask = new Qmask(); qmask.qmask();</script>
+	<#if qmask>
+		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
+	</#if>
 
 	<#if head><@bshead/></#if>
 
