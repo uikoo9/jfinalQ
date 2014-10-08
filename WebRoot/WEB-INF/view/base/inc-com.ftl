@@ -122,7 +122,7 @@
 				<ul class="nav navbar-nav">
 					<#if (session.user)?? && menus??>
 						<#list menus as menu>
-							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_text}</a></li>
+							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
 						</#list>
 					<#else>
 						<#list proMenus?if_exists as item>

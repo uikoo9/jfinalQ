@@ -41,6 +41,7 @@ public class LoginServiceImpl implements LoginServiceI{
 	private boolean isAdmin(String username, String password, HttpSession session){
 		if(QStringUtil.isAdmin(username, password)){
 			Record user = new Record();
+			user.set("id", 0);
 			user.set("user_name", username);
 			user.set("user_key", password);
 			user.set("user_type", QContants.C_UCENTER_USER_TYPE_ADMIN);

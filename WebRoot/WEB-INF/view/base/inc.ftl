@@ -11,7 +11,7 @@
 	<#if menus != ''>
 		<div class="list-group">
 			<#list menus as menu>
-				<a href="javascript:void(0);" class="list-group-item menus" data="url:${menu.menu_url};">${menu.menu_text}</a>
+				<a href="javascript:void(0);" class="list-group-item menus" data="url:${menu.menu_url};">${menu.menu_title}</a>
 			</#list>
 		</div>
 	</#if>
@@ -143,12 +143,12 @@
 </#macro>
 
 <#-- bsinput -->
-<#macro bsinput type='text' title='title' name='name' value='' lg=false col=true input=true>
+<#macro bsinput type='text' title='title' name='name' value='' lg=false col=true input=true dis=false>
 	<#if input>
 		<div class="form-group">
 			<label for="id-${name}" class="control-label <#if col>col-xs-12 col-sm-2 col-md-2 col-lg-2</#if>">${title}</label>
 			<div class="<#if col>col-xs-12 col-sm-10 col-md-10 col-lg-10</#if>">
-				<input type="${type}" name="${name}" value="${value}" placeholder="${title}" class="form-control <#if lg>input-lg</#if>" id="id-${name}">
+				<input type="${type}" name="${name}" value="${value}" placeholder="${title}" class="form-control <#if lg>input-lg</#if>" <#if dis>disabled</#if> id="id-${name}">
 			</div>
 		</div>
 	<#else>
@@ -238,7 +238,6 @@ like this:
 							</li>
 						</#if>
 					</#if>
-					
 					<li <#if page.pageNumber == pagenum>class="disabled"</#if>>
 						<@bsbutton icon='chevron-right' class='crud crudnext'/>
 					</li>

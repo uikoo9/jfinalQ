@@ -360,15 +360,20 @@ define(function(require, exports){
 		}else{
 			var url = id ? (exports.crud.url + 'savep?id=' + id) : (exports.crud.url + 'savep');
 			exports.bs.dialog({title:title,url:url}, function(){
-				exports.crud.save();
-				return true;
+				return exports.crud.save();
 			});
 		}
 	};
 	exports.crud.save = function(){
 		var res = exports.ajax({url:exports.crud.url+'save',data:$('#bsmodal').find('form').qser()});
 		exports.bs.msg(res);
-		exports.crud.list();
+
+		if(res && res.type == 'success'){
+			exports.crud.list();
+			return true;
+		}else{
+			return false;
+		}
 	};
 	exports.crud.del = function(id){
 		var ids = [];
