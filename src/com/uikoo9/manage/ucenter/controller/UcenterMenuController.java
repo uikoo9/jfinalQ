@@ -42,6 +42,18 @@ public class UcenterMenuController extends QController{
 			renderJson(new QJson(res, QJson.TYPE_BS_DANG));
 		}
 	}
+	
+	/**
+	 * 删除一条或多条
+	 */
+	public void del(){
+		renderJson(del(UcenterMenuModel.class));
+	}
+	
+	/**
+	 * 保存和修改的校验
+	 * @return
+	 */
 	private String validate(){
 		// require
 		String menuText = getPara("row.menu_title");
@@ -64,13 +76,6 @@ public class UcenterMenuController extends QController{
 		}
 		
 		return null;
-	}
-	
-	/**
-	 * 删除一条或多条
-	 */
-	public void del(){
-		renderJson(del(UcenterMenuModel.class));
 	}
 	
 }
