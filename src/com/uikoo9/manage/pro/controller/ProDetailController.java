@@ -2,6 +2,7 @@ package com.uikoo9.manage.pro.controller;
 
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.z.QContants;
@@ -35,7 +36,12 @@ public class ProDetailController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(ProDetailModel.class));
+		String validate = validate();
+		if(validate == null){
+			renderJson(save(ProDetailModel.class));
+		}else{
+			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+		}
 	}
 	
 	/**

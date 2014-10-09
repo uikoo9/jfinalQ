@@ -1,6 +1,7 @@
 package com.uikoo9.manage.ucenter.controller;
 
 import com.uikoo9.manage.ucenter.model.UcenterUserModel;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -31,7 +32,12 @@ public class UcenterUserController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(UcenterUserModel.class));
+		String validate = validate();
+		if(validate == null){
+			renderJson(save(UcenterUserModel.class));
+		}else{
+			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+		}
 	}
 	
 	/**

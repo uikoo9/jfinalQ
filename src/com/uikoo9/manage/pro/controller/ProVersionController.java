@@ -2,6 +2,7 @@ package com.uikoo9.manage.pro.controller;
 
 import com.jfinal.aop.Before;
 import com.uikoo9.manage.pro.model.ProVersionModel;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.z.interceptor.ProDetailsInterceptor;
@@ -34,7 +35,12 @@ public class ProVersionController extends QController{
 	 * 保存或修改
 	 */
 	public void save(){
-		renderJson(save(ProVersionModel.class));
+		String validate = validate();
+		if(validate == null){
+			renderJson(save(ProVersionModel.class));
+		}else{
+			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+		}
 	}
 	
 	/**
