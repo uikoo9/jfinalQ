@@ -34,6 +34,14 @@
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 		<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+		<!-- foot -->
+		<style type="text/css">
+			html,body{height: 100%;}
+			#wrap{min-height: 100%;height: auto !important;height: 100%;margin: 0 auto -60px;}
+			#push,#footer{height: 60px;}
+			#footer{background-color: #f5f5f5;text-align:center;}
+			@media ( max-width : 767px){#footer {margin-left: -20px;margin-right: -20px;padding-left: 20px;padding-right: 20px;}}
+		</style>
 		<!--[if lt IE 9]>
 		<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -80,24 +88,25 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true row=true qmask=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<#if qmask>
-		<script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script>
-	</#if>
-
-	<#if head><@bshead/></#if>
-
-	<#if row>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
-					<#nested>
+	<#if qmask><script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script></#if>
+	
+	<div id="wrap">
+		<#if head><@bshead/></#if>
+	
+		<#if row>
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
+						<#nested>
+					</div>
 				</div>
 			</div>
-		</div>
-	<#else>
-		<#nested>
-	</#if>
-	
+		<#else>
+			<#nested>
+		</#if>
+
+		<div id="push"></div>
+	</div>
 	<#if foot><@bsfoot/></#if>
 	
 	<#if js!=''><@rj js=js/></#if>
@@ -166,8 +175,8 @@
 </#macro>
 
 <#-- bsfoot -->
-<#macro bsfoot height='60' color='#f5f5f5'>
-	<div class="footer" style="width:100%;height:${height}px;background-color:${color};text-align:center;">
+<#macro bsfoot>
+    <div id="footer">
 		<div class="container">
 			<p class="text-muted" style="margin: 20px 0;">
 				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
