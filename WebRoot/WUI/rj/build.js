@@ -8,10 +8,8 @@
     },
 //    name :'web/js-src/home',
 //	out :'../web/js-min/home.min.js'
-//	name :'web/js-src/md5',
-//	out :'../web/js-min/md5.min.js'
-	name :'web/js-src/manage',
-	out :'../web/js-min/manage.min.js'
-//	name :'web/js-src/project',
-//	out :'../web/js-min/project.min.js'
+//	name :'web/js-src/manage',
+//	out :'../web/js-min/manage.min.js'
+	name :'web/js-src/project',
+	out :'../web/js-min/project.min.js'
 })
