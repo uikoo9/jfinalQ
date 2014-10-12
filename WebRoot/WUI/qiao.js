@@ -387,7 +387,7 @@ define(function(require, exports){
 		if(!ids.length){
 			exports.bs.alert('请选择要删除的记录！');
 		}else{
-			exports.bs.confirm('确认要删除所选记录吗？',function(){
+			exports.bs.confirm('确认要删除所选记录吗（若有自记录也会同时删除）？',function(){
 				var res = exports.ajax({url:exports.crud.url+'del',data:{ids:ids.join(',')}});
 				exports.bs.msg(res);
 				exports.crud.list();
