@@ -1,6 +1,7 @@
 package com.uikoo9.manage.pro.controller;
 
 import com.uikoo9.manage.pro.model.ProDetailModel;
+import com.uikoo9.manage.pro.model.ProVersionModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
@@ -48,7 +49,7 @@ public class ProDetailController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(ProDetailModel.class));
+		renderJson(del(ProDetailModel.class, ProVersionModel.class, "pro_detail_id"));
 	}
 	
 }
