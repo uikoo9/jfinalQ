@@ -284,6 +284,9 @@ define(function(require, exports){
 		
 		// show
 		$modal.modal('show');
+		
+		// init editor
+		if(typeof(nicEditors)!="undefined"){$modal.on('shown.bs.modal',function(){nicEditors.allTextAreas();});}
 	};
 	exports.bs.msgoptions = {
 		msg  : 'msg',
@@ -365,6 +368,7 @@ define(function(require, exports){
 		}
 	};
 	exports.crud.save = function(){
+		if(typeof(nicEditors)!="undefined"){exports.crud.initEditor();}
 		var res = exports.ajax({url:exports.crud.url+'save',data:$('#bsmodal').find('form').qser()});
 		exports.bs.msg(res);
 
@@ -374,6 +378,13 @@ define(function(require, exports){
 		}else{
 			return false;
 		}
+	};
+	exports.crud.initEditor = function(){
+		$('textarea').each(function(){
+			var id = $(this).attr('id');
+			var editor = nicEditors.findEditor(id);
+			if(editor){$('#' + id).val(editor.getContent());}
+		});
 	};
 	exports.crud.del = function(id){
 		var ids = [];

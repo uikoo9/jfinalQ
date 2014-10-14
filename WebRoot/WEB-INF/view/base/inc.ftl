@@ -275,6 +275,11 @@ like this:
 	</@bspanel>
 </#macro>
 
+<#-- bseditor -->
+<#macro bseditor>
+	<script type="text/javascript" src="${base}/WUI/nicEdit/nicEdit.js"></script>
+</#macro>
+
 <#-- 
 column 
 这个布局相关，因为涉及到四种设备，所以还是手动写比较好
