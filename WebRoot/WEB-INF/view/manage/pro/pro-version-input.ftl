@@ -1,4 +1,6 @@
 <#include "/WEB-INF/view/base/inc-com.ftl"/>
+
+<@bsueditor/>
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='所属项目' input=false>
@@ -10,7 +12,8 @@
 	</@bsinput>
 	<@bsinput title='版本代号' name='row.ver_code' value='${(row.ver_code)!}'/>
 	<@bsinput title='版本详情' input=false>
-		<textarea class="form-control" rows="5" style="resize:none;width:100%;" name='row.ver_desc' placeholder='版本详情'>${(row.ver_desc)!}</textarea>
+		<div class="embed-responsive embed-responsive-16by9">
+			<script id="ueditor" name="row.ver_desc" type="text/plain">${(row.ver_desc)!}</script>
+		</div>
 	</@bsinput>
 </form>
-<@bseditor/>
