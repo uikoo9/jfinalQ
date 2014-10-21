@@ -150,7 +150,8 @@ define(function(require, exports){
 	 * 3.dialog
 	 * 4.msg
 	 */
-	exports.bs = {};
+	exports.bs 		= {};
+	exports.bs.ue 	= {};
 	exports.bs.modaloptions = {
 		url 	: '',
 		fade	: 'fade',
@@ -255,7 +256,7 @@ define(function(require, exports){
 	exports.bs.dialog = function(options, func){
 		// options
 		var opt = $.extend({}, exports.bs.modaloptions, options);
-		
+		opt.big = true;
 		// append
 		$('body').append(exports.bs.modalstr(opt));
 		
@@ -286,7 +287,7 @@ define(function(require, exports){
 		$modal.modal('show');
 		
 		// init editor
-		if(typeof(nicEditors)!="undefined"){$modal.on('shown.bs.modal',function(){nicEditors.allTextAreas();});}
+		if(typeof(UE)!="undefined"){$modal.on('shown.bs.modal',function(){exports.bs.ue = UE.getEditor('ueditor');});}
 	};
 	exports.bs.msgoptions = {
 		msg  : 'msg',
@@ -368,7 +369,6 @@ define(function(require, exports){
 		}
 	};
 	exports.crud.save = function(){
-		if(typeof(nicEditors)!="undefined"){exports.crud.initEditor();}
 		var res = exports.ajax({url:exports.crud.url+'save',data:$('#bsmodal').find('form').qser()});
 		exports.bs.msg(res);
 
@@ -378,13 +378,6 @@ define(function(require, exports){
 		}else{
 			return false;
 		}
-	};
-	exports.crud.initEditor = function(){
-		$('textarea').each(function(){
-			var id = $(this).attr('id');
-			var editor = nicEditors.findEditor(id);
-			if(editor){$('#' + id).val(editor.getContent());}
-		});
 	};
 	exports.crud.del = function(id){
 		var ids = [];

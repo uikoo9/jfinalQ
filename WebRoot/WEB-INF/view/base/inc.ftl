@@ -280,6 +280,18 @@ like this:
 	<script type="text/javascript" src="${base}/WUI/nicEdit/nicEdit.js"></script>
 </#macro>
 
+<#-- bsueditor -->
+<#macro bsueditor parseid=''>
+	<script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/lang/zh-cn/zh-cn.js"></script>
+    <#if parseid != ''>
+    	<style type="text/css">${parseid} .container:before, ${parseid} .container:after{content : none;}</style>
+	    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.parse.min.js"></script>
+	    <script type="text/javascript" charset="utf-8">uParse('${parseid}', {rootPath: base+'/WUI/ueditor-1.4/'});</script>
+    </#if>
+</#macro>
+
 <#-- 
 column 
 这个布局相关，因为涉及到四种设备，所以还是手动写比较好
