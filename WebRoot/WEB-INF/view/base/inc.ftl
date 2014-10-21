@@ -275,11 +275,6 @@ like this:
 	</@bspanel>
 </#macro>
 
-<#-- bseditor -->
-<#macro bseditor>
-	<script type="text/javascript" src="${base}/WUI/nicEdit/nicEdit.js"></script>
-</#macro>
-
 <#-- bsueditor -->
 <#macro bsueditor parseid=''>
 	<script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.config.js"></script>
