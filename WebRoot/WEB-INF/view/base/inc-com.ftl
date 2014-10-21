@@ -90,7 +90,7 @@
 </#macro>
 
 <#-- bsbody -->
-<#macro bsbody style='' class='' head=true foot=true row=true qmask=true js=''>
+<#macro bsbody style='' class='' head=true foot=true row=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
 	<div id="wrap">
 		<#if head><@bshead/></#if>
