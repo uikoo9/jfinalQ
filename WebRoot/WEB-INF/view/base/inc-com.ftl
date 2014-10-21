@@ -29,6 +29,10 @@
 		
 		<!-- base -->
 		<script type="text/javascript">base = '${base}';baseurl = '${baseurl}';</script>
+		
+		<!-- nprogress -->
+		<link rel="stylesheet" href="${base}/WUI/nprogress/nprogress.css">
+		<script type="text/javascript" src='${base}/WUI/nprogress/nprogress.js'></script>
 
 		<#if bs>
 		<!-- bootstrap -->
@@ -88,8 +92,6 @@
 <#-- bsbody -->
 <#macro bsbody style='' class='' head=true foot=true row=true qmask=true js=''>
 <body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<#if qmask><script type="text/javascript" src="${base}/WUI/qmask/qmask.min.js"></script></#if>
-	
 	<div id="wrap">
 		<#if head><@bshead/></#if>
 	
