@@ -3,17 +3,17 @@
 <@head></@head>
 
 <@bsbody js='home-head.min'>
-	<!-- 
-	<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
-		<div class="container">
-			<h1>uikoo9.com</h1>
-			<p>ideas + coder = ?</p>
-		</div>
-	</div>
-	-->
-	<div class="container">
+	<#-- 
 		<div class="row">
 			<@bslun 'demo1','demo2'></@bslun>
+		</div>
+	-->
+	<div class="container">
+		<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
+			<div class="container">
+				<h1>uikoo9.com</h1>
+				<p>ideas + coder = ?</p>
+			</div>
 		</div>
 		<#list proDetails?if_exists as pro>
 			<#if pro_index % 3 == 0><div class="row"></#if>
