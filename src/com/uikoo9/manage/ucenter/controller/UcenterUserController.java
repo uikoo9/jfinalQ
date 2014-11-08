@@ -1,6 +1,8 @@
 package com.uikoo9.manage.ucenter.controller;
 
+import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ucenter.model.UcenterUserModel;
+import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -38,6 +40,19 @@ public class UcenterUserController extends QController{
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
+	}
+	
+	/* (non-Javadoc)
+	 * @see com.uikoo9.util.jfinal.QController#initRecord(com.jfinal.plugin.activerecord.Record)
+	 */
+	public Record initRecord(Record record){
+		String pwd = record.getStr("user_key");
+		try {
+			record.set("user_key", QEncodeUtil.md5Encrypt(pwd));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return record;
 	}
 	
 	/**
