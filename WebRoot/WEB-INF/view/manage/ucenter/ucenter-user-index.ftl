@@ -5,7 +5,6 @@
 		    <tr>
 		        <th><input type="checkbox" class="allcheck"/></th>
 		        <th>用户名</th>
-		        <th>用户密码</th>
 		        <th>创建时间</th>
 		        <th>创建人</th>
 		        <th>操作</th>
@@ -16,7 +15,6 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.user_name}</td>
-			        <td>${row.user_key}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>
