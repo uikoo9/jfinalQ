@@ -6,6 +6,26 @@
 	</html>
 </#macro>
 
+<#-- bsbody -->
+<#macro bsbody style='' class='' js='' np=true head=true foot=true>
+<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
+	<#if np>
+		<script type="text/javascript" src='${base}/WUI/nprogress/nprogress.js'></script>
+		<script type="text/javascript">NProgress.start();</script>
+	</#if>
+	<div id="wrap">
+		<#if head><@bshead/></#if>
+	
+		<#nested>
+
+		<div id="push"></div>
+	</div>
+	<#if foot><@bsfoot/></#if>
+
+	<#if js!=''><@rj js=js/></#if>
+</body>
+</#macro>
+
 <#-- bsmenu -->
 <#macro bsmenu menus=''>
 	<#if menus != ''>
@@ -192,7 +212,7 @@ like this:
 	<#assign pagenum = page.totalPage>
 	<#if pagenum gt 1>
 		<div class="row">
-			<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
+			<div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
 				<ul class="pagination" style="margin:0;">
 					<li <#if page.pageNumber == 1>class="disabled"</#if>>
 						<@bsbutton icon='step-backward' class='crud crudfirst'/>
@@ -200,57 +220,30 @@ like this:
 					<li <#if page.pageNumber == 1>class="disabled"</#if>>
 						<@bsbutton icon='chevron-left' class='crud crudprev'/>
 					</li>
-					<#if pagenum lte 3>
-						<#list 1..pagenum as pn>
+					<#list 1..pagenum as pn>
+						<#if (page.pageNumber == pn) || (page.pageNumber+1 == pn) || (page.pageNumber+2 == pn)>
 							<li <#if page.pageNumber == pn>class="active"</#if>>
 								<a href="javascript:void(0);" class="cruda">${pn}</a>
 							</li>
-						</#list>
-					</#if>
-					<#if pagenum gt 3>
-						<#if page.pageNumber lt 2>
-							<#list 1..pagenum as pn>
-								<#if pn lt 3>
-									<li <#if page.pageNumber == pn>class="active"</#if>>
-										<a href="javascript:void(0);" class="cruda">${pn}</a>
-									</li>
-								</#if>
-							</#list>
 						</#if>
-						<#if page.pageNumber gte 2>
-							<#if page.pageNumber-1 gt 0>
-								<li class="disabled">
-									<a href="javascript:void(0);">...</a>
-								</li>
-							</#if>
-							<#list 1..pagenum as pn>
-								<#if (page.pageNumber-1 <= pn)&&(pn <= page.pageNumber+1)>
-									<li <#if page.pageNumber == pn>class="active"</#if>>
-										<a href="javascript:void(0);" class="cruda">${pn}</a>
-									</li>
-								</#if>
-									
-							</#list>
-						</#if>
-						<#if page.pageNumber+1 lt pagenum>
-							<li class="disabled">
-								<a href="javascript:void(0);">...</a>
-							</li>
-						</#if>
-					</#if>
+					</#list>
 					<li <#if page.pageNumber == pagenum>class="disabled"</#if>>
 						<@bsbutton icon='chevron-right' class='crud crudnext'/>
 					</li>
 					<li	<#if page.pageNumber == pagenum>class="disabled"</#if>>
 						<@bsbutton icon='step-forward' class='crud crudlast' data='page:${pagenum};'/>
 					</li>
+					<li class="disabled">
+						<a href="javascript:void(0);">共${page.totalRow}条，当前${page.pageNumber}/${pagenum}页</a>
+					</li>
 				</ul>
 			</div>
-			<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+			<div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
 				<div class="input-group">
+					<div class="input-group-addon">转到</div>
 					<input type="text" class="form-control crudinput">
 					<span class="input-group-btn">
-						<button class="btn btn-primary crudgo" type="button" data="page:${page.totalPage};">走你</button>
+						<button class="btn btn-primary crudgo" type="button" data="page:${page.totalPage};">go</button>
 					</span>
 				</div>
 			</div>
@@ -277,13 +270,14 @@ like this:
 
 <#-- bsueditor -->
 <#macro bsueditor parseid=''>
-	<script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/lang/zh-cn/zh-cn.js"></script>
+	<script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-min-1.4.3/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-min-1.4.3/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-min-1.4.3/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8">var ue = {};if(typeof(UE)!="undefined"){ue = UE.getEditor('ueditor');}</script>
     <#if parseid != ''>
     	<style type="text/css">${parseid} .container:before, ${parseid} .container:after{content : none;}</style>
-	    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-1.4/ueditor.parse.min.js"></script>
-	    <script type="text/javascript" charset="utf-8">uParse('${parseid}', {rootPath: base+'/WUI/ueditor-1.4/'});</script>
+	    <script type="text/javascript" charset="utf-8" src="${base}/WUI/ueditor-min-1.4.3/ueditor.parse.min.js"></script>
+	    <script type="text/javascript" charset="utf-8">uParse('${parseid}', {rootPath: base+'/WUI/ueditor-min-1.4.3/'});</script>
     </#if>
 </#macro>
 

@@ -88,36 +88,6 @@
 	</script>
 </#macro>
 
-<#-- bsbody -->
-<#macro bsbody style='' class='' head=true foot=true row=true np=true js=''>
-<body <#if style != ''>style="${style}"</#if> <#if class != ''>class="${class}"</#if>>
-	<#if np>
-		<script type="text/javascript" src='${base}/WUI/nprogress/nprogress.js'></script>
-		<script type="text/javascript">NProgress.start();</script>
-	</#if>
-	<div id="wrap">
-		<#if head><@bshead/></#if>
-	
-		<#if row>
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
-						<#nested>
-					</div>
-				</div>
-			</div>
-		<#else>
-			<#nested>
-		</#if>
-
-		<div id="push"></div>
-	</div>
-	<#if foot><@bsfoot/></#if>
-	
-	<#if js!=''><@rj js=js/></#if>
-</body>
-</#macro>
-
 <#-- bshead -->
 <#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
 	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:20px;">

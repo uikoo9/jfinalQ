@@ -285,9 +285,6 @@ define(function(require, exports){
 		
 		// show
 		$modal.modal('show');
-		
-		// init editor
-		if(typeof(UE)!="undefined"){$modal.on('shown.bs.modal',function(){exports.bs.ue = UE.getEditor('ueditor');});}
 	};
 	exports.bs.msgoptions = {
 		msg  : 'msg',
@@ -328,7 +325,7 @@ define(function(require, exports){
 			var url = $(this).qdata().url;
 			if(url){
 				exports.crud.url = url;
-				exports.crud.list();
+				exports.crud.reset();
 			}
 		});
 		exports.crud.bindcrud();
