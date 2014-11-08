@@ -1,4 +1,4 @@
-package com.uikoo9.common.service.impl;
+package com.uikoo9.common.service;
 
 import java.util.Date;
 import java.util.List;
@@ -6,21 +6,32 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Service;
-
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
-import com.uikoo9.common.service.LoginServiceI;
 import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.jfinal.QJfinalUtil;
 import com.uikoo9.z.QContants;
 
-@Service
-public class LoginServiceImpl implements LoginServiceI{
+/**
+ * Login Service
+ * @author qiaowenbin
+ */
+public class LoginService {
+
+	private LoginService() {}
+	public static LoginService getInstance() {
+		return LoginServiceHolder.instance;
+	}
+	private static class LoginServiceHolder {
+		private static LoginService instance = new LoginService();
+	}
 	
-	/* (non-Javadoc)
-	 * @see com.uikoo9.service.UcenterLoginServiceI#login(java.util.Map, javax.servlet.http.HttpSession)
+	/**
+	 * 登录
+	 * @param paras
+	 * @param session
+	 * @return
 	 */
 	public String login(Map<String, String[]> paras, HttpSession session){
 		try {
@@ -60,5 +71,5 @@ public class LoginServiceImpl implements LoginServiceI{
 			return false;
 		}
 	}
-	
+
 }
