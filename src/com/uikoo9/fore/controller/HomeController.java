@@ -21,14 +21,18 @@ public class HomeController extends QController{
 	
 	@Before(ProMenusInterceptor.class)
 	public void project(){
-		Integer id = getParaToInt(0);
-		if(id != null){
-			ProDetailModel detail = ProDetailModel.dao.findById(id); 
-			if(detail != null){
-				setAttr("detail", detail);	
-				render("/WEB-INF/view/fore/home-project.ftl");
-				return;
+		try {
+			Integer id = getParaToInt(0);
+			if(id != null){
+				ProDetailModel detail = ProDetailModel.dao.findById(id); 
+				if(detail != null){
+					setAttr("detail", detail);	
+					render("/WEB-INF/view/fore/home-project.ftl");
+					return;
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		redirect(QJfinalUtil.url("/"));
