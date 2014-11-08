@@ -19,15 +19,7 @@ public class IndexController extends QController{
 	 */
 	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void index(){
-		render("/WEB-INF/view/fore/home.ftl");
-	}
-	
-	/**
-	 * 未登录跳转
-	 */
-	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
-	public void home(){
-		render("/WEB-INF/view/fore/home.ftl");
+		render("/WEB-INF/view/fore/home-index.ftl");
 	}
 	
 	/**

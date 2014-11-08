@@ -115,7 +115,7 @@
 									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<#list item.pros?if_exists as pro>
-											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${baseurl}/project/${pro.id}">${pro.pro_name}</a></li>
+											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${baseurl}/home/project/${pro.id}">${pro.pro_name}</a></li>
 										</#list>
 									</ul>
 								</li>
