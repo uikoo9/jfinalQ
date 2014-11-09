@@ -33,7 +33,7 @@ public class HomeController extends QController{
 			e.printStackTrace();
 		}
 		
-		redirect(QContants.url("/"));
+		redirect(QContants.url("/home"));
 	}
 	
 }

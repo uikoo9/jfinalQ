@@ -3,6 +3,7 @@ package com.uikoo9.manage.pro.model;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Model;
+import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QTable;
 
@@ -37,6 +38,25 @@ public class ProDetailModel extends Model<ProDetailModel>{
 			return dao.find(sb.append(order).toString());
 		}
 	}
+	
+	/**
+	 * find all by cache
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<ProDetailModel> findAllByCache(){
+		List<ProDetailModel> proDetails = null;
+		
+		Object value = QCacheUtil.getFromEHCache("proDetails");
+		if(value == null){
+			proDetails = ProDetailModel.dao.findAll("order by pro_sn");
+			QCacheUtil.putToEHCache("proDetails", proDetails);
+		}else{
+			proDetails = (List<ProDetailModel>) value;
+		}
+		
+		return proDetails;
+	}	
 	
 	/**
 	 * get versions

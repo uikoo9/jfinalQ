@@ -122,17 +122,7 @@ public class QInterceptor implements Interceptor{
 	 * @param controller
 	 */
 	private void initProDetails(Controller controller){
-		List<ProDetailModel> proDetails = null;
-		
-		Object value = QCacheUtil.getFromEHCache("proDetails");
-		if(value == null){
-			proDetails = ProDetailModel.dao.findAll("order by pro_sn");
-			QCacheUtil.putToEHCache("proDetails", proDetails);
-		}else{
-			proDetails = (List<ProDetailModel>) value;
-		}
-		
-		controller.setAttr("proDetails", proDetails);
+		controller.setAttr("proDetails", ProDetailModel.dao.findAllByCache());
 	}
 	
 	/**

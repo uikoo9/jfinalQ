@@ -3,6 +3,7 @@ package com.uikoo9.manage.ucenter.model;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Model;
+import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QTable;
 
@@ -36,5 +37,24 @@ public class UcenterMenuModel extends Model<UcenterMenuModel>{
 		}else{
 			return dao.find(sb.append(order).toString());
 		}
+	}
+	
+	/**
+	 * find all by cache
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<UcenterMenuModel> findAllByCache(){
+		List<UcenterMenuModel> menus = null;
+		
+		Object menusObject = QCacheUtil.getFromEHCache("menus");
+		if(menusObject == null){
+			menus = findAll("order by menu_sn");
+			QCacheUtil.putToEHCache("menus", menus);
+		}else{
+			menus = (List<UcenterMenuModel>) menusObject;
+		}
+		
+		return menus;
 	}
 }

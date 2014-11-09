@@ -45,7 +45,7 @@ public class LoginController extends QController{
 			QCookieUtil.removeCookie(getResponse(), "uikoo9userid");
 		}
 		
-		redirect(QContants.url("/"));
+		redirect(QContants.url("/home"));
 	}
 	
 }

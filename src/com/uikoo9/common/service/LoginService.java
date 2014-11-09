@@ -79,7 +79,6 @@ public class LoginService {
 			QCookieUtil.setCookie(response, "uikoo9userid", userId, 1800);
 			QCacheUtil.putToEHCache(userId, user);
 		}
-		
 	}
 
 }
