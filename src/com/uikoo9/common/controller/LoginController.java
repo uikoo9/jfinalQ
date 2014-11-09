@@ -1,7 +1,6 @@
 package com.uikoo9.common.controller;
 
 import com.uikoo9.common.service.LoginService;
-import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.jfinal.QJfinalUtil;
@@ -14,18 +13,29 @@ import com.uikoo9.util.jfinal.QJfinalUtil;
 public class LoginController extends QController{
 	
 	/**
-	 * 跳转到md5首页
+	 * 用户登录
 	 */
 	public void login(){
-		setAttr("username", getPara("username"));
-		renderJson(new QJson(LoginService.getInstance().login(getParaMap(), getSession(true))));
+		String method = getRequest().getMethod();
+		if("GET".equals(method)){
+			render("/WEB-INF/view/fore/home-login.ftl");
+		}else{
+			setAttr("username", getPara("username"));
+			
+			String res = LoginService.getInstance().login(getParaMap(), getResponse());
+			if("suc".equals(res)){
+				redirect(QJfinalUtil.url("/manage"));
+			}else{
+				setAttr("errorMsg", res);
+				render("/WEB-INF/view/fore/home-login.ftl");
+			}
+		}
 	}
 	
 	/**
 	 * 退出登录
 	 */
 	public void logout(){
-		removeSessionAttr("user");
 		redirect(QJfinalUtil.url("/"));
 	}
 	
