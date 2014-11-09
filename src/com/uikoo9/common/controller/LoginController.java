@@ -6,7 +6,7 @@ import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.util.jfinal.QJfinalUtil;
+import com.uikoo9.z.QContants;
 
 /**
  * 用户中心-登录controller
@@ -27,7 +27,7 @@ public class LoginController extends QController{
 			
 			String res = LoginService.getInstance().login(getParaMap(), getResponse());
 			if("suc".equals(res)){
-				redirect(QJfinalUtil.url("/manage"));
+				redirect(QContants.url("/manage"));
 			}else{
 				setAttr("errorMsg", res);
 				render("/WEB-INF/view/fore/home-login.ftl");
@@ -45,7 +45,7 @@ public class LoginController extends QController{
 			QCookieUtil.removeCookie(getResponse(), "uikoo9userid");
 		}
 		
-		redirect(QJfinalUtil.url("/"));
+		redirect(QContants.url("/"));
 	}
 	
 }

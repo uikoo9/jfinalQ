@@ -1,5 +1,7 @@
 package com.uikoo9.z;
 
+import com.uikoo9.util.jfinal.QJfinalConfig;
+
 /**
  * 常量
  * @author uikoo9
@@ -20,5 +22,15 @@ public class QContants {
 	public static final String C_PRO_TYPE_JAVASE			= "020101";
 	public static final String C_PRO_TYPE_JAVAEE			= "020102";
 	public static final String[] C_PRO_TYPE 				= new String[]{C_PRO_TYPE_JAVASE,C_PRO_TYPE_JAVAEE};
+	
+	/**
+	 * 返回一个路径的绝对路径
+	 * @param url
+	 * @return
+	 */
+	public static final String BASE_URL = QJfinalConfig.config.getProperty("baseUrl");
+	public static String url(String url){
+		return BASE_URL + url;
+	}
 	
 }

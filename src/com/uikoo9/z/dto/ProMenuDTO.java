@@ -1,5 +1,6 @@
 package com.uikoo9.z.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import com.uikoo9.manage.pro.model.ProDetailModel;
@@ -8,7 +9,8 @@ import com.uikoo9.manage.pro.model.ProDetailModel;
  * 页面顶部使用的项目明细菜单
  * @author uikoo9
  */
-public class ProMenuDTO {
+@SuppressWarnings("serial")
+public class ProMenuDTO implements Serializable{
 	private String value;
 	private String text;
 	private List<ProDetailModel> pros;

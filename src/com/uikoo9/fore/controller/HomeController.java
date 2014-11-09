@@ -1,12 +1,9 @@
 package com.uikoo9.fore.controller;
 
-import com.jfinal.aop.Before;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.util.jfinal.QJfinalUtil;
-import com.uikoo9.z.interceptor.ProDetailsInterceptor;
-import com.uikoo9.z.interceptor.ProMenusInterceptor;
+import com.uikoo9.z.QContants;
 
 @QControllerUrl("/home")
 public class HomeController extends QController{
@@ -14,12 +11,13 @@ public class HomeController extends QController{
 	/**
 	 * 未登录跳转
 	 */
-	@Before({ProMenusInterceptor.class,ProDetailsInterceptor.class})
 	public void index(){
 		render("/WEB-INF/view/fore/home-index.ftl");
 	}
 	
-	@Before(ProMenusInterceptor.class)
+	/**
+	 * 跳转到项目展示页面
+	 */
 	public void project(){
 		try {
 			Integer id = getParaToInt(0);
@@ -35,7 +33,7 @@ public class HomeController extends QController{
 			e.printStackTrace();
 		}
 		
-		redirect(QJfinalUtil.url("/"));
+		redirect(QContants.url("/"));
 	}
 	
 }
