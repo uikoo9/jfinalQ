@@ -104,7 +104,7 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<#if (session.user)?? && menus??>
+					<#if user?? && menus??>
 						<#list menus as menu>
 							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
 						</#list>
@@ -128,7 +128,7 @@
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<#if (session.user)??>
+					<#if user??>
 						<li><a href="${base}/login/logout">退出</a></li>
 					<#else>
 						<li><a href="${base}/login/login">登录</a></li>

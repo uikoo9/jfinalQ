@@ -32,7 +32,7 @@ public class LoginService {
 	/**
 	 * 登录
 	 * @param paras
-	 * @param session
+	 * @param response
 	 * @return
 	 */
 	public String login(Map<String, String[]> paras, HttpServletResponse response){
@@ -77,7 +77,7 @@ public class LoginService {
 		String userId = QStringUtil.genUserId(user.getStr("user_name"));
 		if(QStringUtil.notEmpty(userId)){
 			QCookieUtil.setCookie(response, "uikoo9userid", userId, 1800);
-			QCacheUtil.putToEHCache(userId, "ohyes");
+			QCacheUtil.putToEHCache(userId, user);
 		}
 		
 	}
