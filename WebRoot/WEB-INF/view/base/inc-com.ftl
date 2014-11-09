@@ -160,7 +160,6 @@ bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min
 	</div>	
 </li>
 百度统计,响应太慢
-<!-- baidutongji -->
 <style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
 <script type="text/javascript">
 	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
