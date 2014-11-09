@@ -8,15 +8,10 @@
 		<!-- ie -->
 		<meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1" />
 		
-		<!-- 缓存关闭 -->
-		<meta http-equiv="pragma" content="no-cache">
-		<meta http-equiv="cache-control" content="no-cache">
-		<meta http-equiv="expires" content="0">
-		
 		<!-- for search-->
-		<meta name="keywords" content="MD5,md5,查询" />
-		<meta name="description" content="MD5在线免费查询" />
-		<meta name="author" contect="uikoo9">
+		<meta name="keywords" content="uikoo9.com" />
+		<meta name="description" content="uikoo9.com" />
+		<meta name="author" contect="qiaowenbin">
 		<meta name="robots" contect="all">
 		
 		<!-- title -->
@@ -50,9 +45,6 @@
 		<script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		</#if>
-		
-		<!-- baidutongji -->
-		<style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
 		<#nested>
 	</head>
 </#macro>
@@ -81,10 +73,6 @@
 	<#else>
 		<script type="text/javascript" src="${base}/WUI/web/js-src/${js}.js"></script>
 	</#if>
-	<script type="text/javascript">
-		var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-		document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7117ec605df94953bcc641e344d24b95' type='text/javascript'%3E%3C/script%3E"));
-	</script>
 </#macro>
 
 <#-- bshead -->
@@ -171,4 +159,11 @@ bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min
 		</@bsform>
 	</div>	
 </li>
+百度统计,响应太慢
+<!-- baidutongji -->
+<style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
+<script type="text/javascript">
+	var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F7117ec605df94953bcc641e344d24b95' type='text/javascript'%3E%3C/script%3E"));
+</script>
 -->
