@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='home-head.min'>
+<@bsbody js='home.min'>
 	<#-- 
 		<div class="row">
 			<@bslun 'demo1','demo2'></@bslun>

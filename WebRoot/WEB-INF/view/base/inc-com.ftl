@@ -66,8 +66,7 @@
 		    paths : {
 		    	jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
 		        bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-		        qiao		: 'qiao',
-		        login		: 'web/js-src/login'
+		        qiao		: 'qiao'
 		    },
 		    shim : {
 			    bootstrap : {
@@ -129,9 +128,9 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
-						<li><a href="${base}/login/logout">退出</a></li>
+						<li><a href="${baseurl}/login/logout">退出</a></li>
 					<#else>
-						<li><a href="${base}/login/login">登录</a></li>
+						<li><a href="${baseurl}/login/login">登录</a></li>
 					</#if>
 				</ul>
 			</div>

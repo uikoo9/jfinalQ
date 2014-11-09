@@ -53,7 +53,7 @@ public class LoginService {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "登录失败！";
+			return e.getMessage();
 		}
 	}
 	private boolean isAdmin(String username, String password, HttpServletResponse response){
