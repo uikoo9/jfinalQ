@@ -9,6 +9,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.QCacheUtil;
+import com.uikoo9.util.QFileUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.http.QCookieUtil;
@@ -104,7 +105,11 @@ public class QInterceptor implements Interceptor{
 		String base = null;
 		Object baseObject = QCacheUtil.getFromEHCache("base");
 		if(baseObject == null){
-			base = QRequestUtil.getHttpPath(controller.getRequest());
+			if(QFileUtil.getPropertyToBoolean(QJfinalConfig.config, "devMode")){
+				base = QRequestUtil.getHttpPath(controller.getRequest());
+			}else{
+				base = "";
+			}
 			QCacheUtil.putToEHCache("base", base);
 		}else{
 			base = (String) baseObject;

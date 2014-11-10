@@ -20,7 +20,7 @@ define(function(require, exports){
 		if(res){
 			if(res.msg == 'suc'){
 				$h5.text('登录成功，正在跳转。。。');
-				qiao.to('/manage');
+				qiao.to(base + '/manage');
 			}else{
 				$h5.text(res.msg);
 			}
