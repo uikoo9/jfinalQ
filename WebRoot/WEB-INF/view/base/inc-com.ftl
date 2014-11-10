@@ -77,7 +77,7 @@
 </#macro>
 
 <#-- bshead -->
-<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
+<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/home'>
 	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:20px;">
 		<div class="container">
 			<div class="navbar-header">
@@ -142,7 +142,7 @@
     <div id="footer">
 		<div class="container">
 			<p class="text-muted" style="margin: 20px 0;">
-				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="http://uikoo9.com/home" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
 				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
 			</p>
 		</div>
