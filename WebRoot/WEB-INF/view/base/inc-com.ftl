@@ -58,7 +58,8 @@
 		    paths : {
 		    	jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
 		        bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-		        qiao		: 'qiao'
+		        qiao		: 'qiao',
+		        login		: 'web/js-src/login'
 		    },
 		    shim : {
 			    bootstrap : {
@@ -118,7 +119,17 @@
 					<#if user??>
 						<li><a href="${base}/login/logout">退出</a></li>
 					<#else>
-						<li><a href="${base}/login/login">登录</a></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录<span class="caret"></span></a>
+							<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
+								<@bsform class='loginform'>
+									<@bsinput col=false name='username' title='用户名' value='${username!}'/>
+									<@bsinput col=false name='password' title='密码' type='password'/>
+									<div class="form-group"><input class="btn btn-lg btn-primary btn-block loginbtn" type="button" value="登录"/></div>
+									<div class="form-group"><h5 class="text-danger"></h5></div>
+								</@bsform>
+							</div>	
+						</li>
 					</#if>
 				</ul>
 			</div>
@@ -147,18 +158,6 @@ cdn js
 <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
 jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
 bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
-下拉login
-<li class="dropdown">
-	<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录</a>
-	<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
-		<@bsform class='loginform'>
-			<@bsinput col=false name='username' title='用户名' value='${username!}'/>
-			<@bsinput col=false name='password' title='密码' type='password'/>
-			<div class="form-group"><input class="btn btn-lg btn-primary btn-block loginbtn" type="button" value="登录"/></div>
-			<div class="form-group"><h5 class="text-danger"></h5></div>
-		</@bsform>
-	</div>	
-</li>
 百度统计,响应太慢
 <style type="text/css">a[href*="tongji.baidu.com"]{position:fixed;bottom:0;left:0;}</style>
 <script type="text/javascript">

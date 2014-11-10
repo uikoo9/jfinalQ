@@ -1,5 +1,6 @@
-require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
+require(['jquery', 'bootstrap', 'qiao', 'login'], function($, bs, qiao, login){
 	$(function(){
+		login.init();
 		qiao.ajaxinit();
 	});
 });

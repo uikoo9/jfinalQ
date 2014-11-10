@@ -3,6 +3,7 @@ package com.uikoo9.common.controller;
 import com.uikoo9.common.service.LoginService;
 import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -18,20 +19,8 @@ public class LoginController extends QController{
 	 * 用户登录
 	 */
 	public void login(){
-		String method = getRequest().getMethod();
-		if("GET".equals(method)){
-			render("/WEB-INF/view/fore/home-login.ftl");
-		}else{
-			setAttr("username", getPara("username"));
-			
-			String res = LoginService.getInstance().login(getParaMap(), getResponse());
-			if("suc".equals(res)){
-				redirect("/manage");
-			}else{
-				setAttr("errorMsg", res);
-				render("/WEB-INF/view/fore/home-login.ftl");
-			}
-		}
+		String res = LoginService.getInstance().login(getParaMap(), getResponse());
+		renderJson(new QJson(res));
 	}
 	
 	/**

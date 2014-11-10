@@ -3,7 +3,8 @@
     paths : {
     	jquery 		: 'empty:',
         bootstrap 	: 'empty:',
-        qiao		: 'qiao'
+        qiao		: 'qiao',
+        login		: 'web/js-src/login'
     },
     name :'web/js-src/home',
 	out :'../web/js-min/home.min.js'
