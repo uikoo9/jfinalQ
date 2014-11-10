@@ -106,7 +106,7 @@ define(function(require, exports){
 			alert('need options');
 		}else{
 			var opt = exports.ajaxopt(options);
-			opt.url = base + opt.url;
+//			opt.url = base + opt.url;
 			
 			var res;
 			$.ajax(opt).done(function(obj){res = obj;});
