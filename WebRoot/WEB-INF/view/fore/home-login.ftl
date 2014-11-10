@@ -26,7 +26,7 @@ body{
 
 <@bsbody np=false head=false foot=false>
 	<div class="container">
-		<form class="form-horizontal form-signin" role="form" action="${baseurl}/login/login" method="post">
+		<form class="form-horizontal form-signin" role="form" action="${base}/login/login" method="post">
 			<h2 class="text-center" style="padding-bottom:10px;">uikoo9.com</h2>
 			<@bsinput title='用户名' 	lg=true name='username' value='${username!}'/>
 			<@bsinput title='密码' 	lg=true name='password' type='password'/>

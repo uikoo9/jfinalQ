@@ -33,7 +33,7 @@
 						</#if>
 					</#if>
 					
-					<@bsbutton type='primary' href='${baseurl}/project/${pro.id}'>详情</@bsbutton>
+					<@bsbutton type='primary' href='${base}/home/project/${pro.id}'>详情</@bsbutton>
 				</@bsnail>
 			<#if pro_index % 3 == 2></div></#if>
 		</#list>

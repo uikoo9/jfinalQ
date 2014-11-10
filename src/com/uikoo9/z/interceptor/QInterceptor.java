@@ -37,7 +37,7 @@ public class QInterceptor implements Interceptor{
 		if(canVisit(ai) || isLogin(controller)){
 			ai.invoke();
 		}else{
-			controller.redirect(QContants.url("/home"));
+			controller.redirect("/home");
 		}
 	}
 	
@@ -109,12 +109,8 @@ public class QInterceptor implements Interceptor{
 		}else{
 			base = (String) baseObject;
 		}
-		controller.setAttr("base", base);
 		
-		String baseUrl = QJfinalConfig.config.getProperty("baseUrl");
-		if(QStringUtil.notEmpty(baseUrl)){
-			controller.setAttr("baseurl", baseUrl);
-		}
+		controller.setAttr("base", base);
 	}
 	
 	/**

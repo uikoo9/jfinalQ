@@ -23,7 +23,7 @@
 		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
 		
 		<!-- base -->
-		<script type="text/javascript">base = '${base}';baseurl = '${baseurl}';</script>
+		<script type="text/javascript">var base = '${base}';</script>
 		
 		<!-- nprogress -->
 		<link rel="stylesheet" href="${base}/WUI/nprogress/nprogress.css">
@@ -102,7 +102,7 @@
 									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
 									<ul class="dropdown-menu" role="menu">
 										<#list item.pros?if_exists as pro>
-											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${baseurl}/home/project/${pro.id}">${pro.pro_name}</a></li>
+											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
 										</#list>
 									</ul>
 								</li>
@@ -116,9 +116,9 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
-						<li><a href="${baseurl}/login/logout">退出</a></li>
+						<li><a href="${base}/login/logout">退出</a></li>
 					<#else>
-						<li><a href="${baseurl}/login/login">登录</a></li>
+						<li><a href="${base}/login/login">登录</a></li>
 					</#if>
 				</ul>
 			</div>

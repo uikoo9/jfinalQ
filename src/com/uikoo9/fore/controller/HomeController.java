@@ -3,7 +3,6 @@ package com.uikoo9.fore.controller;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.z.QContants;
 
 @QControllerUrl("/home")
 public class HomeController extends QController{
@@ -33,7 +32,7 @@ public class HomeController extends QController{
 			e.printStackTrace();
 		}
 		
-		redirect(QContants.url("/home"));
+		redirect("/home");
 	}
 	
 }
