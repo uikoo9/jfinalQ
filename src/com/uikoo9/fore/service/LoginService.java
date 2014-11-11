@@ -44,7 +44,17 @@ public class LoginService {
 				List<Record> users = Db.find("select * from t_ucenter_user where user_name=? and user_key=?", username, password);
 				if(users != null && users.size() == 1){
 					putInCookie(users.get(0), response);
-					return "suc";
+
+					String type = users.get(0).getStr("user_type");
+					if(type.equals(QContants.C_UCENTER_USER_TYPE_CUSTOM)){
+						return "user";
+					}else if(type.equals(QContants.C_UCENTER_USER_TYPE_ADMIN)){
+						return "admin";
+					}else if(type.equals(QContants.C_UCENTER_USER_TYPE_ACCOUNT)){
+						return "account";
+					}else{
+						return "错误的用户类型";
+					}
 				}else{
 					return "用户名或密码错误！";
 				}
