@@ -12,7 +12,12 @@ public class AccountController extends QController{
 	 */
 	public void index(){
 		setAttr("accountList", AccountService.getInstance().getAccountSum());
-		setAttr("accountDetails", AccountService.getInstance().getAccountDetails());
 		render("/WEB-INF/view/fore/account-index.ftl");
 	}
+	
+	public void details(){
+		setAttr("accountDetails", AccountService.getInstance().getAccountDetails());
+		render("/WEB-INF/view/fore/account-details.ftl");
+	}
+	
 }
