@@ -12,6 +12,7 @@ import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.http.QRequestUtil;
 import com.uikoo9.util.jfinal.QJfinalConfig;
+import com.uikoo9.z.QContants;
 
 /**
  * 拦截器
@@ -25,14 +26,13 @@ public class QInterceptor implements Interceptor{
 
 	@Override
 	public void intercept(ActionInvocation ai) {
-		Controller controller = ai.getController();
-		init(controller);
+		init(ai.getController());
 		
 		// can visit
-		if(canVisit(ai) || isLogin(controller)){
+		if(canVisit(ai) || isLogin(ai)){
 			ai.invoke();
 		}else{
-			controller.redirect("/home");
+			ai.getController().redirect("/home");
 		}
 	}
 	
@@ -64,17 +64,35 @@ public class QInterceptor implements Interceptor{
 	
 	/**
 	 * 校验用户是否登录
-	 * @param controller
+	 * @param ai
 	 * @return
 	 */
-	private boolean isLogin(Controller controller){
+	private boolean isLogin(ActionInvocation ai){
+		Controller controller = ai.getController();
+		
 		String cookieUserId = QCookieUtil.getValue(controller.getRequest(), "uikoo9userid");
 		if(QStringUtil.notEmpty(cookieUserId)){
 			Object valueObject = QCacheUtil.getFromEHCache(cookieUserId);
 			if(valueObject != null){
-				controller.setAttr("user", (Record) valueObject);
+				boolean flag = false;
 				
-				return true;
+				Record user = (Record) valueObject;
+				String type = user.getStr("user_type");
+				String url = ai.getActionKey();
+				if(type.equals(QContants.C_UCENTER_USER_TYPE_CUSTOM) && url.startsWith("/home")){
+					flag = true;
+				}
+				if(type.equals(QContants.C_UCENTER_USER_TYPE_ADMIN) && url.startsWith("/manage")){
+					flag = true;
+				}
+				if(type.equals(QContants.C_UCENTER_USER_TYPE_ACCOUNT) && url.startsWith("/ac")){
+					flag = true;
+				}
+				
+				if(flag){
+					controller.setAttr("user", user);
+					return true;
+				}
 			}
 		}
 		
