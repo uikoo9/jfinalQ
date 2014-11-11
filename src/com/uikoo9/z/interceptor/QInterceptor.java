@@ -32,7 +32,12 @@ public class QInterceptor implements Interceptor{
 		if(canVisit(ai) || isLogin(ai)){
 			ai.invoke();
 		}else{
-			ai.getController().redirect("/home");
+			Record user = ai.getController().getAttr("user");
+			if(user == null){
+				ai.getController().redirect("/home");
+			}else{
+				ai.getController().forwardAction("/login/logout");
+			}
 		}
 	}
 	
@@ -74,9 +79,10 @@ public class QInterceptor implements Interceptor{
 		if(QStringUtil.notEmpty(cookieUserId)){
 			Object valueObject = QCacheUtil.getFromEHCache(cookieUserId);
 			if(valueObject != null){
-				boolean flag = false;
-				
 				Record user = (Record) valueObject;
+				controller.setAttr("user", user);
+
+				boolean flag = false;
 				String type = user.getStr("user_type");
 				String url = ai.getActionKey();
 				if(type.equals(QContants.C_UCENTER_USER_TYPE_CUSTOM) && url.startsWith("/home")){
@@ -86,13 +92,10 @@ public class QInterceptor implements Interceptor{
 					flag = true;
 				}
 				if(type.equals(QContants.C_UCENTER_USER_TYPE_ACCOUNT) && url.startsWith("/ac")){
+					initAccounts(controller);
 					flag = true;
 				}
-				
-				if(flag){
-					controller.setAttr("user", user);
-					return true;
-				}
+				if(flag) return true;
 			}
 		}
 		
@@ -106,7 +109,6 @@ public class QInterceptor implements Interceptor{
 	private void init(Controller controller){
 		initBasePath(controller);
 		initProDetails(controller);
-		initAccounts(controller);
 	}
 	
 	/**
