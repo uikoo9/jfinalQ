@@ -3,6 +3,7 @@ package com.uikoo9.manage.ac.model;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Model;
+import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QTable;
 
@@ -37,6 +38,25 @@ public class AcAccountModel extends Model<AcAccountModel>{
 			return dao.find(sb.append(order).toString());
 		}
 	}
+	
+	/**
+	 * find all by cache
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<AcAccountModel> findAllByCache(){
+		List<AcAccountModel> accounts = null;
+		
+		Object value = QCacheUtil.getFromEHCache("accounts");
+		if(value == null){
+			accounts = AcAccountModel.dao.findAll("order by account_name");
+			QCacheUtil.putToEHCache("accounts", accounts);
+		}else{
+			accounts = (List<AcAccountModel>) value;
+		}
+		
+		return accounts;
+	}	
 	
 	/**
 	 * get details

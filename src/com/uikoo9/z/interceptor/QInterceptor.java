@@ -121,11 +121,11 @@ public class QInterceptor implements Interceptor{
 	}
 	
 	/**
-	 * 添加账户列表
+	 * 缓存账户列表
 	 * @param controller
 	 */
 	private void initAccounts(Controller controller){
-		controller.setAttr("accounts", AcAccountModel.dao.findAll("order by account_name"));
+		controller.setAttr("accounts", AcAccountModel.dao.findAllByCache());
 	}
 	
 }
