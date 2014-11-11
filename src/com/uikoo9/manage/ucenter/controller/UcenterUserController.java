@@ -3,9 +3,11 @@ package com.uikoo9.manage.ucenter.controller;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ucenter.model.UcenterUserModel;
 import com.uikoo9.util.QEncodeUtil;
+import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.z.QContants;
 
 /**
  * 用户中心-用户controller
@@ -26,6 +28,8 @@ public class UcenterUserController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
+		setAttr("usertypes", QContantsUtil.list(QContants.C_UCENTER_USER_TYPE));
+		
 		setAttr("row", getRow(UcenterUserModel.class));
 		render("/WEB-INF/view/manage/ucenter/ucenter-user-input.ftl");
 	}

@@ -14,7 +14,8 @@ public class QContants {
 	// 用户类型
 	public static final String C_UCENTER_USER_TYPE_CUSTOM	= "010101";
 	public static final String C_UCENTER_USER_TYPE_ADMIN	= "010102";
-	public static final String[] C_UCENTER_USER_TYPE 		= new String[]{C_UCENTER_USER_TYPE_CUSTOM,C_UCENTER_USER_TYPE_ADMIN};
+	public static final String C_UCENTER_USER_TYPE_ACCOUNT	= "010103";
+	public static final String[] C_UCENTER_USER_TYPE 		= new String[]{C_UCENTER_USER_TYPE_CUSTOM,C_UCENTER_USER_TYPE_ADMIN,C_UCENTER_USER_TYPE_ACCOUNT};
 	
 	// 项目类型
 	public static final String C_PRO_TYPE_JAVASE			= "020101";
