@@ -1,8 +1,5 @@
 package com.uikoo9.z.interceptor;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
@@ -11,12 +8,9 @@ import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QFileUtil;
 import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.http.QRequestUtil;
 import com.uikoo9.util.jfinal.QJfinalConfig;
-import com.uikoo9.z.QContants;
-import com.uikoo9.z.dto.ProMenuDTO;
 
 /**
  * 拦截器
@@ -26,7 +20,6 @@ import com.uikoo9.z.dto.ProMenuDTO;
  * 	0.0.7.20141109
  * 	0.0.6.20140909
  */
-@SuppressWarnings("unchecked")
 public class QInterceptor implements Interceptor{
 
 	@Override
@@ -94,7 +87,6 @@ public class QInterceptor implements Interceptor{
 	private void init(Controller controller){
 		initBasePath(controller);
 		initProDetails(controller);
-		initProMenus(controller);
 	}
 	
 	/**
@@ -124,38 +116,6 @@ public class QInterceptor implements Interceptor{
 	 */
 	private void initProDetails(Controller controller){
 		controller.setAttr("proDetails", ProDetailModel.dao.findAllByCache());
-	}
-	
-	/**
-	 * 缓存管理菜单
-	 * @param controller
-	 */
-	private void initProMenus(Controller controller){
-		List<ProMenuDTO> dtos = null;
-		
-		Object value = QCacheUtil.getFromEHCache("proMenus");
-		if(value == null){
-			dtos = findProMenuDTO();
-			QCacheUtil.putToEHCache("proMenus", dtos);
-		}else{
-			dtos = (List<ProMenuDTO>) value;
-		}
-		
-		controller.setAttr("proMenus", dtos);
-	}
-	private List<ProMenuDTO> findProMenuDTO(){
-		List<ProMenuDTO> dtos = new ArrayList<ProMenuDTO>();
-		
-		for(String value : QContants.C_PRO_TYPE){
-			ProMenuDTO dto = new ProMenuDTO();
-			dto.setValue(value);
-			dto.setText(QContantsUtil.get(value));
-			dto.setPros(ProDetailModel.dao.find("select * from t_pro_detail where pro_type=?", value));
-			
-			dtos.add(dto);
-		}
-		
-		return dtos;
 	}
 	
 }

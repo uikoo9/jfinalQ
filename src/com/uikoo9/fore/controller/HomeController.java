@@ -35,4 +35,11 @@ public class HomeController extends QController{
 		redirect("/home");
 	}
 	
+	/**
+	 * 跳转到版本更新
+	 */
+	public void version(){
+		render("/WEB-INF/view/fore/home-version.ftl");
+	}
+	
 }

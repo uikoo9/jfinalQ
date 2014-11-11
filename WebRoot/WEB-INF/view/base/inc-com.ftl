@@ -92,26 +92,24 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
+					<li><a href="${base}/home">Home</a></li>
 					<#if user?? && menus??>
 						<#list menus as menu>
 							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
 						</#list>
 					<#else>
-						<#list proMenus?if_exists as item>
-							<#if item.pros?? && item.pros?size gt 0>
-								<li class="dropdown">
-									<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${item.text}<span class="caret"></span></a>
-									<ul class="dropdown-menu" role="menu">
-										<#list item.pros?if_exists as pro>
-											<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
-										</#list>
-									</ul>
-								</li>
-							<#else>
-								<li><a href="javascript:void(0);">${item.text}</a></li>
-							</#if>
-						</#list>
+						<#if proDetails?size gt 0>
+							<li class="dropdown">
+								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Ideas<span class="caret"></span></a>
+								<ul class="dropdown-menu" role="menu">
+									<#list proDetails?if_exists as pro>
+										<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
+									</#list>
+								</ul>
+							</li>
+						</#if>
 						<li><a href="#">Blogs</a></li>
+						<li><a href="${base}/home/version">Version</a></li>
 						<li><a href="#">About Me</a></li>
 					</#if>
 				</ul>
