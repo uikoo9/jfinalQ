@@ -85,11 +85,11 @@
 </#macro>
 
 <#-- bsbutton -->
-<#macro bsbutton dis=false type="primary" href='javascript:void(0);' size='' icon='' class='' data='' id='' >
+<#macro bsbutton dis=false type="primary" href='javascript:void(0);' blank=false size='' icon='' class='' data='' id='' >
 	<a 	<#if id!=''>id="${id}"</#if> 
 		<#if data!=''>data="${data}"</#if>
 		<#if dis>disabled="disabled"</#if> 
-		<#if href!='javascript:void(0);'>target="_blank"</#if>
+		<#if blank>target="_blank"</#if>
 		href="${href}" 
 		class="btn btn-${type} <#if size != ''>btn-${size}</#if> <#if class!=''>${class}</#if>" 
 	>
