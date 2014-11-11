@@ -92,12 +92,17 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<li><a href="${base}/home">Home</a></li>
-					<#if user?? && menus??>
-						<#list menus as menu>
-							<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
-						</#list>
+					<#if user??>
+						<#if user.user_type == '010102'>
+							<#list menus as menu>
+								<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
+							</#list>
+						</#if>
+						<#if user.user_type == '010103'>
+							<li><a href="${base}/home">Home</a></li>
+						</#if>
 					<#else>
+						<li><a href="${base}/home">Home</a></li>
 						<#if proDetails?size gt 0>
 							<li class="dropdown">
 								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Ideas<span class="caret"></span></a>
