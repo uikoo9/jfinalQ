@@ -1,6 +1,7 @@
 package com.uikoo9.manage.ac.controller;
 
 import com.uikoo9.manage.ac.model.AcAccountModel;
+import com.uikoo9.manage.ac.model.AcDetailModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -45,7 +46,7 @@ public class AcAccountController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(AcAccountModel.class));
+		renderJson(del(AcAccountModel.class, AcDetailModel.class, "account_id"));
 	}
 	
 }

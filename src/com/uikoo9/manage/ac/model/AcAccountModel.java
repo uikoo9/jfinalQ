@@ -38,4 +38,12 @@ public class AcAccountModel extends Model<AcAccountModel>{
 		}
 	}
 	
+	/**
+	 * get details
+	 * @return
+	 */
+	public List<AcDetailModel> details(){
+		return AcDetailModel.dao.find("select * from t_ac_detail where account_id=? order by id desc", get("id"));
+	}
+	
 }

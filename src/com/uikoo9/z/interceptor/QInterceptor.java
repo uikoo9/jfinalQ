@@ -4,6 +4,7 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
+import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QFileUtil;
@@ -87,6 +88,7 @@ public class QInterceptor implements Interceptor{
 	private void init(Controller controller){
 		initBasePath(controller);
 		initProDetails(controller);
+		initAccounts(controller);
 	}
 	
 	/**
@@ -116,6 +118,14 @@ public class QInterceptor implements Interceptor{
 	 */
 	private void initProDetails(Controller controller){
 		controller.setAttr("proDetails", ProDetailModel.dao.findAllByCache());
+	}
+	
+	/**
+	 * 添加账户列表
+	 * @param controller
+	 */
+	private void initAccounts(Controller controller){
+		controller.setAttr("accounts", AcAccountModel.dao.findAll("order by account_name"));
 	}
 	
 }

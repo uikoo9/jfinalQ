@@ -16,7 +16,7 @@ public class AcDetailController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", list(AcDetailModel.class));
+		setAttr("qpage", listBySql(getParaMap(), " (select ad.*,aa.account_name aname from t_ac_detail ad, t_ac_account aa where ad.account_id=aa.id ) as tad ", "tad"));
 		render("/WEB-INF/view/manage/ac/ac-detail-index.ftl");
 	}
 	
