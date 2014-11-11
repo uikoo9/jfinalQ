@@ -1,4 +1,4 @@
-package com.uikoo9.common.service;
+package com.uikoo9.fore.service;
 
 import java.util.Date;
 import java.util.List;

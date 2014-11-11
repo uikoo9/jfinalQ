@@ -1,4 +1,4 @@
-package com.uikoo9.common.controller;
+package com.uikoo9.fore.controller;
 
 import com.uikoo9.manage.ucenter.model.UcenterMenuModel;
 import com.uikoo9.util.jfinal.QController;
