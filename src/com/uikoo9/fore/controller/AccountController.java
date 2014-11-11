@@ -1,5 +1,6 @@
 package com.uikoo9.fore.controller;
 
+import com.uikoo9.fore.service.AccountService;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -10,6 +11,8 @@ public class AccountController extends QController{
 	 * 跳转到记账首页
 	 */
 	public void index(){
+		setAttr("accountList", AccountService.getInstance().getAccountSum());
+		setAttr("accountDetails", AccountService.getInstance().getAccountDetails());
 		render("/WEB-INF/view/fore/account-index.ftl");
 	}
 }

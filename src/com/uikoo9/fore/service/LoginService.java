@@ -23,9 +23,9 @@ public class LoginService {
 
 	private LoginService() {}
 	public static LoginService getInstance() {
-		return LoginServiceHolder.instance;
+		return SingletonFactory.instance;
 	}
-	private static class LoginServiceHolder {
+	private static class SingletonFactory {
 		private static LoginService instance = new LoginService();
 	}
 	
