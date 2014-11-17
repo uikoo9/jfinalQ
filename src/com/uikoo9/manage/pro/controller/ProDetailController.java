@@ -6,7 +6,7 @@ import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.z.QContants;
+import com.uikoo9.z.MyContants;
 
 /**
  * 项目明细controller
@@ -27,7 +27,7 @@ public class ProDetailController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr("protypes", QContantsUtil.list(QContants.C_PRO_TYPE));
+		setAttr("protypes", QContantsUtil.list(MyContants.PRO_TYPE));
 		setAttr("row", getRow(ProDetailModel.class));
 		
 		render("/WEB-INF/view/manage/pro/pro-detail-input.ftl");

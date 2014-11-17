@@ -18,15 +18,12 @@ define(function(require, exports){
 		});
 		
 		if(res){
-			if(res.msg == 'user'){
-				$h5.text('登录成功，正在跳转。。。');
-				qiao.to(base + '/home');
-			}else if(res.msg == 'admin'){
-				$h5.text('登录成功，正在跳转。。。');
-				qiao.to(base + '/manage');
-			}else if(res.msg == 'account'){
+			if(res.msg == '010101'){
 				$h5.text('登录成功，正在跳转。。。');
 				qiao.to(base + '/ac');
+			}else if(res.msg == '010102'){
+				$h5.text('登录成功，正在跳转。。。');
+				qiao.to(base + '/manage');
 			}else{
 				$h5.text(res.msg);
 			}
