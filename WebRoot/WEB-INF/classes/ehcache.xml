@@ -16,8 +16,8 @@
 
 	<!-- default cache named cache -->
     <cache name="cache"
-           maxEntriesLocalHeap="10000"
-           maxEntriesLocalDisk="1000"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
            eternal="false"
            overflowToDisk="true"
            diskSpoolBufferSizeMB="20"
@@ -38,8 +38,8 @@
     defined on your system. On a standard Linux system this will be /tmp"
     -->
     <cache name="sampleCache1"
-           maxEntriesLocalHeap="10000"
-           maxEntriesLocalDisk="1000"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="10000"
            eternal="false"
            overflowToDisk="true"
            diskSpoolBufferSizeMB="20"

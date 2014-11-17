@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
-import com.uikoo9.util.QCacheUtil;
-import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.file.QCacheUtil;
+import com.uikoo9.util.file.QEncodeUtil;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.jfinal.QJfinalUtil;
 import com.uikoo9.z.QContants;

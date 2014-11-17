@@ -2,9 +2,9 @@ package com.uikoo9.manage.ucenter.controller;
 
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ucenter.model.UcenterUserModel;
-import com.uikoo9.util.QEncodeUtil;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.file.QEncodeUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.z.QContants;

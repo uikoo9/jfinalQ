@@ -6,12 +6,11 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
-import com.uikoo9.util.QCacheUtil;
-import com.uikoo9.util.QFileUtil;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.file.QCacheUtil;
+import com.uikoo9.util.file.QPropertiesUtil;
 import com.uikoo9.util.http.QCookieUtil;
 import com.uikoo9.util.http.QRequestUtil;
-import com.uikoo9.util.jfinal.QJfinalConfig;
 import com.uikoo9.z.QContants;
 
 /**
@@ -47,7 +46,7 @@ public class QInterceptor implements Interceptor{
 		String paths = null;
 		Object value = QCacheUtil.getFromEHCache("canVisitPaths");
 		if(value == null){
-			paths = QJfinalConfig.config.getProperty("canVisitPaths");
+			paths = QPropertiesUtil.config.getProperty("jfinal.can_visit_paths");
 		}else{
 			paths = (String) value;
 		}
@@ -106,7 +105,7 @@ public class QInterceptor implements Interceptor{
 		String base = null;
 		Object baseObject = QCacheUtil.getFromEHCache("base");
 		if(baseObject == null){
-			if(QFileUtil.getPropertyToBoolean(QJfinalConfig.config, "devMode")){
+			if(QPropertiesUtil.getPropertyToBoolean(QPropertiesUtil.config, "jfinal.dev_mode")){
 				base = QRequestUtil.getHttpPath(controller.getRequest());
 			}else{
 				base = "";

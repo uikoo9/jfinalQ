@@ -3,9 +3,9 @@ package com.uikoo9.manage.pro.model;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Model;
-import com.uikoo9.util.QCacheUtil;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QTable;
+import com.uikoo9.util.file.QCacheUtil;
 
 /**
  * 项目明细
