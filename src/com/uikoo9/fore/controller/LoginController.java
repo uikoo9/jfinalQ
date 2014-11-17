@@ -21,8 +21,7 @@ public class LoginController extends QController{
 	 * 用户登录
 	 */
 	public void login(){
-		String res = LoginService.getInstance().login(getParaMap(), getResponse());
-		renderJson(new QJson(res));
+		renderJson(new QJson(loginService.login(getParaMap(), getResponse())));
 	}
 	
 	/**
