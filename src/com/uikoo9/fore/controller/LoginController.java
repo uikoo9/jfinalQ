@@ -1,12 +1,8 @@
 package com.uikoo9.fore.controller;
 
-import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.crud.QJson;
-import com.uikoo9.util.file.QCacheUtil;
-import com.uikoo9.util.http.QCookieUtil;
+import com.uikoo9.manage.service.LoginService;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.util.jfinal.QLoginService;
 
 /**
  * 用户中心-登录controller
@@ -15,25 +11,20 @@ import com.uikoo9.util.jfinal.QLoginService;
 @QControllerUrl("/login")
 public class LoginController extends QController{
 	
-	private QLoginService loginService = QLoginService.getInstance();
+	private LoginService loginService = LoginService.getInstance();
 	
 	/**
 	 * 用户登录
 	 */
 	public void login(){
-		renderJson(new QJson(loginService.login(getParaMap(), getResponse())));
+		renderJson(loginService.login(getParaMap(), getResponse()));
 	}
 	
 	/**
 	 * 退出登录
 	 */
 	public void logout(){
-		String cookieUserId = QCookieUtil.getValue(getRequest(), "uikoo9userid");
-		if(QStringUtil.notEmpty(cookieUserId)){
-			QCacheUtil.removeEHCache(cookieUserId);
-			QCookieUtil.removeCookie(getResponse(), "uikoo9userid");
-		}
-		
+		loginService.logout(getRequest(), getResponse());
 		redirect("/home");
 	}
 	
