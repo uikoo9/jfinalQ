@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
-				<div class="row" style="margin-top:20px;">
+				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading text-center">收支汇总</div>

@@ -4,11 +4,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.util.QStringUtil;
+import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.file.QEncodeUtil;
 import com.uikoo9.util.http.QCookieUtil;
@@ -88,6 +90,25 @@ public class LoginService {
 		if(QStringUtil.notEmpty(userId)){
 			QCookieUtil.setCookie(response, "uikoo9userid", userId, 1800);
 			QCacheUtil.putToEHCache(userId, user);
+		}
+	}
+	
+	/**
+	 * 修改密码
+	 * @param paras
+	 * @param session
+	 * @return
+	 */
+	public QJson modifyPwd(Map<String, String[]> paras, HttpServletRequest request){
+		try {
+			String newpwd = QEncodeUtil.md5Encrypt(QJfinalUtil.value(paras, "password"));
+			int id = ((Record)request.getAttribute("user")).getInt("id");
+			Db.update("update t_ucenter_user set user_key=? where id=?", newpwd, id);
+
+			return new QJson("修改密码成功，请重新登录!", QJson.TYPE_BS_SUCC);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new QJson("修改密码失败!", QJson.TYPE_BS_DANG);
 		}
 	}
 

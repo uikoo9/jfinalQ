@@ -1,6 +1,7 @@
-require(['jquery', 'bootstrap', 'qiao'], function($, bs, qiao){
+require(['jquery', 'bootstrap', 'qiao', 'modifypwd'], function($, bs, qiao, modifypwd){
 	$(function(){
 		qiao.crud.init();
 		qiao.ajaxinit();
+		modifypwd.init();
 	});
 });

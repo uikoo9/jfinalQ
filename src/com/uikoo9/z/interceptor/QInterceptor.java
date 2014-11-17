@@ -28,7 +28,7 @@ public class QInterceptor implements Interceptor{
 		init(ai.getController());
 		
 		// can visit
-		if(canVisit(ai) || isLogin(ai)){
+		if(isLogin(ai) || canVisit(ai)){
 			ai.invoke();
 		}else{
 			ai.getController().redirect("/home");

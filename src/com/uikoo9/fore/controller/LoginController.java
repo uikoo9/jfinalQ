@@ -15,6 +15,8 @@ import com.uikoo9.util.jfinal.QControllerUrl;
 @QControllerUrl("/login")
 public class LoginController extends QController{
 	
+	private LoginService loginService = LoginService.getInstance();
+	
 	/**
 	 * 用户登录
 	 */
@@ -34,6 +36,20 @@ public class LoginController extends QController{
 		}
 		
 		redirect("/home");
+	}
+	
+	/**
+	 * 跳转到修改密码页面
+	 */
+	public void modifyPwdp(){
+		render("/WEB-INF/view/fore/home-modifypwd.ftl");
+	}
+	
+	/**
+	 * 修改密码
+	 */
+	public void modifyPwd(){
+		renderJson(loginService.modifyPwd(getParaMap(), getRequest()));
 	}
 	
 }

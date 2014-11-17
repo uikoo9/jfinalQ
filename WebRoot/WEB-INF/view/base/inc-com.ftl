@@ -59,7 +59,8 @@
 		    	jquery		: 'http://cdn.staticfile.org/jquery/1.11.1/jquery.min',
 		        bootstrap 	: 'http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min',
 		        qiao		: 'qiao',
-		        login		: 'web/js-src/login'
+		        login		: 'web/js-src/login',
+		        modifypwd	: 'web/js-src/modifypwd'
 		    },
 		    shim : {
 			    bootstrap : {
@@ -122,7 +123,13 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
-						<li><a href="${base}/login/logout">退出</a></li>
+						<li class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.user_name}<span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyPwd">修改密码</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/login/logout">退出系统</a></li>
+							</ul>
+						</li>
 					<#else>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录<span class="caret"></span></a>
