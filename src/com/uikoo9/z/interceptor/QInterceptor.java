@@ -131,7 +131,7 @@ public class QInterceptor implements Interceptor{
 	 * @param controller
 	 */
 	private void initAccounts(Controller controller){
-		controller.setAttr("accounts", AcAccountModel.dao.findAllByCache());
+		controller.setAttr("accounts", AcAccountModel.dao.findAll("order by account_name"));
 	}
 	
 }

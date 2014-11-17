@@ -100,7 +100,8 @@
 						</#if>
 						<#if user.user_type == '010103'>
 							<li><a href="${base}/ac">首页</a></li>
-							<li><a href="${base}/ac/details">收支明细</a></li>
+							<li class="menus" data="url:/ac/detail/;"><a href="javascript:void(0);">收支明细</a></li>
+							<li class="menus" data="url:/ac/account/;"><a href="javascript:void(0);">账户管理</a></li>
 						</#if>
 					<#else>
 						<li><a href="${base}/home">Home</a></li>
