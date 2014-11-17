@@ -78,7 +78,7 @@
 
 <#-- bshead -->
 <#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/home'>
-	<nav role="navigation" class="navbar navbar-default" style="margin-bottom:20px;">
+	<nav role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
 				<button data-target="#bsnav" data-toggle="collapse" class="navbar-toggle" type="button">
