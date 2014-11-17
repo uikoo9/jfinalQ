@@ -39,7 +39,7 @@ public class LoginService {
 		try {
 			String username = QJfinalUtil.value(paras, "username");
 			String password = QEncodeUtil.md5Encrypt(QJfinalUtil.value(paras, "password"));
-			if(isAdmin(username, password, response)) return "suc";
+			if(isAdmin(username, password, response)) return "admin";
 			if(QStringUtil.allNotEmpty(new String[]{username,password})){
 				List<Record> users = Db.find("select * from t_ucenter_user where user_name=? and user_key=?", username, password);
 				if(users != null && users.size() == 1){
