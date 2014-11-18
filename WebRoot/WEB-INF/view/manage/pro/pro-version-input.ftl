@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-com.ftl"/>
+<#include "/WEB-INF/view/base/inc-son.ftl"/>
 
 <@bsueditor/>
 <form class="form-horizontal" role="form">

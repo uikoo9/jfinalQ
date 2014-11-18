@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-com.ftl"/>
+<#include "/WEB-INF/view/base/inc-son.ftl"/>
 <@html>
 <@head></@head>
 
