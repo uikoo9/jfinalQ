@@ -1,4 +1,4 @@
-package com.uikoo9.z.interceptor;
+package com.uikoo9.z;
 
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
@@ -6,7 +6,6 @@ import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QInterceptor;
-import com.uikoo9.z.MyContants;
 
 public class MyInterceptor extends QInterceptor{
 
