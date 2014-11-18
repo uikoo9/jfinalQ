@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-com.ftl"/>
+<#include "/WEB-INF/view/base/inc-son.ftl"/>
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='菜单名称' name='row.menu_title' value='${(row.menu_title)!}'/>
