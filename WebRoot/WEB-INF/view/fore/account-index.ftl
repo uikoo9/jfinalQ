@@ -6,6 +6,14 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="cruddiv">
+				<div class="row" style="margin-bottom:10px;">
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:10px;">
+						<@bsbutton type='primary' size='lg' class='btn-block shouzhi' icon='sort'>收支</@bsbutton>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:10px;">
+						<@bsbutton type='primary' size='lg' class='btn-block zhuan' icon='retweet'>转账</@bsbutton>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 						<div class="panel panel-default">
