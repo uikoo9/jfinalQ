@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-par.ftl"/>
+<#include "/com/uikoo9/util/ucenter/view/inc.ftl"/>
 <#-- head -->
 <#macro head title='uikoo9.com' bs=true>
 	<head>

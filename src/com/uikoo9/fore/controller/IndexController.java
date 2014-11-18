@@ -23,7 +23,7 @@ public class IndexController extends QController{
 	 */
 	public void manage(){
 		setAttr("menus", UcenterMenuModel.dao.findAllByCache());
-		render("/WEB-INF/view/manage/manage.ftl");
+		render("/com/uikoo9/util/ucenter/view/manage.ftl");
 	}
 	
 }

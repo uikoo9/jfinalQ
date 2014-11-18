@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/base/inc-son.ftl"/>
+<#include "/WEB-INF/view/inc.ftl"/>
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='所属账户' input=false>
