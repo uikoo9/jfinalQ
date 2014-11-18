@@ -2,7 +2,6 @@
 <configuration>
 	<!-- 定义变量 -->
 	<property name="pattern" value="%date{yyyy-MM-dd HH:mm:ss} %-5level %logger{0} ---- %msg %n" />
-	<property name="filepath" value="e:/myApp.log" />
 
 	<!-- 打印到控制台 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -11,16 +10,17 @@
 		</encoder>
 	</appender>
 
-	<!-- 输出到文件 -->
+	<root level="info">
+		<appender-ref ref="stdout"/>
+	</root>
+</configuration>
+<!-- 
+	<property name="filepath" value="e:/myApp.log" />
 	<appender name="file" class="ch.qos.logback.core.FileAppender">
 		<file>${filepath}</file>
 		<encoder>
 			<pattern>${pattern}</pattern>
 		</encoder>
 	</appender> 
-	
-	<root level="info">
-		<appender-ref ref="stdout"/>
-		<appender-ref ref="file"/>
-	</root>
-</configuration>  
+	<appender-ref ref="file"/>
+ -->

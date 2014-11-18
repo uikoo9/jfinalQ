@@ -1,8 +1,8 @@
 package com.uikoo9.fore.controller;
 
-import com.uikoo9.manage.ucenter.model.UcenterMenuModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.ucenter.model.UcenterMenuModel;
 
 /**
  * 用户中心-首页controller
