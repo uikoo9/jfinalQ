@@ -1,5 +1,6 @@
 package com.uikoo9.manage.ac.controller;
 
+import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.manage.ac.model.AcDetailModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
@@ -24,6 +25,7 @@ public class AcDetailController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
+		setAttr("accounts", AcAccountModel.dao.findAllByCache());
 		setAttr("row", getRow(AcDetailModel.class));
 		
 		render("/WEB-INF/view/manage/ac/ac-detail-input.ftl");

@@ -111,12 +111,12 @@
 								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Ideas<span class="caret"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<#list proDetails?if_exists as pro>
-										<li role="presentation" style="padding:10px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
+										<li role="presentation" style="padding-top:5px;padding-bottom:5px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
 									</#list>
 								</ul>
 							</li>
 						</#if>
-						<li><a href="#">Blogs</a></li>
+						<li><a href="${base}/blog">Blogs</a></li>
 						<li><a href="${base}/home/version">Version</a></li>
 						<li><a href="#">About Me</a></li>
 					</#if>

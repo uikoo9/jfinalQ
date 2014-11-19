@@ -3,6 +3,7 @@ package com.uikoo9.fore.controller;
 import com.jfinal.aop.Before;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.uikoo9.fore.service.AccountService;
+import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -23,6 +24,7 @@ public class AccountController extends QController{
 	 * 跳转到转账页面
 	 */
 	public void tozhuan(){
+		setAttr("accounts", AcAccountModel.dao.findAllByCache());
 		render("/WEB-INF/view/fore/account-zhuan.ftl");
 	}
 	

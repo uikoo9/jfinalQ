@@ -1,6 +1,7 @@
 package com.uikoo9.manage.blog.controller;
 
 import com.uikoo9.manage.blog.model.BlogArticleModel;
+import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -16,7 +17,6 @@ public class BlogArticleController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", list(BlogArticleModel.class));
 		setAttr("qpage", listBySql(getParaMap(), " (select ba.*,bt.type_name tname from t_blog_article ba, t_blog_type bt where ba.type_id=bt.id ) as tba ", "tba"));
 		render("/WEB-INF/view/manage/blog/blog-article-index.ftl");
 	}
@@ -25,6 +25,7 @@ public class BlogArticleController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
+		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
 		setAttr("row", getRow(BlogArticleModel.class));
 		
 		render("/WEB-INF/view/manage/blog/blog-article-input.ftl");

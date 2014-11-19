@@ -3,8 +3,6 @@ package com.uikoo9.z;
 import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
-import com.uikoo9.manage.ac.model.AcAccountModel;
-import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QInterceptor;
 
@@ -14,8 +12,6 @@ public class MyInterceptor extends QInterceptor{
 	public void init(Controller controller) {
 		super.init(controller);
 		initProDetails(controller);
-		initAccounts(controller);
-		initBlogTypes(controller);
 	}
 	
 	/**
@@ -26,22 +22,6 @@ public class MyInterceptor extends QInterceptor{
 		controller.setAttr("proDetails", ProDetailModel.dao.findAllByCache());
 	}
 	
-	/**
-	 * 缓存账户列表
-	 * @param controller
-	 */
-	private void initAccounts(Controller controller){
-		controller.setAttr("accounts", AcAccountModel.dao.findAllByCache());
-	}
-	
-	/**
-	 * 缓存文章类型列表
-	 * @param controller
-	 */
-	private void initBlogTypes(Controller controller){
-		controller.setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
-	}
-
 	@Override
 	public boolean authVisit(ActionInvocation ai) {
 		Record user = ai.getController().getAttr("user");
