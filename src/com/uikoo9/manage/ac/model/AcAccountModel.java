@@ -18,6 +18,14 @@ public class AcAccountModel extends Model<AcAccountModel>{
 	public static final AcAccountModel dao = new AcAccountModel();
 	
 	/**
+	 * get details
+	 * @return
+	 */
+	public List<AcDetailModel> details(){
+		return AcDetailModel.dao.find("select * from t_ac_detail where account_id=? order by id desc", get("id"));
+	}
+	
+	/**
 	 * find all default
 	 * @return
 	 */
@@ -56,14 +64,13 @@ public class AcAccountModel extends Model<AcAccountModel>{
 		}
 		
 		return accounts;
-	}	
+	}
 	
 	/**
-	 * get details
-	 * @return
+	 * reload all to cache
 	 */
-	public List<AcDetailModel> details(){
-		return AcDetailModel.dao.find("select * from t_ac_detail where account_id=? order by id desc", get("id"));
+	public void reloadAllToCache(){
+		QCacheUtil.putToEHCache("accounts", AcAccountModel.dao.findAll("order by account_name"));
 	}
 	
 }

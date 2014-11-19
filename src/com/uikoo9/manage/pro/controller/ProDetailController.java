@@ -39,7 +39,12 @@ public class ProDetailController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(ProDetailModel.class));
+			QJson json = save(ProDetailModel.class);
+			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+				ProDetailModel.dao.reloadAllToCache();
+			}
+			
+			renderJson(json);
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}

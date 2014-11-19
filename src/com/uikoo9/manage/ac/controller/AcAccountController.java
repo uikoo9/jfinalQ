@@ -36,7 +36,12 @@ public class AcAccountController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(AcAccountModel.class));
+			QJson json = save(AcAccountModel.class);
+			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+				AcAccountModel.dao.reloadAllToCache();
+			}
+			
+			renderJson(json);
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
