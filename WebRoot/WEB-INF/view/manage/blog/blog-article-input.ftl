@@ -1,5 +1,6 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 
+<@bsueditor/>
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='文章类型' input=false>
@@ -10,5 +11,9 @@
 		</select>
 	</@bsinput>
 	<@bsinput title='文章标题' name='row.article_title' value='${(row.article_title)!}'/>
-	<@bsinput title='文章内容' name='row.article_content' value='${(row.article_content)!}'/>
+	<@bsinput title='文章内容' input=false>
+		<div class="embed-responsive embed-responsive-16by9">
+			<script id="ueditor" name="row.article_content" type="text/plain">${(row.article_content)!}</script>
+		</div>
+	</@bsinput>
 </form>

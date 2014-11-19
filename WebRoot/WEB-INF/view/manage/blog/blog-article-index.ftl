@@ -6,7 +6,6 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 				<th>文章类型</th>
         		<th>文章标题</th>
-        		<th>文章内容</th>
         		<th>创建时间</th>
 				<th>操作</th>
 			</tr>
@@ -17,7 +16,6 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.tname)!}</td>
 		        	<td>${(row.article_title)!}</td>
-		        	<td>${(row.article_content)!}</td>
 		        	<td>${(row.cdate)!}</td>
 					<td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
