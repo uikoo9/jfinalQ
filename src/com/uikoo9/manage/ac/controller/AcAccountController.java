@@ -3,6 +3,7 @@ package com.uikoo9.manage.ac.controller;
 import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.manage.ac.model.AcDetailModel;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -36,7 +37,12 @@ public class AcAccountController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(AcAccountModel.class));
+			QJson json = save(AcAccountModel.class);
+			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+				QCacheUtil.putToEHCache("accounts", AcAccountModel.dao.findAll("order by account_name"));
+			}
+			
+			renderJson(json);
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
