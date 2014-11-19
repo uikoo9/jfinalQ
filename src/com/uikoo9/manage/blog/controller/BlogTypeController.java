@@ -36,12 +36,7 @@ public class BlogTypeController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			QJson json = save(BlogTypeModel.class);
-			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
-				BlogTypeModel.dao.reloadAllToCache();
-			}
-			
-			renderJson(json);
+			renderJson(save(BlogTypeModel.class));
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
