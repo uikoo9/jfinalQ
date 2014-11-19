@@ -18,14 +18,6 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	public static final BlogTypeModel dao = new BlogTypeModel();
 	
 	/**
-	 * get articles
-	 * @return
-	 */
-	public List<BlogArticleModel> articles(){
-		return BlogArticleModel.dao.find("select * from t_blog_article where type_id=? order by article_title", get("id"));
-	}
-	
-	/**
 	 * find all default
 	 * @return
 	 */
@@ -67,10 +59,11 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	}
 	
 	/**
-	 * reload all to cache
+	 * get articles
+	 * @return
 	 */
-	public void reloadAllToCache(){
-		QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by type_name"));
+	public List<BlogArticleModel> articles(){
+		return BlogArticleModel.dao.find("select * from t_blog_article where type_id=? order by article_title", get("id"));
 	}
 	
 }

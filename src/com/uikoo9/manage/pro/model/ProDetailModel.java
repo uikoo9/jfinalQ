@@ -18,14 +18,6 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	public static final ProDetailModel dao = new ProDetailModel();
 	
 	/**
-	 * get versions
-	 * @return
-	 */
-	public List<ProVersionModel> versions(){
-		return ProVersionModel.dao.find("select * from t_pro_version where pro_detail_id=? order by id desc", get("id"));
-	}
-	
-	/**
 	 * find all default
 	 * @return
 	 */
@@ -67,10 +59,11 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	}
 	
 	/**
-	 * reload all to cache
+	 * get versions
+	 * @return
 	 */
-	public void reloadAllToCache(){
-		QCacheUtil.putToEHCache("proDetails", ProDetailModel.dao.findAll("order by pro_sn"));
+	public List<ProVersionModel> versions(){
+		return ProVersionModel.dao.find("select * from t_pro_version where pro_detail_id=? order by id desc", get("id"));
 	}
 	
 }
