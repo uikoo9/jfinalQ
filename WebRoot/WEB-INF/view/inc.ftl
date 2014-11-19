@@ -116,7 +116,7 @@
 								</ul>
 							</li>
 						</#if>
-						<li><a href="${base}/blog">Blogs</a></li>
+						<li><a href="${base}/blog/fore">Blogs</a></li>
 						<li><a href="${base}/home/version">Version</a></li>
 						<li><a href="#">About Me</a></li>
 					</#if>

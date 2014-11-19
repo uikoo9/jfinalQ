@@ -3,6 +3,7 @@ package com.uikoo9.manage.blog.controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -36,7 +37,12 @@ public class BlogTypeController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(BlogTypeModel.class));
+			QJson json = save(BlogTypeModel.class);
+			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+				QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by type_name"));
+			}
+			
+			renderJson(json);
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
