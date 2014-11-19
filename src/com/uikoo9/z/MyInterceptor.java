@@ -4,6 +4,7 @@ import com.jfinal.core.ActionInvocation;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ac.model.AcAccountModel;
+import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QInterceptor;
 
@@ -14,6 +15,7 @@ public class MyInterceptor extends QInterceptor{
 		super.init(controller);
 		initProDetails(controller);
 		initAccounts(controller);
+		initBlogTypes(controller);
 	}
 	
 	/**
@@ -30,6 +32,14 @@ public class MyInterceptor extends QInterceptor{
 	 */
 	private void initAccounts(Controller controller){
 		controller.setAttr("accounts", AcAccountModel.dao.findAllByCache());
+	}
+	
+	/**
+	 * 缓存文章类型列表
+	 * @param controller
+	 */
+	private void initBlogTypes(Controller controller){
+		controller.setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
 	}
 
 	@Override
