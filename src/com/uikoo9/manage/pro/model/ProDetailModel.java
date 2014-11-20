@@ -9,6 +9,16 @@ import com.uikoo9.util.file.QCacheUtil;
 
 /**
  * 项目明细
+ * id 			id<br>
+ * pro_name		项目名称<br>
+ * pro_desc 	项目详情<br>
+ * pro_url		项目地址<br>
+ * pro_src		源码地址<br>
+ * pro_type		项目类型<br>
+ * pro_sn		项目序号<br>
+ * cdate		创建时间<br>
+ * cuser_id		创建人id<br>
+ * cuser_name	创建人姓名<br>
  * @author uikoo9
  */
 @QTable("t_pro_detail")

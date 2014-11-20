@@ -8,6 +8,13 @@ import com.uikoo9.util.crud.QTable;
 
 /**
  * AcDetailModel
+ * id 				id<br>
+ * accuont_id		账户id<br>
+ * detail_shouzhi 	收支明细<br>
+ * detail_remark	收支备注<br>
+ * cdate			创建时间<br>
+ * cuser_id			创建人id<br>
+ * cuser_name		创建人姓名<br>
  * @author qiaowenbin
  */
 @QTable("t_ac_detail")

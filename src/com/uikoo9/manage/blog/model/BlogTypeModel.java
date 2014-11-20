@@ -9,6 +9,11 @@ import com.uikoo9.util.file.QCacheUtil;
 
 /**
  * BlogTypeModel
+ * id 			id<br>
+ * type_name	类型名称<br>
+ * cdate		创建时间<br>
+ * cuser_id		创建人id<br>
+ * cuser_name	创建人姓名<br>
  * @author qiaowenbin
  */
 @QTable("t_blog_type")

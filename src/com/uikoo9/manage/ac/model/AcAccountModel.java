@@ -8,7 +8,13 @@ import com.uikoo9.util.crud.QTable;
 import com.uikoo9.util.file.QCacheUtil;
 
 /**
- * AcAccountModel
+ * AcAccountModel<br>
+ * id 			id<br>
+ * account_name 账户名称<br>
+ * account_desc 账户描述<br>
+ * cdate		创建时间<br>
+ * cuser_id		创建人id<br>
+ * cuser_name	创建人姓名<br>
  * @author qiaowenbin
  */
 @QTable("t_ac_account")

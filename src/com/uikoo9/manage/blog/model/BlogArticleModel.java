@@ -8,6 +8,13 @@ import com.uikoo9.util.crud.QTable;
 
 /**
  * BlogArticleModel
+ * id 				id<br>
+ * type_id			类型id<br>
+ * article_title	文章标题<br>
+ * article_content	文章内容<br>
+ * cdate			创建时间<br>
+ * cuser_id			创建人id<br>
+ * cuser_name		创建人姓名<br>
  * @author qiaowenbin
  */
 @QTable("t_blog_article")
