@@ -13,6 +13,6 @@
 //	out :'../web/js-min/manage.min.js'
 //    name :'web/js-src/account',
 //	out :'../web/js-min/account.min.js'
-	name :'web/js-src/blog',
-	out :'../web/js-min/blog.min.js'
+	name :'web/js-src/project',
+	out :'../web/js-min/project.min.js'
 })

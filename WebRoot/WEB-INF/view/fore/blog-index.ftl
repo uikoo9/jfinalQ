@@ -2,7 +2,7 @@
 <@html>
 <@head></@head>
 
-<@bsbody js='blog'>
+<@bsbody js='home.min'>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
@@ -14,7 +14,7 @@
 				</#list>
 			</div>
 			<div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
-				<div class="list-group">
+				<div class="list-group" style="position:fixed;top:70px;">
 					<#if blogTypeId??>
 						<a href="${base}/home/blogs" class="list-group-item">所有文章</a>
 					<#else>

@@ -21,21 +21,8 @@ public class HomeController extends QController{
 	 * 跳转到项目展示页面
 	 */
 	public void project(){
-		try {
-			Integer id = getParaToInt(0);
-			if(id != null){
-				ProDetailModel detail = ProDetailModel.dao.findById(id); 
-				if(detail != null){
-					setAttr("detail", detail);	
-					render("/WEB-INF/view/fore/home-project.ftl");
-					return;
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		redirect("/home");
+		setAttr("proDetails", ProDetailModel.dao.findAllByCache());
+		render("/WEB-INF/view/fore/project-index.ftl");
 	}
 	
 	/**
@@ -56,7 +43,6 @@ public class HomeController extends QController{
 			render("/WEB-INF/view/fore/blog-index.ftl");
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 			redirect("/blog/fore");
 		}
 	}
