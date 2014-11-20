@@ -4,6 +4,7 @@ import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.manage.pro.model.ProVersionModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.z.MyContants;
@@ -29,7 +30,6 @@ public class ProDetailController extends QController{
 	public void savep(){
 		setAttr("protypes", QContantsUtil.list(MyContants.PRO_TYPE));
 		setAttr("row", getRow(ProDetailModel.class));
-		
 		render("/WEB-INF/view/manage/pro/pro-detail-input.ftl");
 	}
 	
@@ -39,7 +39,12 @@ public class ProDetailController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(ProDetailModel.class));
+			QJson json = save(ProDetailModel.class);
+			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+				QCacheUtil.putToEHCache("proDetails", ProDetailModel.dao.findAll("order by pro_sn"));
+			}
+			
+			renderJson(json);
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
