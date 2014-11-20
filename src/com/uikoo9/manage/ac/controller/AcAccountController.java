@@ -27,7 +27,6 @@ public class AcAccountController extends QController{
 	 */
 	public void savep(){
 		setAttr("row", getRow(AcAccountModel.class));
-		
 		render("/WEB-INF/view/manage/ac/ac-account-input.ftl");
 	}
 	
