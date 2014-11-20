@@ -1,5 +1,6 @@
 package com.uikoo9.manage.pro.controller;
 
+import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.manage.pro.model.ProVersionModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
@@ -24,6 +25,7 @@ public class ProVersionController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
+		setAttr("proDetails", ProDetailModel.dao.findAllByCache());
 		setAttr("row", getRow(ProVersionModel.class));
 		render("/WEB-INF/view/manage/pro/pro-version-input.ftl");
 	}
