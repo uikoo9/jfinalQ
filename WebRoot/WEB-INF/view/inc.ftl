@@ -105,20 +105,11 @@
 							</#list>
 						</#if>
 					<#else>
-						<li><a href="${base}/home">Home</a></li>
-						<#if proDetails?size gt 0>
-							<li class="dropdown">
-								<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">Ideas<span class="caret"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<#list proDetails?if_exists as pro>
-										<li role="presentation" style="padding-top:5px;padding-bottom:5px;"><a role="menuitem" style="padding-left:10px;" tabindex="-1" href="${base}/home/project/${pro.id}">${pro.pro_name}</a></li>
-									</#list>
-								</ul>
-							</li>
-						</#if>
-						<li><a href="${base}/blog/fore">Blogs</a></li>
-						<li><a href="${base}/home/version">Version</a></li>
-						<li><a href="#">About Me</a></li>
+						<li><a href="${base}/home">首页</a></li>
+						<li><a href="${base}/home/project">项目</a></li>
+						<li><a href="${base}/home/blogs">博客</a></li>
+						<li><a href="${base}/home/version">技术架构&版本更新</a></li>
+						<li><a href="#">关于我</a></li>
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
