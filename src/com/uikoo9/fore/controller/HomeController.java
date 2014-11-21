@@ -42,7 +42,6 @@ public class HomeController extends QController{
 			
 			render("/WEB-INF/view/fore/blog-index.ftl");
 		} catch (Exception e) {
-			e.printStackTrace();
 			redirect("/blog/fore");
 		}
 	}
@@ -60,7 +59,6 @@ public class HomeController extends QController{
 				redirect("/blog/fore");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			redirect("/blog/fore");
 		}
 	}

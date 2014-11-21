@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ac.model.AcDetailModel;
@@ -24,6 +27,8 @@ public class AccountService {
 	private static class SingletonFactory {
 		private static AccountService instance = new AccountService();
 	}
+	
+	private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 	
 	/**
 	 * 获取账户汇总列表
@@ -67,7 +72,7 @@ public class AccountService {
 			
 			return new QJson("转账成功！", QJson.TYPE_BS_SUCC);
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error(QStringUtil.exceptionToString(e));
 			return new QJson("转账失败！", QJson.TYPE_BS_DANG);
 		}
 	}
