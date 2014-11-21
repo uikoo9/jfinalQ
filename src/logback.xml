@@ -22,7 +22,7 @@
 		</encoder>
 	</appender>
 
-	<root level="info">
+	<root level="error">
 		<appender-ref ref="stdout"/>
 		<appender-ref ref="file"/>
 	</root>
