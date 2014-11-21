@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<!-- 定义变量 -->
-	<property name="pattern" value="%date{yyyy-MM-dd HH:mm:ss} %-5level %logger{0} ---- %n%msg%n" />
+	<property name="pattern" value="%date{yyyy-MM-dd HH:mm:ss} %-5level %logger{0} %n%msg%n" />
 	<property name="filepath" value="e:/bae.%d{yyyy-MM-dd}.log" />
 
 	<!-- 打印到控制台 -->
