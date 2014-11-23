@@ -12,8 +12,6 @@
 	</@bsinput>
 	<@bsinput title='版本代号' name='row.ver_code' value='${(row.ver_code)!}'/>
 	<@bsinput title='版本详情' input=false>
-		<div class="embed-responsive embed-responsive-16by9">
-			<script id="ueditor" name="row.ver_desc" type="text/plain">${(row.ver_desc)!}</script>
-		</div>
+		<script id="ueditor" name="row.ver_desc" type="text/plain">${(row.ver_desc)!}</script>
 	</@bsinput>
 </form>

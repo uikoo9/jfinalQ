@@ -12,8 +12,6 @@
 	</@bsinput>
 	<@bsinput title='文章标题' name='row.article_title' value='${(row.article_title)!}'/>
 	<@bsinput title='文章内容' input=false>
-		<div class="embed-responsive embed-responsive-16by9">
-			<script id="ueditor" name="row.article_content" type="text/plain">${(row.article_content)!}</script>
-		</div>
+		<script id="ueditor" name="row.article_content" type="text/plain">${(row.article_content)!}</script>
 	</@bsinput>
 </form>
