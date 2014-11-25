@@ -121,12 +121,12 @@ define(function(require, exports){
 		$(obj).empty().append(exports.ajax(opt));
 	};
 	exports.ajaxinit = function(){
-		NProgress.done();
+		qmask.qhide();
 		$(document).ajaxStart(function(){
-    		NProgress.start();
+			qmask.qmask();
     	});
     	$(document).ajaxStop(function(){
-    		NProgress.done();
+    		qmask.qhide();
     	});
 	};
 	exports.to = function(url){
