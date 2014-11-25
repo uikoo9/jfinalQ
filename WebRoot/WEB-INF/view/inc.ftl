@@ -25,9 +25,6 @@
 		<!-- base -->
 		<script type="text/javascript">var base = '${base}';</script>
 		
-		<!-- nprogress -->
-		<link rel="stylesheet" href="http://uikoo9.qiniudn.com/WUI/nprogress/nprogress.css">
-
 		<#if bs>
 		<!-- bootstrap -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
