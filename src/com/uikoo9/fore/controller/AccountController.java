@@ -1,7 +1,5 @@
 package com.uikoo9.fore.controller;
 
-import com.jfinal.aop.Before;
-import com.jfinal.plugin.activerecord.tx.Tx;
 import com.uikoo9.fore.service.AccountService;
 import com.uikoo9.manage.ac.model.AcAccountModel;
 import com.uikoo9.util.jfinal.QController;
@@ -31,7 +29,6 @@ public class AccountController extends QController{
 	/**
 	 * 转账
 	 */
-	@Before(Tx.class) 
 	public void zhuan(){
 		renderJson(accountService.zhuan(getRequest()));
 	}
