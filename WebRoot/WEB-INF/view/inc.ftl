@@ -18,15 +18,15 @@
 		<title>${title}</title>
 		
 		<!-- favicon.ico -->
-		<link href="${base}/favicon.ico" type="image/x-icon" rel="bookmark"/> 
-		<link href="${base}/favicon.ico" type="image/x-icon" rel="icon"/> 
-		<link href="${base}/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
+		<link href="http://uikoo9.qiniudn.com/favicon.ico" type="image/x-icon" rel="bookmark"/> 
+		<link href="http://uikoo9.qiniudn.com/favicon.ico" type="image/x-icon" rel="icon"/> 
+		<link href="http://uikoo9.qiniudn.com/favicon.ico" type="image/x-icon" rel="shortcut icon"/> 
 		
 		<!-- base -->
 		<script type="text/javascript">var base = '${base}';</script>
 		
 		<!-- nprogress -->
-		<link rel="stylesheet" href="${base}/WUI/nprogress/nprogress.css">
+		<link rel="stylesheet" href="http://uikoo9.qiniudn.com/WUI/nprogress/nprogress.css">
 
 		<#if bs>
 		<!-- bootstrap -->
@@ -51,7 +51,7 @@
 
 <#-- rj -->
 <#macro rj js>
-	<script type="text/javascript" src="${base}/WUI/rj/require.js"></script>
+	<script type="text/javascript" src="http://uikoo9.qiniudn.com/WUI/rj/require.js"></script>
 	<script type="text/javascript">
 		requirejs.config({
 			baseUrl : '${base}/WUI',
@@ -71,9 +71,9 @@
 		});
 	</script>
 	<#if js?contains('.min')>
-		<script type="text/javascript" src="${base}/WUI/web/js-min/${js}.js"></script>
+		<script type="text/javascript" src="http://uikoo9.qiniudn.com/WUI/web/js-min/${js}.js"></script>
 	<#else>
-		<script type="text/javascript" src="${base}/WUI/web/js-src/${js}.js"></script>
+		<script type="text/javascript" src="http://uikoo9.qiniudn.com/WUI/web/js-src/${js}.js"></script>
 	</#if>
 </#macro>
 
