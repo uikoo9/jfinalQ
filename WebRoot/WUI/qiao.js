@@ -165,10 +165,11 @@ define(function(require, exports){
 		show	: false,
 		remote	: false,
 		backdrop: 'static',
-		keyboard: true
+		keyboard: true,
+		style	: ''
 	};
 	exports.bs.modalstr = function(opt){
-		var start = '<div class="modal '+opt.fade+'" id="bsmodal" tabindex="-1" role="dialog" aria-labelledby="bsmodaltitle" aria-hidden="true" style="position:fixed;top:20px;">';
+		var start = '<div class="modal '+opt.fade+'" id="bsmodal" tabindex="-1" role="dialog" aria-labelledby="bsmodaltitle" aria-hidden="true" style="position:fixed;top:20px;'+opt.style+'">';
 		if(opt.big){
 			start += '<div class="modal-dialog modal-lg"><div class="modal-content">';
 		}else{
