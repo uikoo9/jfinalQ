@@ -1,6 +1,10 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head></@head>
+<@head>
+	<@js>
+		
+	</@js>
+</@head>
 
 <@bsbody js='home.min'>
 	<div class="container">
