@@ -3,7 +3,9 @@
 <#-- js -->
 <#macro js login=false>
 	<#if login><script type="text/javascript" src="${base}/WUI/web/js/login.js"></script></#if>
-	<#nested>
+	<script type="text/javascript">
+		<#nested>
+	</script>
 </#macro>
 
 <#-- bshead -->

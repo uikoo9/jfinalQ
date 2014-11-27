@@ -10,8 +10,10 @@
 	</div>
 	
 	<@js login=true>
-		jslogin.init();
-		qiao.ajaxinit();
+		$(function(){
+			jslogin.init();
+			qiao.ajaxinit();
+		});
 	</@js>
 </@html>
 
