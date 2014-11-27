@@ -9,12 +9,7 @@
 		</div>
 	</div>
 	
-	<@js login=true>
-		$(function(){
-			jslogin.init();
-			qiao.ajaxinit();
-		});
-	</@js>
+	<@js web=true>$(function(){web.login.init();});</@js>
 </@html>
 
 <#-- 

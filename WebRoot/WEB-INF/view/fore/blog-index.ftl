@@ -1,8 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head></@head>
-
-<@bsbody js='home.min'>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
@@ -27,5 +24,6 @@
 			</div>
 		</div>
 	</div>
-</@bsbody>
+	
+	<@js web=true>$(function(){web.login.init();});</@js>
 </@html>

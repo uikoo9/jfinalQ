@@ -1,13 +1,5 @@
 <#include "/com/uikoo9/util/ucenter/view/inc.ftl"/>
 
-<#-- js -->
-<#macro js login=false>
-	<#if login><script type="text/javascript" src="${base}/WUI/web/js/login.js"></script></#if>
-	<script type="text/javascript">
-		<#nested>
-	</script>
-</#macro>
-
 <#-- bshead -->
 <#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/home'>
 	<nav role="navigation" class="navbar navbar-default">
