@@ -1,7 +1,8 @@
 <#include "/com/uikoo9/util/ucenter/view/inc.ftl"/>
 
 <#-- js -->
-<#macro js >
+<#macro js login=false>
+	<#if login><script type="text/javascript" src="${base}/WUI/web/js/login.js"></script></#if>
 	<#nested>
 </#macro>
 

@@ -1,12 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-<@head>
-	<@js>
-		
-	</@js>
-</@head>
-
-<@bsbody js='home.min'>
 	<div class="container">
 		<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 			<div class="container">
@@ -15,7 +8,11 @@
 			</div>
 		</div>
 	</div>
-</@bsbody>
+	
+	<@js login=true>
+		jslogin.init();
+		qiao.ajaxinit();
+	</@js>
 </@html>
 
 <#-- 
