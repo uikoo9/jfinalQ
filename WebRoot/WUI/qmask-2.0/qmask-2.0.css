@@ -1,22 +1,23 @@
 @CHARSET "UTF-8";
 #qmask {
 	background-color: rgba(0,0,0,0);
-	border:50px solid rgba(0,183,229,0.9);
+	border:20px solid rgba(0,183,229,0.9);
 	opacity:.9;
-	border-top:50px solid rgba(0,0,0,0);
-	border-left:50px solid rgba(0,0,0,0);
+	border-top:20px solid rgba(0,0,0,0);
+	border-left:20px solid rgba(0,0,0,0);
 	border-radius:300px;
-	box-shadow: 0 0 35px #2187e7;
-	-moz-animation:spin .5s infinite linear;
-	-webkit-animation:spin .5s infinite linear;
-	-o-animation:spin .5s infinite linear;
-	-ms-animation:spin .5s infinite linear;
+	box-shadow: 0 0 40px #2187e7;
+	-moz-animation:spin .7s infinite linear;
+	-webkit-animation:spin .7s infinite linear;
+	-o-animation:spin .7s infinite linear;
+	-ms-animation:spin .7s infinite linear;
 	position:absolute;
 	top:50%;
 	left:50%;
-	width:200px;
-	height:200px;
-	margin:-100px 0 0 -100px;
+	width:120px;
+	height:120px;
+	margin:-80px 0 0 -80px;
+	z-index:2002;
 }
 @-moz-keyframes spin {
 	0% { -moz-transform:rotate(0deg); }

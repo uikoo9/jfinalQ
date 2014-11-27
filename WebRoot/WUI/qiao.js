@@ -112,12 +112,12 @@ qiao.html = function(options, target){
 	$(obj).empty().append(qiao.ajax(opt));
 };
 qiao.ajaxinit = function(){
-	qmask.qhide();
+	qmask.hide();
 	$(document).ajaxStart(function(){
-		qmask.qmask();
+		qmask.show();
 	});
 	$(document).ajaxStop(function(){
-		qmask.qhide();
+		qmask.hide();
 	});
 };
 qiao.to = function(url){
