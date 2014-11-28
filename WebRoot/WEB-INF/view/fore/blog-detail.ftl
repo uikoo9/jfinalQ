@@ -9,5 +9,5 @@
 		</div>
 	</div>
 	
-	<@js login=true>$(function(){web.blog.init();});</@js>
+	<@js web=true>$(function(){web.blog.init();});</@js>
 </@html>

@@ -70,16 +70,7 @@ web.project.init = function(){
 // blog
 web.blog = {};
 web.blog.init = function(){
-	$('img').each(function(){
-		var clazz = $(this).attr('class');
-		if(clazz){
-			if(!clazz.contains('img-responsive')){
-				$(this).addClass('img-responsive');
-			}
-		}else{
-			$(this).addClass('img-responsive');
-		}
-	});
+	qiao.bs.initimg();
 };
 
 // account
