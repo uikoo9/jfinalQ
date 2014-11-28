@@ -140,9 +140,9 @@ qiao.on = function(obj, event, func){
  * 2.confirm
  * 3.dialog
  * 4.msg
+ * 5.initimg
  */
-qiao.bs 		= {};
-qiao.bs.ue 	= {};
+qiao.bs 	= {};
 qiao.bs.modaloptions = {
 	url 	: '',
 	fade	: 'fade',
@@ -302,6 +302,18 @@ qiao.bs.msg = function(options){
 			$('#bsalert').remove();
 		});
 	},opt.time);
+};
+qiao.bs.initimg = function(){
+	$('img').each(function(){
+		var clazz = $(this).attr('class');
+		if(clazz){
+			if(!clazz.contains('img-responsive')){
+				$(this).addClass('img-responsive');
+			}
+		}else{
+			$(this).addClass('img-responsive');
+		}
+	});
 };
 
 /**
