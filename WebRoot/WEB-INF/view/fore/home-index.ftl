@@ -1,5 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
-<@html>
+<@html j=true>
 	<div class="container">
 		<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
 			<div class="container">
@@ -8,8 +8,6 @@
 			</div>
 		</div>
 	</div>
-	
-	<@js web=true>$(function(){web.login.init();});</@js>
 </@html>
 
 <#-- 

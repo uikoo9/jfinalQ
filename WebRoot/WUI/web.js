@@ -85,8 +85,6 @@ web.blog.init = function(){
 // account
 web.account = {};
 web.account.init = function(){
-	web.modifypwd.init();
-
 	qiao.crud.init();
 	qiao.on('.shouzhi', 'click', toshouzhi);
 	qiao.on('.zhuan', 'click', tozhuan);

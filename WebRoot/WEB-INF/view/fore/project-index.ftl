@@ -43,5 +43,5 @@
 	</div>
 	
 	<@js web=true>
-		$(function(){web.login.init();web.project.init();});</@js>
+		$(function(){web.project.init();});</@js>
 </@html>
