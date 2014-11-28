@@ -131,6 +131,5 @@ function tozhuan(){
 // manage
 web.manage = {};
 web.manage.init = function(){
-	web.modifypwd.init();
 	qiao.crud.init();
 };
