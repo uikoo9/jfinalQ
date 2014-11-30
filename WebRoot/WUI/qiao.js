@@ -317,32 +317,69 @@ qiao.bs.initimg = function(){
 	});
 };
 qiao.bs.bstrooptions = {
-	width 	: '1200px',
-	title 	: 'title',
+	width 	: '500px',
 	html 	: 'true',
-	content : 'content',
+	nbtext	: '下一步',
 	place 	: 'bottom',
-	nbtext	: 'next',
-	step	: '0'
+	title 	: '提示',
+	content : 'content'
 };
-qiao.bs.bstro = function(selector, options){
+qiao.bs.bstroinit = function(selector, options, step){
 	if(selector){
 		var $element = $(selector);
 		if($element.length > 0){
 			var opt = $.extend({}, qiao.bs.bstrooptions, options);
+			if(typeof options == 'string'){
+				opt.content = options;
+			}else{
+				$.extend(opt, options);
+			}
 			
-			$element.attr({
-				'data-bootstro-width'			: opt.width, 
-				'data-bootstro-title' 			: opt.title, 
-				'data-bootstro-html'			: opt.html,
-				'data-bootstro-content'			: opt.content, 
-				'data-bootstro-placement'		: opt.place,
-				'data-bootstro-nextButtonText'	: opt.nbtext,
-				'data-bootstro-step'			: opt.step
+			$element.each(function(){
+				$(this).attr({
+					'data-bootstro-width'			: opt.width, 
+					'data-bootstro-title' 			: opt.title, 
+					'data-bootstro-html'			: opt.html,
+					'data-bootstro-content'			: opt.content, 
+					'data-bootstro-placement'		: opt.place,
+					'data-bootstro-nextButtonText'	: opt.nbtext,
+					'data-bootstro-step'			: step
+				}).addClass('bootstro');
 			});
-			
-			bootstro.start(selector, {'nextButtonText':'12'});
 		}
+	}
+};
+qiao.bs.bstroopts = {
+	prevButtonText : '上一步',
+	finishButton : '<button class="btn btn-lg btn-success bootstro-finish-btn"><i class="icon-ok"></i>完成</button>',
+	stopOnBackdropClick : false,
+	stopOnEsc : false
+};
+qiao.bs.bstro = function(bss, options){
+	if(bss && bss.length > 0){
+		for(var i=0; i<bss.length; i++){
+			qiao.bs.bstroinit(bss[i][0], bss[i][1], i);
+		}
+		
+		var opt = $.extend({}, qiao.bs.bstroopts);
+		if(options){
+			if(options.hasOwnProperty('pbtn')){
+				opt.prevButtonText = options.pbtn;
+			}
+			if(options.hasOwnProperty('obtn')){
+				if(options.obtn == ''){
+					opt.finishButton = '';
+				}else{
+					opt.finishButton = '<button class="btn btn-mini btn-success bootstro-finish-btn"><i class="icon-ok"></i>'+options.obtn+'</button>';
+				}
+			}
+			if(options.hasOwnProperty('stop')){
+				opt.stopOnBackdropClick = options.stop;
+				opt.stopOnEsc = options.stop;
+			}
+		}
+		
+		bootstro.start('.bootstro', opt);
 	}
 };
 

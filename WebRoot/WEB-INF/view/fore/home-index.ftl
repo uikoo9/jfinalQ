@@ -1,13 +1,24 @@
 <#include "/WEB-INF/view/inc.ftl"/>
-<@html j=true>
-	<div class="container">
-		<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
-			<div class="container">
-				<h1>uikoo9.com</h1>
-				<p>ideas + coder = ?</p>
+<@html s=false>
+	<@head bstro=true/>
+	<@bsbody>
+		<div class="container">
+			<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
+				<div class="container">
+					<h1 id="test">uikoo9.com</h1>
+					<p>ideas + coder = ?</p>
+				</div>
 			</div>
 		</div>
-	</div>
+		<@js web=true>
+			$(function(){
+				qiao.bs.bstro([
+					['.jumbotron','<h3>你好</h3>'],
+					['#test','<h3>你也好</h3>']
+				]);
+			});
+		</@js>
+	</@bsbody>
 </@html>
 
 <#-- 
