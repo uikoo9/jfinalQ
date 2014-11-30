@@ -141,6 +141,7 @@ qiao.on = function(obj, event, func){
  * 3.dialog
  * 4.msg
  * 5.initimg
+ * 6.bstro
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -314,6 +315,35 @@ qiao.bs.initimg = function(){
 			$(this).addClass('img-responsive');
 		}
 	});
+};
+qiao.bs.bstrooptions = {
+	width 	: '1200px',
+	title 	: 'title',
+	html 	: 'true',
+	content : 'content',
+	place 	: 'bottom',
+	nbtext	: 'next',
+	step	: '0'
+};
+qiao.bs.bstro = function(selector, options){
+	if(selector){
+		var $element = $(selector);
+		if($element.length > 0){
+			var opt = $.extend({}, qiao.bs.bstrooptions, options);
+			
+			$element.attr({
+				'data-bootstro-width'			: opt.width, 
+				'data-bootstro-title' 			: opt.title, 
+				'data-bootstro-html'			: opt.html,
+				'data-bootstro-content'			: opt.content, 
+				'data-bootstro-placement'		: opt.place,
+				'data-bootstro-nextButtonText'	: opt.nbtext,
+				'data-bootstro-step'			: opt.step
+			});
+			
+			bootstro.start(selector, {'nextButtonText':'12'});
+		}
+	}
 };
 
 /**
