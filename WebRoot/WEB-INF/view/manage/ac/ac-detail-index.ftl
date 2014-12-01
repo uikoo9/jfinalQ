@@ -6,6 +6,7 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 				<th>账户</th>
         		<th>收支明细</th>
+        		<th>支出分类</th>
         		<th>收支备注</th>
         		<th>创建时间</th>
         		<th>操作</th>
@@ -16,6 +17,7 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.aname)!}</td>
 		        	<td>${(row.detail_shouzhi)!}</td>
+		        	<td>${util.get(row.detail_zhichu_type)}</td>
 		        	<td>${(row.detail_remark)!}</td>
 		        	<td>${(row.cdate)!}</td>
 		        	<td>

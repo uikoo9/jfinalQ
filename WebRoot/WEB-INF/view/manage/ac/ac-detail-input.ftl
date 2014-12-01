@@ -9,6 +9,9 @@
 			</#list>
 		</select>
 	</@bsinput>
+	<@bsinput title='支出分类' input=false>
+		<@bsradios name='row.detail_zhichu_type' ck='${(row.detail_zhichu_type)!"030101"}' list=zhichutypes/>
+	</@bsinput>
 	<@bsinput title='收支明细' name='row.detail_shouzhi' value='${(row.detail_shouzhi)!}'/>
 	<@bsinput title='收支备注' name='row.detail_remark' value='${(row.detail_remark)!}'/>
 </form>
