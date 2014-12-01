@@ -6,7 +6,7 @@
 				<#list blogs as blog>
 					<blockquote>
 					  <p><a href="${base}/home/blog/${blog.id}">${blog.article_title}</a></p>
-					  <footer><strong>${blog.cdate}</strong></footer>
+					  <footer>阅读<strong>${blog.article_times}</strong>次，创作于<strong>${blog.cdate}</strong></footer>
 					</blockquote>
 				</#list>
 			</div>

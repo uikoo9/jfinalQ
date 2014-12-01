@@ -53,7 +53,10 @@ public class HomeController extends QController{
 		try {
 			Integer blogId = getParaToInt(0);
 			if(blogId != null){
-				setAttr("blog", BlogArticleModel.dao.findById(blogId));
+				BlogArticleModel blog = BlogArticleModel.dao.findById(blogId); 
+				blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
+				
+				setAttr("blog", blog);
 				render("/WEB-INF/view/fore/blog-detail.ftl");
 			}else{
 				redirect("/blog/fore");
