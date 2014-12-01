@@ -21,14 +21,14 @@
     "imageCompressEnable": true, /* 是否压缩图片,默认是true */
     "imageCompressBorder": 1600, /* 图片压缩最长边限制 */
     "imageInsertAlign": "none", /* 插入的图片浮动方式 */
-    "imageUrlPrefix": "http://localhost/com", /* 图片访问路径前缀 */
-    "imagePathFormat": "/ATTACHMENTS/images/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    "imageUrlPrefix": "http://bcs.duapp.com/uikoo9-ueditor", /* 图片访问路径前缀 */
+    "imagePathFormat": "/images/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
                                 
 	 /* 上传视频配置 */
     "videoActionName": "uploadvideo", /* 执行上传视频的action名称 */
     "videoFieldName": "upfile", /* 提交的视频表单名称 */
-    "videoUrlPrefix": "http://localhost/com", /* 视频访问路径前缀 */
-    "videoPathFormat": "/ATTACHMENTS/videos/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    "videoUrlPrefix": "http://bcs.duapp.com/uikoo9-ueditor", /* 视频访问路径前缀 */
+    "videoPathFormat": "/videos/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
     "videoMaxSize": 102400000, /* 上传大小限制，单位B，默认100MB */
     "videoAllowFiles": [
         ".flv", ".swf", ".mkv", ".avi", ".rm", ".rmvb", ".mpeg", ".mpg",
@@ -37,8 +37,8 @@
 	/* 上传文件配置 */
     "fileActionName": "uploadfile", /* controller里,执行上传视频的action名称 */
     "fileFieldName": "upfile", /* 提交的文件表单名称 */
-    "fileUrlPrefix": "http://localhost/com", /* 文件访问路径前缀 */
-    "filePathFormat": "/ATTACHMENTS/files/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
+    "fileUrlPrefix": "http://bcs.duapp.com/uikoo9-ueditor", /* 文件访问路径前缀 */
+    "filePathFormat": "/files/{yyyy}{mm}{dd}/{time}{rand:6}", /* 上传保存路径,可以自定义保存路径和文件名格式 */
     "fileMaxSize": 51200000, /* 上传大小限制，单位B，默认50MB */
     "fileAllowFiles": [
         ".png", ".jpg", ".jpeg", ".gif", ".bmp",
