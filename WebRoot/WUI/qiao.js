@@ -321,7 +321,7 @@ qiao.bs.bstrooptions = {
 	html 	: 'true',
 	nbtext	: '下一步',
 	place 	: 'bottom',
-	title 	: '提示',
+	title 	: '网站使用引导',
 	content : 'content'
 };
 qiao.bs.bstroinit = function(selector, options, step){
@@ -376,6 +376,9 @@ qiao.bs.bstro = function(bss, options){
 			if(options.hasOwnProperty('stop')){
 				opt.stopOnBackdropClick = options.stop;
 				opt.stopOnEsc = options.stop;
+			}
+			if(options.hasOwnProperty('exit')){
+				opt.onExit = options.exit;
 			}
 		}
 		
