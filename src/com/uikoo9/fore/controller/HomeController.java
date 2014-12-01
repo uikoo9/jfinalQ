@@ -35,7 +35,7 @@ public class HomeController extends QController{
 			Integer typeId = getParaToInt(0);
 			if(typeId != null){
 				setAttr("blogTypeId", typeId);
-				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.type_id=?", typeId));
+				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.type_id=? order by cdate desc", typeId));
 			}else{
 				setAttr("blogs", BlogArticleModel.dao.findAll("order by cdate desc"));
 			}
