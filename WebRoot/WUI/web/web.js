@@ -77,10 +77,10 @@ web.blog.init = function(){
 web.account = {};
 web.account.init = function(){
 	qiao.crud.init();
-	qiao.on('.shouzhi', 'click', toshouzhi);
-	qiao.on('.zhuan', 'click', tozhuan);
+	qiao.on('.shouzhi', 'click', web.account.toshouzhi);
+	qiao.on('.zhuan', 'click', web.account.tozhuan);
 };
-function toshouzhi(){
+web.account.toshouzhi(){
 	qiao.bs.dialog({
 		url : '/ac/detail/savep',
 		title : '收入&支出',
@@ -99,7 +99,7 @@ function toshouzhi(){
 		}
 	});
 }
-function tozhuan(){
+web.account.tozhuan(){
 	qiao.bs.dialog({
 		url : '/ac/tozhuan',
 		title : '转账',
@@ -118,6 +118,29 @@ function tozhuan(){
 		}
 	});
 }
+
+// diary-add
+web.diaryadd = {};
+web.diaryadd.init = function(){
+	qiao.on('.addDiary', 'click', web.diaryadd.add);
+};
+web.diaryadd.add = function(){
+	var $form = $('#addDiaryForm');
+	var title = $.trim($form.find('input[name="row.article_title"]').val()); 
+
+	if(!title){
+		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});
+	}else{
+		var res = qiao.ajax({url : '/blog/article/save',data : $form.qser()});
+		qiao.bs.msg(res);
+		
+		if(res && res.type == 'success'){
+			setTimeout(function(){
+				qiao.to(base + '/home');
+			},1000);
+		}
+	}
+};
 
 // manage
 web.manage = {};

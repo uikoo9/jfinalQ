@@ -31,4 +31,9 @@ public class MyContants extends QContants{
 		ZHICHU_TYPE_LINGSHI,ZHICHU_TYPE_YAN,ZHICHU_TYPE_OTHER
 	};
 	
+	public static final String ARTICLE_TYPE_BLOG	= "040101";
+	public static final String ARTICLE_TYPE_RIZHI	= "040102";
+	public static final String ARTICLE_TYPE_PUBLIC	= "040103";
+	public static final String[] ARTICLE_TYPE 		= new String[]{ARTICLE_TYPE_BLOG,ARTICLE_TYPE_RIZHI,ARTICLE_TYPE_PUBLIC};
+	
 }

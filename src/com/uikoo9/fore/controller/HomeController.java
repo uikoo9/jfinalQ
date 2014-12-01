@@ -6,6 +6,7 @@ import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.z.MyContants;
 
 @QControllerUrl("/home")
 public class HomeController extends QController{
@@ -35,14 +36,14 @@ public class HomeController extends QController{
 			Integer typeId = getParaToInt(0);
 			if(typeId != null){
 				setAttr("blogTypeId", typeId);
-				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.type_id=? order by cdate desc", typeId));
+				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.article_type=? and tba.type_id=? order by cdate desc", MyContants.ARTICLE_TYPE_BLOG, typeId));
 			}else{
-				setAttr("blogs", BlogArticleModel.dao.findAll("order by cdate desc"));
+				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba where tba.article_type=? order by cdate desc", MyContants.ARTICLE_TYPE_BLOG));
 			}
 			
 			render("/WEB-INF/view/fore/blog-index.ftl");
 		} catch (Exception e) {
-			redirect("/blog/fore");
+			redirect("/home/blogs");
 		}
 	}
 	
@@ -59,10 +60,10 @@ public class HomeController extends QController{
 				setAttr("blog", blog);
 				render("/WEB-INF/view/fore/blog-detail.ftl");
 			}else{
-				redirect("/blog/fore");
+				redirect("/home/blogs");
 			}
 		} catch (Exception e) {
-			redirect("/blog/fore");
+			redirect("/home/blogs");
 		}
 	}
 	

@@ -48,4 +48,25 @@ public class AccountController extends QController{
 		render("/WEB-INF/view/fore/account-accounts.ftl");
 	}
 	
+	/**
+	 * 跳转到写日记页面
+	 */
+	public void toDiaryAdd(){
+		render("/WEB-INF/view/fore/diary-add.ftl");
+	}
+	
+	/**
+	 * 跳转到看日记页面
+	 */
+	public void toDiaryList(){
+		render("/WEB-INF/view/fore/diary-list.ftl");
+	}
+	
+	/**
+	 * 跳转到日记详情页面
+	 */
+	public void toDiaryDetail(){
+		render("/WEB-INF/view/fore/diary-detail.ftl");
+	}
+	
 }
