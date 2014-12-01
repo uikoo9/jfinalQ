@@ -1,19 +1,19 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html j=true>
 	<div class="container">
-		<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
-			<div class="container">
-				<h1 id="test">uikoo9.com</h1>
-				<p>ideas + coder = ?</p>
-			</div>
+		<div class="row">
+			<@bslun 'demo1','demo2'></@bslun>
 		</div>
 	</div>
 </@html>
 
 <#-- 
-去掉图片轮播
-<div class="row">
-	<@bslun 'demo1','demo2'></@bslun>
+首页块
+<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
+	<div class="container">
+		<h1 id="test">uikoo9.com</h1>
+		<p>ideas + coder = ?</p>
+	</div>
 </div>
 去掉javase项目
 <#if pro.pro_type == '020102'>
