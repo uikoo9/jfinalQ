@@ -5,7 +5,7 @@
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
 				<#list blogs as blog>
 					<blockquote>
-					  <p><a href="${base}/home/blog/${blog.id}">${blog.article_title}</a></p>
+					  <p><a href="${base}/home/blog/${blog.id}" target="_blank">${blog.article_title}</a></p>
 					  <footer>阅读<strong>${blog.article_times}</strong>次，创作于<strong>${blog.cdate}</strong></footer>
 					</blockquote>
 				</#list>
