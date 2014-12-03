@@ -42,5 +42,5 @@
 		</div>
 	</div>
 	
-	<@js web=true>$(function(){web.project.init();});</@js>
+	<@js web=true>$(function(){qiao.bs.spy();});</@js>
 </@html>

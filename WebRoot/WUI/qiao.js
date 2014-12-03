@@ -142,6 +142,7 @@ qiao.on = function(obj, event, func){
  * 4.msg
  * 5.initimg
  * 6.bstro
+ * 7.scrollspy
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -384,6 +385,15 @@ qiao.bs.bstro = function(bss, options){
 		
 		bootstro.start('.bootstro', opt);
 	}
+};
+qiao.bs.spy = function(target,body){
+	var $body = 'body';
+	var $target = '.scrolldiv';
+	
+	if(body) $body = body;
+	if(target) $target = target;
+	
+	$($body).scrollspy({target:$target});
 };
 
 /**

@@ -61,18 +61,6 @@ web.modifypwd.modifypwd = function(){
 	}
 };
 
-// project
-web.project = {};
-web.project.init = function(){
-	$('body').scrollspy({target:'.scrolldiv'});
-};
-
-// blog
-web.blog = {};
-web.blog.init = function(){
-	qiao.bs.initimg();
-};
-
 // account
 web.account = {};
 web.account.init = function(){
@@ -80,7 +68,7 @@ web.account.init = function(){
 	qiao.on('.shouzhi', 'click', web.account.toshouzhi);
 	qiao.on('.zhuan', 'click', web.account.tozhuan);
 };
-web.account.toshouzhi(){
+web.account.toshouzhi = function(){
 	qiao.bs.dialog({
 		url : '/ac/detail/savep',
 		title : '收入&支出',
@@ -98,8 +86,8 @@ web.account.toshouzhi(){
 			return false;
 		}
 	});
-}
-web.account.tozhuan(){
+};
+web.account.tozhuan = function(){
 	qiao.bs.dialog({
 		url : '/ac/tozhuan',
 		title : '转账',
@@ -117,7 +105,7 @@ web.account.tozhuan(){
 			return false;
 		}
 	});
-}
+};
 
 // diary-add
 web.diaryadd = {};
@@ -140,10 +128,4 @@ web.diaryadd.add = function(){
 			},1000);
 		}
 	}
-};
-
-// manage
-web.manage = {};
-web.manage.init = function(){
-	qiao.crud.init();
 };

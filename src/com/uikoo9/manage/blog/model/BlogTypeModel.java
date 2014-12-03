@@ -48,13 +48,22 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	 * find all by cache
 	 * @return
 	 */
-	@SuppressWarnings("unchecked")
 	public List<BlogTypeModel> findAllByCache(){
+		return findAllByCache(BlogTypeModel.dao.findAll("order by type_name"));
+	}
+	
+	/**
+	 * find all by cache
+	 * @param types
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<BlogTypeModel> findAllByCache(List<BlogTypeModel> types){
 		List<BlogTypeModel> blogTypes = null;
 		
 		Object value = QCacheUtil.getFromEHCache("blogTypes");
 		if(value == null){
-			blogTypes = BlogTypeModel.dao.findAll("order by type_name");
+			blogTypes = types;
 			QCacheUtil.putToEHCache("blogTypes", blogTypes);
 		}else{
 			blogTypes = (List<BlogTypeModel>) value;

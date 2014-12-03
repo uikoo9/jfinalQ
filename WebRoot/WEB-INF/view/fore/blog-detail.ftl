@@ -12,6 +12,6 @@
 			</div>
 		</div>
 		
-		<@js web=true>$(function(){web.blog.init();});</@js>
+		<@js web=true>$(function(){qiao.bs.initimg();});</@js>
 	</@bsbody>
 </@html>

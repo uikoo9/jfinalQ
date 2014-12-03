@@ -6,7 +6,6 @@ import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.z.MyContants;
 
 /**
  * BlogArticleController
@@ -47,7 +46,6 @@ public class BlogArticleController extends QController{
 	
 	@Override
 	public Record initRecord(Record record){
-		record.set("article_type", MyContants.ARTICLE_TYPE_RIZHI);
 		return super.initRecord(record);
 	}
 
