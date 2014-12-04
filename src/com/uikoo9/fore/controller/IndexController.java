@@ -15,7 +15,7 @@ public class IndexController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/fore/home-index.ftl");
+		render("/WEB-INF/view/fore/home/home-index.ftl");
 	}
 	
 	/**

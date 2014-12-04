@@ -14,7 +14,7 @@ public class HomeController extends QController{
 	 * 未登录跳转
 	 */
 	public void index(){
-		render("/WEB-INF/view/fore/home-index.ftl");
+		render("/WEB-INF/view/fore/home/home-index.ftl");
 	}
 	
 	/**
@@ -22,7 +22,7 @@ public class HomeController extends QController{
 	 */
 	public void project(){
 		setAttr("proDetails", ProDetailModel.dao.findAllByCache());
-		render("/WEB-INF/view/fore/project-index.ftl");
+		render("/WEB-INF/view/fore/home/home-project.ftl");
 	}
 	
 	/**
@@ -40,7 +40,7 @@ public class HomeController extends QController{
 				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba where tba.type_id!=7 order by cdate desc"));
 			}
 			
-			render("/WEB-INF/view/fore/blog-index.ftl");
+			render("/WEB-INF/view/fore/blog/blog-index.ftl");
 		} catch (Exception e) {
 			redirect("/home/blogs");
 		}
@@ -58,7 +58,7 @@ public class HomeController extends QController{
 					blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
 					setAttr("blog", blog);
 					
-					render("/WEB-INF/view/fore/blog-detail.ftl");
+					render("/WEB-INF/view/fore/blog/blog-detail.ftl");
 					return;
 				}
 			}
@@ -73,7 +73,7 @@ public class HomeController extends QController{
 	 * 跳转到版本更新
 	 */
 	public void version(){
-		render("/WEB-INF/view/fore/home-version.ftl");
+		render("/WEB-INF/view/fore/home/home-version.ftl");
 	}
 	
 }
