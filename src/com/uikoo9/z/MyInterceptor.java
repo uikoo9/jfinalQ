@@ -10,16 +10,17 @@ public class MyInterceptor extends QInterceptor{
 	public boolean authVisit(ActionInvocation ai) {
 		Record user = ai.getController().getAttr("user");
 		
-		if(user == null){
-			return false;
-		}else{
-			String type = user.getStr("user_type");
-			if(type.equals(MyContants.USER_TYPE_CUSTOM) && !ai.getActionKey().startsWith("/ac")){
-				return false;
-			}else{
-				return true;
-			}
-		}
+		return true;
+//		if(user == null){
+//			return false;
+//		}else{
+//			String type = user.getStr("user_type");
+//			if(type.equals(MyContants.USER_TYPE_CUSTOM) && !ai.getActionKey().startsWith("/ac")){
+//				return false;
+//			}else{
+//				return true;
+//			}
+//		}
 
 	}
 

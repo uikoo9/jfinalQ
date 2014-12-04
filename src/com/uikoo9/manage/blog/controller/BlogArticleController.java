@@ -46,7 +46,12 @@ public class BlogArticleController extends QController{
 	
 	@Override
 	public Record initRecord(Record record){
-		return super.initRecord(record);
+		Integer typeId = record.get("type_id");
+		if(typeId == null){
+			record.set("type_id", 7);
+		}
+		
+		return record;
 	}
 
 	/**
