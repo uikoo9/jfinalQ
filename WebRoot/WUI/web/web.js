@@ -114,12 +114,12 @@ web.diaryadd.init = function(){
 };
 web.diaryadd.add = function(){
 	var $form = $('#addDiaryForm');
-	var title = $.trim($form.find('input[name="row.article_title"]').val()); 
+	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
 
 	if(!title){
 		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});
 	}else{
-		var res = qiao.ajax({url : '/blog/article/save',data : $form.qser()});
+		var res = qiao.ajax({url : '/diary/article/save',data : $form.qser()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){
