@@ -15,11 +15,15 @@ public class MyInterceptor extends QInterceptor{
 		}else{
 			String type = user.getStr("user_type");
 			String url = ai.getActionKey();
+
+			if(type.equals(MyContants.USER_TYPE_ADMIN)){
+				return true;
+			}
 			if(type.equals(MyContants.USER_TYPE_CUSTOM) && (url.startsWith("/ac") || url.startsWith("/diary") || url.startsWith("/blog"))){
 				return true;
-			}else{
-				return false;
 			}
+			
+			return false;
 		}
 
 	}
