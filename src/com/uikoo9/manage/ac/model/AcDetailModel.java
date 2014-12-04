@@ -39,7 +39,7 @@ public class AcDetailModel extends Model<AcDetailModel>{
 	public List<AcDetailModel> findAll(String order){
 		StringBuilder sb = new StringBuilder("select * from t_ac_detail ");
 		if(QStringUtil.isEmpty(order)){
-			return dao.find(sb.append("order by id desc").toString());
+			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
 			return dao.find(sb.append(order).toString());
 		}

@@ -2,6 +2,7 @@ package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
+import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
 @QControllerUrl("/diary")
@@ -23,7 +24,7 @@ public class DiaryController extends Controller{
 	 * 跳转到看日记页面
 	 */
 	public void list(){
-		setAttr("diarys", BlogArticleModel.dao.find("select * from t_blog_article where type_id=7 order by cdate desc"));
+		setAttr("diarys", DiaryArticleModel.dao.findAll());
 		render("/WEB-INF/view/fore/diary/diary-list.ftl");
 	}
 	
@@ -32,7 +33,7 @@ public class DiaryController extends Controller{
 	 */
 	public void detail(){
 		try {
-			BlogArticleModel diary = BlogArticleModel.dao.findById(getParaToInt(0));
+			DiaryArticleModel diary = DiaryArticleModel.dao.findById(getParaToInt(0));
 			diary.set("article_times", ((Integer)diary.get("article_times") + 1)).update();
 			
 			setAttr("diary", diary);

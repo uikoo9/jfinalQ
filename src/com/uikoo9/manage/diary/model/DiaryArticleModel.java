@@ -40,7 +40,7 @@ public class DiaryArticleModel extends Model<DiaryArticleModel>{
 	public List<DiaryArticleModel> findAll(String order){
 		StringBuilder sb = new StringBuilder("select * from t_diary_article ");
 		if(QStringUtil.isEmpty(order)){
-			return dao.find(sb.append("order by id desc").toString());
+			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
 			return dao.find(sb.append(order).toString());
 		}

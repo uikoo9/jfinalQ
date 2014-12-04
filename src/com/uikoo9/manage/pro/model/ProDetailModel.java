@@ -43,7 +43,7 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	public List<ProDetailModel> findAll(String order){
 		StringBuilder sb = new StringBuilder("select * from t_pro_detail ");
 		if(QStringUtil.isEmpty(order)){
-			return dao.find(sb.append("order by id desc").toString());
+			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
 			return dao.find(sb.append(order).toString());
 		}

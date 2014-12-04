@@ -39,7 +39,7 @@ public class BlogArticleModel extends Model<BlogArticleModel>{
 	public List<BlogArticleModel> findAll(String order){
 		StringBuilder sb = new StringBuilder("select * from t_blog_article ");
 		if(QStringUtil.isEmpty(order)){
-			return dao.find(sb.append("order by id desc").toString());
+			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
 			return dao.find(sb.append(order).toString());
 		}
