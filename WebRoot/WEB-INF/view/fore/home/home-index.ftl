@@ -2,7 +2,7 @@
 <@html j=true>
 	<div class="container">
 		<div class="row">
-			<@bslun 'demo1','demo2'></@bslun>
+			<@bslun 'demo1.jpg','demo2.jpg'></@bslun>
 		</div>
 	</div>
 </@html>
