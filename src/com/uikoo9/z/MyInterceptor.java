@@ -14,11 +14,11 @@ public class MyInterceptor extends QInterceptor{
 			return false;
 		}else{
 			String type = user.getStr("user_type");
-			if(type.equals(MyContants.USER_TYPE_CUSTOM) && 
-					!(ai.getActionKey().startsWith("/ac") || ai.getActionKey().startsWith("/diary"))){
-				return false;
-			}else{
+			String url = ai.getActionKey();
+			if(type.equals(MyContants.USER_TYPE_CUSTOM) && (url.startsWith("/ac") || url.startsWith("/diary") || url.startsWith("/blog"))){
 				return true;
+			}else{
+				return false;
 			}
 		}
 

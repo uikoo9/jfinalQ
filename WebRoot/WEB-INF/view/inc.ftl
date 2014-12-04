@@ -21,8 +21,8 @@
 							<li><a href="${base}/ac">首页</a></li>
 							<li class="menus" data="url:/ac/detail/;"><a href="javascript:void(0);">收支明细</a></li>
 							<li class="menus" data="url:/ac/account/;"><a href="javascript:void(0);">账户管理</a></li>
-							<li><a href="${base}/diary/add">写日记</a></li>
 							<li><a href="${base}/diary/list">看日记</a></li>
+							<li><a href="${base}/diary/edit">写日记</a></li>
 						</#if>
 						<#if user.user_type == '010102'>
 							<#list menus as menu>

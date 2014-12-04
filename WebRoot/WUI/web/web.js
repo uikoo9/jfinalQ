@@ -124,7 +124,7 @@ web.diaryadd.add = function(){
 		
 		if(res && res.type == 'success'){
 			setTimeout(function(){
-				qiao.to(base + '/home');
+				qiao.to(base + '/diary/detail/' + res.object.id);
 			},1000);
 		}
 	}

@@ -6,11 +6,17 @@ import com.uikoo9.util.jfinal.QControllerUrl;
 
 @QControllerUrl("/diary")
 public class DiaryController extends Controller{
+	
 	/**
-	 * 跳转到写日记页面
+	 * 跳转到编辑日记页面
 	 */
-	public void add(){
-		render("/WEB-INF/view/fore/diary/diary-add.ftl");
+	public void edit(){
+		Integer diaryId = getParaToInt(0);
+		if(diaryId != null){
+			setAttr("diary", BlogArticleModel.dao.findById(diaryId));
+		}
+		
+		render("/WEB-INF/view/fore/diary/diary-edit.ftl");
 	}
 	
 	/**
@@ -25,7 +31,16 @@ public class DiaryController extends Controller{
 	 * 跳转到日记详情页面
 	 */
 	public void detail(){
-		setAttr("diary", BlogArticleModel.dao.findById(getParaToInt(0)));
-		render("/WEB-INF/view/fore/diary/diary-detail.ftl");
+		try {
+			BlogArticleModel diary = BlogArticleModel.dao.findById(getParaToInt(0));
+			diary.set("article_times", ((Integer)diary.get("article_times") + 1)).update();
+			
+			setAttr("diary", diary);
+			render("/WEB-INF/view/fore/diary/diary-detail.ftl");
+		} catch (Exception e) {
+			e.printStackTrace();
+			redirect("/diary/list");
+		}
 	}
+	
 }
