@@ -1,7 +1,6 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
-import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.diary.model.DiaryTypeModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -15,7 +14,7 @@ public class DiaryController extends Controller{
 	public void edit(){
 		setAttr("diaryTypes", DiaryTypeModel.dao.findAllByCache());
 		if(getParaToInt(0) != null){
-			setAttr("diary", BlogArticleModel.dao.findById(getParaToInt(0)));
+			setAttr("diary", DiaryArticleModel.dao.findById(getParaToInt(0)));
 		}
 		
 		render("/WEB-INF/view/fore/diary/diary-edit.ftl");
