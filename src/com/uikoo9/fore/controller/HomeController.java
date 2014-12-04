@@ -29,7 +29,7 @@ public class HomeController extends QController{
 	 * 跳转到博客首页 
 	 */
 	public void blogs(){
-		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache(BlogTypeModel.dao.find("select * from t_blog_type where id!=7")));
+		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
 		
 		try {
 			Integer typeId = getParaToInt(0);
@@ -37,7 +37,7 @@ public class HomeController extends QController{
 				setAttr("blogTypeId", typeId);
 				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.type_id=? order by cdate desc", typeId));
 			}else{
-				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba where tba.type_id!=7 order by cdate desc"));
+				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
 			}
 			
 			render("/WEB-INF/view/fore/blog/blog-index.ftl");
@@ -54,19 +54,17 @@ public class HomeController extends QController{
 			Integer blogId = getParaToInt(0);
 			if(blogId != null){
 				BlogArticleModel blog = BlogArticleModel.dao.findById(blogId);
-				if((Integer)blog.get("type_id") != 7){
-					blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
-					setAttr("blog", blog);
-					
-					render("/WEB-INF/view/fore/blog/blog-detail.ftl");
-					return;
-				}
+				blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
+				setAttr("blog", blog);
+				
+				render("/WEB-INF/view/fore/blog/blog-detail.ftl");
+				return;
 			}
-			
-			redirect("/home/blogs");
 		} catch (Exception e) {
-			redirect("/home/blogs");
+			e.printStackTrace();
 		}
+		
+		redirect("/home/blogs");
 	}
 	
 	/**

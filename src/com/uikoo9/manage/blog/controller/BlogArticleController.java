@@ -1,6 +1,5 @@
 package com.uikoo9.manage.blog.controller;
 
-import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.crud.QJson;
@@ -44,16 +43,6 @@ public class BlogArticleController extends QController{
 		}
 	}
 	
-	@Override
-	public Record initRecord(Record record){
-		Integer typeId = record.get("type_id");
-		if(typeId == null){
-			record.set("type_id", 7);
-		}
-		
-		return record;
-	}
-
 	/**
 	 * 删除一条或多条
 	 */
