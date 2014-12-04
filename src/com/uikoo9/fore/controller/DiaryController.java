@@ -25,6 +25,7 @@ public class DiaryController extends Controller{
 	 * 跳转到日记详情页面
 	 */
 	public void detail(){
+		setAttr("diary", BlogArticleModel.dao.findById(getParaToInt(0)));
 		render("/WEB-INF/view/fore/diary/diary-detail.ftl");
 	}
 }

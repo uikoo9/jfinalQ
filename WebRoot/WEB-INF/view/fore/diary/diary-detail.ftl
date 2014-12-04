@@ -1,16 +1,13 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 <@html>
-	<div class="container">
+	<div class="container" style="margin-top:-20px;">
 		<div class="row">
-			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-				<#list diarys as diary>
-					<blockquote style="border-left-color:#5bc0de;">
-					  <p><a href="${base}/diary/detail/${diary.id}" target="_blank">${diary.article_title}</a></p>
-					  <footer>阅读<strong>${diary.article_times}</strong>次，创作于<strong>${diary.cdate}</strong></footer>
-					</blockquote>
-				</#list>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<h3 class="text-center">${diary.article_title}</h3>
+				<@bspanel type='primary' style='margin-top:20px;'>${diary.article_content}</@bspanel>
 			</div>
 		</div>
 	</div>
-	<@js web=true>$(function(){});</@js>
+	
+	<@js web=true>$(function(){qiao.bs.initimg();});</@js>
 </@html>
