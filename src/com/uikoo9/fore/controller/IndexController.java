@@ -1,6 +1,6 @@
 package com.uikoo9.fore.controller;
 
-import com.uikoo9.util.jfinal.QController;
+import com.jfinal.core.Controller;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterMenuModel;
 
@@ -9,7 +9,7 @@ import com.uikoo9.util.ucenter.model.UcenterMenuModel;
  * @author uikoo9
  */
 @QControllerUrl("/")
-public class IndexController extends QController{
+public class IndexController extends Controller{
 	
 	/**
 	 * 跳转到首页 

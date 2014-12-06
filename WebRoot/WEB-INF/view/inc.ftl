@@ -32,7 +32,7 @@
 					<#else>
 						<li><a href="${base}/home">首页</a></li>
 						<li><a href="${base}/home/project">项目</a></li>
-						<li><a href="${base}/home/blogs">博客</a></li>
+						<li><a href="${base}/blog/list">博客</a></li>
 						<li><a href="${base}/home/version">版本更新</a></li>
 						<li><a href="#">关于我</a></li>
 					</#if>
