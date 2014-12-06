@@ -8,13 +8,14 @@ import com.uikoo9.util.crud.QTable;
 
 /**
  * BlogCommentModel<br>
- * id	id<br>
- * blog_id	博客id<br>
- * blog_comment_content	博客评论内容<br>
- * parent_id	父评论id<br>
- * cdate	创建时间<br>
- * cuser_id	创建人id<br>
- * cuser_name	创建人姓名<br>
+ * id						id<br>
+ * blog_id					博客id<br>
+ * blog_comment_uname		博客评论昵称<br>
+ * blog_comment_content		博客评论内容<br>
+ * blog_comment_parent_id	博客评论父id<br>
+ * cdate					创建时间<br>
+ * cuser_id					创建人id<br>
+ * cuser_name				创建人姓名<br>
  * @author qiaowenbin
  */
 @QTable("t_blog_comment")

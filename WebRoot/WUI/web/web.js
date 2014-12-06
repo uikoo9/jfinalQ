@@ -107,12 +107,34 @@ web.account.tozhuan = function(){
 	});
 };
 
-// diary-add
-web.diaryadd = {};
-web.diaryadd.init = function(){
-	qiao.on('.addDiary', 'click', web.diaryadd.add);
+// blog
+web.blog = {};
+web.blog.init = function(){
+	qiao.bs.initimg();
+	qiao.on('#addCommentBtn', 'click', web.blog.save);
 };
-web.diaryadd.add = function(){
+web.blog.save = function(){
+	var $form = $('#blogCommentForm');
+	var title = $.trim($form.find('input[name="row.blog_comment_uname"]').val()); 
+	
+	if(!title){
+		qiao.bs.msg({msg:'请填写评论昵称！',type:'danger'});
+	}else{
+		var res = qiao.ajax({url : '/blog/comment/save',data : $form.qser()});
+		qiao.bs.msg(res);
+		
+		if(res && res.type == 'success'){
+			setTimeout(function(){location.reload();},1000);
+		}
+	}
+};
+
+// diary
+web.diary = {};
+web.diary.init = function(){
+	qiao.on('.addDiary', 'click', web.diary.save);
+};
+web.diary.save = function(){
 	var $form = $('#addDiaryForm');
 	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
 
