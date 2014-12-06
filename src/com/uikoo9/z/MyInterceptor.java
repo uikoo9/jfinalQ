@@ -19,7 +19,7 @@ public class MyInterceptor extends QInterceptor{
 			if(MyContants.USER_TYPE_ADMIN.equals(userType)){
 				return true;
 			}
-			if(MyContants.USER_TYPE_CUSTOM.equals(user) && (actionKey.startsWith("/ac") || actionKey.startsWith("/diary"))){
+			if(MyContants.USER_TYPE_CUSTOM.equals(userType) && (actionKey.startsWith("/ac") || actionKey.startsWith("/diary"))){
 				return true;
 			}
 			
