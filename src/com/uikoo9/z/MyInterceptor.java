@@ -13,19 +13,18 @@ public class MyInterceptor extends QInterceptor{
 		if(user == null){
 			return false;
 		}else{
-			String type = user.getStr("user_type");
-			String url = ai.getActionKey();
+			String userType = user.getStr("user_type");
+			String actionKey = ai.getActionKey();
 
-			if(type.equals(MyContants.USER_TYPE_ADMIN)){
+			if(MyContants.USER_TYPE_ADMIN.equals(userType)){
 				return true;
 			}
-			if(type.equals(MyContants.USER_TYPE_CUSTOM) && (url.startsWith("/ac") || url.startsWith("/diary"))){
+			if(MyContants.USER_TYPE_CUSTOM.equals(user) && (actionKey.startsWith("/ac") || actionKey.startsWith("/diary"))){
 				return true;
 			}
 			
 			return false;
 		}
-
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
+import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterMenuModel;
 
@@ -15,7 +16,22 @@ public class IndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/fore/home/home-index.ftl");
+		render("/WEB-INF/view/fore/index.ftl");
+	}
+	
+	/**
+	 * 跳转到项目展示页面
+	 */
+	public void project(){
+		setAttr("proDetails", ProDetailModel.dao.findAllByCache());
+		render("/WEB-INF/view/fore/project.ftl");
+	}
+	
+	/**
+	 * 跳转到版本更新
+	 */
+	public void version(){
+		render("/WEB-INF/view/fore/version.ftl");
 	}
 	
 	/**

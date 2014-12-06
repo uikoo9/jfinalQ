@@ -1,7 +1,7 @@
 <#include "/com/uikoo9/util/ucenter/view/inc.ftl"/>
 
 <#-- bshead -->
-<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/home'>
+<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -30,10 +30,10 @@
 							</#list>
 						</#if>
 					<#else>
-						<li><a href="${base}/home">首页</a></li>
-						<li><a href="${base}/home/project">项目</a></li>
+						<li><a href="${base}">首页</a></li>
+						<li><a href="${base}/project">项目</a></li>
 						<li><a href="${base}/blog/list">博客</a></li>
-						<li><a href="${base}/home/version">版本更新</a></li>
+						<li><a href="${base}/version">版本更新</a></li>
 						<li><a href="#">关于我</a></li>
 					</#if>
 				</ul>
@@ -70,7 +70,7 @@
     <div id="footer">
 		<div class="container">
 			<p class="text-muted" style="margin: 20px 0;">
-				<a target="_blank" href="http://uikoo9.com/home" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
+				<a target="_blank" href="http://uikoo9.com/" >uikoo9.com</a>&nbsp;&nbsp;&nbsp;
 				<a target="_blank" href="http://www.miibeian.gov.cn/">京ICP备14036391号</a>
 			</p>
 		</div>
