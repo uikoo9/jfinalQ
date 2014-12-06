@@ -10,6 +10,7 @@
 			</#list>
 		</select>
 	</@bsinput>
+	<@bsinput title='文章编码' name='row.article_code' value='${(row.article_code)!}'/>
 	<@bsinput title='文章标题' name='row.article_title' value='${(row.article_title)!}'/>
 	<@bsinput title='文章内容' input=false>
 		<script id="ueditor" name="row.article_content" type="text/plain">${(row.article_content)!}</script>

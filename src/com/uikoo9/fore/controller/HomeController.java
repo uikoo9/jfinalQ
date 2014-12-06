@@ -4,6 +4,7 @@ import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
+import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -51,9 +52,9 @@ public class HomeController extends QController{
 	 */
 	public void blog(){
 		try {
-			Integer blogId = getParaToInt(0);
-			if(blogId != null){
-				BlogArticleModel blog = BlogArticleModel.dao.findById(blogId);
+			String blogCode = getPara();
+			if(QStringUtil.notEmpty(blogCode)){
+				BlogArticleModel blog = BlogArticleModel.dao.findFirst("select * from t_blog_article where article_code=?", blogCode);
 				blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
 				setAttr("blog", blog);
 				
