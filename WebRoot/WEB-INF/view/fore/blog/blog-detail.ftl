@@ -12,7 +12,7 @@
 			</div>
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<#if blog.comments()??>
+					<#if blog.comments()?size gt 0>
 						<@bspanel title='评论区'>
 							<#list blog.comments() as comment>
 								<blockquote>
