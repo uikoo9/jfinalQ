@@ -25,4 +25,5 @@
 			</div>
 		</div>
 	</div>
+	<@bstotop/>
 </@html>
