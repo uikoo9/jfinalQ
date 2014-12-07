@@ -1,6 +1,7 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
+import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterMenuModel;
@@ -32,6 +33,14 @@ public class IndexController extends Controller{
 	 */
 	public void version(){
 		render("/WEB-INF/view/fore/version.ftl");
+	}
+
+	/**
+	 * 跳转到关于我
+	 */
+	public void me(){
+		setAttr("diary", DiaryArticleModel.dao.findById(8));
+		render("/WEB-INF/view/fore/me.ftl");
 	}
 	
 	/**

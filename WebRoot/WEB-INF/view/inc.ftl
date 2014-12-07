@@ -34,7 +34,7 @@
 						<li><a href="${base}/project">项目</a></li>
 						<li><a href="${base}/blog/list">博客</a></li>
 						<li><a href="${base}/version">版本更新</a></li>
-						<li><a href="#">关于我</a></li>
+						<li><a href="${base}/me">关于我</a></li>
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
