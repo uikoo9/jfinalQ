@@ -2,6 +2,7 @@ package com.uikoo9.manage.blog.controller;
 
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.blog.model.BlogCommentModel;
+import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -52,8 +53,10 @@ public class BlogCommentController extends QController{
 	@Override
 	public Record initRecord(Record record) {
 		removeAttr("user");
-
-		record.set("blog_comment_parent_id", 0);
+		if(QStringUtil.isEmpty(record.getStr("blog_comment_parent_id"))){
+			record.set("blog_comment_parent_id", 0);
+		}
+		
 		return record;
 	}
 

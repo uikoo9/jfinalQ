@@ -111,10 +111,28 @@ web.account.tozhuan = function(){
 web.blog = {};
 web.blog.init = function(){
 	qiao.bs.initimg();
-	qiao.on('#addCommentBtn', 'click', web.blog.save);
+	web.blog.reset();
+
+	qiao.on('.readda', 'click', web.blog.readd);
+	qiao.on('.addComment', 'click', web.blog.save);
+	$('.taba:eq(0)').on('shown.bs.tab', web.blog.redis);
+};
+web.blog.reset = function(){
+	$('input[name="row.blog_comment_uname"]').val('');
+	$('input[name="row.blog_comment_parent_id"]').val('');
+	$('textarea[name="row.blog_comment_content"]').val('');
+};
+web.blog.readd = function(){
+	$('input[name="row.blog_comment_parent_id"]').val($(this).qdata().id);
+	$('.taba:eq(1)').tab('show');
+	$('#commentreadd').find('fieldset').attr('disabled',null).end().find('.btn').attr('disabled',null).focus();
+};
+web.blog.redis = function(){
+	web.blog.reset();
+	$('#commentreadd').find('fieldset').attr('disabled','disabled').end().find('.btn').attr('disabled','disabled');
 };
 web.blog.save = function(){
-	var $form = $('#blogCommentForm');
+	var $form = $(this).parent().prev();
 	var title = $.trim($form.find('input[name="row.blog_comment_uname"]').val()); 
 	
 	if(!title){

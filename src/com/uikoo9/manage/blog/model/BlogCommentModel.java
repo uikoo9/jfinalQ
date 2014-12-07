@@ -46,4 +46,12 @@ public class BlogCommentModel extends Model<BlogCommentModel>{
 		}
 	}
 	
+	/**
+	 * get child comments
+	 * @return
+	 */
+	public List<BlogCommentModel> comments(){
+		return BlogCommentModel.dao.find("select * from t_blog_comment where blog_id=? and blog_comment_parent_id=? order by cdate desc", get("blog_id"), get("id"));
+	}
+	
 }
