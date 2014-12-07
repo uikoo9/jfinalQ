@@ -1,7 +1,7 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 
 <@html s=false>
-	<@head t=blog.article_title/>
+	<@head t=blog.article_title />
 	<@bsbody>
 		<@bsueditor js=false parseid='.ueparse'/>
 		<div class="container" style="margin-top:-20px;">
@@ -81,6 +81,7 @@
 			</div>
 		</div>
 		
+		<@bstotop right=50/>
 		<@js>$(function(){web.blog.init();});</@js>
 	</@bsbody>
 </@html>
