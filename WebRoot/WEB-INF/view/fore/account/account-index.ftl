@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@html>
 	<div class="container">
 		<div class="row">
@@ -42,5 +43,5 @@
 		</div>
 	</div>
 	
-	<@js web=true>$(function(){web.account.init();});</@js>
+	<@js>$(function(){web.account.init();});</@js>
 </@html>

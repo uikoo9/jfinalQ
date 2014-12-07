@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@html>
 	<div class="container" style="margin-top:-20px;">
 		<div class="row">
@@ -9,5 +10,5 @@
 		</div>
 	</div>
 	
-	<@js web=true>$(function(){qiao.bs.initimg();});</@js>
+	<@js>$(function(){qiao.bs.initimg();});</@js>
 </@html>

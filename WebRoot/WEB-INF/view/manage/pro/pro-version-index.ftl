@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@bslist qpage=qpage>
 	<@bstable>
 		<thead>

@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='项目类型' input=false>

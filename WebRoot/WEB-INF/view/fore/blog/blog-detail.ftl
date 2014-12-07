@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@html s=false>
 	<@head t=blog.article_title/>
 	<@bsbody>
@@ -80,6 +81,6 @@
 			</div>
 		</div>
 		
-		<@js web=true>$(function(){web.blog.init();});</@js>
+		<@js>$(function(){web.blog.init();});</@js>
 	</@bsbody>
 </@html>

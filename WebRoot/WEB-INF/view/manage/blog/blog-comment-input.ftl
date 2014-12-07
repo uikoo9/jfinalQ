@@ -6,8 +6,4 @@
 	<@bsinput title='博客评论昵称' name='row.blog_comment_uname' value='${(row.blog_comment_uname)!}'/>	
 	<@bsinput title='博客评论内容' name='row.blog_comment_content' value='${(row.blog_comment_content)!}'/>	
 	<@bsinput title='博客评论父id' name='row.blog_comment_parent_id' value='${(row.blog_comment_parent_id)!}'/>	
-		
-		
-		
-		
 </form>

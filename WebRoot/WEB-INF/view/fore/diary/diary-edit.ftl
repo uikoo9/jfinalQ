@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@html>
 	<div class="container">
 		<div class="row">
@@ -25,5 +26,5 @@
 		</div>
 	</div>
 	
-	<@js web=true>$(function(){web.diary.init();});</@js>
+	<@js>$(function(){web.diary.init();});</@js>
 </@html>

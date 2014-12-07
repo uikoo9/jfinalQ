@@ -1,4 +1,5 @@
 <#include "/WEB-INF/view/inc.ftl"/>
+
 <@html j=true>
 	<div class="container">
 		<div class="row">

@@ -10,9 +10,6 @@
 				<th>博客评论内容</th>
 				<th>博客评论父id</th>
 				<th>创建时间</th>
-				
-				
-								
 				<th>操作</th>
 			</tr>
 		</thead>
@@ -25,8 +22,6 @@
 					<td>${(row.blog_comment_content)!}</td>				    
 					<td>${(row.blog_comment_parent_id)!}</td>				    
 					<td>${(row.cdate)!}</td>				    
-									    
-									    
 					<td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
 			        	<@bsbutton size='xs' icon='remove' class='delbtn'/>
