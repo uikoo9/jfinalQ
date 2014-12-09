@@ -72,7 +72,7 @@ public class AccountService {
 			
 			return new QJson("转账成功！", QJson.TYPE_BS_SUCC);
 		} catch (Exception e) {
-			logger.error(QStringUtil.exceptionToString(e));
+			logger.error(QStringUtil.fromException(e));
 			return new QJson("转账失败！", QJson.TYPE_BS_DANG);
 		}
 	}
