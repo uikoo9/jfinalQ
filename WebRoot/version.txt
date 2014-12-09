@@ -18,7 +18,8 @@ uikoo9.com用到：
 version 0.2.4.20141208
 新增：
 	1.qiao.js封装到qiao-util.jar中
-	2.ehcache配置优化
+	2.ehcache.xml封装到qiao-util.jar中
+	3.ehcache配置优化
 
 -------------------------------------------------------------------
 version 0.2.3.20141207
