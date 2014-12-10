@@ -173,14 +173,14 @@ web.diary.save = function(){
 // role
 web.role = {};
 web.role.init = function(){
-	qiao.on('.roleadduserbtn',	'click', web.role.addUserp);
-	qiao.on('.roleaddurlbtn', 	'click', web.role.addUrlp);
+	qiao.on('.roleadduserbtn',	'click', web.role.setuser);
+	qiao.on('.roleaddurlbtn', 	'click', web.role.seturl);
 	qiao.on('.mytr',			'click', function(){$(this).toggleClass('info');});
 };
-web.role.addUserp = function(){
+web.role.setuser = function(){
 	var id = $(this).parents('tr').qdata().id;
 	qiao.bs.dialog({
-		url : '/ucenter/role/addUserp/' + id,
+		url : '/ucenter/role/setUser/' + id,
 		title : '设置用户',
 		okbtn : '关闭'
 	});
@@ -207,6 +207,33 @@ web.role.removeUser = function(){
 		qiao.bs.msg(res);
 	}
 };
-web.role.addUrlp = function(){
+web.role.seturl = function(){
+	var id = $(this).parents('tr').qdata().id;
+	qiao.bs.dialog({
+		url : '/ucenter/role/setUrl/' + id,
+		title : '设置Url',
+		okbtn : '关闭'
+	});
+};
+web.role.addUrl = function(){
+	var urls = [];
+	$('tr.outtr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
 	
+	var res = qiao.ajax({url:'/ucenter/role/addUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+web.role.removeUrl = function(){
+	var urls = [];
+	$('tr.intr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/removeUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
+	}else{
+		qiao.bs.msg(res);
+	}
 };

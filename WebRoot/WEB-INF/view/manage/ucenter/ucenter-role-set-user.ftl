@@ -2,7 +2,7 @@
 
 <input type="hidden" name="roleid" value="${roleid}"/>
 <div class="row">
-	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="height:400px;overflow-y:auto;">
 		<p>已分配用户</p>
 		<table class="table table-bordered table-hover intable">
 			<#if inusers?? && inusers?size gt 0>
@@ -20,7 +20,7 @@
 			<@bsbutton type="primary" icon="arrow-right" href='javascript:web.role.removeUser();'/>
 		</div>
 	</div>
-	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="height:400px;overflow-y:auto;">
 		<p>未分配用户</p>
 		<table class="table table-bordered table-hover outtable">
 			<#if outusers?? && outusers?size gt 0>

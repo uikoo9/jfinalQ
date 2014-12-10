@@ -6,6 +6,7 @@ import java.util.List;
 import com.uikoo9.manage.ucenter.model.UcenterRoleModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterUserModel;
@@ -53,9 +54,9 @@ public class UcenterRoleController extends QController{
 	}
 	
 	/**
-	 * 跳转到添加用户页面
+	 * 跳转到设置用户页面
 	 */
-	public void addUserp(){
+	public void setUser(){
 		Integer id = getParaToInt(0);
 		UcenterRoleModel role = UcenterRoleModel.dao.findById(id);
 		setAttr("roleid", id);
@@ -72,7 +73,7 @@ public class UcenterRoleController extends QController{
 		String outusersql = "select * from t_ucenter_user " + (QStringUtil.isEmpty(inuserids) ? "" : "where id not in ("+inuserids+") ") + "order by user_name";
 		setAttr("outusers", UcenterUserModel.dao.find(outusersql));
 		
-		render("/WEB-INF/view/manage/ucenter/ucenter-role-add-user.ftl");
+		render("/WEB-INF/view/manage/ucenter/ucenter-role-set-user.ftl");
 	}
 	
 	/**
@@ -96,6 +97,9 @@ public class UcenterRoleController extends QController{
 		renderJson(json);
 	}
 	
+	/**
+	 * 移除用户
+	 */
 	public void removeUser(){
 		QJson json = new QJson();
 		json.setSuccess(true);
@@ -117,6 +121,69 @@ public class UcenterRoleController extends QController{
 			e.printStackTrace();
 			json.setType(QJson.TYPE_BS_DANG);
 			json.setMsg("添加用户失败 !");
+		}
+		
+		renderJson(json);
+	}
+	
+	/**
+	 * 跳转到设置Url页面
+	 */
+	public void setUrl(){
+		setAttr("roleid", getParaToInt(0));
+
+		UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt(0));
+		setAttr("inurls", QStringUtil.splitToList(role.getStr("ucenter_role_urls"), ","));
+		setAttr("outurls", QCacheUtil.getFromEHCache("urls"));
+		
+		render("/WEB-INF/view/manage/ucenter/ucenter-role-set-url.ftl");
+	}
+	
+	/**
+	 * 添加Url
+	 */
+	public void addUrl(){
+		QJson json = new QJson();
+		json.setSuccess(true);
+		
+		try {
+			UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt("roleid"));
+			String newUrls = (QStringUtil.isEmpty((String)role.get("ucenter_role_urls")) ? "" : role.get("ucenter_role_urls") + ",") + getPara("urls");
+			role.set("ucenter_role_urls", newUrls).update();
+			json.setType(QJson.TYPE_BS_SUCC);
+		} catch (Exception e) {
+			e.printStackTrace();
+			json.setType(QJson.TYPE_BS_DANG);
+			json.setMsg("添加Url失败 !");
+		}
+		
+		renderJson(json);
+	}
+	
+	/**
+	 * 移除Url
+	 */
+	public void removeUrl(){
+		QJson json = new QJson();
+		json.setSuccess(true);
+		
+		try {
+			StringBuilder sb = new StringBuilder();
+			
+			UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt("roleid"));
+			List<String> oldUrls = QStringUtil.splitToList(role.getStr("ucenter_role_urls"), ",");
+			List<String> newUrls = QStringUtil.splitToList(getPara("urls"), ",");
+			oldUrls.removeAll(newUrls);
+			
+			for(String url : oldUrls){
+				sb.append("," + url);
+			}
+			role.set("ucenter_role_urls", sb.toString().replaceFirst(",", "")).update();
+			json.setType(QJson.TYPE_BS_SUCC);
+		} catch (Exception e) {
+			e.printStackTrace();
+			json.setType(QJson.TYPE_BS_DANG);
+			json.setMsg("添加Url失败 !");
 		}
 		
 		renderJson(json);
