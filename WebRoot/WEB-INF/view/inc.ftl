@@ -26,7 +26,18 @@
 						</#if>
 						<#if user.user_type == '010102'>
 							<#list menus as menu>
-								<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
+								<#if menu.submenus()?size gt 0>
+									<li class="dropdown">
+										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${menu.menu_title}<span class="caret"></span></a>
+										<ul class="dropdown-menu" role="menu">
+											<#list menu.submenus() as item>
+												<li role="presentation" class="menus" data="url:${item.menu_url};"><a role="menuitem" tabindex="-1" href="javascript:void(0);">${item.menu_title}</a></li>
+											</#list>
+										</ul>
+									</li>
+								<#else>
+									<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
+								</#if>
 							</#list>
 						</#if>
 					<#else>
