@@ -140,9 +140,11 @@ qiao.on = function(obj, event, func){
  * 2.confirm
  * 3.dialog
  * 4.msg
- * 5.initimg
- * 6.bstro
+ * 5.tooltip
+ * 6.popover
  * 7.scrollspy
+ * 8.initimg
+ * 9.bstro
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -305,6 +307,44 @@ qiao.bs.msg = function(options){
 		});
 	},opt.time);
 };
+qiao.bs.popoptions = {
+	animation 	: true,
+	container 	: 'body',
+	content		: 'content',
+	html		: true,
+	placement	: 'bottom',
+	title		: '',
+	trigger		: 'hover'//click | hover | focus | manual.
+};
+$.fn.tip = function(options){
+	var opt = $.extend({}, qiao.bs.popoptions);
+	if(typeof options == 'string'){
+		opt.title = options;
+	}else{
+		$.extend(opt, options);
+	}
+	
+	$(this).data(opt).tooltip();
+};
+$.fn.pop = function(options){
+	var opt = $.extend({}, qiao.bs.popoptions);
+	if(typeof options == 'string'){
+		opt.content = options;
+	}else{
+		$.extend(opt, options);
+	}
+	
+	$(this).popover(opt);
+};
+qiao.bs.spy = function(target,body){
+	var $body = 'body';
+	var $target = '.scrolldiv';
+	
+	if(body) $body = body;
+	if(target) $target = target;
+	
+	$($body).scrollspy({target:$target});
+};
 qiao.bs.initimg = function(){
 	$('img').each(function(){
 		var clazz = $(this).attr('class');
@@ -385,15 +425,6 @@ qiao.bs.bstro = function(bss, options){
 		
 		bootstro.start('.bootstro', opt);
 	}
-};
-qiao.bs.spy = function(target,body){
-	var $body = 'body';
-	var $target = '.scrolldiv';
-	
-	if(body) $body = body;
-	if(target) $target = target;
-	
-	$($body).scrollspy({target:$target});
 };
 
 /**

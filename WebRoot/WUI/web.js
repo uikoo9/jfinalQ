@@ -169,3 +169,44 @@ web.diary.save = function(){
 		}
 	}
 };
+
+// role
+web.role = {};
+web.role.init = function(){
+	qiao.on('.roleadduserbtn',	'click', web.role.addUserp);
+	qiao.on('.roleaddurlbtn', 	'click', web.role.addUrlp);
+	qiao.on('.mytr',			'click', function(){$(this).toggleClass('info');});
+};
+web.role.addUserp = function(){
+	var id = $(this).parents('tr').qdata().id;
+	qiao.bs.dialog({
+		url : '/ucenter/role/addUserp/' + id,
+		title : '设置用户',
+		okbtn : '关闭'
+	});
+};
+web.role.addUser = function(){
+	var ids = [];
+	$('tr.outtr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/addUser',data:{userids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+web.role.removeUser = function(){
+	var ids = [];
+	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/removeUser',data:{userids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+web.role.addUrlp = function(){
+	
+};
