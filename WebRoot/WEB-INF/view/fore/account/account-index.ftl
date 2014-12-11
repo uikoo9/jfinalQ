@@ -43,5 +43,5 @@
 		</div>
 	</div>
 	
-	<@js>$(function(){web.account.init();});</@js>
+	<@js web=true>$(function(){web.account.init();});</@js>
 </@html>

@@ -1,6 +1,6 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 
-<@html j=true>
+<@html>
 	<div class="container">
 		<div class="row">
 			<@bslun 'demo1.jpg','demo2.jpg'></@bslun>

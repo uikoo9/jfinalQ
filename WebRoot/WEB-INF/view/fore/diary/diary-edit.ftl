@@ -26,5 +26,5 @@
 		</div>
 	</div>
 	
-	<@js>$(function(){web.diary.init();});</@js>
+	<@js web=true>$(function(){web.diary.init();});</@js>
 </@html>

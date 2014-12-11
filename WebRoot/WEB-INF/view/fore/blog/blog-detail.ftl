@@ -82,6 +82,6 @@
 		</div>
 		
 		<@bstotop/>
-		<@js>$(function(){web.blog.init();});</@js>
+		<@js web=true>$(function(){web.blog.init();});</@js>
 	</@bsbody>
 </@html>
