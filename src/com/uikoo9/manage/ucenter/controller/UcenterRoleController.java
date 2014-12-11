@@ -129,12 +129,20 @@ public class UcenterRoleController extends QController{
 	/**
 	 * 跳转到设置Url页面
 	 */
+	@SuppressWarnings("unchecked")
 	public void setUrl(){
 		setAttr("roleid", getParaToInt(0));
 
 		UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt(0));
-		setAttr("inurls", QStringUtil.splitToList(role.getStr("ucenter_role_urls"), ","));
-		setAttr("outurls", QCacheUtil.getFromEHCache("urls"));
+		List<String> inurls = QStringUtil.splitToList(role.getStr("ucenter_role_urls"), ",");
+		List<String> outurls = new ArrayList<String>();
+		for(String url : (List<String>)QCacheUtil.getFromEHCache("urls")){
+			outurls.add(url);
+		}
+		outurls.removeAll(inurls);
+		
+		setAttr("inurls", inurls);
+		setAttr("outurls", outurls);
 		
 		render("/WEB-INF/view/manage/ucenter/ucenter-role-set-url.ftl");
 	}

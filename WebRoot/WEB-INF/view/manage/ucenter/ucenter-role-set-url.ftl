@@ -7,9 +7,11 @@
 		<table class="table table-bordered table-hover intable">
 			<#if inurls?? && inurls?size gt 0>
 				<#list inurls as url>
-					<tr class="mytr intr" style="cursor:pointer;" data="${url}">
-						<td>${url}</td>
-					</tr>
+					<#if url != ''>
+						<tr class="mytr intr" style="cursor:pointer;" data="${url}">
+							<td>${url}</td>
+						</tr>
+					</#if>
 				</#list>
 			</#if>
 		</table>
