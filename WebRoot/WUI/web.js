@@ -200,7 +200,7 @@ web.role.removeUser = function(){
 	var ids = [];
 	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
 	
-	var res = qiao.ajax({url:'/ucenter/role/removeUser',data:{userids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
+	var res = qiao.ajax({url:'/ucenter/role/removeUser',data:{rlids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
 	if(res && res.type == 'success'){
 		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
 	}else{

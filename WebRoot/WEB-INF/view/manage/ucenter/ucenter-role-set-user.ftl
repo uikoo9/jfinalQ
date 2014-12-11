@@ -5,10 +5,10 @@
 	<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="height:400px;overflow-y:auto;">
 		<p>已分配用户</p>
 		<table class="table table-bordered table-hover intable">
-			<#if inusers?? && inusers?size gt 0>
-				<#list inusers as u>
-					<tr class="mytr intr" style="cursor:pointer;" data="${(u.id)!}">
-						<td>${(u.user_name)!}</td>
+			<#if rls?? && rls?size gt 0>
+				<#list rls as rl>
+					<tr class="mytr intr" style="cursor:pointer;" data="${(rl.id)!}">
+						<td>${(rl.ucenter_user_name)!}</td>
 					</tr>
 				</#list>
 			</#if>

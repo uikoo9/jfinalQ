@@ -1,9 +1,12 @@
 package com.uikoo9.manage.ucenter.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ucenter.model.UcenterRoleModel;
+import com.uikoo9.manage.ucenter.model.UcenterRoleRUserModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.file.QCacheUtil;
@@ -57,21 +60,13 @@ public class UcenterRoleController extends QController{
 	 * 跳转到设置用户页面
 	 */
 	public void setUser(){
-		Integer id = getParaToInt(0);
-		UcenterRoleModel role = UcenterRoleModel.dao.findById(id);
-		setAttr("roleid", id);
-		
-		List<UcenterUserModel> inusers = new ArrayList<UcenterUserModel>();
-		String inuserids = role.getStr("ucenter_role_user_ids");
-		if(QStringUtil.notEmpty(inuserids)){
-			for(String userid : inuserids.split(",")){
-				inusers.add(UcenterUserModel.dao.findById(userid));
-			}
-		}
-		setAttr("inusers", inusers);
+		Integer roleId = getParaToInt(0);
+		setAttr("roleid", roleId);
 
-		String outusersql = "select * from t_ucenter_user " + (QStringUtil.isEmpty(inuserids) ? "" : "where id not in ("+inuserids+") ") + "order by user_name";
-		setAttr("outusers", UcenterUserModel.dao.find(outusersql));
+		UcenterRoleModel role = UcenterRoleModel.dao.findById(roleId);
+		setAttr("rls", role.rs());
+		String sql = "select * from t_ucenter_user uu where uu.id not in (select rl.ucenter_user_id from t_ucenter_role_r_user rl where rl.ucenter_role_id=?)";
+		setAttr("outusers", UcenterUserModel.dao.find(sql, roleId));
 		
 		render("/WEB-INF/view/manage/ucenter/ucenter-role-set-user.ftl");
 	}
@@ -84,9 +79,20 @@ public class UcenterRoleController extends QController{
 		json.setSuccess(true);
 		
 		try {
-			UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt("roleid"));
-			String newUserIds = (QStringUtil.isEmpty((String)role.get("ucenter_role_user_ids")) ? "" : role.get("ucenter_role_user_ids") + ",") + getPara("userids");
-			role.set("ucenter_role_user_ids", newUserIds).update();
+			Integer roleId = getParaToInt("roleid");
+			Record loginUser = getAttr("user");
+			for(String uid : getPara("userids").split(",")){
+				UcenterUserModel user = UcenterUserModel.dao.findById(uid);
+				new UcenterRoleRUserModel()
+					.set("ucenter_role_id", roleId)
+					.set("ucenter_user_id", user.get("id"))
+					.set("ucenter_user_name", user.get("user_name"))
+					.set("cdate", new Date())
+					.set("cuser_id", loginUser.get("id"))
+					.set("cuser_name", loginUser.get("user_name"))
+					.save();
+			}
+			
 			json.setType(QJson.TYPE_BS_SUCC);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -105,17 +111,10 @@ public class UcenterRoleController extends QController{
 		json.setSuccess(true);
 		
 		try {
-			StringBuilder sb = new StringBuilder();
-			
-			UcenterRoleModel role = UcenterRoleModel.dao.findById(getParaToInt("roleid"));
-			List<String> oldUserIds = QStringUtil.splitToList(role.getStr("ucenter_role_user_ids"), ",");
-			List<String> newUserIds = QStringUtil.splitToList(getPara("userids"), ",");
-			oldUserIds.removeAll(newUserIds);
-			
-			for(String id : oldUserIds){
-				sb.append("," + id);
+			for(String rlid : getPara("rlids").split(",")){
+				UcenterRoleRUserModel.dao.deleteById(rlid);
 			}
-			role.set("ucenter_role_user_ids", sb.toString().replaceFirst(",", "")).update();
+			
 			json.setType(QJson.TYPE_BS_SUCC);
 		} catch (Exception e) {
 			e.printStackTrace();

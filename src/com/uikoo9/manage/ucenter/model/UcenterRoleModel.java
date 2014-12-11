@@ -45,4 +45,12 @@ public class UcenterRoleModel extends Model<UcenterRoleModel>{
 		}
 	}
 	
+	/**
+	 * get role_r_users
+	 * @return
+	 */
+	public List<UcenterRoleRUserModel> rs(){
+		return UcenterRoleRUserModel.dao.find("select * from t_ucenter_role_r_user where ucenter_role_id=? order by ucenter_user_name", get("id"));
+	}
+	
 }
