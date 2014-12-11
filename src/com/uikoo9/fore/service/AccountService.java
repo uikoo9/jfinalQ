@@ -13,6 +13,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.ac.model.AcDetailModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.ucenter.model.UcenterUserModel;
 
 /**
  * Account Service
@@ -43,7 +44,7 @@ public class AccountService {
 		try {
 			String shouzhi = request.getParameter("shouzhi");
 			String remark = request.getParameter("remark");
-			Record user = (Record) request.getAttribute("user");
+			UcenterUserModel user = (UcenterUserModel) request.getAttribute("user");
 			
 			if(QStringUtil.isEmpty(shouzhi)){
 				return new QJson("请填写收支明细！", QJson.TYPE_BS_DANG);

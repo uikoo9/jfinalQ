@@ -6,6 +6,7 @@ import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.ucenter.model.UcenterUserModel;
 
 /**
  * BlogCommentController
@@ -36,9 +37,9 @@ public class BlogCommentController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			Record user = getAttr("user");
+			UcenterUserModel user = getAttr("user");
 			if(user == null){
-				user = new Record();
+				user = new UcenterUserModel();
 				user.set("id", 0);
 				user.set("user_name", "blogcomment");
 				setAttr("user", user);
