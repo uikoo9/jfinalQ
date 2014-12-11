@@ -547,8 +547,64 @@ qiao.crud.bindpage = function(){
 
 /**
  * 业务相关代码
- * 1.角色相关
- */ 
+ * 1.用户登录
+ * 2.修改密码
+ * 3.角色管理
+ */
+qiao.login = {};
+qiao.login.init = function(options){
+	qiao.on('.loginbtn', 'click', qiao.login.login);
+	qiao.on('.loginform', 'keydown', function(e){if(e.keyCode == 13) qiao.login.login();});
+};
+qiao.login.login = function(){
+	var $form = $('.loginform');
+	var $h5 = $form.find('h5');
+	
+	var res = qiao.ajax({
+		url : '/login/login',
+		data : $form.qser()
+	});
+	
+	if(res){
+		if(res.type == 'success'){
+			$h5.text('登录成功，正在跳转。。。');
+			qiao.to(base + res.msg);
+		}else{
+			$h5.text(res.msg);
+		}
+	}else{
+		$h5.text('ajax fail');
+	}
+};
+
+qiao.modifypwd = {};
+qiao.modifypwd.init = function(){
+	qiao.on('.modifyPwd', 'click', qiao.modifypwd.modifypwdp);
+};
+qiao.modifypwd.modifypwdp = function(){
+	qiao.bs.dialog({
+		url : '/login/modifyPwdp',
+		title : '修改密码',
+		okbtn : '修改'
+	}, qiao.modifypwd.modifypwd);
+};
+qiao.modifypwd.modifypwd = function(){
+	var newpwd = $.trim($('input[name="newpwd"]').val());
+	if(!newpwd){
+		qiao.bs.msg({msg:'请输入新密码！',type:'danger'});
+		return false;
+	}else{
+		var res = qiao.ajax({url:'/login/modifyPwd',data:{password:newpwd}});
+		qiao.bs.msg(res);
+		if(res && res.type == 'success'){
+			setTimeout(function(){
+				qiao.to(base + '/login/logout');
+			}, 1000);
+		}
+		return false;
+	}
+};
+
 qiao.role = {};
 qiao.role.init = function(){
 	qiao.on('.roleadduserbtn',	'click', qiao.role.setuser);
