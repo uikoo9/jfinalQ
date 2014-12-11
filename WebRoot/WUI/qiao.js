@@ -544,3 +544,74 @@ qiao.crud.bindpage = function(){
 		}
 	});
 };
+
+/**
+ * 业务相关代码
+ * 1.角色相关
+ */ 
+qiao.role = {};
+qiao.role.init = function(){
+	qiao.on('.roleadduserbtn',	'click', qiao.role.setuser);
+	qiao.on('.roleaddurlbtn', 	'click', qiao.role.seturl);
+	qiao.on('.mytr',			'click', function(){$(this).toggleClass('info');});
+};
+qiao.role.setuser = function(){
+	var id = $(this).parents('tr').qdata().id;
+	qiao.bs.dialog({
+		url : '/ucenter/role/setUser/' + id,
+		title : '设置用户',
+		okbtn : '关闭'
+	});
+};
+qiao.role.addUser = function(){
+	var ids = [];
+	$('tr.outtr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/addUser',data:{userids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+qiao.role.removeUser = function(){
+	var ids = [];
+	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/removeUser',data:{rlids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+qiao.role.seturl = function(){
+	var id = $(this).parents('tr').qdata().id;
+	qiao.bs.dialog({
+		url : '/ucenter/role/setUrl/' + id,
+		title : '设置Url',
+		okbtn : '关闭'
+	});
+};
+qiao.role.addUrl = function(){
+	var urls = [];
+	$('tr.outtr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/addUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};
+qiao.role.removeUrl = function(){
+	var urls = [];
+	$('tr.intr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
+	
+	var res = qiao.ajax({url:'/ucenter/role/removeUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
+	if(res && res.type == 'success'){
+		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
+	}else{
+		qiao.bs.msg(res);
+	}
+};

@@ -2,7 +2,6 @@
 <configuration>
 	<!-- 定义变量 -->
 	<property name="pattern" value="%date{yyyy-MM-dd HH:mm:ss} %-5level %logger{0} %n%msg%n" />
-	<property name="filepath" value="z:/workspaces/logs/uikoo9.com.%d{yyyy-MM-dd}.log" />
 
 	<!-- 打印到控制台 -->
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
@@ -11,19 +10,7 @@
 		</encoder>
 	</appender>
 
-	<!-- 打印到文件，每天一个，保存30天的 -->
-	<appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>${filepath}</fileNamePattern>
-			<maxHistory>30</maxHistory>
-		</rollingPolicy>
-		<encoder>
-			<pattern>${pattern}</pattern>
-		</encoder>
-	</appender>
-
 	<root level="error">
 		<appender-ref ref="stdout"/>
-		<appender-ref ref="file"/>
 	</root>
 </configuration>
