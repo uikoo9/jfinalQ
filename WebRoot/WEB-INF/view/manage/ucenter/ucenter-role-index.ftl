@@ -6,8 +6,6 @@
 			<tr>
 		        <th><input type="checkbox" class="allcheck"/></th>
 				<th>角色名称</th>
-				<th>角色用户</th>
-				<th>角色地址</th>
 				<th>创建时间</th>
 				<th>操作</th>
 			</tr>
@@ -17,8 +15,6 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.ucenter_role_name)!}</td>				    
-					<td><a class="pop" href="javascript:void(0);" data="content:${(row.ucenter_role_user_ids)!};">查看详情</a></td>				    
-					<td><a class="pop" href="javascript:void(0);" data="content:${(row.ucenter_role_urls)!};">查看详情</a></td>				    
 					<td>${(row.cdate)!}</td>				    
 					<td>
 			        	<@bsbutton size='xs' icon='pencil' 	title='编辑'		class='editbtn'/>
