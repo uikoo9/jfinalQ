@@ -142,9 +142,10 @@ qiao.on = function(obj, event, func){
  * 4.msg
  * 5.tooltip
  * 6.popover
- * 7.scrollspy
- * 8.initimg
- * 9.bstro
+ * 7.bstree
+ * 8.scrollspy
+ * 9.initimg
+ * 10.bstro
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -335,6 +336,50 @@ $.fn.pop = function(options){
 	}
 	
 	$(this).popover(opt);
+};
+$.fn.bstree = function(url){
+	if(!url){
+		alert('need url');
+	}else{
+		var menus = qiao.ajax(url);
+
+		if(menus){
+			$(this).append('<ul class="nav nav-list sidenav" data-offset-top="200">' + qiao.bs.treestr(menus.object) + '</ul>');
+			qiao.on('li.bstree', 'click', qiao.bs.treecl);
+		}
+	}
+};
+qiao.bs.tree = function(menus){
+	var lis = ''
+	for(var i=0; i<menus.length; i++){
+		lis += qiao.bs.treestr(menus[i]);
+	}
+	
+	return lis;
+};
+qiao.bs.treestr = function(menu){
+	var id 		= menu.id;
+	var url 	= menu.url;
+	var text 	= menu.text;
+	var children= menu.children;
+	
+	var parid 	= 'rootid_' + id;
+	var sonid 	= 'treeid_' + id;
+	var start 	= '<li id="' + parid + '" class="bstree" data-url="' + url + '" data-title="' + text + '" data-tabid="' + id + '">' + 
+					'<a href="#' + sonid + '" data-parent="#' + parid + '" data-toggle="collapse">' + text + '</a>' + 
+						'<ul id="' + sonid + '" class="nav collapse">';
+	var lis 	= children ? qiao.bs.tree(children) : '';
+	var end 	= '</ul></li>';
+	
+	return start + lis + end;
+};
+qiao.bs.treecl = function(){
+	var $this 	= $(this);
+	var id 		= $this.attr('data-tabid');
+	var url 	= $this.attr('data-url');
+	var title	= $this.attr('data-title');
+	
+	if(title && url != '#') $('#bscenter').empty().append(qiao.ajax({url:url,dataType:'html'}));
 };
 qiao.bs.spy = function(target,body){
 	var $body = 'body';
