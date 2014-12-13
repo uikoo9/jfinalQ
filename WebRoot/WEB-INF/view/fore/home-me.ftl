@@ -9,6 +9,6 @@
 		</div>
 	</div>
 	
-	<@bstotop/>
+	<@backtotop/>
 	<@js>$(function(){qiao.bs.initimg();});</@js>
 </@html>

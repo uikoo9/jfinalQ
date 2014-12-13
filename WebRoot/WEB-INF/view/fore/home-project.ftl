@@ -43,6 +43,6 @@
 		</div>
 	</div>
 	
-	<@bstotop/>
+	<@backtotop/>
 	<@js>$(function(){qiao.bs.spy();});</@js>
 </@html>

@@ -3,7 +3,7 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<@bsueditor/>
+			<@ueditor/>
 			<form class="form-horizontal" role="form" id="addDiaryForm">
 				<input type="hidden" name="row.id" value="${(diary.id)!}"/>
 				<@bsinput title='日记类型' input=false>

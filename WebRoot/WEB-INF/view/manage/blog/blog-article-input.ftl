@@ -1,6 +1,6 @@
 <#include "/WEB-INF/view/inc.ftl"/>
 
-<@bsueditor init=false>ue = UE.getEditor('ueditor',{zIndex:1100});</@bsueditor>
+<@ueditor init=false>ue = UE.getEditor('ueditor',{zIndex:1100});</@bsueditor>
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='文章类型' input=false>

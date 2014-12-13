@@ -8,5 +8,5 @@
 			</div>
 		</div>
 	</div>
-	<@bstotop/>
+	<@backtotop/>
 </@html>

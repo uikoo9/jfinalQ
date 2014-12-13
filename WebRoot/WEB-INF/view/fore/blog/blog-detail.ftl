@@ -3,7 +3,7 @@
 <@html s=false>
 	<@head t=blog.article_title />
 	<@bsbody>
-		<@bsueditor js=false parseid='.ueparse'/>
+		<@ueditor js=false parseid='.ueparse'/>
 		<div class="container" style="margin-top:-20px;">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		
-		<@bstotop/>
+		<@backtotop/>
 		<@js web=true>$(function(){web.blog.init();});</@js>
 	</@bsbody>
 </@html>
