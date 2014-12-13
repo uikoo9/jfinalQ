@@ -337,49 +337,20 @@ $.fn.pop = function(options){
 	
 	$(this).popover(opt);
 };
-$.fn.bstree = function(url){
-	if(!url){
-		alert('need url');
-	}else{
-		var menus = qiao.ajax(url);
-
-		if(menus){
-			$(this).append('<ul class="nav nav-list sidenav" data-offset-top="200">' + qiao.bs.treestr(menus.object) + '</ul>');
-			qiao.on('li.bstree', 'click', qiao.bs.treecl);
-		}
-	}
+qiao.bs.tree = {};
+qiao.bs.tree.init = function(){
+	qiao.on('#treeul .glyphicon-minus', 'click', function(){
+		$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
+		$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+	});
+	qiao.on('#treeul .glyphicon-plus', 'click', function(){
+		$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
+		$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+	});
+	qiao.on('.bstreeadd', 'click', qiao.bs.tree.addp);
 };
-qiao.bs.tree = function(menus){
-	var lis = ''
-	for(var i=0; i<menus.length; i++){
-		lis += qiao.bs.treestr(menus[i]);
-	}
-	
-	return lis;
-};
-qiao.bs.treestr = function(menu){
-	var id 		= menu.id;
-	var url 	= menu.url;
-	var text 	= menu.text;
-	var children= menu.children;
-	
-	var parid 	= 'rootid_' + id;
-	var sonid 	= 'treeid_' + id;
-	var start 	= '<li id="' + parid + '" class="bstree" data-url="' + url + '" data-title="' + text + '" data-tabid="' + id + '">' + 
-					'<a href="#' + sonid + '" data-parent="#' + parid + '" data-toggle="collapse">' + text + '</a>' + 
-						'<ul id="' + sonid + '" class="nav collapse">';
-	var lis 	= children ? qiao.bs.tree(children) : '';
-	var end 	= '</ul></li>';
-	
-	return start + lis + end;
-};
-qiao.bs.treecl = function(){
-	var $this 	= $(this);
-	var id 		= $this.attr('data-tabid');
-	var url 	= $this.attr('data-url');
-	var title	= $this.attr('data-title');
-	
-	if(title && url != '#') $('#bscenter').empty().append(qiao.ajax({url:url,dataType:'html'}));
+qiao.bs.tree.addp = function(){
+	alert(1);
 };
 qiao.bs.spy = function(target,body){
 	var $body = 'body';
@@ -621,7 +592,6 @@ qiao.login.login = function(){
 		$h5.text('ajax fail');
 	}
 };
-
 qiao.modifypwd = {};
 qiao.modifypwd.init = function(){
 	qiao.on('.modifyPwd', 'click', qiao.modifypwd.modifypwdp);
@@ -649,7 +619,6 @@ qiao.modifypwd.modifypwd = function(){
 		return false;
 	}
 };
-
 qiao.role = {};
 qiao.role.init = function(){
 	qiao.on('.roleadduserbtn',	'click', qiao.role.setuser);

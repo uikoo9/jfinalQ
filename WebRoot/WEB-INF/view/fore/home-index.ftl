@@ -2,31 +2,10 @@
 
 <@html>
 	<div class="container">
-		<#--
 		<div class="row">
 			<@bslun 'demo1.jpg','demo2.jpg'></@bslun>
 		</div>
-		-->
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<@bstree t=tree edit=true/>
-			</div>
-		</div>
 	</div>
-	
-	<@js>
-		$(function(){
-			qiao.on('#treeul .glyphicon-minus', 'click', function(){
-				$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
-				$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-			});
-			qiao.on('#treeul .glyphicon-plus', 'click', function(){
-				$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
-				$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
-			});
-			qiao.on('.bstreeadd', 'click', qiao.bstree.addp);
-		});
-	</@js>
 </@html>
 
 <#-- 
