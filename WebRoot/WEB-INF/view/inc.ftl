@@ -23,6 +23,8 @@
 							<li class="menus" data="url:/ac/account/;"><a href="javascript:void(0);">账户管理</a></li>
 							<li><a href="${base}/diary/list">看日记</a></li>
 							<li><a href="${base}/diary/edit">写日记</a></li>
+							<li><a href="${base}/blog/list">看博客</a></li>
+							<li><a href="${base}/blog/edit">写博客</a></li>
 						</#if>
 						<#if user.user_type == '010102'>
 							<#list menus as menu>

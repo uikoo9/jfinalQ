@@ -86,6 +86,29 @@ web.blog.save = function(){
 	}
 };
 
+// blog-edit
+web.blogedit = {};
+web.blogedit.init = function(){
+	qiao.on('.addBlog', 'click', web.blogedit.save);
+};
+web.blogedit.save = function(){
+	var $form = $('#addBlogForm');
+	var title = $.trim($form.find('input[name="row.article_title"]').val()); 
+	
+	if(!title){
+		qiao.bs.msg({msg:'请填写博客标题！',type:'danger'});
+	}else{
+		var res = qiao.ajax({url : '/blog/article/save',data : $form.qser()});
+		qiao.bs.msg(res);
+		
+		if(res && res.type == 'success'){
+			setTimeout(function(){
+				qiao.to(base + '/blog/detail/' + res.object.article_code);
+			},1000);
+		}
+	}
+};
+
 // diary
 web.diary = {};
 web.diary.init = function(){

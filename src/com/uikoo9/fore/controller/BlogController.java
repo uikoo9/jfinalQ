@@ -32,6 +32,18 @@ public class BlogController extends Controller{
 	}
 	
 	/**
+	 * 跳转到编辑博客页面
+	 */
+	public void edit(){
+		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
+		if(getParaToInt(0) != null){
+			setAttr("blog", BlogArticleModel.dao.findById(getParaToInt(0)));
+		}
+		
+		render("/WEB-INF/view/fore/blog/blog-edit.ftl");
+	}
+	
+	/**
 	 * 跳转到博客详情页面
 	 */
 	public void detail(){

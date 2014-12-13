@@ -3,6 +3,7 @@
 <@html s=false>
 	<@head t=blog.article_title />
 	<@bsbody>
+		<script type="text/javascript">qiao.ajaxinit();</script>
 		<@ueditor js=false parseid='.ueparse'/>
 		<div class="container" style="margin-top:-20px;">
 			<div class="row">
