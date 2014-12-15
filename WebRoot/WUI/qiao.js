@@ -379,7 +379,7 @@ qiao.bs.tree.add = function(){
 	}
 };
 qiao.bs.tree.del = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + 'del',data:{ids:$(this).parent().qdata().id}});
+	var res = qiao.ajax({url:qiao.bs.tree.url + 'del/' + $(this).parent().qdata().id});
 	qiao.bs.msg(res);
 	
 	if(res && res.type == 'success'){
