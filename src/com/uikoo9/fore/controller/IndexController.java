@@ -3,7 +3,6 @@ package com.uikoo9.fore.controller;
 import com.jfinal.core.Controller;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.pro.model.ProDetailModel;
-import com.uikoo9.util.crud.QTree;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterMenuModel;
 
@@ -18,7 +17,6 @@ public class IndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("tree", new QTree(0, "/", "根菜单"));
 		render("/WEB-INF/view/fore/home-index.ftl");
 	}
 	

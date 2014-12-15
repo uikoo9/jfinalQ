@@ -340,17 +340,63 @@ $.fn.pop = function(options){
 qiao.bs.tree = {};
 qiao.bs.tree.init = function(){
 	qiao.on('#treeul .glyphicon-minus', 'click', function(){
-		$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
-		$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+		if($(this).parent().next().length > 0){
+			$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
+			$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+		}
 	});
 	qiao.on('#treeul .glyphicon-plus', 'click', function(){
-		$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
-		$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+		if($(this).parent().next().length > 0){
+			$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
+			$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+		}
 	});
-	qiao.on('.bstreeadd', 'click', qiao.bs.tree.addp);
+	
+	qiao.bs.tree.url = $('#treeul').qdata().url;
+	if(qiao.bs.tree.url){
+		qiao.on('.bstreeadd', 'click', qiao.bs.tree.addp);
+		qiao.on('.bstreedel', 'click', qiao.bs.tree.del);
+		qiao.on('.bstreeedit', 'click', qiao.bs.tree.editp);
+	}
 };
 qiao.bs.tree.addp = function(){
-	alert(1);
+	qiao.bs.dialog({
+		url 	: qiao.bs.tree.url + 'add/' + $(this).parent().qdata().id,
+		title 	: '添加子菜单',
+		okbtn 	: '保存'
+	}, qiao.bs.tree.add);
+};
+qiao.bs.tree.add = function(){
+	var res = qiao.ajax({url:qiao.bs.tree.url + 'save',data:$('#bsmodal').find('form').qser()});
+	qiao.bs.msg(res);
+
+	if(res && res.type == 'success'){
+		qiao.crud.url = qiao.bs.tree.url;
+		qiao.crud.reset();
+		return true;
+	}else{
+		return false;
+	}
+};
+qiao.bs.tree.del = function(){
+	var res = qiao.ajax({url:qiao.bs.tree.url + 'del',data:{ids:$(this).parent().qdata().id}});
+	qiao.bs.msg(res);
+	
+	if(res && res.type == 'success'){
+		qiao.crud.url = qiao.bs.tree.url;
+		qiao.crud.reset();
+	}
+};
+qiao.bs.tree.editp = function(){
+	qiao.bs.dialog({
+		url 	: qiao.bs.tree.url + 'savep?id=' + $(this).parent().qdata().id,
+		title 	: '修改菜单',
+		okbtn 	: '保存'
+	}, qiao.bs.tree.edit);
+};
+qiao.bs.tree.edit = function(){
+	qiao.crud.url = qiao.bs.tree.url;
+	return qiao.crud.save();
 };
 qiao.bs.spy = function(target,body){
 	var $body = 'body';
