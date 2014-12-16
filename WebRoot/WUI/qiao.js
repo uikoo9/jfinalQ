@@ -317,7 +317,7 @@ qiao.bs.popoptions = {
 	title		: '',
 	trigger		: 'hover'//click | hover | focus | manual.
 };
-$.fn.tip = function(options){
+$.fn.bstip = function(options){
 	var opt = $.extend({}, qiao.bs.popoptions);
 	if(typeof options == 'string'){
 		opt.title = options;
@@ -327,7 +327,7 @@ $.fn.tip = function(options){
 	
 	$(this).data(opt).tooltip();
 };
-$.fn.pop = function(options){
+$.fn.bspop = function(options){
 	var opt = $.extend({}, qiao.bs.popoptions);
 	if(typeof options == 'string'){
 		opt.content = options;
@@ -338,6 +338,72 @@ $.fn.pop = function(options){
 	$(this).popover(opt);
 };
 qiao.bs.tree = {};
+qiao.bs.tree.options = {
+	url 	: '/ucenter/menu/',
+	height 	: '600px',
+	open	: true,
+	edit	: false,
+	checkbox: false,
+};
+$.fn.bstree = function(options){
+	var opt = $.extend({}, qiao.bs.tree.options);
+	if(options){
+		if(typeof options == 'string'){
+			opt.url = options;
+		}else{
+			$.extend(opt, options);
+		}
+	}
+	
+	var res = '加载失败！';
+	var json = qiao.ajax(opt.url + 'tree');
+	if(json && json.object){
+		var tree = json.object;
+		
+		var start = '<div class="panel panel-info"><div class="panel-body" ';
+		if(opt.height != 'auto') 
+			start += 'style="height:600px;overflow-y:auto;"';
+			start += '><ul class="nav nav-list sidenav" id="treeul" data="url:' + opt.url +';">';
+		var children = qiao.bs.tree.sub(tree, opt);
+		var end = '</ul></div></div>';
+		res = start + children + end;
+	}
+	
+	$(this).empty().append(res);
+	qiao.bs.tree.init();
+};
+qiao.bs.tree.sub = function(tree, opt){
+	var res = '';
+	if(tree){
+		var res = 
+			'<li>' + 
+				'<a href="javascript:void(0);" data="id:' + tree.id + ';url:' + tree.url + ';">' + 
+					'<span class="glyphicon glyphicon-minus"></span>';
+		if(opt.checkbox) 
+			res += '<input type="checkbox"/>';
+			res += tree.text;
+		if(opt.edit)
+			res += 
+				'&nbsp;&nbsp;<span class="label label-primary bstreeadd">添加子菜单</span>' + 
+				'&nbsp;&nbsp;<span class="label label-primary bstreeedit">修改</span>' + 
+				'&nbsp;&nbsp;<span class="label label-danger  bstreedel">删除</span>';
+			res += '</a>';
+		var children = tree.children;
+		if(children && children.length > 0){
+				res += '<ul style="padding-left:20px;" id="treeid_' + tree.id + '" class="nav collapse ';
+			if(opt.open) 
+				res += 'in';
+				res += '">';
+			for(var i=0; i<children.length; i++){
+				res += qiao.bs.tree.sub(children[i], opt);
+			}
+				res += '</ul>';
+		}
+		res += '</li>';
+	}
+	
+	return res;
+};
 qiao.bs.tree.init = function(){
 	qiao.on('#treeul .glyphicon-minus', 'click', function(){
 		if($(this).parent().next().length > 0){
