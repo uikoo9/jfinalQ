@@ -41,7 +41,7 @@ public class BlogCommentController extends QController{
 			if(user == null){
 				user = new UcenterUserModel();
 				user.set("id", 0);
-				user.set("user_name", "blogcomment");
+				user.set("ucenter_user_name", "blogcomment");
 				setAttr("user", user);
 			}
 			

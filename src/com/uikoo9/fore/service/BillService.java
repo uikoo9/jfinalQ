@@ -59,7 +59,7 @@ public class BillService {
 			zhuanchu.set("bill_detail_remark", remark);
 			zhuanchu.set("cdate", new Date());
 			zhuanchu.set("cuser_id", user.get("id"));
-			zhuanchu.set("cuser_name", user.get("user_name"));
+			zhuanchu.set("cuser_name", user.get("ucenter_user_name"));
 			zhuanchu.save();
 			
 			BillDetailModel zhuanru = new BillDetailModel();
@@ -68,7 +68,7 @@ public class BillService {
 			zhuanru.set("bill_detail_remark", remark);
 			zhuanru.set("cdate", new Date());
 			zhuanru.set("cuser_id", user.get("id"));
-			zhuanru.set("cuser_name", user.get("user_name"));
+			zhuanru.set("cuser_name", user.get("ucenter_user_name"));
 			zhuanru.save();
 			
 			return new QJson("转账成功！", QJson.TYPE_BS_SUCC);

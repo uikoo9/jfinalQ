@@ -30,15 +30,15 @@
 							<#list menus as menu>
 								<#if menu.submenus()?size gt 0>
 									<li class="dropdown">
-										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${menu.menu_title}<span class="caret"></span></a>
+										<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${menu.ucenter_menu_title}<span class="caret"></span></a>
 										<ul class="dropdown-menu" role="menu">
 											<#list menu.submenus() as item>
-												<li role="presentation" class="menus" data="url:${item.menu_url};"><a role="menuitem" tabindex="-1" href="javascript:void(0);">${item.menu_title}</a></li>
+												<li role="presentation" class="menus" data="url:${item.ucenter_menu_url};"><a role="menuitem" tabindex="-1" href="javascript:void(0);">${item.ucenter_menu_title}</a></li>
 											</#list>
 										</ul>
 									</li>
 								<#else>
-									<li class="menus" data="url:${menu.menu_url};"><a href="javascript:void(0);">${menu.menu_title}</a></li>
+									<li class="menus" data="url:${menu.ucenter_menu_url};"><a href="javascript:void(0);">${menu.ucenter_menu_title}</a></li>
 								</#if>
 							</#list>
 						</#if>
@@ -53,7 +53,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.user_name}<span class="caret"></span></a>
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.ucenter_user_name}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyPwd">修改密码</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/login/logout">退出系统</a></li>
