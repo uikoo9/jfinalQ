@@ -7,6 +7,7 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 				<th>类型名称</th>
 		        <th>创建时间</th>
+		        <th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
