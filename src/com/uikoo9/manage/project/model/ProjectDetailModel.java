@@ -1,4 +1,4 @@
-package com.uikoo9.manage.pro.model;
+package com.uikoo9.manage.project.model;
 
 import java.util.List;
 
@@ -11,27 +11,27 @@ import com.uikoo9.util.file.QCacheUtil;
  * 项目明细
  * id 			id<br>
  * pro_name		项目名称<br>
- * pro_desc 	项目详情<br>
- * pro_url		项目地址<br>
- * pro_src		源码地址<br>
- * pro_type		项目类型<br>
- * pro_sn		项目序号<br>
+ * project_desc 	项目详情<br>
+ * project_url		项目地址<br>
+ * project_src		源码地址<br>
+ * project_type		项目类型<br>
+ * project_sn		项目序号<br>
  * cdate		创建时间<br>
  * cuser_id		创建人id<br>
  * cuser_name	创建人姓名<br>
  * @author uikoo9
  */
-@QTable("t_pro_detail")
+@QTable("t_project_detail")
 @SuppressWarnings("serial")
-public class ProDetailModel extends Model<ProDetailModel>{
+public class ProjectDetailModel extends Model<ProjectDetailModel>{
 	
-	public static final ProDetailModel dao = new ProDetailModel();
+	public static final ProjectDetailModel dao = new ProjectDetailModel();
 	
 	/**
 	 * find all default
 	 * @return
 	 */
-	public List<ProDetailModel> findAll(){
+	public List<ProjectDetailModel> findAll(){
 		return findAll(null);
 	}
 	
@@ -40,8 +40,8 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	 * @param order
 	 * @return
 	 */
-	public List<ProDetailModel> findAll(String order){
-		StringBuilder sb = new StringBuilder("select * from t_pro_detail ");
+	public List<ProjectDetailModel> findAll(String order){
+		StringBuilder sb = new StringBuilder("select * from t_project_detail ");
 		if(QStringUtil.isEmpty(order)){
 			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
@@ -54,15 +54,15 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<ProDetailModel> findAllByCache(){
-		List<ProDetailModel> proDetails = null;
+	public List<ProjectDetailModel> findAllByCache(){
+		List<ProjectDetailModel> proDetails = null;
 		
 		Object value = QCacheUtil.getFromEHCache("proDetails");
 		if(value == null){
-			proDetails = ProDetailModel.dao.findAll("order by pro_sn");
+			proDetails = ProjectDetailModel.dao.findAll("order by project_sn");
 			QCacheUtil.putToEHCache("proDetails", proDetails);
 		}else{
-			proDetails = (List<ProDetailModel>) value;
+			proDetails = (List<ProjectDetailModel>) value;
 		}
 		
 		return proDetails;
@@ -72,8 +72,8 @@ public class ProDetailModel extends Model<ProDetailModel>{
 	 * get versions
 	 * @return
 	 */
-	public List<ProVersionModel> versions(){
-		return ProVersionModel.dao.find("select * from t_pro_version where pro_detail_id=? order by id desc", get("id"));
+	public List<ProjectVersionModel> versions(){
+		return ProjectVersionModel.dao.find("select * from t_project_version where project_detail_id=? order by id desc", get("id"));
 	}
 	
 }

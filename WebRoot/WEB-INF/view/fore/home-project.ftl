@@ -8,21 +8,21 @@
 					<@bspanel id='panel'+pro.id>
 						<p><strong>项目名称：</strong>${pro.pro_name}</p>
 						<p><strong>创建时间：</strong>${pro.cdate}</p>
-						<#if pro.pro_url??>
-							<p><strong>项目地址：</strong><a href="${pro.pro_url}" target="_blank">${pro.pro_url}</a></p>
+						<#if pro.project_url??>
+							<p><strong>项目地址：</strong><a href="${pro.project_url}" target="_blank">${pro.project_url}</a></p>
 						</#if>
-						<#if pro.pro_src??>
-							<p><strong>项目源码地址：</strong><a href="${pro.pro_src}" target="_blank">${pro.pro_src}</a></p>
+						<#if pro.project_src??>
+							<p><strong>项目源码地址：</strong><a href="${pro.project_src}" target="_blank">${pro.project_src}</a></p>
 						</#if>
-						<p><strong>项目描述：</strong>${pro.pro_desc}</p>
+						<p><strong>项目描述：</strong>${pro.project_desc}</p>
 						<p>
 							<strong>版本迭代：</strong>
 							<ul>
 								<#list pro.versions()?if_exists as v>
 									<li>
 										<dl>
-											<dt>${v.ver_code}</dt>
-											<dd>${v.ver_desc}</dd>
+											<dt>${v.project_version_code}</dt>
+											<dd>${v.project_version_desc}</dd>
 										</dl>
 									</li>
 								</#list>

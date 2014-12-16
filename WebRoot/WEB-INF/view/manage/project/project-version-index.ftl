@@ -17,7 +17,7 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.pname}</td>
-			        <td>${row.ver_code}</td>
+			        <td>${row.project_version_code}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>

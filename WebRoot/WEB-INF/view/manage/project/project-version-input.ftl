@@ -4,14 +4,14 @@
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
 	<@bsinput title='所属项目' input=false>
-		<select class="form-control" name='row.pro_detail_id'>
+		<select class="form-control" name='row.project_detail_id'>
 			<#list proDetails as item>
-				<option value="${item.id}" <#if row?? && row.pro_detail_id == item.id>selected</#if>>${item.pro_name}</option>
+				<option value="${item.id}" <#if row?? && row.project_detail_id == item.id>selected</#if>>${item.pro_name}</option>
 			</#list>
 		</select>
 	</@bsinput>
-	<@bsinput title='版本代号' name='row.ver_code' value='${(row.ver_code)!}'/>
+	<@bsinput title='版本代号' name='row.project_version_code' value='${(row.project_version_code)!}'/>
 	<@bsinput title='版本详情' input=false>
-		<script id="ueditor" name="row.ver_desc" type="text/plain">${(row.ver_desc)!}</script>
+		<script id="ueditor" name="row.project_version_desc" type="text/plain">${(row.project_version_desc)!}</script>
 	</@bsinput>
 </form>

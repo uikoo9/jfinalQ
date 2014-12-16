@@ -17,16 +17,16 @@
 	</div>
 </div>
 去掉javase项目
-<#if pro.pro_type == '020102'>
-	<#if pro.pro_url??>
-		<@bsbutton type='primary' href=pro.pro_url>访问</@bsbutton>
+<#if pro.project_type == '020102'>
+	<#if pro.project_url??>
+		<@bsbutton type='primary' href=pro.project_url>访问</@bsbutton>
 	<#else>
 		<@bsbutton type='primary' dis=true>访问</@bsbutton>
 	</#if>
 </#if>
-<#if pro.pro_type == '020101'>
-	<#if pro.pro_src??>
-		<@bsbutton type='primary' href=pro.pro_src>源码</@bsbutton>
+<#if pro.project_type == '020101'>
+	<#if pro.project_src??>
+		<@bsbutton type='primary' href=pro.project_src>源码</@bsbutton>
 	<#else>
 		<@bsbutton type='primary' dis=true>源码</@bsbutton>
 	</#if>
@@ -35,8 +35,8 @@
 <#list proDetails?if_exists as pro>
 	<#if pro_index % 3 == 0><div class="row"></#if>
 		<@bsnail title=pro.pro_name>
-			<#if pro.pro_url??>
-				<@bsbutton type='primary' href=pro.pro_url>访问</@bsbutton>
+			<#if pro.project_url??>
+				<@bsbutton type='primary' href=pro.project_url>访问</@bsbutton>
 			<#else>
 				<@bsbutton type='primary' dis=true>访问</@bsbutton>
 			</#if>

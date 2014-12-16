@@ -2,7 +2,7 @@ package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
-import com.uikoo9.manage.pro.model.ProDetailModel;
+import com.uikoo9.manage.project.model.ProjectDetailModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterMenuModel;
 
@@ -24,7 +24,7 @@ public class IndexController extends Controller{
 	 * 跳转到项目展示页面
 	 */
 	public void project(){
-		setAttr("proDetails", ProDetailModel.dao.findAllByCache());
+		setAttr("proDetails", ProjectDetailModel.dao.findAllByCache());
 		render("/WEB-INF/view/fore/home-project.ftl");
 	}
 	

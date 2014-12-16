@@ -3,7 +3,7 @@ package com.uikoo9.z.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import com.uikoo9.manage.pro.model.ProDetailModel;
+import com.uikoo9.manage.project.model.ProjectDetailModel;
 
 /**
  * 页面顶部使用的项目明细菜单
@@ -13,7 +13,7 @@ import com.uikoo9.manage.pro.model.ProDetailModel;
 public class ProMenuDTO implements Serializable{
 	private String value;
 	private String text;
-	private List<ProDetailModel> pros;
+	private List<ProjectDetailModel> pros;
 	
 	public String getValue() {
 		return value;
@@ -27,10 +27,10 @@ public class ProMenuDTO implements Serializable{
 	public void setText(String text) {
 		this.text = text;
 	}
-	public List<ProDetailModel> getPros() {
+	public List<ProjectDetailModel> getPros() {
 		return pros;
 	}
-	public void setPros(List<ProDetailModel> pros) {
+	public void setPros(List<ProjectDetailModel> pros) {
 		this.pros = pros;
 	}
 	

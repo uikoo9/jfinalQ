@@ -19,11 +19,11 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
-			        <td>${row.pro_sn}</td>
-			        <td>${util.get(row.pro_type)}</td>
+			        <td>${row.project_sn}</td>
+			        <td>${util.get(row.project_type)}</td>
 			        <td>${row.pro_name}</td>
-			        <td>${(row.pro_url)!}</td>
-			        <td>${(row.pro_src)!}</td>
+			        <td>${(row.project_url)!}</td>
+			        <td>${(row.project_src)!}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>
 			        <td>
