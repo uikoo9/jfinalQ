@@ -19,17 +19,17 @@ import com.uikoo9.util.ucenter.model.UcenterUserModel;
  * Account Service
  * @author qiaowenbin
  */
-public class AccountService {
+public class BillService {
 
-	private AccountService() {}
-	public static AccountService getInstance() {
+	private BillService() {}
+	public static BillService getInstance() {
 		return SingletonFactory.instance;
 	}
 	private static class SingletonFactory {
-		private static AccountService instance = new AccountService();
+		private static BillService instance = new BillService();
 	}
 	
-	private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
+	private static final Logger logger = LoggerFactory.getLogger(BillService.class);
 	
 	/**
 	 * 获取账户汇总列表
