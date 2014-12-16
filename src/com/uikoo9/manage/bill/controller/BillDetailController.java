@@ -3,7 +3,7 @@ package com.uikoo9.manage.bill.controller;
 import com.uikoo9.manage.bill.model.BillAccountModel;
 import com.uikoo9.manage.bill.model.BillDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
-import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.z.MyContants;
@@ -43,7 +43,7 @@ public class BillDetailController extends QController{
 		if(validate == null){
 			renderJson(save(BillDetailModel.class));
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	

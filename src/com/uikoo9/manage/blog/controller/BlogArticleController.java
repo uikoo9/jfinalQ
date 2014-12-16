@@ -2,7 +2,7 @@ package com.uikoo9.manage.blog.controller;
 
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
-import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -39,7 +39,7 @@ public class BlogArticleController extends QController{
 		if(validate == null){
 			renderJson(save(BlogArticleModel.class));
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	

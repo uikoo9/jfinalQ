@@ -4,6 +4,7 @@ import com.uikoo9.manage.project.model.ProjectDetailModel;
 import com.uikoo9.manage.project.model.ProjectVersionModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -40,13 +41,13 @@ public class ProjectDetailController extends QController{
 		String validate = validate();
 		if(validate == null){
 			QJson json = save(ProjectDetailModel.class);
-			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 				QCacheUtil.putToEHCache("proDetails", ProjectDetailModel.dao.findAll("order by project_sn"));
 			}
 			
 			renderJson(json);
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	
@@ -55,7 +56,7 @@ public class ProjectDetailController extends QController{
 	 */
 	public void del(){
 		QJson json = del(ProjectDetailModel.class, ProjectVersionModel.class, "project_detail_id");
-		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+		if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 			QCacheUtil.putToEHCache("proDetails", ProjectDetailModel.dao.findAll("order by project_sn"));
 		}
 		

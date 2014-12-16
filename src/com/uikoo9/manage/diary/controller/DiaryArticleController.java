@@ -2,7 +2,7 @@ package com.uikoo9.manage.diary.controller;
 
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.diary.model.DiaryTypeModel;
-import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -38,7 +38,7 @@ public class DiaryArticleController extends QController{
 		if(validate == null){
 			renderJson(save(DiaryArticleModel.class));
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	

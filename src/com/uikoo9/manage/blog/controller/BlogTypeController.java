@@ -3,6 +3,7 @@ package com.uikoo9.manage.blog.controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -38,13 +39,13 @@ public class BlogTypeController extends QController{
 		String validate = validate();
 		if(validate == null){
 			QJson json = save(BlogTypeModel.class);
-			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 				QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by blog_type_name"));
 			}
 			
 			renderJson(json);
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	
@@ -53,7 +54,7 @@ public class BlogTypeController extends QController{
 	 */
 	public void del(){
 		QJson json = del(BlogTypeModel.class, BlogArticleModel.class, "blog_type_id");
-		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+		if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 			QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by blog_type_name"));
 		}
 		

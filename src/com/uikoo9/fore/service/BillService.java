@@ -13,6 +13,7 @@ import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.bill.model.BillDetailModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.ucenter.model.UcenterUserModel;
 
 /**
@@ -47,10 +48,10 @@ public class BillService {
 			UcenterUserModel user = (UcenterUserModel) request.getAttribute("user");
 			
 			if(QStringUtil.isEmpty(shouzhi)){
-				return new QJson("请填写收支明细！", QJson.TYPE_BS_DANG);
+				return QJsonUtil.error("请填写收支明细！");
 			}
 			if(user == null){
-				return new QJson("未找到用户信息！", QJson.TYPE_BS_DANG);
+				return QJsonUtil.error("未找到用户信息！");
 			}
 			
 			BillDetailModel zhuanchu = new BillDetailModel();
@@ -71,10 +72,10 @@ public class BillService {
 			zhuanru.set("cuser_name", user.get("ucenter_user_name"));
 			zhuanru.save();
 			
-			return new QJson("转账成功！", QJson.TYPE_BS_SUCC);
+			return QJsonUtil.suc("转账成功！");
 		} catch (Exception e) {
 			logger.error(QStringUtil.fromException(e));
-			return new QJson("转账失败！", QJson.TYPE_BS_DANG);
+			return QJsonUtil.error("转账失败！");
 		}
 	}
 	

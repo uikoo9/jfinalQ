@@ -3,6 +3,7 @@ package com.uikoo9.manage.bill.controller;
 import com.uikoo9.manage.bill.model.BillAccountModel;
 import com.uikoo9.manage.bill.model.BillDetailModel;
 import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -37,13 +38,13 @@ public class BillAccountController extends QController{
 		String validate = validate();
 		if(validate == null){
 			QJson json = save(BillAccountModel.class);
-			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 				QCacheUtil.putToEHCache("accounts", BillAccountModel.dao.findAll("order by bill_account_name"));
 			}
 			
 			renderJson(json);
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	
@@ -52,7 +53,7 @@ public class BillAccountController extends QController{
 	 */
 	public void del(){
 		QJson json = del(BillAccountModel.class, BillDetailModel.class, "bill_account_id");
-		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+		if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
 			QCacheUtil.putToEHCache("accounts", BillAccountModel.dao.findAll("order by bill_account_name"));
 		}
 		

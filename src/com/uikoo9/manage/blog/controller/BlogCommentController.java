@@ -3,7 +3,7 @@ package com.uikoo9.manage.blog.controller;
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.blog.model.BlogCommentModel;
 import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 import com.uikoo9.util.ucenter.model.UcenterUserModel;
@@ -47,7 +47,7 @@ public class BlogCommentController extends QController{
 			
 			renderJson(save(BlogCommentModel.class));
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	

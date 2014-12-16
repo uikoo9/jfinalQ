@@ -2,7 +2,7 @@ package com.uikoo9.manage.project.controller;
 
 import com.uikoo9.manage.project.model.ProjectDetailModel;
 import com.uikoo9.manage.project.model.ProjectVersionModel;
-import com.uikoo9.util.crud.QJson;
+import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
@@ -38,7 +38,7 @@ public class ProjectVersionController extends QController{
 		if(validate == null){
 			renderJson(save(ProjectVersionModel.class));
 		}else{
-			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
+			renderJson(QJsonUtil.error(validate));
 		}
 	}
 	
