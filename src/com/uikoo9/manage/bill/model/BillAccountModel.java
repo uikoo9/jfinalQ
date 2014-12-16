@@ -1,4 +1,4 @@
-package com.uikoo9.manage.ac.model;
+package com.uikoo9.manage.bill.model;
 
 import java.util.List;
 

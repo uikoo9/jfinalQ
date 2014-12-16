@@ -1,7 +1,7 @@
-package com.uikoo9.manage.ac.controller;
+package com.uikoo9.manage.bill.controller;
 
-import com.uikoo9.manage.ac.model.BillAccountModel;
-import com.uikoo9.manage.ac.model.BillDetailModel;
+import com.uikoo9.manage.bill.model.BillAccountModel;
+import com.uikoo9.manage.bill.model.BillDetailModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;

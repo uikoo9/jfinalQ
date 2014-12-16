@@ -2,7 +2,7 @@ package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.fore.service.AccountService;
-import com.uikoo9.manage.ac.model.BillAccountModel;
+import com.uikoo9.manage.bill.model.BillAccountModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
 @QControllerUrl("/ac")

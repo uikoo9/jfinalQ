@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
-import com.uikoo9.manage.ac.model.BillDetailModel;
+import com.uikoo9.manage.bill.model.BillDetailModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.ucenter.model.UcenterUserModel;
