@@ -51,7 +51,12 @@ public class BillAccountController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(BillAccountModel.class, BillDetailModel.class, "bill_account_id"));
+		QJson json = del(BillAccountModel.class, BillDetailModel.class, "bill_account_id");
+		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			QCacheUtil.putToEHCache("accounts", BillAccountModel.dao.findAll("order by bill_account_name"));
+		}
+		
+		renderJson(json);
 	}
 	
 }

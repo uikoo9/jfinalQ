@@ -51,7 +51,12 @@ public class DiaryTypeController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(DiaryTypeModel.class, DiaryArticleModel.class, "diary_type_id"));
+		QJson json = del(DiaryTypeModel.class, DiaryArticleModel.class, "diary_type_id");
+		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			QCacheUtil.putToEHCache("diaryTypes", DiaryTypeModel.dao.findAll("order by diary_type_name"));
+		}
+		
+		renderJson(json);
 	}
 	
 }

@@ -54,7 +54,12 @@ public class ProDetailController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(ProDetailModel.class, ProVersionModel.class, "pro_detail_id"));
+		QJson json = del(ProDetailModel.class, ProVersionModel.class, "pro_detail_id");
+		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			QCacheUtil.putToEHCache("proDetails", ProDetailModel.dao.findAll("order by pro_sn"));
+		}
+		
+		renderJson(json);
 	}
 	
 }

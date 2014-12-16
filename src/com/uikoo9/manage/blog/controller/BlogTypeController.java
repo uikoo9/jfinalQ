@@ -52,7 +52,12 @@ public class BlogTypeController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(BlogTypeModel.class, BlogArticleModel.class, "type_id"));
+		QJson json = del(BlogTypeModel.class, BlogArticleModel.class, "type_id");
+		if(QJson.TYPE_BS_SUCC.equals(json.getType())){
+			QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by type_name"));
+		}
+		
+		renderJson(json);
 	}
 	
 }
