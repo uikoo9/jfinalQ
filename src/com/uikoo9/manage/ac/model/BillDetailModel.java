@@ -10,24 +10,24 @@ import com.uikoo9.util.crud.QTable;
  * AcDetailModel
  * id 				id<br>
  * accuont_id		账户id<br>
- * detail_shouzhi 	收支明细<br>
- * detail_remark	收支备注<br>
+ * bill_detail_shouzhi 	收支明细<br>
+ * bill_detail_remark	收支备注<br>
  * cdate			创建时间<br>
  * cuser_id			创建人id<br>
  * cuser_name		创建人姓名<br>
  * @author qiaowenbin
  */
-@QTable("t_ac_detail")
+@QTable("t_bill_detail")
 @SuppressWarnings("serial")
-public class AcDetailModel extends Model<AcDetailModel>{
+public class BillDetailModel extends Model<BillDetailModel>{
 	
-	public static final AcDetailModel dao = new AcDetailModel();
+	public static final BillDetailModel dao = new BillDetailModel();
 	
 	/**
 	 * find all default
 	 * @return
 	 */
-	public List<AcDetailModel> findAll(){
+	public List<BillDetailModel> findAll(){
 		return findAll(null);
 	}
 	
@@ -36,8 +36,8 @@ public class AcDetailModel extends Model<AcDetailModel>{
 	 * @param order
 	 * @return
 	 */
-	public List<AcDetailModel> findAll(String order){
-		StringBuilder sb = new StringBuilder("select * from t_ac_detail ");
+	public List<BillDetailModel> findAll(String order){
+		StringBuilder sb = new StringBuilder("select * from t_bill_detail ");
 		if(QStringUtil.isEmpty(order)){
 			return dao.find(sb.append("order by cdate desc").toString());
 		}else{

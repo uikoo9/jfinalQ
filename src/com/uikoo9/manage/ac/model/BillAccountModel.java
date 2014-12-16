@@ -10,24 +10,24 @@ import com.uikoo9.util.file.QCacheUtil;
 /**
  * AcAccountModel<br>
  * id 			id<br>
- * account_name 账户名称<br>
- * account_desc 账户描述<br>
+ * bill_account_name 账户名称<br>
+ * bill_account_desc 账户描述<br>
  * cdate		创建时间<br>
  * cuser_id		创建人id<br>
  * cuser_name	创建人姓名<br>
  * @author qiaowenbin
  */
-@QTable("t_ac_account")
+@QTable("t_bill_account")
 @SuppressWarnings("serial")
-public class AcAccountModel extends Model<AcAccountModel>{
+public class BillAccountModel extends Model<BillAccountModel>{
 	
-	public static final AcAccountModel dao = new AcAccountModel();
+	public static final BillAccountModel dao = new BillAccountModel();
 	
 	/**
 	 * find all default
 	 * @return
 	 */
-	public List<AcAccountModel> findAll(){
+	public List<BillAccountModel> findAll(){
 		return findAll(null);
 	}
 	
@@ -36,8 +36,8 @@ public class AcAccountModel extends Model<AcAccountModel>{
 	 * @param order
 	 * @return
 	 */
-	public List<AcAccountModel> findAll(String order){
-		StringBuilder sb = new StringBuilder("select * from t_ac_account ");
+	public List<BillAccountModel> findAll(String order){
+		StringBuilder sb = new StringBuilder("select * from t_bill_account ");
 		if(QStringUtil.isEmpty(order)){
 			return dao.find(sb.append("order by cdate desc").toString());
 		}else{
@@ -50,15 +50,15 @@ public class AcAccountModel extends Model<AcAccountModel>{
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<AcAccountModel> findAllByCache(){
-		List<AcAccountModel> accounts = null;
+	public List<BillAccountModel> findAllByCache(){
+		List<BillAccountModel> accounts = null;
 		
 		Object value = QCacheUtil.getFromEHCache("accounts");
 		if(value == null){
-			accounts = AcAccountModel.dao.findAll("order by account_name");
+			accounts = BillAccountModel.dao.findAll("order by bill_account_name");
 			QCacheUtil.putToEHCache("accounts", accounts);
 		}else{
-			accounts = (List<AcAccountModel>) value;
+			accounts = (List<BillAccountModel>) value;
 		}
 		
 		return accounts;
@@ -68,8 +68,8 @@ public class AcAccountModel extends Model<AcAccountModel>{
 	 * get details
 	 * @return
 	 */
-	public List<AcDetailModel> details(){
-		return AcDetailModel.dao.find("select * from t_ac_detail where account_id=? order by id desc", get("id"));
+	public List<BillDetailModel> details(){
+		return BillDetailModel.dao.find("select * from t_bill_detail where bill_account_id=? order by id desc", get("id"));
 	}
 	
 }

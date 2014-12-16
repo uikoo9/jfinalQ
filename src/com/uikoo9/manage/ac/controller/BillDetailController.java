@@ -1,7 +1,7 @@
 package com.uikoo9.manage.ac.controller;
 
-import com.uikoo9.manage.ac.model.AcAccountModel;
-import com.uikoo9.manage.ac.model.AcDetailModel;
+import com.uikoo9.manage.ac.model.BillAccountModel;
+import com.uikoo9.manage.ac.model.BillDetailModel;
 import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.jfinal.QController;
@@ -12,15 +12,15 @@ import com.uikoo9.z.MyContants;
  * AcDetailController
  * @author qiaowenbin
  */
-@QControllerUrl("/ac/detail")
-public class AcDetailController extends QController{
+@QControllerUrl("/bill/detail")
+public class BillDetailController extends QController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", listBySql(getParaMap(), " (select ad.*,aa.account_name aname from t_ac_detail ad, t_ac_account aa where ad.account_id=aa.id ) as tad ", "tad"));
-		render("/WEB-INF/view/manage/ac/ac-detail-index.ftl");
+		setAttr("qpage", listBySql(getParaMap(), " (select ad.*,aa.bill_account_name aname from t_bill_detail ad, t_bill_account aa where ad.bill_account_id=aa.id ) as tad ", "tad"));
+		render("/WEB-INF/view/manage/bill/bill-detail-index.ftl");
 	}
 	
 	/**
@@ -28,11 +28,11 @@ public class AcDetailController extends QController{
 	 */
 	public void savep(){
 		setAttr("zhichutypes", QContantsUtil.list(MyContants.ZHICHU_TYPE));
-		setAttr("accounts", AcAccountModel.dao.findAllByCache());
+		setAttr("accounts", BillAccountModel.dao.findAllByCache());
 		
-		setAttr("row", getRow(AcDetailModel.class));
+		setAttr("row", getRow(BillDetailModel.class));
 		
-		render("/WEB-INF/view/manage/ac/ac-detail-input.ftl");
+		render("/WEB-INF/view/manage/bill/bill-detail-input.ftl");
 	}
 	
 	/**
@@ -41,7 +41,7 @@ public class AcDetailController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			renderJson(save(AcDetailModel.class));
+			renderJson(save(BillDetailModel.class));
 		}else{
 			renderJson(new QJson(validate, QJson.TYPE_BS_DANG));
 		}
@@ -51,7 +51,7 @@ public class AcDetailController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(AcDetailModel.class));
+		renderJson(del(BillDetailModel.class));
 	}
 	
 }

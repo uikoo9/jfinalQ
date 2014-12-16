@@ -2,7 +2,7 @@ package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.fore.service.AccountService;
-import com.uikoo9.manage.ac.model.AcAccountModel;
+import com.uikoo9.manage.ac.model.BillAccountModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
 
 @QControllerUrl("/ac")
@@ -22,7 +22,7 @@ public class AccountController extends Controller{
 	 * 跳转到转账页面
 	 */
 	public void tozhuan(){
-		setAttr("accounts", AcAccountModel.dao.findAllByCache());
+		setAttr("accounts", BillAccountModel.dao.findAllByCache());
 		render("/WEB-INF/view/fore/account/account-zhuan.ftl");
 	}
 	

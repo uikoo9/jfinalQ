@@ -15,8 +15,8 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
-				    <td>${(row.account_name)!}</td>
-		        	<td>${(row.acocunt_desc)!}</td>
+				    <td>${(row.bill_account_name)!}</td>
+		        	<td>${(row.bill_account_desc)!}</td>
 		        	<td>${(row.cdate)!}</td>
 		        	<td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>

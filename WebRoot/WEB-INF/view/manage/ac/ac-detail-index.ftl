@@ -17,9 +17,9 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.aname)!}</td>
-		        	<td>${(row.detail_shouzhi)!}</td>
-		        	<td>${util.get(row.detail_zhichu_type)}</td>
-		        	<td>${(row.detail_remark)!}</td>
+		        	<td>${(row.bill_detail_shouzhi)!}</td>
+		        	<td>${util.get(row.bill_detail_zhichu_type)}</td>
+		        	<td>${(row.bill_detail_remark)!}</td>
 		        	<td>${(row.cdate)!}</td>
 		        	<td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>

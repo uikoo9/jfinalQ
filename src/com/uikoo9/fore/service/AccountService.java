@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
-import com.uikoo9.manage.ac.model.AcDetailModel;
+import com.uikoo9.manage.ac.model.BillDetailModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.ucenter.model.UcenterUserModel;
@@ -36,7 +36,7 @@ public class AccountService {
 	 * @return
 	 */
 	public List<Record> getAccountSum(){
-		String sql = "SELECT SUM(ad.detail_shouzhi) asum, aa.account_name aname FROM t_ac_detail ad, t_ac_account aa WHERE ad.account_id=aa.id GROUP BY ad.account_id ORDER BY asum DESC";
+		String sql = "SELECT SUM(ad.bill_detail_shouzhi) asum, aa.bill_account_name aname FROM t_bill_detail ad, t_bill_account aa WHERE ad.bill_account_id=aa.id GROUP BY ad.bill_account_id ORDER BY asum DESC";
 		return Db.find(sql);
 	}
 	
@@ -53,19 +53,19 @@ public class AccountService {
 				return new QJson("未找到用户信息！", QJson.TYPE_BS_DANG);
 			}
 			
-			AcDetailModel zhuanchu = new AcDetailModel();
-			zhuanchu.set("account_id", Integer.parseInt(request.getParameter("accountId1")));
-			zhuanchu.set("detail_shouzhi", "-" + shouzhi);
-			zhuanchu.set("detail_remark", remark);
+			BillDetailModel zhuanchu = new BillDetailModel();
+			zhuanchu.set("bill_account_id", Integer.parseInt(request.getParameter("accountId1")));
+			zhuanchu.set("bill_detail_shouzhi", "-" + shouzhi);
+			zhuanchu.set("bill_detail_remark", remark);
 			zhuanchu.set("cdate", new Date());
 			zhuanchu.set("cuser_id", user.get("id"));
 			zhuanchu.set("cuser_name", user.get("user_name"));
 			zhuanchu.save();
 			
-			AcDetailModel zhuanru = new AcDetailModel();
-			zhuanru.set("account_id", Integer.parseInt(request.getParameter("accountId2")));
-			zhuanru.set("detail_shouzhi", shouzhi);
-			zhuanru.set("detail_remark", remark);
+			BillDetailModel zhuanru = new BillDetailModel();
+			zhuanru.set("bill_account_id", Integer.parseInt(request.getParameter("accountId2")));
+			zhuanru.set("bill_detail_shouzhi", shouzhi);
+			zhuanru.set("bill_detail_remark", remark);
 			zhuanru.set("cdate", new Date());
 			zhuanru.set("cuser_id", user.get("id"));
 			zhuanru.set("cuser_name", user.get("user_name"));
@@ -83,7 +83,7 @@ public class AccountService {
 	 * @return
 	 */
 	public List<Record> getAccountDetails(){
-		String sql = "select ad.*,aa.account_name aname from t_ac_detail ad, t_ac_account aa where ad.account_id=aa.id order by ad.cdate desc";
+		String sql = "select ad.*,aa.bill_account_name aname from t_bill_detail ad, t_bill_account aa where ad.bill_account_id=aa.id order by ad.cdate desc";
 		return Db.find(sql);
 	}
 	

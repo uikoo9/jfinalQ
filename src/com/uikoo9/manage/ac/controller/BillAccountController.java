@@ -1,7 +1,7 @@
 package com.uikoo9.manage.ac.controller;
 
-import com.uikoo9.manage.ac.model.AcAccountModel;
-import com.uikoo9.manage.ac.model.AcDetailModel;
+import com.uikoo9.manage.ac.model.BillAccountModel;
+import com.uikoo9.manage.ac.model.BillDetailModel;
 import com.uikoo9.util.crud.QJson;
 import com.uikoo9.util.file.QCacheUtil;
 import com.uikoo9.util.jfinal.QController;
@@ -11,23 +11,23 @@ import com.uikoo9.util.jfinal.QControllerUrl;
  * AcAccountController
  * @author qiaowenbin
  */
-@QControllerUrl("/ac/account")
-public class AcAccountController extends QController{
+@QControllerUrl("/bill/account")
+public class BillAccountController extends QController{
 	
 	/**
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", list(AcAccountModel.class));
-		render("/WEB-INF/view/manage/ac/ac-account-index.ftl");
+		setAttr("qpage", list(BillAccountModel.class));
+		render("/WEB-INF/view/manage/bill/bill-account-index.ftl");
 	}
 	
 	/**
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr("row", getRow(AcAccountModel.class));
-		render("/WEB-INF/view/manage/ac/ac-account-input.ftl");
+		setAttr("row", getRow(BillAccountModel.class));
+		render("/WEB-INF/view/manage/bill/bill-account-input.ftl");
 	}
 	
 	/**
@@ -36,9 +36,9 @@ public class AcAccountController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			QJson json = save(AcAccountModel.class);
+			QJson json = save(BillAccountModel.class);
 			if(QJson.TYPE_BS_SUCC.equals(json.getType())){
-				QCacheUtil.putToEHCache("accounts", AcAccountModel.dao.findAll("order by account_name"));
+				QCacheUtil.putToEHCache("accounts", BillAccountModel.dao.findAll("order by bill_account_name"));
 			}
 			
 			renderJson(json);
@@ -51,7 +51,7 @@ public class AcAccountController extends QController{
 	 * 删除一条或多条
 	 */
 	public void del(){
-		renderJson(del(AcAccountModel.class, AcDetailModel.class, "account_id"));
+		renderJson(del(BillAccountModel.class, BillDetailModel.class, "bill_account_id"));
 	}
 	
 }

@@ -9,11 +9,11 @@ web.account.init = function(){
 };
 web.account.toshouzhi = function(){
 	qiao.bs.dialog({
-		url : '/ac/detail/savep',
+		url : '/bill/detail/savep',
 		title : '收入&支出',
 		okbtn : '添加'
 	}, function(){
-		var res = qiao.ajax({url:'/ac/detail/save',data:$('#bsmodal').find('form').qser()});
+		var res = qiao.ajax({url:'/bill/detail/save',data:$('#bsmodal').find('form').qser()});
 		qiao.bs.msg(res);
 
 		if(res && res.type == 'success'){
@@ -28,11 +28,11 @@ web.account.toshouzhi = function(){
 };
 web.account.tozhuan = function(){
 	qiao.bs.dialog({
-		url : '/ac/tozhuan',
+		url : '/bill/tozhuan',
 		title : '转账',
 		okbtn : '转账'
 	}, function(){
-		var res = qiao.ajax({url:'/ac/zhuan',data:$('#bsmodal').find('form').qser()});
+		var res = qiao.ajax({url:'/bill/zhuan',data:$('#bsmodal').find('form').qser()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){

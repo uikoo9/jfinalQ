@@ -2,6 +2,6 @@
 
 <form class="form-horizontal" role="form">
 	<input type="hidden" name="row.id" value="${(row.id)!}"/>
-	<@bsinput title='账户名称' name='row.account_name' value='${(row.account_name)!}'/>
-	<@bsinput title='账户描述' name='row.acocunt_desc' value='${(row.acocunt_desc)!}'/>
+	<@bsinput title='账户名称' name='row.bill_account_name' value='${(row.bill_account_name)!}'/>
+	<@bsinput title='账户描述' name='row.bill_account_desc' value='${(row.bill_account_desc)!}'/>
 </form>
