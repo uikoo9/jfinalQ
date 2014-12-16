@@ -17,7 +17,7 @@ public class ProjectVersionController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", listBySql(getParaMap(), " (select pv.*,pd.pro_name pname from t_project_version pv, t_project_detail pd where pv.project_detail_id=pd.id ) as pdv ", "pdv"));
+		setAttr("qpage", listBySql(getParaMap(), " (select pv.*,pd.project_name pname from t_project_version pv, t_project_detail pd where pv.project_detail_id=pd.id ) as pdv ", "pdv"));
 		render("/WEB-INF/view/manage/project/project-version-index.ftl");
 	}
 	

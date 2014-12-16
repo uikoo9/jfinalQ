@@ -10,7 +10,7 @@ import com.uikoo9.util.file.QCacheUtil;
 /**
  * 项目明细
  * id 			id<br>
- * pro_name		项目名称<br>
+ * project_name		项目名称<br>
  * project_desc 	项目详情<br>
  * project_url		项目地址<br>
  * project_src		源码地址<br>

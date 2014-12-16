@@ -6,7 +6,7 @@
 			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9" data-spy="scroll" data-target=".scrolldiv">
 				<#list proDetails as pro>
 					<@bspanel id='panel'+pro.id>
-						<p><strong>项目名称：</strong>${pro.pro_name}</p>
+						<p><strong>项目名称：</strong>${pro.project_name}</p>
 						<p><strong>创建时间：</strong>${pro.cdate}</p>
 						<#if pro.project_url??>
 							<p><strong>项目地址：</strong><a href="${pro.project_url}" target="_blank">${pro.project_url}</a></p>
@@ -35,7 +35,7 @@
 				<div class="scrolldiv" style="position:fixed;top:70px;">
 					<ul class="nav nav-pills nav-stacked" role="tablist">
 						<#list proDetails as pro>
-							<li role="presentation"><a href="#panel${pro.id}" class="list-group-item">${pro.pro_name}</a></li>
+							<li role="presentation"><a href="#panel${pro.id}" class="list-group-item">${pro.project_name}</a></li>
 						</#list>
 					</ul>
 				</div>

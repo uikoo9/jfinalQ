@@ -5,7 +5,7 @@
 	<@bsinput title='项目类型' input=false>
 		<@bsradios name='row.project_type' ck='${(row.project_type)!"020101"}' list=protypes/>
 	</@bsinput>
-	<@bsinput title='项目名称' name='row.pro_name' value='${(row.pro_name)!}'/>
+	<@bsinput title='项目名称' name='row.project_name' value='${(row.project_name)!}'/>
 	<@bsinput title='项目地址' name='row.project_url'	 value='${(row.project_url)!}'/>
 	<@bsinput title='源码地址' name='row.project_src'  value='${(row.project_src)!}'/>
 	<@bsinput title='项目序号' name='row.project_sn'   value='${(row.project_sn)!}'/>

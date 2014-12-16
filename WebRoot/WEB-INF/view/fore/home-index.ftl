@@ -34,7 +34,7 @@
 去掉项目明细
 <#list proDetails?if_exists as pro>
 	<#if pro_index % 3 == 0><div class="row"></#if>
-		<@bsnail title=pro.pro_name>
+		<@bsnail title=pro.project_name>
 			<#if pro.project_url??>
 				<@bsbutton type='primary' href=pro.project_url>访问</@bsbutton>
 			<#else>

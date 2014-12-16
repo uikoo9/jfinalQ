@@ -21,7 +21,7 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.project_sn}</td>
 			        <td>${util.get(row.project_type)}</td>
-			        <td>${row.pro_name}</td>
+			        <td>${row.project_name}</td>
 			        <td>${(row.project_url)!}</td>
 			        <td>${(row.project_src)!}</td>
 			        <td>${row.cdate}</td>
