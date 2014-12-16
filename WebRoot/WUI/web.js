@@ -93,7 +93,7 @@ web.blogedit.init = function(){
 };
 web.blogedit.save = function(){
 	var $form = $('#addBlogForm');
-	var title = $.trim($form.find('input[name="row.article_title"]').val()); 
+	var title = $.trim($form.find('input[name="row.blog_article_title"]').val()); 
 	
 	if(!title){
 		qiao.bs.msg({msg:'请填写博客标题！',type:'danger'});
@@ -103,7 +103,7 @@ web.blogedit.save = function(){
 		
 		if(res && res.type == 'success'){
 			setTimeout(function(){
-				qiao.to(base + '/blog/detail/' + res.object.article_code);
+				qiao.to(base + '/blog/detail/' + res.object.blog_article_code);
 			},1000);
 		}
 	}
@@ -116,7 +116,7 @@ web.diary.init = function(){
 };
 web.diary.save = function(){
 	var $form = $('#addDiaryForm');
-	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
+	var title = $.trim($form.find('input[name="row.diary_"]').val()); 
 
 	if(!title){
 		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});

@@ -13,7 +13,7 @@
 		    <#list qpage.list?if_exists as row>
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
-				    <td>${(row.type_name)!}</td>
+				    <td>${(row.blog_type_name)!}</td>
 				    <td>${(row.cdate)!}</td>
 				    <td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>

@@ -18,9 +18,9 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.tname)!}</td>
-		        	<td>${(row.article_code)!}</td>
-		        	<td>${(row.article_title)!}</td>
-		        	<td>${(row.article_times)!}</td>
+		        	<td>${(row.blog_article_code)!}</td>
+		        	<td>${(row.blog_article_title)!}</td>
+		        	<td>${(row.blog_article_read_times)!}</td>
 		        	<td>${(row.cdate)!}</td>
 					<td>
 			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>

@@ -10,7 +10,7 @@ import com.uikoo9.util.file.QCacheUtil;
 /**
  * BlogTypeModel
  * id 			id<br>
- * type_name	类型名称<br>
+ * blog_type_name	类型名称<br>
  * cdate		创建时间<br>
  * cuser_id		创建人id<br>
  * cuser_name	创建人姓名<br>
@@ -49,7 +49,7 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	 * @return
 	 */
 	public List<BlogTypeModel> findAllByCache(){
-		return findAllByCache(BlogTypeModel.dao.findAll("order by type_name"));
+		return findAllByCache(BlogTypeModel.dao.findAll("order by blog_type_name"));
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	 * @return
 	 */
 	public List<BlogArticleModel> articles(){
-		return BlogArticleModel.dao.find("select * from t_blog_article where type_id=? order by article_title", get("id"));
+		return BlogArticleModel.dao.find("select * from t_blog_article where blog_type_id=? order by blog_article_title", get("id"));
 	}
 	
 }

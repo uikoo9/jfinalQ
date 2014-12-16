@@ -20,7 +20,7 @@ public class BlogController extends Controller{
 			Integer typeId = getParaToInt(0);
 			if(typeId != null){
 				setAttr("blogTypeId", typeId);
-				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.type_id=? order by cdate desc", typeId));
+				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.blog_type_id=? order by cdate desc", typeId));
 			}else{
 				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
 			}
@@ -50,8 +50,8 @@ public class BlogController extends Controller{
 		try {
 			String blogCode = getPara();
 			if(QStringUtil.notEmpty(blogCode)){
-				BlogArticleModel blog = BlogArticleModel.dao.findFirst("select * from t_blog_article where article_code=?", blogCode);
-				blog.set("article_times", ((Integer)blog.get("article_times") + 1)).update();
+				BlogArticleModel blog = BlogArticleModel.dao.findFirst("select * from t_blog_article where blog_article_code=?", blogCode);
+				blog.set("blog_article_read_times", ((Integer)blog.get("blog_article_read_times") + 1)).update();
 				setAttr("blog", blog);
 				
 				render("/WEB-INF/view/fore/blog/blog-detail.ftl");

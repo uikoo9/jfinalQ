@@ -7,17 +7,17 @@
 			<form class="form-horizontal" role="form" id="addBlogForm">
 				<input type="hidden" name="row.id" value="${(blog.id)!}"/>
 				<@bsinput title='日记类型' input=false>
-					<select class="form-control" name='row.type_id'>
+					<select class="form-control" name='row.blog_type_id'>
 						<#if blogTypes??>
 							<#list blogTypes as item>
-								<option value="${item.id}" <#if blog?? && blog.type_id == item.id>selected</#if>>${item.type_name}</option>
+								<option value="${item.id}" <#if blog?? && blog.blog_type_id == item.id>selected</#if>>${item.blog_type_name}</option>
 							</#list>
 						</#if>
 					</select>
 				</@bsinput>
-				<@bsinput title='日记标题' name='row.article_title' value='${(blog.article_title)!}'/>
+				<@bsinput title='日记标题' name='row.blog_article_title' value='${(blog.blog_article_title)!}'/>
 				<@bsinput title='日记内容' input=false>
-					<script id="ueditor" name="row.article_content" type="text/plain">${(blog.article_content)!}</script>
+					<script id="ueditor" name="row.blog_article_content" type="text/plain">${(blog.blog_article_content)!}</script>
 				</@bsinput>
 			</form>
 			<p class="text-right">

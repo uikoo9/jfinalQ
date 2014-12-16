@@ -17,7 +17,7 @@ public class BlogArticleController extends QController{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		setAttr("qpage", listBySql(getParaMap(), " (select ba.*,bt.type_name tname from t_blog_article ba, t_blog_type bt where ba.type_id=bt.id ) as tba ", "tba"));
+		setAttr("qpage", listBySql(getParaMap(), " (select ba.*,bt.blog_type_name tname from t_blog_article ba, t_blog_type bt where ba.blog_type_id=bt.id ) as tba ", "tba"));
 		render("/WEB-INF/view/manage/blog/blog-article-index.ftl");
 	}
 	
