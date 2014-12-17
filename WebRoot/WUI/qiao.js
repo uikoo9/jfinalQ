@@ -343,7 +343,7 @@ qiao.bs.tree.options = {
 	height 	: '600px',
 	open	: true,
 	edit	: false,
-	checkbox: false,
+	checkbox: false
 };
 $.fn.bstree = function(options){
 	var opt = $.extend({}, qiao.bs.tree.options);
@@ -379,8 +379,13 @@ qiao.bs.tree.sub = function(tree, opt){
 			'<li>' + 
 				'<a href="javascript:void(0);" data="id:' + tree.id + ';url:' + tree.url + ';">' + 
 					'<span class="glyphicon glyphicon-minus"></span>';
-		if(opt.checkbox) 
-			res += '<input type="checkbox"/>';
+		if(opt.checkbox){
+			res += '<input type="checkbox" ';
+			if(tree.checked){
+				res += 'checked';
+			}
+			res += '/>';
+		}
 			res += tree.text;
 		if(opt.edit)
 			res += 
@@ -772,18 +777,19 @@ qiao.role.seturl = function(){
 	qiao.bs.dialog({
 		url : '/ucenter/role/setUrl/' + id,
 		title : '设置Url',
-		okbtn : '关闭'
-	});
+		okbtn : '保存'
+	}, qiao.role.addUrl);
 };
 qiao.role.addUrl = function(){
-	var urls = [];
-	$('tr.outtr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
+	var ids = [];
+	$('#treeul input:checked').each(function(){ids.push($(this).parent().qdata().id);});
+	var res = qiao.ajax({url:'/ucenter/role/saveUrl',data:{ids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
 	
-	var res = qiao.ajax({url:'/ucenter/role/addUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
 	if(res && res.type == 'success'){
-		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
+		return true;
 	}else{
 		qiao.bs.msg(res);
+		return false;
 	}
 };
 qiao.role.removeUrl = function(){
