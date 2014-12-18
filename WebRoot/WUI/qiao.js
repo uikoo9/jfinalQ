@@ -343,7 +343,8 @@ qiao.bs.tree.options = {
 	height 	: '600px',
 	open	: true,
 	edit	: false,
-	checkbox: false
+	checkbox: false,
+	showurl	: true
 };
 $.fn.bstree = function(options){
 	var opt = $.extend({}, qiao.bs.tree.options);
@@ -387,6 +388,9 @@ qiao.bs.tree.sub = function(tree, opt){
 			res += '/>';
 		}
 			res += tree.text;
+		if(opt.showurl){
+			res += '(' + tree.url + ')';
+		}
 		if(opt.edit)
 			res += 
 				'&nbsp;&nbsp;<span class="label label-primary bstreeadd">添加子菜单</span>' + 
@@ -432,13 +436,13 @@ qiao.bs.tree.init = function(){
 };
 qiao.bs.tree.addp = function(){
 	qiao.bs.dialog({
-		url 	: qiao.bs.tree.url + 'add/' + $(this).parent().qdata().id,
+		url 	: qiao.bs.tree.url + '/add/' + $(this).parent().qdata().id,
 		title 	: '添加子菜单',
 		okbtn 	: '保存'
 	}, qiao.bs.tree.add);
 };
 qiao.bs.tree.add = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + 'save',data:$('#bsmodal').find('form').qser()});
+	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').qser()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -450,7 +454,7 @@ qiao.bs.tree.add = function(){
 	}
 };
 qiao.bs.tree.del = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + 'del/' + $(this).parent().qdata().id});
+	var res = qiao.ajax({url:qiao.bs.tree.url + '/del/' + $(this).parent().qdata().id});
 	qiao.bs.msg(res);
 	
 	if(res && res.type == 'success'){
@@ -460,7 +464,7 @@ qiao.bs.tree.del = function(){
 };
 qiao.bs.tree.editp = function(){
 	qiao.bs.dialog({
-		url 	: qiao.bs.tree.url + 'savep?id=' + $(this).parent().qdata().id,
+		url 	: qiao.bs.tree.url + '/savep?id=' + $(this).parent().qdata().id,
 		title 	: '修改菜单',
 		okbtn 	: '保存'
 	}, qiao.bs.tree.edit);
@@ -590,7 +594,7 @@ qiao.crud.bindcrud = function(){
 };
 qiao.crud.listopt = {pageNumber:1};
 qiao.crud.list = function(data){
-	var opt = {url : qiao.crud.url + 'index'};
+	var opt = {url : qiao.crud.url + '/index'};
 	if(data) $.extend(qiao.crud.listopt, data);
 	opt.data = qiao.crud.listopt;
 	
@@ -602,19 +606,19 @@ qiao.crud.reset = function(){
 };
 qiao.crud.savep = function(title, id){
 	if(title == '查询'){
-		qiao.bs.dialog({title:title,url:qiao.crud.url + 'savep'}, function(){
+		qiao.bs.dialog({title:title,url:qiao.crud.url + '/savep'}, function(){
 			qiao.crud.list($('#bsmodal').find('form').qser());
 			return true;
 		});
 	}else{
-		var url = id ? (qiao.crud.url + 'savep?id=' + id) : (qiao.crud.url + 'savep');
+		var url = id ? (qiao.crud.url + '/savep?id=' + id) : (qiao.crud.url + '/savep');
 		qiao.bs.dialog({title:title,url:url}, function(){
 			return qiao.crud.save();
 		});
 	}
 };
 qiao.crud.save = function(){
-	var res = qiao.ajax({url:qiao.crud.url+'save',data:$('#bsmodal').find('form').qser()});
+	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').qser()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -637,7 +641,7 @@ qiao.crud.del = function(id){
 		qiao.bs.alert('请选择要删除的记录！');
 	}else{
 		qiao.bs.confirm('确认要删除所选记录吗（若有子记录也会同时删除）？',function(){
-			var res = qiao.ajax({url:qiao.crud.url+'del',data:{ids:ids.join(',')}});
+			var res = qiao.ajax({url:qiao.crud.url+'/del',data:{ids:ids.join(',')}});
 			qiao.bs.msg(res);
 			qiao.crud.list();
 		});

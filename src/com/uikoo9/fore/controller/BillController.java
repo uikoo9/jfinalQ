@@ -33,19 +33,4 @@ public class BillController extends Controller{
 		renderJson(billService.zhuan(getRequest()));
 	}
 	
-	/**
-	 * 跳转到账户明细页面
-	 */
-	public void details(){
-		setAttr("accountDetails", billService.getAccountDetails());
-		render("/WEB-INF/view/fore/bill/bill-details.ftl");
-	}
-	
-	/**
-	 * 跳转到账户管理页面
-	 */
-	public void accounts(){
-		render("/WEB-INF/view/fore/bill/bill-accounts.ftl");
-	}
-	
 }

@@ -6,7 +6,7 @@
 			<@ueditor/>
 			<form class="form-horizontal" role="form" id="addBlogForm">
 				<input type="hidden" name="row.id" value="${(blog.id)!}"/>
-				<@bsinput title='日记类型' input=false>
+				<@bsinput title='博客类型' input=false>
 					<select class="form-control" name='row.blog_type_id'>
 						<#if blogTypes??>
 							<#list blogTypes as item>
@@ -15,8 +15,9 @@
 						</#if>
 					</select>
 				</@bsinput>
-				<@bsinput title='日记标题' name='row.blog_article_title' value='${(blog.blog_article_title)!}'/>
-				<@bsinput title='日记内容' input=false>
+				<@bsinput title='博客标题' name='row.blog_article_title' value='${(blog.blog_article_title)!}'/>
+				<@bsinput title='博客编码' name='row.blog_article_code' value='${(blog.blog_article_code)!}'/>
+				<@bsinput title='博客内容' input=false>
 					<script id="ueditor" name="row.blog_article_content" type="text/plain">${(blog.blog_article_content)!}</script>
 				</@bsinput>
 			</form>

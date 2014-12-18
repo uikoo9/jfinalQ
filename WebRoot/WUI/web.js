@@ -116,7 +116,7 @@ web.diary.init = function(){
 };
 web.diary.save = function(){
 	var $form = $('#addDiaryForm');
-	var title = $.trim($form.find('input[name="row.diary_"]').val()); 
+	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
 
 	if(!title){
 		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});

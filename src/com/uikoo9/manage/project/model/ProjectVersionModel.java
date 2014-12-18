@@ -8,13 +8,13 @@ import com.uikoo9.util.crud.QTable;
 
 /**
  * 版本迭代
- * id 				id<br>
+ * id 					id<br>
  * project_detail_id	项目id<br>
- * project_version_code 		版本代号<br>
- * project_version_desc			版本详情<br>
- * cdate			创建时间<br>
- * cuser_id			创建人id<br>
- * cuser_name		创建人姓名<br>
+ * project_version_code 版本代号<br>
+ * project_version_desc	版本详情<br>
+ * cdate				创建时间<br>
+ * cuser_id				创建人id<br>
+ * cuser_name			创建人姓名<br>
  * @author uikoo9
  */
 @QTable("t_project_version")

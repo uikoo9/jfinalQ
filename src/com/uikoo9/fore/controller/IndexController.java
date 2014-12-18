@@ -1,6 +1,7 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.core.JFinal;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.project.model.ProjectDetailModel;
 import com.uikoo9.util.jfinal.QControllerUrl;
