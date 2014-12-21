@@ -13,8 +13,7 @@
 			</div>
 			<div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
 				<div class="list-group" style="position:fixed;top:70px;">
-					<a href="${base}/diary/list" class="list-group-item <#if !diaryTypeId??>active</#if>">所有文章</a>
-					<#list diaryTypes as type>
+					<#list diaryTypes?if_exists as type>
 						<a href="${base}/diary/list/${type.id}" class="list-group-item <#if diaryTypeId?? && diaryTypeId == type.id>active</#if>">${type.diary_type_name}</a>
 					</#list>
 				</div>

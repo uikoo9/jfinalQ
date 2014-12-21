@@ -16,13 +16,10 @@ public class DiaryController extends Controller{
 		setAttr("diaryTypes", DiaryTypeModel.dao.findAllByCache());
 		
 		try {
-			Integer typeId = getParaToInt(0);
-			if(typeId != null){
-				setAttr("diaryTypeId", typeId);
-				setAttr("diarys", Db.find("select * from t_diary_article tda where tda.diary_type_id=? order by cdate desc", typeId));
-			}else{
-				setAttr("diarys", DiaryArticleModel.dao.findAll());
-			}
+			Integer typeId = getParaToInt(0) == null ? 5 : getParaToInt(0);
+
+			setAttr("diaryTypeId", typeId);
+			setAttr("diarys", Db.find("select * from t_diary_article tda where tda.diary_type_id=? order by diary_article_title", typeId));
 			
 			render("/WEB-INF/view/fore/diary/diary-list.ftl");
 		} catch (Exception e) {

@@ -46,24 +46,16 @@ public class DiaryTypeModel extends Model<DiaryTypeModel>{
 	
 	/**
 	 * find all by cache
-	 * @return
-	 */
-	public List<DiaryTypeModel> findAllByCache(){
-		return findAllByCache(DiaryTypeModel.dao.findAll("order by diary_type_name"));
-	}
-	
-	/**
-	 * find all by cache
 	 * @param types
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<DiaryTypeModel> findAllByCache(List<DiaryTypeModel> types){
+	public List<DiaryTypeModel> findAllByCache(){
 		List<DiaryTypeModel> diaryTypes = null;
 		
 		Object value = QCacheUtil.getFromEHCache("diaryTypes");
 		if(value == null){
-			diaryTypes = types;
+			diaryTypes = DiaryTypeModel.dao.findAll("order by diary_type_name");
 			QCacheUtil.putToEHCache("diaryTypes", diaryTypes);
 		}else{
 			diaryTypes = (List<DiaryTypeModel>) value;
