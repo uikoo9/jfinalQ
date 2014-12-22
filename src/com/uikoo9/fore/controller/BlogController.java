@@ -60,8 +60,38 @@ public class BlogController extends Controller{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		redirect("/blog/list");
+	}
+	
+	/**
+	 * 跳转到上一篇blog
+	 */
+	public void prev(){
+		try {
+			String sql = "select * from t_blog_article where id = (select max(id) from t_blog_article where id<?)";
+			BlogArticleModel blog = BlogArticleModel.dao.findFirst(sql, getParaToInt());
+			
+			redirect("/blog/detail/" + blog.getStr("blog_article_code"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			redirect("/blog/list");
+		}
+	}
+	
+	/**
+	 * 跳转到下一篇
+	 */
+	public void next(){
+		try {
+			String sql = "select * from t_blog_article where id = (select min(id) from t_blog_article where id>?)";
+			BlogArticleModel blog = BlogArticleModel.dao.findFirst(sql, getParaToInt());
+			
+			redirect("/blog/detail/" + blog.getStr("blog_article_code"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			redirect("/blog/list");
+		}
 	}
 	
 }

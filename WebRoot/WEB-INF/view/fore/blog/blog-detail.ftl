@@ -9,7 +9,23 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<h3 class="text-center">${blog.blog_article_title}</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:3px;">
+					<@bsbutton type='primary' size='xs' class='prevblog' icon='arrow-left'  data='id:${blog.id};'>上一篇</@bsbutton>
+					<@bsbutton type='primary' size='xs' class='nextblog' icon='arrow-right' data='id:${blog.id};' pos='right' style="position:absolute;right:15px;">下一篇</@bsbutton>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					<@bspanel type='primary' style='margin-top:20px;' class='ueparse'>${blog.blog_article_content}</@bspanel>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:15px;">
+					<@bsbutton type='primary' size='xs' class='prevblog' icon='arrow-left'  data='id:${blog.id};'>上一篇</@bsbutton>
+					<@bsbutton type='primary' size='xs' class='nextblog' icon='arrow-right' data='id:${blog.id}; 'pos='right' style="position:absolute;right:15px;">下一篇</@bsbutton>
 				</div>
 			</div>
 			<div class="row">
