@@ -3,7 +3,7 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<@bslun 'demo1.jpg','demo2.jpg'></@bslun>
+			<@bslun 'demo1.jpg','demo2.jpg' />
 		</div>
 	</div>
 </@html>
