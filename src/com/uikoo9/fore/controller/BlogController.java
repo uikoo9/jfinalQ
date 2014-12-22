@@ -52,7 +52,10 @@ public class BlogController extends Controller{
 			if(QStringUtil.notEmpty(blogCode)){
 				BlogArticleModel blog = BlogArticleModel.dao.findFirst("select * from t_blog_article where blog_article_code=?", blogCode);
 				blog.set("blog_article_read_times", ((Integer)blog.get("blog_article_read_times") + 1)).update();
+				
 				setAttr("blog", blog);
+				setAttr("prevBlog", getBlog("prev", blog));
+				setAttr("nextBlog", getBlog("next", blog));
 				
 				render("/WEB-INF/view/fore/blog/blog-detail.ftl");
 				return;
@@ -63,35 +66,18 @@ public class BlogController extends Controller{
 
 		redirect("/blog/list");
 	}
-	
-	/**
-	 * 跳转到上一篇blog
-	 */
-	public void prev(){
+	private BlogArticleModel getBlog(String type, BlogArticleModel blog){
+		BlogArticleModel theBlog = null;
 		try {
-			String sql = "select * from t_blog_article where id = (select max(id) from t_blog_article where id<?)";
-			BlogArticleModel blog = BlogArticleModel.dao.findFirst(sql, getParaToInt());
-			
-			redirect("/blog/detail/" + blog.getStr("blog_article_code"));
+			String sql = null;
+			if("prev".equals(type)) sql = "select * from t_blog_article where id = (select max(id) from t_blog_article where id<?)";
+			if("next".equals(type)) sql = "select * from t_blog_article where id = (select min(id) from t_blog_article where id>?)";
+			theBlog = BlogArticleModel.dao.findFirst(sql, blog.getInt("id"));
 		} catch (Exception e) {
 			e.printStackTrace();
-			redirect("/blog/list");
 		}
-	}
-	
-	/**
-	 * 跳转到下一篇
-	 */
-	public void next(){
-		try {
-			String sql = "select * from t_blog_article where id = (select min(id) from t_blog_article where id>?)";
-			BlogArticleModel blog = BlogArticleModel.dao.findFirst(sql, getParaToInt());
-			
-			redirect("/blog/detail/" + blog.getStr("blog_article_code"));
-		} catch (Exception e) {
-			e.printStackTrace();
-			redirect("/blog/list");
-		}
+		
+		return theBlog != null ? theBlog : new BlogArticleModel().set("id", 0).set("blog_article_title", "没有了~").set("blog_article_code", "null");
 	}
 	
 }

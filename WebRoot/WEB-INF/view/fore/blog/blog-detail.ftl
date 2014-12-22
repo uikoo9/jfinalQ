@@ -12,9 +12,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:3px;">
-					<@bsbutton type='primary' size='xs' class='prevblog' icon='arrow-left'  data='id:${blog.id};'>上一篇</@bsbutton>
-					<@bsbutton type='primary' size='xs' class='nextblog' icon='arrow-right' data='id:${blog.id};' pos='right' style="position:absolute;right:15px;">下一篇</@bsbutton>
+				<div class="hidden-xs hidden-sm col-md-12 col-lg-12" style="margin-bottom:3px;">
+					<#if prevBlog.id == 0>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-left'  data='code:${prevBlog.blog_article_code};' dis=true>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+					<#else>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-left'  data='code:${prevBlog.blog_article_code};'>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+					</#if>
+					<#if nextBlog.id == 0>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-right' data='code:${nextBlog.blog_article_code};' pos='right' style="position:absolute;right:15px;" dis=true>下一篇：${nextBlog.blog_article_title}</@bsbutton>
+					<#else>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-right' data='code:${nextBlog.blog_article_code};' pos='right' style="position:absolute;right:15px;">下一篇：${nextBlog.blog_article_title}</@bsbutton>
+					</#if>
 				</div>
 			</div>
 			<div class="row">
@@ -23,9 +31,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:15px;">
-					<@bsbutton type='primary' size='xs' class='prevblog' icon='arrow-left'  data='id:${blog.id};'>上一篇</@bsbutton>
-					<@bsbutton type='primary' size='xs' class='nextblog' icon='arrow-right' data='id:${blog.id}; 'pos='right' style="position:absolute;right:15px;">下一篇</@bsbutton>
+				<div class="hidden-xs hidden-sm col-md-12 col-lg-12" style="margin-bottom:15px;">
+					<#if prevBlog.id == 0>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-left'  data='code:${prevBlog.blog_article_code};' dis=true>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+					<#else>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-left'  data='code:${prevBlog.blog_article_code};'>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+					</#if>
+					<#if nextBlog.id == 0>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-right' data='code:${nextBlog.blog_article_code};' pos='right' style="position:absolute;right:15px;" dis=true>下一篇：${nextBlog.blog_article_title}</@bsbutton>
+					<#else>
+						<@bsbutton type='primary' size='xs' class='goblog' icon='arrow-right' data='code:${nextBlog.blog_article_code};' pos='right' style="position:absolute;right:15px;">下一篇：${nextBlog.blog_article_title}</@bsbutton>
+					</#if>
 				</div>
 			</div>
 			<div class="row">

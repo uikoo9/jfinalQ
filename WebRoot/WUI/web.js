@@ -52,8 +52,7 @@ web.blog.init = function(){
 	qiao.bs.initimg();
 	web.blog.reset();
 
-	qiao.on('.prevblog', 'click', web.blog.prev);
-	qiao.on('.nextblog', 'click', web.blog.next);
+	qiao.on('.goblog', 'click', web.blog.go);
 	
 	qiao.on('.readda', 'click', web.blog.readd);
 	qiao.on('.addComment', 'click', web.blog.save);
@@ -64,11 +63,8 @@ web.blog.reset = function(){
 	$('input[name="row.blog_comment_parent_id"]').val('');
 	$('textarea[name="row.blog_comment_content"]').val('');
 };
-web.blog.prev = function(){
-	qiao.to(base + '/blog/prev/' + $(this).qdata().id);
-};
-web.blog.next = function(){
-	qiao.to(base + '/blog/next/' + $(this).qdata().id);
+web.blog.go = function(){
+	qiao.to(base + '/blog/detail/' + $(this).qdata().code);
 };
 web.blog.readd = function(){
 	$('input[name="row.blog_comment_parent_id"]').val($(this).qdata().id);
