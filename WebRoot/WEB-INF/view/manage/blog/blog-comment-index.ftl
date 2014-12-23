@@ -7,7 +7,6 @@
 		        <th><input type="checkbox" class="allcheck"/></th>
 				<th>博客id</th>
 				<th>博客评论昵称</th>
-				<th>博客评论内容</th>
 				<th>博客评论父id</th>
 				<th>创建时间</th>
 				<th>操作</th>
@@ -19,7 +18,6 @@
 			        <td><input type="checkbox" class="onecheck"/></td>
 				    <td>${(row.blog_id)!}</td>				    
 					<td>${(row.blog_comment_uname)!}</td>				    
-					<td>${(row.blog_comment_content)!}</td>				    
 					<td>${(row.blog_comment_parent_id)!}</td>				    
 					<td>${(row.cdate)!}</td>				    
 					<td>
