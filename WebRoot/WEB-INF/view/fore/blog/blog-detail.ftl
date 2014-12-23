@@ -4,7 +4,10 @@
 	<@head t=blog.blog_article_title />
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
-		<@ueditor js=false parseid='.ueparse'/>
+		<@ueditor init=false parseid='.ueparse'>
+			var ue1 = UE.getEditor('ueditor1');
+			var ue2 = UE.getEditor('ueditor2');
+		</@ueditor>
 		<div class="container" style="margin-top:-20px;">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -84,7 +87,7 @@
 									<input type="hidden" name="row.blog_id" value="${blog.id}"/>
 									<@bsinput title='评论昵称' name='row.blog_comment_uname'/>
 									<@bsinput title='评论内容' input=false>
-										<textarea class="form-control" rows="5" style="resize:none;" name='row.blog_comment_content'></textarea>
+										<script id="ueditor1" name="row.blog_comment_content" type="text/plain"></script>
 									</@bsinput>
 								</form>
 								<p class="text-right">
@@ -100,7 +103,7 @@
 										<input type="hidden" name="row.blog_comment_parent_id"/>
 										<@bsinput title='评论昵称' name='row.blog_comment_uname'/>
 										<@bsinput title='评论内容' input=false>
-											<textarea class="form-control" rows="5" style="resize:none;" name='row.blog_comment_content'></textarea>
+											<script id="ueditor2" name="row.blog_comment_content" type="text/plain"></script>
 										</@bsinput>
 									</fieldset>
 								</form>
