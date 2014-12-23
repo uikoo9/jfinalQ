@@ -34,6 +34,7 @@ String.prototype.inArray = function(array){
  * jquery的一些常用方法
  * 1.qser
  * 2.qdata
+ * 3.ue
  */
 $.fn.qser = function(){
 	var obj = {};
@@ -72,6 +73,7 @@ $.fn.qdata = function(){
  * 4.to
  * 5.con
  * 6.on
+ * 7.ue
  */
 var qiao = {};
 
@@ -132,6 +134,15 @@ qiao.con = function(obj){
 };
 qiao.on = function(obj, event, func){
 	$(document).off(event, obj).on(event, obj, func);
+};
+qiao.ue = function(id, options){
+	if(typeof(UE) != "undefined"){
+		if(options){
+			return UE.getEditor(id, options);
+		}else{
+			return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain','|','source','link','unlink']]});
+		}
+	}
 };
 
 /**
