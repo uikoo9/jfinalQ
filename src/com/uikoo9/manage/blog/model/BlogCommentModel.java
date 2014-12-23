@@ -47,6 +47,14 @@ public class BlogCommentModel extends Model<BlogCommentModel>{
 	}
 	
 	/**
+	 * 获取对应的blog
+	 * @return
+	 */
+	public BlogArticleModel blog(){
+		return BlogArticleModel.dao.findById(get("blog_id"));
+	}
+	
+	/**
 	 * get child comments
 	 * @return
 	 */

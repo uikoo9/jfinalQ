@@ -3,6 +3,7 @@ package com.uikoo9.fore.controller;
 import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
+import com.uikoo9.manage.blog.model.BlogCommentModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.QStringUtil;
 import com.uikoo9.util.jfinal.QControllerUrl;
@@ -78,6 +79,16 @@ public class BlogController extends Controller{
 		}
 		
 		return theBlog != null ? theBlog : new BlogArticleModel().set("id", 0).set("blog_article_title", "没有了~").set("blog_article_code", "null");
+	}
+	
+	/**
+	 * 跳转到评论列表页面
+	 */
+	public void msg(){
+		String sql = "select t1.* from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
+		setAttr("msgs", BlogCommentModel.dao.find(sql));
+		
+		render("/WEB-INF/view/fore/blog/blog-msg.ftl");
 	}
 	
 }

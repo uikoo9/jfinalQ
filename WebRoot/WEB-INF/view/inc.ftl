@@ -52,6 +52,9 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
+						<#if msgcount??>
+							<li><a href="${base}/blog/msg">新的评论<span class="badge">${msgcount}</span></a></li>
+						</#if>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.ucenter_user_name}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
