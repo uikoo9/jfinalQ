@@ -117,9 +117,19 @@ web.blogedit.save = function(){
 // diary
 web.diary = {};
 web.diary.init = function(){
-	qiao.on('.addDiary', 'click', web.diary.save);
+	qiao.bs.initimg();
+	qiao.on('.godiary', 'click', web.diary.go);
 };
-web.diary.save = function(){
+web.diary.go = function(){
+	qiao.to(base + '/diary/detail/' + $(this).qdata().id);
+};
+
+// diary-edit
+web.diaryedit = {};
+web.diaryedit.init = function(){
+	qiao.on('.addDiary', 'click', web.diaryedit.save);
+};
+web.diaryedit.save = function(){
 	var $form = $('#addDiaryForm');
 	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
 

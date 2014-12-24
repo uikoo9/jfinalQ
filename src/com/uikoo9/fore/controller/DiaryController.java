@@ -48,11 +48,27 @@ public class DiaryController extends Controller{
 			diary.set("diary_article_readtimes", ((Integer)diary.get("diary_article_readtimes") + 1)).update();
 			
 			setAttr("diary", diary);
+			setAttr("prevDiary", getDiary("prev", diary));
+			setAttr("nextDiary", getDiary("next", diary));
+			
 			render("/WEB-INF/view/fore/diary/diary-detail.ftl");
 		} catch (Exception e) {
 			e.printStackTrace();
 			redirect("/diary/list");
 		}
+	}
+	private DiaryArticleModel getDiary(String type, DiaryArticleModel diary){
+		DiaryArticleModel theDiary = null;
+		try {
+			String sql = null;
+			if("prev".equals(type)) sql = "select * from t_diary_article where id = (select max(id) from t_diary_article where id<?)";
+			if("next".equals(type)) sql = "select * from t_diary_article where id = (select min(id) from t_diary_article where id>?)";
+			theDiary = DiaryArticleModel.dao.findFirst(sql, diary.getInt("id"));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return theDiary != null ? theDiary : new DiaryArticleModel().set("id", 0).set("diary_article_title", "没有了~");
 	}
 	
 }
