@@ -137,12 +137,18 @@ qiao.on = function(obj, event, func){
 };
 qiao.ue = function(id, options){
 	if(typeof(UE) != "undefined"){
-		if(options){
-			return UE.getEditor(id, options);
+		if(!options){
+			return UE.getEditor(id);
+		}else if(typeof options == 'string'){
+			if(options == 'mini'){
+				return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain','|','source','link','unlink']]});
+			}
 		}else{
-			return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain','|','source','link','unlink']]});
+			return UE.getEditor(id, options);
 		}
 	}
+	
+	return {};
 };
 
 /**

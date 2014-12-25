@@ -5,8 +5,8 @@
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 		<@ueditor init=false parseid='.ueparse'>
-			var ue1 = qiao.ue('ueditor1');
-			var ue2 = qiao.ue('ueditor2');
+			var ue1 = qiao.ue('ueditor1', 'mini');
+			var ue2 = qiao.ue('ueditor2', 'mini');
 		</@ueditor>
 		<div class="container" style="margin-top:-20px;">
 			<!-- title -->
