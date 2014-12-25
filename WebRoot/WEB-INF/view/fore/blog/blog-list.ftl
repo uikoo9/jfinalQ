@@ -3,7 +3,7 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+			<div class="col-xs-10 col-sm-9 col-md-9 col-lg-9">
 				<#list blogs as blog>
 					<blockquote style="border-left-color:#5bc0de;">
 					  <p><a href="${base}/blog/detail/${blog.blog_article_code}" target="_blank">${blog.blog_article_title}</a></p>
@@ -11,8 +11,8 @@
 					</blockquote>
 				</#list>
 			</div>
-			<div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
-				<div class="list-group" style="position:fixed;top:70px;">
+			<div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+				<div class="list-group" style="position:fixed;top:70px;margin-right:20px;">
 					<#if blogTypeId??>
 						<a href="${base}/blog/list" class="list-group-item">所有文章</a>
 					<#else>

@@ -3,7 +3,7 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+			<div class="col-xs-10 col-sm-9 col-md-9 col-lg-9">
 				<#list diarys as diary>
 					<blockquote style="border-left-color:#5bc0de;">
 					  <p><a href="${base}/diary/detail/${diary.id}" target="_blank">${diary.diary_article_title}</a></p>
@@ -11,8 +11,8 @@
 					</blockquote>
 				</#list>
 			</div>
-			<div class="hidden-xs col-sm-3 col-md-3 col-lg-3">
-				<div class="list-group" style="position:fixed;top:70px;">
+			<div class="col-xs-2 col-sm-3 col-md-3 col-lg-3">
+				<div class="list-group" style="position:fixed;top:70px;margin-right:20px;">
 					<#list diaryTypes?if_exists as type>
 						<a href="${base}/diary/list/${type.id}" class="list-group-item <#if diaryTypeId?? && diaryTypeId == type.id>active</#if>">${type.diary_type_name}</a>
 					</#list>
