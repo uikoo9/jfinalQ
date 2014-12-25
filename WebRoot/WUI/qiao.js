@@ -114,7 +114,7 @@ qiao.html = function(options, target){
 	$(obj).empty().append(qiao.ajax(opt));
 };
 qiao.ajaxinit = function(){
-	//qmask.hide();
+	qmask.hide();
 	$(document).ajaxStart(function(){
 		qmask.show();
 	});
