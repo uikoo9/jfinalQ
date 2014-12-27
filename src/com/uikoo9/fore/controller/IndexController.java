@@ -17,7 +17,7 @@ public class IndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/fore/home-index.ftl");
+		render("/WEB-INF/view/fore/home/home-index.ftl");
 	}
 	
 	/**
@@ -25,14 +25,14 @@ public class IndexController extends Controller{
 	 */
 	public void project(){
 		setAttr("proDetails", ProjectDetailModel.dao.findAllByCache());
-		render("/WEB-INF/view/fore/home-project.ftl");
+		render("/WEB-INF/view/fore/home/home-project.ftl");
 	}
 	
 	/**
 	 * 跳转到版本更新
 	 */
 	public void version(){
-		render("/WEB-INF/view/fore/home-version.ftl");
+		render("/WEB-INF/view/fore/home/home-version.ftl");
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class IndexController extends Controller{
 	 */
 	public void me(){
 		setAttr("diary", DiaryArticleModel.dao.findById(8));
-		render("/WEB-INF/view/fore/home-me.ftl");
+		render("/WEB-INF/view/fore/home/home-me.ftl");
 	}
 	
 	/**
