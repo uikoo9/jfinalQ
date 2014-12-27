@@ -7,6 +7,6 @@ import com.uikoo9.util.jfinal.QControllerUrl;
 public class BootstrapQController extends Controller{
 	
 	public void index(){
-		render("/WEB-INF/view/fore/bill/bill-index.ftl");
+		render("/WEB-INF/view/fore/bootstrapq/bootstrapq-index.ftl");
 	}
 }

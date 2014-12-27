@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/inc.ftl"/>
+<#include "/WEB-INF/view/inc/inc.ftl"/>
 
 <form class="form-horizontal" role="form">
 	<@bsinput title='转出账户' input=false>

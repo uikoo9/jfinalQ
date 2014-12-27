@@ -1,4 +1,4 @@
-<#include "/WEB-INF/view/inc.ftl"/>
+<#include "/WEB-INF/view/inc/inc.ftl"/>
 
 <@bslist qpage=qpage>
 	<@bstable>
