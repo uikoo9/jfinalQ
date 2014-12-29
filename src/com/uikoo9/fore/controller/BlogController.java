@@ -71,9 +71,9 @@ public class BlogController extends Controller{
 		BlogArticleModel theBlog = null;
 		try {
 			String sql = null;
-			if("prev".equals(type)) sql = "select * from t_blog_article where id = (select max(id) from t_blog_article where id<?)";
-			if("next".equals(type)) sql = "select * from t_blog_article where id = (select min(id) from t_blog_article where id>?)";
-			theBlog = BlogArticleModel.dao.findFirst(sql, blog.getInt("id"));
+			if("prev".equals(type)) sql = "select * from t_blog_article where id = (select max(id) from t_blog_article where id<? and blog_type_id=?)";
+			if("next".equals(type)) sql = "select * from t_blog_article where id = (select min(id) from t_blog_article where id>? and blog_type_id=?)";
+			theBlog = BlogArticleModel.dao.findFirst(sql, blog.getInt("id"), blog.getInt("blog_type_id"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

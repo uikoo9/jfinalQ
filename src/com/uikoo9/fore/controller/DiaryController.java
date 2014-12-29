@@ -61,9 +61,9 @@ public class DiaryController extends Controller{
 		DiaryArticleModel theDiary = null;
 		try {
 			String sql = null;
-			if("prev".equals(type)) sql = "select * from t_diary_article where id = (select max(id) from t_diary_article where id<?)";
-			if("next".equals(type)) sql = "select * from t_diary_article where id = (select min(id) from t_diary_article where id>?)";
-			theDiary = DiaryArticleModel.dao.findFirst(sql, diary.getInt("id"));
+			if("prev".equals(type)) sql = "select * from t_diary_article where id = (select max(id) from t_diary_article where id<? and diary_type_id=?)";
+			if("next".equals(type)) sql = "select * from t_diary_article where id = (select min(id) from t_diary_article where id>? and diary_type_id=?)";
+			theDiary = DiaryArticleModel.dao.findFirst(sql, diary.getInt("id"), diary.getInt("diary_type_id"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
