@@ -9,7 +9,5 @@
 			</div>
 		</div>
 	</div>
-	
 	<@backtotop/>
-	<@js>$(function(){qiao.bs.initimg();});</@js>
 </@html>
