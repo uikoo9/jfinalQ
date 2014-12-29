@@ -9,4 +9,9 @@ public class BootstrapQController extends Controller{
 	public void index(){
 		render("/WEB-INF/view/fore/bootstrapq/bootstrapq-index.ftl");
 	}
+	
+	public void docs(){
+		
+	}
+	
 }
