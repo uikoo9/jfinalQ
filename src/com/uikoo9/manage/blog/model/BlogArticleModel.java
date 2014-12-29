@@ -12,6 +12,7 @@ import com.uikoo9.util.crud.QTable;
  * blog_type_id			类型id<br>
  * blog_article_title	文章标题<br>
  * blog_article_content	文章内容<br>
+ * blog_article_code	文章code<br>
  * cdate				创建时间<br>
  * cuser_id				创建人id<br>
  * cuser_name			创建人姓名<br>
@@ -43,6 +44,14 @@ public class BlogArticleModel extends Model<BlogArticleModel>{
 		}else{
 			return dao.find(sb.append(order).toString());
 		}
+	}
+	
+	/**
+	 * find by code
+	 * @return
+	 */
+	public BlogArticleModel findByCode(String blogCode){
+		return BlogArticleModel.dao.findFirst("select * from t_blog_article where blog_article_code=?", blogCode);
 	}
 	
 	/**

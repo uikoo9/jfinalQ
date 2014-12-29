@@ -17,6 +17,7 @@
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
 					<li><a href="${base}/bootstrapQ">首页</a></li>
+					<li><a href="${base}/bootstrapQ/started">开始</a></li>
 					<li><a href="${base}/bootstrapQ/docs">文档</a></li>
 					<li><a href="${base}/bootstrapQ/download">下载</a></li>
 					<li><a href="${base}/bootstrapQ/me">关于我</a></li>

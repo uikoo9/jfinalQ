@@ -51,7 +51,7 @@ public class BlogController extends Controller{
 		try {
 			String blogCode = getPara();
 			if(QStringUtil.notEmpty(blogCode)){
-				BlogArticleModel blog = BlogArticleModel.dao.findFirst("select * from t_blog_article where blog_article_code=?", blogCode);
+				BlogArticleModel blog = BlogArticleModel.dao.findByCode(blogCode);
 				blog.set("blog_article_read_times", ((Integer)blog.get("blog_article_read_times") + 1)).update();
 				
 				setAttr("blog", blog);
