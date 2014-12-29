@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<auth>
+	<login>
+		<url>/login/login</url>
+		<url>/login/logout</url>
+	</login>
+	<home>
+		<url>/project</url>
+		<url>/version</url>
+		<url>/me</url>
+	</home>
+	<blog>
+		<url>/blog/list</url>
+		<url>/blog/detail</url>
+		<url>/blog/comment/save</url>
+	</blog>
+	<bootstrapQ>
+		<url>/bootstrapQ</url>
+	</bootstrapQ>
+</auth>
