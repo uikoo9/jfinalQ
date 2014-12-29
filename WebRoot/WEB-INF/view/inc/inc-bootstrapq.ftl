@@ -19,7 +19,7 @@
 					<li><a href="${base}/bootstrapQ">首页</a></li>
 					<li><a href="${base}/bootstrapQ/docs">文档</a></li>
 					<li><a href="${base}/bootstrapQ/download">下载</a></li>
-					<li><a href="${base}/me">关于我</a></li>
+					<li><a href="${base}/bootstrapQ/me">关于我</a></li>
 				</ul>
 			</div>
 		</div>

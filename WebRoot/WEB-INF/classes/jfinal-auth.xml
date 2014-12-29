@@ -16,5 +16,7 @@
 	</blog>
 	<bootstrapQ>
 		<url>/bootstrapQ</url>
+		<url>/bootstrapQ/docs</url>
+		<url>/bootstrapQ/me</url>
 	</bootstrapQ>
 </auth>
