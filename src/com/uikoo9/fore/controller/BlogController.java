@@ -33,6 +33,27 @@ public class BlogController extends Controller{
 	}
 	
 	/**
+	 * 跳转到博客首页 for user
+	 */
+	public void listForUser(){
+		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
+		
+		try {
+			Integer typeId = getParaToInt(0);
+			if(typeId != null){
+				setAttr("blogTypeId", typeId);
+				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.blog_type_id=? order by cdate desc", typeId));
+			}else{
+				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
+			}
+			
+			render("/WEB-INF/view/fore/blog/blog-list.ftl");
+		} catch (Exception e) {
+			redirect("/blog/listForUser");
+		}
+	}
+	
+	/**
 	 * 跳转到编辑博客页面
 	 */
 	public void edit(){

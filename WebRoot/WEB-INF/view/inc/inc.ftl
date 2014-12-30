@@ -23,7 +23,7 @@
 							<li class="menus" data="url:/bill/account;"><a href="javascript:void(0);">账户管理</a></li>
 							<li><a href="${base}/diary/list">看日记</a></li>
 							<li><a href="${base}/diary/edit">写日记</a></li>
-							<li><a href="${base}/blog/list">看博客</a></li>
+							<li><a href="${base}/blog/listForUser">看博客</a></li>
 							<li><a href="${base}/blog/edit">写博客</a></li>
 						</#if>
 						<#if user.ucenter_user_type == '010102'>

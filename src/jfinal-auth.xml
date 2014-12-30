@@ -11,6 +11,7 @@
 	</home>
 	<blog>
 		<url>/blog/list</url>
+		<url>/blog/listForUser</url>
 		<url>/blog/detail</url>
 		<url>/blog/comment/save</url>
 	</blog>
