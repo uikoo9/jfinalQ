@@ -23,7 +23,7 @@ public class BlogController extends Controller{
 				setAttr("blogTypeId", typeId);
 				setAttr("blogs", Db.find("select * from t_blog_article tba where tba.blog_type_id=? order by cdate desc", typeId));
 			}else{
-				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
+				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba where tba.blog_type_id!=8 order by cdate desc"));
 			}
 			
 			render("/WEB-INF/view/fore/blog/blog-list.ftl");
