@@ -1,7 +1,7 @@
 <#include "/WEB-INF/view/inc/inc-bootstrapq.ftl"/>
 
 <@html s=false>
-	<@head holder=true/>
+	<@head t='BootstrapQ' holder=true/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 		<div class="container">
