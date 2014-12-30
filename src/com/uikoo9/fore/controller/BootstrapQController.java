@@ -12,6 +12,7 @@ public class BootstrapQController extends Controller{
 	 * 跳转到首页
 	 */
 	public void index(){
+		setAttr("blog", BlogArticleModel.dao.findByCode("bootstrapq-index"));
 		render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-index.ftl");
 	}
 	
@@ -19,7 +20,7 @@ public class BootstrapQController extends Controller{
 	 * 跳转到起步
 	 */
 	public void started(){
-		setAttr("blog", BlogArticleModel.dao.findByCode("bootstrapQ-started"));
+		setAttr("blog", BlogArticleModel.dao.findByCode("bootstrapq-started"));
 		render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-started.ftl");
 	}
 	

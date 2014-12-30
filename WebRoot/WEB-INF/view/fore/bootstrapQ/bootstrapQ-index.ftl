@@ -11,16 +11,21 @@
 						<h1>BootstrapQ</h1>
 						<p style="margin:0;">
 							1.bootstrap常用插件封装<br>
-							2.bootstro网站引导插件封装
+							2.bootstro网站引导插件封装<br>
+							3.压缩后仅5.5k
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<@bsnail data='holder.js/400x150' title='文档'	href='${base}/bootstrapQ/docs'/>
-				<@bsnail data='holder.js/400x150' title='下载' 	href='${base}/bootstrapQ/download'/>
-				<@bsnail data='holder.js/400x150' title='关于我'	href='${base}/me'/>
+				<@ueditor js=false parseid='.ueparse'/>
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ueparse">
+					${(blog.blog_article_content)!}
+				</div>
 			</div>
 		</div>
+		<@backtotop/>
+		
+		<@js>$(function(){qiao.bs.initimg();});</@js>
 	</@bsbody>
 </@html>
