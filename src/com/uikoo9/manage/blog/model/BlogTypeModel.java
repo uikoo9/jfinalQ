@@ -36,7 +36,7 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	 * @return
 	 */
 	public List<BlogTypeModel> findAll(String order){
-		StringBuilder sb = new StringBuilder("select * from t_blog_type where id!=8 ");
+		StringBuilder sb = new StringBuilder("select * from t_blog_type ");
 		if(QStringUtil.isEmpty(order)){
 			return dao.find(sb.append("order by cdate desc").toString());
 		}else{

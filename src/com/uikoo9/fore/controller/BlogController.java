@@ -15,7 +15,7 @@ public class BlogController extends Controller{
 	 * 跳转到博客首页 
 	 */
 	public void list(){
-		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
+		setAttr("blogTypes", BlogTypeModel.dao.findAll(" where id!=8 order by blog_type_name"));
 		
 		try {
 			Integer typeId = getParaToInt(0);
