@@ -24,6 +24,9 @@ public class BootstrapQController extends Controller{
 		render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-started.ftl");
 	}
 	
+	/**
+	 * 跳转到文档界面
+	 */
 	public void docs(){
 		
 	}
