@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+         
+    <diskStore path="java.io.tmpdir"/>
+    
+    <defaultCache
+           maxEntriesLocalHeap="1000"
+           eternal="false"
+           overflowToDisk="true"
+           timeToLiveSeconds="1800">
+    </defaultCache>
+
+	<!-- 
+		must:
+			name 					: name
+			maxEntriesLocalHeap 	: 内存对象数，0无限制
+			maxEntriesLocalDisk 	: 硬盘对象数，0无限制
+		choice:
+			overflowToDisk			: 内存满时是否存到硬盘上
+			diskSpoolBufferSizeMB	: 硬盘缓存空间
+			timeToIdleSeconds		: 失效前空闲时间，86400为1天
+			timeToLiveSeconds		: 失效前存活时间，86400为1天
+	-->
+    <cache name="cache"
+           eternal="false"
+           maxEntriesLocalHeap="1000"
+           maxEntriesLocalDisk="0"
+           overflowToDisk="true"
+           diskSpoolBufferSizeMB="20"
+           timeToLiveSeconds="86400"
+           memoryStoreEvictionPolicy="LFU"
+           transactionalMode="off"
+            />
+</ehcache>

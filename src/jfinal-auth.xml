@@ -5,7 +5,6 @@
 		<url>/login/logout</url>
 	</login>
 	<home>
-		<url>/project</url>
 		<url>/version</url>
 		<url>/me</url>
 	</home>
