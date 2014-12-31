@@ -17,7 +17,7 @@
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
 					<#if user??>
-						<#if user.ucenter_user_type == '010101'>
+						<#if user.ucenter_user_type == '010102'>
 							<li><a href="${base}/bill">首页</a></li>
 							<li class="menus" data="url:/bill/detail;"><a href="javascript:void(0);">收支明细</a></li>
 							<li class="menus" data="url:/bill/account;"><a href="javascript:void(0);">账户管理</a></li>
@@ -26,7 +26,7 @@
 							<li><a href="${base}/blog/listForUser">看博客</a></li>
 							<li><a href="${base}/blog/edit">写博客</a></li>
 						</#if>
-						<#if user.ucenter_user_type == '010102'>
+						<#if user.ucenter_user_type == '010101'>
 							<#list menus as menu>
 								<#if menu.submenus()?size gt 0>
 									<li class="dropdown">
