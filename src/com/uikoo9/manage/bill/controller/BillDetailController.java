@@ -2,11 +2,9 @@ package com.uikoo9.manage.bill.controller;
 
 import com.uikoo9.manage.bill.model.BillAccountModel;
 import com.uikoo9.manage.bill.model.BillDetailModel;
-import com.uikoo9.util.contants.QContantsUtil;
 import com.uikoo9.util.crud.QJsonUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.QControllerUrl;
-import com.uikoo9.z.MyContants;
 
 /**
  * AcDetailController
@@ -27,7 +25,6 @@ public class BillDetailController extends QController{
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
-		setAttr("zhichutypes", QContantsUtil.list(MyContants.ZHICHU_TYPE));
 		setAttr("accounts", BillAccountModel.dao.findAllByCache());
 		
 		setAttr("row", getRow(BillDetailModel.class));
