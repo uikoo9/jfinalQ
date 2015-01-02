@@ -5,10 +5,10 @@
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 
-		<div class="container" style="margin-top:-20px;">
+		<div class="container">
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<@bspanel type='primary' style='margin-top:20px;'>${diary.diary_article_content}</@bspanel>
+					${diary.diary_article_content}
 				</div>
 			</div>
 		</div>
