@@ -34,7 +34,6 @@ String.prototype.inArray = function(array){
  * jquery的一些常用方法
  * 1.qser
  * 2.qdata
- * 3.ue
  */
 $.fn.qser = function(){
 	var obj = {};
