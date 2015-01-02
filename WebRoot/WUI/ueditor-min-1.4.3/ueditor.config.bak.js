@@ -34,7 +34,7 @@
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         
-        , toolbars: [["fullscreen","source","unlink","link","print","preview","|","simpleupload","insertimage","emotion","insertvideo","attachment","horizontal","spechars","blockquote","pasteplain","insertcode","bold","italic","underline","forecolor","backcolor","justifyleft","justifycenter","justifyright","removeformat","formatmatch","fontfamily","fontsize","imagenone","imageleft","imageright","imagecenter"]]
+        , toolbars: [["fullscreen","source","insertunorderedlist","insertorderedlist","unlink","link","cleardoc","|","simpleupload","music","snapscreen","emotion","insertvideo","attachment","horizontal","spechars","blockquote","pasteplain","insertcode","bold","italic","underline","fontborder","strikethrough","forecolor","backcolor","superscript","subscript","justifyleft","justifycenter","justifyright","justifyjustify","removeformat","formatmatch","paragraph","rowspacingbottom","rowspacingtop","lineheight","fontfamily","fontsize","imagenone","imageleft","imageright","imagecenter","inserttable","deletetable","mergeright","mergedown","splittorows","splittocols","splittocells","mergecells","insertcol","insertrow","deletecol","deleterow","insertparagraphbeforetable"],[],[]]
         //当鼠标放在工具栏上时显示的tooltip提示,留空支持自动多语言配置，否则以配置值为准
         //,labelMap:{
         //    'anchor':'', 'undo':''
@@ -121,6 +121,37 @@
 
         //,allHtmlEnabled:false //提交到后台的数据是否包含整个html字符串
 
+        //insertorderedlist
+        //有序列表的下拉配置,值留空时支持多语言自动识别，若配置值，则以此值为准
+        //,'insertorderedlist':{
+        //      //自定的样式
+        //        'num':'1,2,3...',
+        //        'num1':'1),2),3)...',
+        //        'num2':'(1),(2),(3)...',
+        //        'cn':'一,二,三....',
+        //        'cn1':'一),二),三)....',
+        //        'cn2':'(一),(二),(三)....',
+        //     //系统自带
+        //     'decimal' : '' ,         //'1,2,3...'
+        //     'lower-alpha' : '' ,    // 'a,b,c...'
+        //     'lower-roman' : '' ,    //'i,ii,iii...'
+        //     'upper-alpha' : '' , lang   //'A,B,C'
+        //     'upper-roman' : ''      //'I,II,III...'
+        //}
+
+        //insertunorderedlist
+        //无序列表的下拉配置，值留空时支持多语言自动识别，若配置值，则以此值为准
+        //,insertunorderedlist : { //自定的样式
+        //    'dash' :'— 破折号', //-破折号
+        //    'dot':' 。 小圆圈', //系统自带
+        //    'circle' : '',  // '○ 小圆圈'
+        //    'disc' : '',    // '● 小圆点'
+        //    'square' : ''   //'■ 小方块'
+        //}
+        //,listDefaultPaddingLeft : '30'//默认的左边缩进的基数倍
+        //,listiconpath : 'http://bs.baidu.com/listicon/'//自定义标号的路径
+        //,maxListLevel : 3 //限制可以tab的级数, 设置-1为不限制
+
         //,autoTransWordToList:false  //禁止word中粘贴进来的列表自动变成列表标签
 
         //fontfamily
@@ -143,6 +174,22 @@
         //字号
         //,'fontsize':[10, 11, 12, 14, 16, 18, 20, 24, 36]
 
+        //paragraph
+        //段落格式 值留空时支持多语言自动识别，若配置，则以配置值为准
+        //,'paragraph':{'p':'', 'h1':'', 'h2':'', 'h3':'', 'h4':'', 'h5':'', 'h6':''}
+
+        //rowspacingtop
+        //段间距 值和显示的名字相同
+        //,'rowspacingtop':['5', '10', '15', '20', '25']
+
+        //rowspacingBottom
+        //段间距 值和显示的名字相同
+        //,'rowspacingbottom':['5', '10', '15', '20', '25']
+
+        //lineheight
+        //行内间距 值和显示的名字相同
+        //,'lineheight':['1', '1.5','1.75','2', '3', '4', '5']
+
         //快捷菜单
         //,shortcutMenu:["fontfamily", "fontsize", "bold", "italic", "underline", "forecolor", "backcolor", "insertorderedlist", "insertunorderedlist"]
 
@@ -163,6 +210,12 @@
         //,scaleEnabled:false
         //,minFrameWidth:800    //编辑器拖动时最小宽度,默认800
         //,minFrameHeight:220  //编辑器拖动时最小高度,默认220
+
+        //tableDragable
+        //表格是否可以拖拽
+        //,tableDragable: true
+
+        //,disabledTableInTable:true  //禁止表格嵌套
 
         //sourceEditor
         //源码的查看方式,codemirror 是代码高亮，textarea是文本框,默认是codemirror
