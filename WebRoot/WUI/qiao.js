@@ -206,12 +206,12 @@ qiao.bs.modalstr = function(opt){
 qiao.bs.alert = function(options, func){
 	// options
 	var opt = $.extend({}, qiao.bs.modaloptions);
+	opt.title = '提示';
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
-	opt.title = '提示';
 	
 	// add
 	$('body').append(qiao.bs.modalstr(opt));
