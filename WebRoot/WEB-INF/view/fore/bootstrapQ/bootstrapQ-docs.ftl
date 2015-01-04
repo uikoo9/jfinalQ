@@ -7,11 +7,11 @@
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:20px;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:10px;">
 					<#if blog.blog_article_code?contains('alert')>
-						<@bsbutton type='primary' size='lg' id='alert1'>普通文字提示</@bsbutton>
-						<@bsbutton type='primary' size='lg' id='alert2'>自定义提示</@bsbutton>
-						<@bsbutton type='primary' size='lg' id='alert3'>带回调的提示</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert1'>普通文字提示</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert2'>自定义提示</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert3'>带回调的提示</@bsbutton>
 					</#if>
 				</div>
 			</div>
