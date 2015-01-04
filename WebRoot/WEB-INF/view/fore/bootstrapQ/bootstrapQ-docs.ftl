@@ -28,6 +28,12 @@
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog1'>普通模态框</@bsbutton>
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog2'>带回调模态框</@bsbutton>
 					</#if>
+					<#if blog.blog_article_code?contains('msg')>
+						<h1><strong>消息提示（msg）</strong></h1><hr/>
+						<h2><strong>例子</strong></h2>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg1'>普通消息提示</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg2'>自定义消息提示</@bsbutton>
+					</#if>
 				</div>
 			</div>
 			<div class="row">
@@ -92,6 +98,18 @@
 					},function(){
 						alert('点击了确定！');
 						return true;
+					});
+				});
+				
+				// msg
+				qiao.on('#msg1', 'click', function(){
+					qiao.bs.msg('普通消息提示！');
+				});
+				qiao.on('#msg2', 'click', function(){
+					qiao.bs.msg({
+						msg  : '自定义提示，警告，3秒消失',
+						type : 'danger',
+						time : 3000
 					});
 				});
 				
