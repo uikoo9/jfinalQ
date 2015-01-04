@@ -236,7 +236,7 @@ qiao.bs.alert = function(options, func){
 qiao.bs.confirm = function(options, ok, cancel){
 	// options
 	var opt = $.extend({}, qiao.bs.modaloptions);
-	
+
 	opt.title = '确认操作';
 	if(typeof options == 'string'){
 		opt.msg = options;
