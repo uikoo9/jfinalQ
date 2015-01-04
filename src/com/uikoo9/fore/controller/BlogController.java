@@ -47,7 +47,7 @@ public class BlogController extends Controller{
 				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
 			}
 			
-			render("/WEB-INF/view/fore/blog/blog-list.ftl");
+			render("/WEB-INF/view/fore/blog/blog-list-for-user.ftl");
 		} catch (Exception e) {
 			redirect("/blog/listForUser");
 		}
