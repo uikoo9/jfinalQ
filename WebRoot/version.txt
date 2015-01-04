@@ -22,6 +22,7 @@ version 1.0.1.20150104
 	3.bq docs按钮间距调整
 	4.bq docs confirm
 	5.bq docs dialog
+	5.bq docs msg
 
 -------------------------------------------------------------------
 version 1.0.0.20150102
