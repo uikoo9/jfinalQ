@@ -21,7 +21,8 @@ version 1.0.1.20150104
 	2.七牛域名恢复了，换回去。
 	3.bq docs tooltip
 	4.bq docs popover
-	4.bq docs bstro
+	5.bq docs bstro
+	6.添加百度分享
 
 -------------------------------------------------------------------
 version 1.0.1.20150104

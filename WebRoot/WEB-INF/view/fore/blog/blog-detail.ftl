@@ -31,7 +31,10 @@
 			<!-- content -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-					<@bspanel type='primary' style='margin-top:20px;' class='ueparse'>${blog.blog_article_content}</@bspanel>
+					<@bspanel type='primary' style='margin-top:20px;' class='ueparse'>
+						${blog.blog_article_content}
+						<@bdshare/>
+					</@bspanel>
 				</div>
 			</div>
 			
