@@ -34,6 +34,12 @@
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg1'>普通消息提示条</@bsbutton>
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg2'>自定义消息提示条</@bsbutton>
 					</#if>
+					<#if blog.blog_article_code?contains('tooltip')>
+						<h1><strong>提示（tooltip）</strong></h1><hr/>
+						<h2><strong>例子</strong></h2>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip1'>普通提示</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip2'>自定义提示</@bsbutton>
+					</#if>
 				</div>
 			</div>
 			<div class="row">
@@ -113,6 +119,14 @@
 					});
 				});
 				
+				// tooltip
+				$('#tooltip1').bstip('普通提示');
+				$('#tooltip2').bstip({
+					title		: '在右边的自定义提示',
+					html		: true,
+					placement	: 'right',
+					trigger		: 'hover'
+				});
 			});
 		</@js>
 	</@bsbody>
