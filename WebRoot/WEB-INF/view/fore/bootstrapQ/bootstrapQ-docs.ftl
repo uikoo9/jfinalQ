@@ -40,6 +40,11 @@
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip1'>普通提示</@bsbutton>
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip2'>自定义提示</@bsbutton>
 					</#if>
+					<#if blog.blog_article_code?contains('popover')>
+						<h1><strong>烤饼（popover）</strong></h1><hr/>
+						<h2><strong>例子</strong></h2>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='popover1'>烤饼</@bsbutton>
+					</#if>
 				</div>
 			</div>
 			<div class="row">
@@ -126,6 +131,12 @@
 					html		: true,
 					placement	: 'right',
 					trigger		: 'hover'
+				});
+				
+				// popover
+				$('#popover1').bspop({
+					title		: '烤饼',
+					content		: '烤饼内容，支持html内容'
 				});
 			});
 		</@js>
