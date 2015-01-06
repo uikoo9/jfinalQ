@@ -1,7 +1,7 @@
 <#include "/WEB-INF/view/inc/inc-bootstrapq.ftl"/>
 
 <@html s=false>
-	<@head t='BootstrapQ'/>
+	<@head t='BootstrapQ' bstro=true/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 		
@@ -44,6 +44,11 @@
 						<h1><strong>烤饼（popover）</strong></h1><hr/>
 						<h2><strong>例子</strong></h2>
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='popover1'>烤饼</@bsbutton>
+					</#if>
+					<#if blog.blog_article_code?contains('bstro')>
+						<h1 id="bstro-h1"><strong>网站引导（bstro）</strong></h1><hr/>
+						<h2><strong>例子</strong></h2>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstro1'>开始引导</@bsbutton>
 					</#if>
 				</div>
 			</div>
@@ -137,6 +142,14 @@
 				$('#popover1').bspop({
 					title		: '烤饼',
 					content		: '烤饼内容，支持html内容'
+				});
+				
+				// bstro
+				qiao.on('#bstro1', 'click', function(){
+					qiao.bs.bstro([
+						['#bstro-home','<h3 style="margin-top:10px;">效果不错吧~</h3>'],
+						['#bstro-h1','<h3 style="margin-top:10px;">使用也是很简单滴~</h3>']
+					]);
 				});
 			});
 		</@js>

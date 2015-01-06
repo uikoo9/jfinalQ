@@ -16,7 +16,7 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<li><a href="${base}/bootstrapQ">首页</a></li>
+					<li><a href="${base}/bootstrapQ" id="bstro-home">首页</a></li>
 					<li><a href="${base}/bootstrapQ/started">开始</a></li>
 					<li class="dropdown">
 						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">文档<span class="caret"></span></a>
