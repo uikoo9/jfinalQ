@@ -35,8 +35,8 @@
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<strong><span style="font-size: 36px;">Download</span></strong>
 		<ul>
-			<li>源代码下载（8.9k）：<a href="http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.js">http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.js</a></li>
-			<li>压缩后下载（5.5k）：<a href="http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.min.js">http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.min.js</a></li>
+			<li>源代码下载（8.9k）：<a href="http://7sbn90.com1.z0.glb.clouddn.com/@/js/bootstrapq/bootstrapQ.js">http://7sbn90.com1.z0.glb.clouddn.com/@/js/bootstrapq/bootstrapQ.js</a></li>
+			<li>压缩后下载（5.5k）：<a href="http://7sbn90.com1.z0.glb.clouddn.com/@/js/bootstrapq/bootstrapQ.min.js">http://7sbn90.com1.z0.glb.clouddn.com/@/js/bootstrapq/bootstrapQ.min.js</a></li>
 			<li>GitHub下载：<a href="https://github.com/uikoo9/bootstrapQ" target="_blank">https://github.com/uikoo9/bootstrapQ</a></li>
 		</ul>
 	</div>
