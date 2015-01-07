@@ -4,6 +4,7 @@
 	<@head t='BootstrapQ' bstro=true/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
+		<@ueditor init=false parseid='.ueparse'/>
 		
 		<div class="container">
 			<div class="row">
@@ -53,7 +54,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive" style="margin-bottom:20px;">
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
 					${blog.blog_article_content}
 				</div>
 			</div>
