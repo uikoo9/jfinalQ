@@ -1,18 +1,25 @@
 uikoo9.com用到：
 	jfinal-1.9
-	|--bcs
 	|--c3p0
+	|--qiniu
 	|--ehcache
 	|--freemarker
 	|--slf4j+logback
 	|--qiao-util.jar, by qiaowenbin
 	|--code-generated, by qiaowenbin
-	|--ueditor-1.1.1-for-bcs.jar, by qiaowenbin
+	|--ueditor-1.1.1-for-qiniu-bcs.jar, by qiaowenbin
 	bootstrap-3.0
 	|--jquery-1.11.1
 	|--ueditor-1.4.3-jsp
-	|--qiao.js, by qiaowenbin
+	|--bootstrapQ.js, by qiaowenbin
 	|--qmask-2.0.js, by qiaowenbin
+
+-------------------------------------------------------------------
+version 1.0.4.20150109
+新增：
+	1.分页优化
+	2.version更新
+	3.bq-index
 
 -------------------------------------------------------------------
 version 1.0.3.20150108
