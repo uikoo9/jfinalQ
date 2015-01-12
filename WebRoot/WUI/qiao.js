@@ -611,7 +611,7 @@ qiao.crud.bindcrud = function(){
 	qiao.on('.delBtn', 'click', function(){qiao.crud.del();});
 	qiao.on('.delbtn', 'click', function(){qiao.crud.del($(this).parents('tr').qdata().id);});
 };
-qiao.crud.listopt = {pageNumber:1};
+qiao.crud.listopt = {pageNumber:1,pageSize:10};
 qiao.crud.list = function(data){
 	var opt = {url : qiao.crud.url + '/index'};
 	if(data) $.extend(qiao.crud.listopt, data);
@@ -620,7 +620,7 @@ qiao.crud.list = function(data){
 	qiao.html(opt);
 };
 qiao.crud.reset = function(){
-	qiao.crud.listopt = {pageNumber:1};
+	qiao.crud.listopt = {pageNumber:1,pageSize:10};
 	qiao.crud.list();
 };
 qiao.crud.savep = function(title, id){
@@ -692,12 +692,13 @@ qiao.crud.bindpage = function(){
 			qiao.crud.list({pageNumber:parseInt($(this).text())});
 		}
 	});
-	qiao.on('.crudgo', 'click', function(){
-		var page = parseInt($('.crudinput').val());
-		var total = parseInt($(this).qdata().page);
-		if(page >= 1 && page <= total){
-			qiao.crud.list({pageNumber:page});
+	qiao.on('.pagesize', 'change', function(){
+		var value = $(this).val();
+		if(value){
+			qiao.crud.listopt.pageSize = value;
 		}
+		
+		qiao.crud.list({pageSize:value});
 	});
 };
 
