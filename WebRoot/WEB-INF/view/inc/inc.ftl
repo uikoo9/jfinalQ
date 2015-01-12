@@ -1,4 +1,4 @@
-<#include "/com/uikoo9/util/ucenter/view/inc.ftl"/>
+<#include "/com/uikoo9/util/view/common/inc.ftl"/>
 
 <#-- bshead -->
 <#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
