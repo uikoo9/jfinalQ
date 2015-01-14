@@ -39,7 +39,7 @@ public class IndexController extends Controller{
 	 */
 	public void manage(){
 		setAttr("menus", UcenterMenuModel.dao.findAllByCache());
-		render("/com/uikoo9/util/view/common/manage.ftl");
+		render("/com/uikoo9/util/jfinal/view/common/manage.ftl");
 	}
 	
 }
