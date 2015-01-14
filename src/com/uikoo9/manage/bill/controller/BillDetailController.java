@@ -2,9 +2,9 @@ package com.uikoo9.manage.bill.controller;
 
 import com.uikoo9.manage.bill.model.BillAccountModel;
 import com.uikoo9.manage.bill.model.BillDetailModel;
-import com.uikoo9.util.crud.QJsonUtil;
+import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.jfinal.QController;
-import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.plugin.json.QJsonUtil;
 
 /**
  * AcDetailController

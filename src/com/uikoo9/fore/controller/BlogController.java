@@ -5,8 +5,8 @@ import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogCommentModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
-import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.core.annotation.QControllerUrl;
+import com.uikoo9.util.core.data.QStringUtil;
 
 @QControllerUrl("/blog")
 public class BlogController extends Controller{

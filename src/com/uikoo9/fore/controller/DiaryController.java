@@ -4,7 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.manage.diary.model.DiaryTypeModel;
-import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.core.annotation.QControllerUrl;
 
 @QControllerUrl("/diary")
 public class DiaryController extends Controller{

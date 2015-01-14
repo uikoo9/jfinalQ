@@ -3,8 +3,8 @@ package com.uikoo9.fore.controller;
 import com.jfinal.core.Controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
-import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.core.annotation.QControllerUrl;
+import com.uikoo9.util.core.data.QStringUtil;
 
 @QControllerUrl("/bootstrapQ")
 public class BootstrapQController extends Controller{

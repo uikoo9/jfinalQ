@@ -4,7 +4,7 @@ import com.jfinal.core.Controller;
 import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.fore.service.BillService;
 import com.uikoo9.manage.bill.model.BillAccountModel;
-import com.uikoo9.util.jfinal.QControllerUrl;
+import com.uikoo9.util.core.annotation.QControllerUrl;
 
 @QControllerUrl("/bill")
 public class BillController extends Controller{

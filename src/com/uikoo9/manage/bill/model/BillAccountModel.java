@@ -3,9 +3,9 @@ package com.uikoo9.manage.bill.model;
 import java.util.List;
 
 import com.jfinal.plugin.activerecord.Model;
-import com.uikoo9.util.QStringUtil;
-import com.uikoo9.util.crud.QTable;
-import com.uikoo9.util.file.QCacheUtil;
+import com.uikoo9.util.core.annotation.QTable;
+import com.uikoo9.util.core.data.QStringUtil;
+import com.uikoo9.util.function.QCacheUtil;
 
 /**
  * AcAccountModel<br>
