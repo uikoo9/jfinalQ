@@ -400,7 +400,7 @@ qiao.bs.tree.sub = function(tree, opt){
 				'<a href="javascript:void(0);" data="id:' + tree.id + ';url:' + tree.url + ';">' + 
 					'<span class="glyphicon glyphicon-minus"></span>';
 		if(opt.checkbox){
-			res += '<input type="checkbox" ';
+			res += '<input type="checkbox" class="treecheckbox" ';
 			if(tree.checked){
 				res += 'checked';
 			}
@@ -444,6 +444,22 @@ qiao.bs.tree.init = function(){
 			$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
 			$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
 		}
+	});
+	qiao.on('input.treecheckbox', 'change', function(){
+		// 检测子级的
+		var subFlag = $(this).prop('checked');
+		$(this).parent().next().find('input.treecheckbox').each(function(){
+			$(this).prop('checked', subFlag);
+		});
+		
+		// 检测父辈的
+		var parentFlag = true;
+		var $ul = $(this).parent().parent().parent(); 
+		$ul.children().each(function(){
+			var checked = $(this).children().children('input').prop('checked');
+			if(!checked) parentFlag = false;
+		});
+		$ul.prev().children('input').prop('checked', parentFlag);
 	});
 	
 	qiao.bs.tree.url = $('#treeul').qdata().url;
