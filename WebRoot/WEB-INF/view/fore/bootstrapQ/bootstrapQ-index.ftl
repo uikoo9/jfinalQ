@@ -13,7 +13,7 @@
 							1.Bootstrap组件封装<br>
 							2.Bootstrap组件增强<br>
 							3.Bootstrap周边组件<br>
-							4.压缩后仅5.5k
+							4.压缩后仅8.3k
 						</p>
 					</div>
 				</div>

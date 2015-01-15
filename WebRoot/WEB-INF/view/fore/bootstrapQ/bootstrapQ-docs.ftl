@@ -46,6 +46,14 @@
 						<h2><strong>例子</strong></h2>
 						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='popover1'>烤饼</@bsbutton>
 					</#if>
+					<#if blog.blog_article_code?contains('tree')>
+						<h1><strong>树（tree）</strong></h1><hr/>
+						<h2><strong>例子</strong></h2>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree1'>加载普通tree</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree2'>加载带复选框tree</@bsbutton>
+						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree3'>加载可编辑tree（暂不开放权限）</@bsbutton>
+						<p id="treepanel"></p>
+					</#if>
 					<#if blog.blog_article_code?contains('bstro')>
 						<h1 id="bstro-h1"><strong>网站引导（bstro）</strong></h1><hr/>
 						<h2><strong>例子</strong></h2>
@@ -143,6 +151,17 @@
 				$('#popover1').bspop({
 					title		: '烤饼',
 					content		: '烤饼内容，支持html内容'
+				});
+				
+				// bstree
+				qiao.on('#bstree1', 'click', function(){
+					$('#treepanel').bstree();
+				});
+				qiao.on('#bstree2', 'click', function(){
+					$('#treepanel').bstree({checkbox:true});
+				});
+				qiao.on('#bstree3', 'click', function(){
+					$('#treepanel').bstree({edit:true});
 				});
 				
 				// bstro

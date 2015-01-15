@@ -358,7 +358,7 @@ $.fn.bspop = function(options){
 };
 qiao.bs.tree = {};
 qiao.bs.tree.options = {
-	url 	: '/ucenter/menu/',
+	url 	: '/ucenter/menu',
 	height 	: '600px',
 	open	: true,
 	edit	: false,
@@ -376,7 +376,7 @@ $.fn.bstree = function(options){
 	}
 	
 	var res = '加载失败！';
-	var json = qiao.ajax(opt.url + 'tree');
+	var json = qiao.ajax(opt.url + '/tree');
 	if(json && json.object){
 		var tree = json.object;
 		
