@@ -31,8 +31,9 @@
 							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/bstro">bstro</a></li>
 						</ul>
 					</li>
-					<li><a href="https://github.com/uikoo9/bootstrapQ" target="_blank">GitHub</a></li>
+					<li><a href="${base}/bootstrapQ/donate">捐助</a></li>
 					<li><a href="${base}/bootstrapQ/me">关于我</a></li>
+					<li><a href="https://github.com/uikoo9/bootstrapQ" target="_blank">GitHub</a></li>
 				</ul>
 			</div>
 		</div>
