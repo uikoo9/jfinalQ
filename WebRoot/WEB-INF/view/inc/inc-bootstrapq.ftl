@@ -19,9 +19,9 @@
 					<li><a href="${base}/bootstrapQ" id="bstro-home">首页</a></li>
 					<li><a href="${base}/bootstrapQ/started">开始</a></li>
 					<li><a href="${base}/bootstrapQ/docs">文档</a></li>
-					<li><a href="${base}/bootstrapQ/donate">捐助</a></li>
 					<li><a href="${base}/bootstrapQ/me">关于我</a></li>
 					<li><a href="https://github.com/uikoo9/bootstrapQ" target="_blank">GitHub</a></li>
+					<li><a href="${base}/bootstrapQ/donate">捐助</a></li>
 				</ul>
 			</div>
 		</div>
