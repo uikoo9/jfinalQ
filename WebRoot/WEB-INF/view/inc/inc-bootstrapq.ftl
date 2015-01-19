@@ -18,19 +18,7 @@
 				<ul class="nav navbar-nav">
 					<li><a href="${base}/bootstrapQ" id="bstro-home">首页</a></li>
 					<li><a href="${base}/bootstrapQ/started">开始</a></li>
-					<li class="dropdown">
-						<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">文档<span class="caret"></span></a>
-						<ul class="dropdown-menu" role="menu">
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/alert">alert</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/confirm">confirm</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/dialog">dialog</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/msg">msg</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/tooltip">tooltip</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/popover">popover</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/tree">tree</a></li>
-							<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/bootstrapQ/docs/bstro">bstro</a></li>
-						</ul>
-					</li>
+					<li><a href="${base}/bootstrapQ/docs">文档</a></li>
 					<li><a href="${base}/bootstrapQ/donate">捐助</a></li>
 					<li><a href="${base}/bootstrapQ/me">关于我</a></li>
 					<li><a href="https://github.com/uikoo9/bootstrapQ" target="_blank">GitHub</a></li>

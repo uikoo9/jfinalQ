@@ -2,9 +2,9 @@ package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
+import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
-import com.uikoo9.util.core.data.QStringUtil;
 
 @QControllerUrl("/bootstrapQ")
 public class BootstrapQController extends Controller{
@@ -29,24 +29,8 @@ public class BootstrapQController extends Controller{
 	 * 跳转到文档界面
 	 */
 	public void docs(){
-		try {
-			String code = getPara();
-			if(QStringUtil.notEmpty(code)){
-				String blogCode = "bootstrapq-" + code;
-				BlogArticleModel blog = BlogArticleModel.dao.findByCode(blogCode);
-				if(blog != null){
-					setAttr("blog", blog);
-					render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-docs.ftl");
-					return;
-				}
-			}
-
-			redirect("/bootstrapQ");
-		} catch (Exception e) {
-			e.printStackTrace();
-			redirect("/bootstrapQ");
-		}
-
+		setAttr("blogs", BlogTypeModel.dao.findById(8).articles());
+		render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-docs.ftl");
 	}
 	
 	/**

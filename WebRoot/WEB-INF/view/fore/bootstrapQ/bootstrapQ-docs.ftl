@@ -1,69 +1,170 @@
 <#include "/WEB-INF/view/inc/inc-bootstrapq.ftl"/>
 
 <@html s=false>
-	<@head t='BootstrapQ' bstro=true/>
+	<@head t='BootstrapQ'/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 		<@ueditor init=false parseid='.ueparse'/>
 		
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:10px;">
-					<#if blog.blog_article_code?contains('alert')>
-						<h1><strong>提示框（alert）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert1'>普通提示框</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert2'>自定义提示框</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert3'>带回调提示框</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('confirm')>
-						<h1><strong>确认框（confirm）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm1'>普通确认框</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm2'>自定义确认框</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm3'>带回调确认框</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('dialog')>
-						<h1><strong>模态框（dialog）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog1'>普通模态框</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog2'>带回调模态框</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('msg')>
-						<h1><strong>消息提示条（msg）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg1'>普通消息提示条</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg2'>自定义消息提示条</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('tooltip')>
-						<h1><strong>提示（tooltip）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip1'>普通提示</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip2'>自定义提示</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('popover')>
-						<h1><strong>烤饼（popover）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='popover1'>烤饼</@bsbutton>
-					</#if>
-					<#if blog.blog_article_code?contains('tree')>
-						<h1><strong>树（tree）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree1'>加载普通tree</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree2'>加载带复选框tree</@bsbutton>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree3'>加载可编辑tree（暂不开放权限）</@bsbutton>
-						<p id="treepanel"></p>
-					</#if>
-					<#if blog.blog_article_code?contains('bstro')>
-						<h1 id="bstro-h1"><strong>网站引导（bstro）</strong></h1><hr/>
-						<h2><strong>例子</strong></h2>
-						<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstro1'>开始引导</@bsbutton>
-					</#if>
+				<div class="col-xs-12 col-sm-10 col-md-10 col-lg-10" style="margin-bottom:10px;">
+					<#list blogs?if_exists?sort_by('id') as blog>
+						<#if blog.blog_article_code?contains('alert')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>提示框（alert）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert1'>普通提示框</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert2'>自定义提示框</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='alert3'>带回调提示框</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('confirm')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>确认框（confirm）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm1'>普通确认框</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm2'>自定义确认框</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='confirm3'>带回调确认框</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('dialog')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>模态框（dialog）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog1'>普通模态框</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='dialog2'>带回调模态框</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('msg')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>消息提示条（msg）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg1'>普通消息提示条</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='msg2'>自定义消息提示条</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('tooltip')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>提示（tooltip）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip1'>普通提示</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='tooltip2'>自定义提示</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('popover')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>烤饼（popover）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='popover1'>烤饼</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('tree')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1><strong>树（tree）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree1'>加载普通tree</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree2'>加载带复选框tree</@bsbutton>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree3'>加载可编辑tree（暂不开放权限）</@bsbutton>
+									<p id="treepanel"></p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+						<#if blog.blog_article_code?contains('bstro')>
+							<div class="row" id="${blog.blog_article_code}">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+									<h1 id="bstro-h1"><strong>网站引导（bstro）</strong></h1><hr/>
+									<h2><strong>例子</strong></h2>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstro1'>开始引导</@bsbutton>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
+									${blog.blog_article_content}
+								</div>
+							</div>
+						</#if>
+					</#list>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 table-responsive ueparse" style="margin-bottom:20px;">
-					${blog.blog_article_content}
+				<div class="hidden-xs col-sm-2 col-md-2 col-lg-2">
+					<div class="scrolldiv" style="position:fixed;top:70px;margin-right:20px;">
+						<ul class="nav nav-pills nav-stacked" role="tablist">
+							<#list blogs?if_exists?sort_by('id') as blog>
+								<#if blog.blog_article_code?contains('alert')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('confirm')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('dialog')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('msg')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('tooltip')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('popover')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('tree')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+								<#if blog.blog_article_code?contains('bstro')>
+									<li role="presentation"><a href="#${blog.blog_article_code}" class="list-group-item">${blog.blog_article_code?split('-')[1]}</a></li>
+								</#if>
+							</#list>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -72,6 +173,7 @@
 		<@js>
 			$(function(){
 				qiao.bs.initimg();
+				qiao.bs.spy();
 				
 				// alert
 				qiao.on('#alert1', 'click', function(){
