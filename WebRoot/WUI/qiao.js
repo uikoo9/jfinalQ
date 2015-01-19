@@ -34,6 +34,7 @@ String.prototype.inArray = function(array){
  * jquery的一些常用方法
  * 1.qser
  * 2.qdata
+ * 3.qrcode
  */
 $.fn.qser = function(){
 	var obj = {};
@@ -62,6 +63,22 @@ $.fn.qdata = function(){
 	}
 	
 	return res;
+};
+$.fn.qcode = function(options){
+	if(options){
+		var opt = {};
+		if(typeof options == 'string'){
+			opt.text = options;
+		}else{
+			if(options.text) opt.text = options.text;
+			if(options.type && options.type == 'ch') opt.text = qcodetochar(opt.text);
+			if(options.render && options.render == 'table') opt.render = options.render;
+			if(options.width) opt.width = options.width;
+			if(options.height) opt.height = options.height;
+		}
+
+		$(this).qrcode(opt);
+	}
 };
 
 /**
