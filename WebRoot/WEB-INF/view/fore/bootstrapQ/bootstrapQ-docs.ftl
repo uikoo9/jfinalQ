@@ -4,7 +4,7 @@
 	<@head t='BootstrapQ'/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
-		<@ueditor init=false parseid='.ueparse'/>
+		<@ueditor js=false parseid='.ueparse'/>
 		
 		<div class="container">
 			<div class="row">
