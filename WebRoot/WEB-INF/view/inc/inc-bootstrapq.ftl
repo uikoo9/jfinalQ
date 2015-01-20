@@ -27,12 +27,3 @@
 		</div>
 	</nav>
 </#macro>
-
-<#-- backtotop -->
-<#macro backtotop right=40 bottom=15>
-	<script type="text/javascript" src="http://uikoo9.qiniudn.com/@/js/backtotop/jquery.backtotop.js"></script>
-	<div id="back-to-top" style="font-size:40px;z-index:1100;cursor:pointer;position:fixed;right:${right}px;bottom:${bottom}px;">
-		<span class="glyphicon glyphicon-plane"></span>
-	</div>
-	<script type="text/javascript">$(function(){$("#back-to-top").backToTop();});</script>
-</#macro>
