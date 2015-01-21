@@ -17,8 +17,15 @@
 		<url>/bootstrapQ</url>
 		<url>/bootstrapQ/started</url>
 		<url>/bootstrapQ/docs</url>
-		<url>/ucenter/menu/tree</url>
 		<url>/bootstrapQ/donate</url>
 		<url>/bootstrapQ/me</url>
 	</bootstrapQ>
+	<menudemo>
+		<url>/other/menu</url>
+		<url>/other/menu/tree</url>
+		<url>/other/menu/add</url>
+		<url>/other/menu/savep</url>
+		<url>/other/menu/save</url>
+		<url>/other/menu/del</url>
+	</menudemo>
 </auth>

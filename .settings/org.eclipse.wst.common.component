@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="_mine_02_com">
+    <wb-module deploy-name="_mine_01_com">
         <wb-resource deploy-path="/" source-path="/WebRoot"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <property name="context-root" value="/_mine_02_com"/>
-        <property name="java-output-path" value="/_mine_02_com/WebRoot/WEB-INF/classes"/>
+        <property name="java-output-path" value="/_mine_01_com/WebRoot/WEB-INF/classes"/>
     </wb-module>
 </project-modules>

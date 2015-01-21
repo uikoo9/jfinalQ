@@ -108,8 +108,8 @@
 									<h2><strong>例子</strong></h2>
 									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree1'>加载普通tree</@bsbutton>
 									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree2'>加载带复选框tree</@bsbutton>
-									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree3'>加载可编辑tree（暂不开放权限）</@bsbutton>
-									<p id="treepanel"></p>
+									<@bsbutton type='primary' size='lg' style='margin-bottom:5px;' id='bstree3'>加载可编辑tree</@bsbutton>
+									<p id="cruddiv"></p>
 								</div>
 							</div>
 							<div class="row">
@@ -257,13 +257,13 @@
 				
 				// bstree
 				qiao.on('#bstree1', 'click', function(){
-					$('#treepanel').bstree();
+					$('#cruddiv').bstree({url:'/other/menu'});
 				});
 				qiao.on('#bstree2', 'click', function(){
-					$('#treepanel').bstree({checkbox:true});
+					$('#cruddiv').bstree({url:'/other/menu',checkbox:true});
 				});
 				qiao.on('#bstree3', 'click', function(){
-					$('#treepanel').bstree({edit:true});
+					$('#cruddiv').bstree({url:'/other/menu',edit:true});
 				});
 				
 				// bstro
