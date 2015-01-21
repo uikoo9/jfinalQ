@@ -32,34 +32,28 @@
 			<#if donates??>
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<@bstable>
-							<thead>
-								<tr>
-							        <th><input type="checkbox" class="allcheck"/></th>
-									<th>捐助人姓名</th>
-									<th>捐助金额</th>
-									<th>捐助类型</th>
-									<th>捐助寄语</th>
-									<th>创建时间</th>
-									<th>操作</th>
-								</tr>
-							</thead>
-							<tbody>
-							    <#list donates?if_exists as donate>
-								    <tr>
-									    <td>${(donate.other_donate_name)!}</td>				    
-										<td>${(donate.other_donate_money)!}</td>				    
-										<td>${(donate.other_donate_type)!}</td>				    
-										<td>${(donate.other_donate_message)!}</td>				    
-										<td>${(donate.cdate)!}</td>				    
-								    </tr>
-							    </#list>
-							</tbody>
-						</@bstable>
+						<div class="table-responsive">
+							<table class="table table-bordered table-hover">
+								<tbody>
+								    <#list donates?if_exists as donate>
+									    <tr>
+										    <td class="text-center">${donate_index+1}</td>				    
+										    <td class="text-center">${(donate.other_donate_name)!}</td>				    
+											<td class="text-center">${(donate.other_donate_money)!}</td>				    
+											<td class="text-center">${(donate.other_donate_type)!}</td>				    
+											<td class="text-center">${(donate.other_donate_message)!}</td>				    
+											<td class="text-center">${(donate.cdate)!}</td>				    
+									    </tr>
+								    </#list>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</#if>
 		</div>
+		
+		<@backtotop/>
 	</@bsbody>
 </@html>
 
