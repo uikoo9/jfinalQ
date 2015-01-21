@@ -4,6 +4,7 @@ import com.jfinal.core.Controller;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.manage.diary.model.DiaryArticleModel;
+import com.uikoo9.manage.other.model.OtherDonateModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 
 @QControllerUrl("/bootstrapQ")
@@ -37,6 +38,7 @@ public class BootstrapQController extends Controller{
 	 * 捐助
 	 */
 	public void donate(){
+		setAttr("donates", OtherDonateModel.dao.findAllByCache());
 		render("/WEB-INF/view/fore/bootstrapQ/bootstrapQ-donate.ftl");
 	}
 
