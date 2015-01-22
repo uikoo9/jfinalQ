@@ -12,7 +12,17 @@ import com.uikoo9.util.core.data.QStringUtil;
 public class BlogController extends Controller{
 	
 	/**
-	 * 跳转到博客首页 
+	 * 跳转到博客评论列表页面
+	 */
+	public void msg(){
+		String sql = "select t1.* from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
+		setAttr("msgs", BlogCommentModel.dao.find(sql));
+		
+		render("/WEB-INF/view/fore/blog/blog-msg.ftl");
+	}
+	
+	/**
+	 * 跳转到博客列表首页 
 	 */
 	public void list(){
 		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
@@ -26,14 +36,14 @@ public class BlogController extends Controller{
 				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
 			}
 			
-			render("/WEB-INF/view/fore/blog/blog-list-for-user.ftl");
+			render("/WEB-INF/view/fore/blog/blog-list.ftl");
 		} catch (Exception e) {
-			redirect("/blog/listForUser");
+			redirect("/blog/list");
 		}
 	}
 	
 	/**
-	 * 跳转到编辑博客页面
+	 * 跳转到博客编辑页面
 	 */
 	public void edit(){
 		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
@@ -79,16 +89,6 @@ public class BlogController extends Controller{
 		}
 		
 		return theBlog != null ? theBlog : new BlogArticleModel().set("id", 0).set("blog_article_title", "没有了~").set("blog_article_code", "null");
-	}
-	
-	/**
-	 * 跳转到评论列表页面
-	 */
-	public void msg(){
-		String sql = "select t1.* from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
-		setAttr("msgs", BlogCommentModel.dao.find(sql));
-		
-		render("/WEB-INF/view/fore/blog/blog-msg.ftl");
 	}
 	
 }

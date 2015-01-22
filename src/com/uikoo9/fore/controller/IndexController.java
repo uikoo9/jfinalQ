@@ -1,6 +1,7 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
+import com.jfinal.plugin.activerecord.Db;
 import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.jfinal.ucenter.model.UcenterMenuModel;
@@ -16,6 +17,9 @@ public class IndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
+		String sql = "select count(*) from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
+		setAttr("msgcount", Db.queryLong(sql));
+		
 		render("/WEB-INF/view/fore/home/home-index.ftl");
 	}
 	
