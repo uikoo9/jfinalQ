@@ -45,9 +45,9 @@
 					<#else>
 						<li><a href="${base}/">首页</a></li>
 						<li><a href="${base}/blog/list">博客</a></li>
+						<li><a href="${base}/bootstrapQ">BootstrapQ</a></li>
 						<li><a href="${base}/version">版本更新</a></li>
 						<li><a href="${base}/me">关于我</a></li>
-						<li><a href="${base}/bootstrapQ">BootstrapQ</a></li>
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
