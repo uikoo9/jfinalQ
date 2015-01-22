@@ -1,6 +1,7 @@
 package com.uikoo9.fore.controller;
 
 import com.jfinal.core.Controller;
+import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.jfinal.ucenter.model.UcenterMenuModel;
 
@@ -23,6 +24,14 @@ public class IndexController extends Controller{
 	 */
 	public void version(){
 		render("/WEB-INF/view/fore/home/home-version.ftl");
+	}
+	
+	/**
+	 * 跳转到关于我
+	 */
+	public void me(){
+		setAttr("blog", BlogArticleModel.dao.findByCode("about-me"));
+		render("/WEB-INF/view/fore/home/home-me.ftl");
 	}
 
 	/**

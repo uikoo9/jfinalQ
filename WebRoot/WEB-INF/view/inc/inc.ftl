@@ -1,7 +1,7 @@
 <#include "/com/uikoo9/util/jfinal/view/common/inc.ftl"/>
 
 <#-- bshead -->
-<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
+<#macro bshead pos='top' sname='QBlog' shref='http://qbloger.duapp.com/'>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -19,11 +19,7 @@
 					<#if user??>
 						<#if user.ucenter_user_type == '010102'>
 							<li><a href="${base}/bill">首页</a></li>
-							<li class="menus" data="url:/bill/detail;"><a href="javascript:void(0);">收支明细</a></li>
-							<li class="menus" data="url:/bill/account;"><a href="javascript:void(0);">账户管理</a></li>
-							<li><a href="${base}/diary/list">看日记</a></li>
-							<li><a href="${base}/diary/edit">写日记</a></li>
-							<li><a href="${base}/blog/listForUser">看博客</a></li>
+							<li><a href="${base}/blog/list">看博客</a></li>
 							<li><a href="${base}/blog/edit">写博客</a></li>
 						</#if>
 						<#if user.ucenter_user_type == '010101'>
@@ -45,7 +41,6 @@
 					<#else>
 						<li><a href="${base}/">首页</a></li>
 						<li><a href="${base}/blog/list">博客</a></li>
-						<li><a href="${base}/bootstrapQ">BootstrapQ</a></li>
 						<li><a href="${base}/version">版本更新</a></li>
 						<li><a href="${base}/me">关于我</a></li>
 					</#if>
