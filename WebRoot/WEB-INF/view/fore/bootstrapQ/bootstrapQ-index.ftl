@@ -1,7 +1,7 @@
 <#include "/WEB-INF/view/inc/inc-bootstrapq.ftl"/>
 
 <@html s=false>
-	<@head t='BootstrapQ' holder=true/>
+	<@head t='BootstrapQ'/>
 	<@bsbody>
 		<script type="text/javascript">qiao.ajaxinit();</script>
 		<div class="container">
@@ -18,6 +18,14 @@
 					</div>
 				</div>
 			</div>
+			<div class="row" style="margin-bottom:10px;">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:10px;">
+					<@bsbutton type='primary' size='lg' class='btn-block' icon='book' href='${base}/bootstrapQ/docs#bootstrapq-alert'>文档</@bsbutton>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:10px;">
+					<@bsbutton type='primary' size='lg' class='btn-block' icon='cloud-download' href='https://github.com/uikoo9/bootstrapQ/archive/master.zip'>下载</@bsbutton>
+				</div>
+			</div>
 			<div class="row">
 				<@ueditor js=false parseid='.ueparse'/>
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 ueparse">
@@ -26,20 +34,5 @@
 			</div>
 		</div>
 		<@backtotop/>
-		
-		<@js>$(function(){qiao.bs.initimg();});</@js>
 	</@bsbody>
 </@html>
-
-<#-- 
-<div class="row">
-	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-		<strong><span style="font-size: 36px;">Download</span></strong>
-		<ul>
-			<li>源代码下载（8.9k）：<a href="http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.js">http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.js</a></li>
-			<li>压缩后下载（5.5k）：<a href="http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.min.js">http://uikoo9.qiniudn.com/@/js/bootstrapq/bootstrapQ.min.js</a></li>
-			<li>GitHub下载：<a href="https://github.com/uikoo9/bootstrapQ" target="_blank">https://github.com/uikoo9/bootstrapQ</a></li>
-		</ul>
-	</div>
-</div>
--->
