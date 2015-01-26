@@ -4,6 +4,7 @@
 	<div class="container">
 		<div class="row">
 			<@ueditor/>
+			<@bstip/>
 			<form class="form-horizontal" role="form" id="addBlogForm">
 				<input type="hidden" name="row.id" value="${(blog.id)!}"/>
 				<@bsinput title='博客类型' input=false>
