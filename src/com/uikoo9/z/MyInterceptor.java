@@ -2,6 +2,8 @@ package com.uikoo9.z;
 
 import com.jfinal.aop.Interceptor;
 import com.jfinal.core.ActionInvocation;
+import com.jfinal.core.Controller;
+import com.uikoo9.util.core.data.QStringUtil;
 import com.uikoo9.util.plugin.json.QJsonUtil;
 
 /**
@@ -16,7 +18,7 @@ public class MyInterceptor implements Interceptor{
 		if(res == null){
 			ai.invoke();
 		}else{
-			ai.getController().renderJson(QJsonUtil.error(res));
+			ai.getController().renderJson(QJsonUtil.error(res + "，体验所有功能请下载源码！"));
 		}
 	}
 	
@@ -27,19 +29,77 @@ public class MyInterceptor implements Interceptor{
 	 */
 	private String checkAuth(ActionInvocation ai){
 		String url = ai.getActionKey();
-		String para = ai.getController().getPara();
+		Controller cl = ai.getController();
 		
 		// 禁止修改密码
 		if("/login/modifyPwd".equals(url)){
-			return "禁止修改密码，体验所有功能请下载源码！";
+			return "禁止修改密码";
 		}
 		
 		// 禁止修改默认博客
-		if("/blog/edit".equals(url) && "32".equals(para)){
-			return "禁止修改默认博客，体验所有功能请下载源码！";
+		if("/blog/edit".equals(url) && "32".equals(cl.getPara())){
+			return "禁止修改默认博客";
 		}
 		
-		System.out.println(url);
+		// 禁止修改，删除默认博客分类
+		if("/blog/type/save".equals(url) && "10".equals(cl.getPara("row.id"))){
+			return "禁止修改默认博客分类";
+		}
+		if("/blog/type/del".equals(url)){
+			String ids = cl.getPara("ids");
+			if(QStringUtil.notEmpty(ids)){
+				for(String id : ids.split(",")){
+					if("10".equals(id)){
+						return "禁止删除默认博客分类";
+					}
+				}
+			}
+		}
+		
+		// 禁止修改，删除默认博客
+		if("/blog/article/save".equals(url) && "32".equals(cl.getPara("row.id"))){
+			return "禁止修改默认博客";
+		}
+		if("/blog/article/del".equals(url)){
+			String ids = cl.getPara("ids");
+			if(QStringUtil.notEmpty(ids)){
+				for(String id : ids.split(",")){
+					if("32".equals(id)){
+						return "禁止删除默认博客";
+					}
+				}
+			}
+		}
+		
+		// 禁止修改，删除默认评论
+		if("/blog/comment/save".equals(url) && ("17".equals(cl.getPara("row.id")) || "18".equals(cl.getPara("row.id")))){
+			return "禁止修改默认博客评论";
+		}
+		if("/blog/comment/del".equals(url)){
+			String ids = cl.getPara("ids");
+			if(QStringUtil.notEmpty(ids)){
+				for(String id : ids.split(",")){
+					if("17".equals(id) || "18".equals(id)){
+						return "禁止删除默认博客评论";
+					}
+				}
+			}
+		}
+		
+		// 禁止修改，删除默认用户
+		if("/ucenter/user/save".equals(url) && ("2".equals(cl.getPara("row.id")) || "4".equals(cl.getPara("row.id")))){
+			return "禁止修改默认用户";
+		}
+		if("/ucenter/user/del".equals(url)){
+			String ids = cl.getPara("ids");
+			if(QStringUtil.notEmpty(ids)){
+				for(String id : ids.split(",")){
+					if("2".equals(id) || "4".equals(id)){
+						return "禁止删除默认用户";
+					}
+				}
+			}
+		}
 		
 		return null;
 	}
