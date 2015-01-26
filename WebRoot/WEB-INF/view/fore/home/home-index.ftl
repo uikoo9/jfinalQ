@@ -12,10 +12,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<p class="lead">
-					用户试用帐号：test/test；管理员帐号：admin/admin
-				</p>
-				<hr/>
+				<div class="alert alert-danger lead" role="alert">试用帐号：test/test；管理帐号：admin/admin；演示系统，数据将不定期还原。</div><hr/>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<h4>1.基于<a href="http://www.jfinal.com/" target="_blank">JFinal1.9</a>，易学，开发快；</h4>

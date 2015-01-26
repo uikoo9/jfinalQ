@@ -1,10 +1,5 @@
 <#include "/com/uikoo9/util/jfinal/view/common/inc.ftl"/>
 
-<#-- bstip -->
-<#macro bstip text='请注意，本blog做演示用，数据库会定期还原~'>
-	<div class="alert alert-danger text-center lead" role="alert">${text}</div><hr/>
-</#macro>
-
 <#-- bshead -->
 <#macro bshead pos='top' sname='QBloger' shref='http://qbloger.duapp.com/'>
 	<nav role="navigation" class="navbar navbar-default">
