@@ -1,18 +1,7 @@
-QBlog用到：
-	jfinal-1.9
-	|--c3p0
-	|--qiniu
-	|--ehcache
-	|--freemarker
-	|--slf4j+logback
-	|--JFinalQ, by qiaowenbin
-	|--GenCodeQ, by qiaowenbin
-	|--ueditor-1.1.1-for-qiniu-bcs.jar, by qiaowenbin
-	bootstrap-3.0
-	|--jquery-1.11.1
-	|--ueditor-1.4.3-jsp
-	|--bootstrapQ.js, by qiaowenbin
-	|--qmask-2.0.js, by qiaowenbin
+-------------------------------------------------------------------
+version 0.0.2.20150126
+新增：
+	1.首页修改
 
 -------------------------------------------------------------------
 version 0.0.1.20150122
