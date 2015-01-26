@@ -26,6 +26,21 @@ public class MyInterceptor implements Interceptor{
 	 * @return
 	 */
 	private String checkAuth(ActionInvocation ai){
+		String url = ai.getActionKey();
+		String para = ai.getController().getPara();
+		
+		// 禁止修改密码
+		if("/login/modifyPwd".equals(url)){
+			return "禁止修改密码，体验所有功能请下载源码！";
+		}
+		
+		// 禁止修改默认博客
+		if("/blog/edit".equals(url) && "32".equals(para)){
+			return "禁止修改默认博客，体验所有功能请下载源码！";
+		}
+		
+		System.out.println(url);
+		
 		return null;
 	}
 	
