@@ -7,7 +7,7 @@
 				<#list blogs as blog>
 					<blockquote style="border-left-color:#5bc0de;">
 					  <p><a href="${base}/blog/detail/${blog.blog_article_code}" target="_blank">${blog.blog_article_title}</a></p>
-					  <footer>阅读<strong>${blog.blog_article_read_times}</strong>次，创作于<strong>${blog.cdate}</strong><#if user??>，<a href="${base}/blog/edit/${blog.id}">编辑</a></#if></footer>
+					  <footer>阅读<strong>${blog.blog_article_read_times}</strong>次，创作于<strong>${blog.cdate}</strong><#if blog.blog_article_code!='default-blog' && user??>，<a href="${base}/blog/edit/${blog.id}">编辑</a></#if></footer>
 					</blockquote>
 				</#list>
 			</div>

@@ -14,7 +14,8 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="alert alert-danger lead" role="alert">试用帐号：test/test；管理帐号：admin/admin；演示系统，数据将不定期还原。</div><hr/>
+				<div class="alert alert-success" role="alert">试用帐号：test/test；管理帐号：admin/admin。</div>
+				<div class="alert alert-danger" role="alert">演示系统，数据将不定期还原；部分权限进行了“阉割”，想使用全部功能请下载！</div><hr/>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<h4>1.基于<a href="http://www.jfinal.com/" target="_blank">JFinal1.9</a>，易学，开发快；</h4>
