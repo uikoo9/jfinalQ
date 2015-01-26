@@ -3,12 +3,14 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
-				<div class="container">
-					<h1>QBlog</h1>
-					<p style="margin:0;">
-						jfinalQ and bootstrapQ demo blog
-					</p>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
+					<div class="container">
+						<h1>QBlog</h1>
+						<p style="margin:0;">
+							jfinalQ and bootstrapQ demo blog
+						</p>
+					</div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
