@@ -101,6 +101,38 @@ public class MyInterceptor implements Interceptor{
 			}
 		}
 		
+		// 禁止修改，删除默认角色
+		if("/ucenter/role/save".equals(url) && ("4".equals(cl.getPara("row.id")))){
+			return "禁止修改默认角色";
+		}
+		if("/ucenter/role/del".equals(url)){
+			String ids = cl.getPara("ids");
+			if(QStringUtil.notEmpty(ids)){
+				for(String id : ids.split(",")){
+					if("4".equals(id)){
+						return "禁止删除默认角色";
+					}
+				}
+			}
+		}
+		
+		// 默认角色禁止分配用户和权限
+		if("/ucenter/role/setUser".equals(url) && ("4".equals(cl.getPara()))){
+			return "禁止为默认角色分配用户";
+		}
+		if("/ucenter/role/setUrl".equals(url) && ("4".equals(cl.getPara()))){
+			return "禁止为默认角色分配权限";
+		}
+		
+		// 禁止删除菜单
+		if("/ucenter/menu/del".equals(url)){
+			return "禁止删除菜单";
+		}
+		if("/ucenter/menu/save".equals(url)){
+			return "禁止修改菜单";
+		}
+		
+		
 		return null;
 	}
 	
