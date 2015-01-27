@@ -1,7 +1,7 @@
 <#include "/com/uikoo9/util/jfinal/view/common/inc.ftl"/>
 
 <#-- bshead -->
-<#macro bshead pos='top' sname='QBloger' shref='http://qbloger.duapp.com/'>
+<#macro bshead pos='top' sname='QBlog' shref='http://qbloger.duapp.com/'>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">

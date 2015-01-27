@@ -116,11 +116,14 @@ public class MyInterceptor implements Interceptor{
 			}
 		}
 		
-		// 默认角色禁止分配用户和权限
-		if("/ucenter/role/setUser".equals(url) && ("4".equals(cl.getPara()))){
+		// 默认角色禁止分配用户
+		if("/ucenter/role/addUser".equals(url) && ("4".equals(cl.getPara("roleid")))){
 			return "禁止为默认角色分配用户";
 		}
-		if("/ucenter/role/setUrl".equals(url) && ("4".equals(cl.getPara()))){
+		if("/ucenter/role/removeUser".equals(url) && ("4".equals(cl.getPara("roleid")))){
+			return "禁止为默认角色移除用户";
+		}
+		if("/ucenter/role/saveUrl".equals(url) && ("4".equals(cl.getPara("roleid")))){
 			return "禁止为默认角色分配权限";
 		}
 		
