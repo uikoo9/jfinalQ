@@ -22,8 +22,7 @@
 							<li><a href="${base}/blog/list">博客</a></li>
 							<li><a href="${base}/blog/edit">写博客</a></li>
 							<li><a href="${base}/version">版本更新</a></li>
-							<li><a href="http://uikoo9.com/donate" target="_blank">捐助</a></li>
-							<li><a href="http://uikoo9.com/me" target="_blank">关于我</a></li>
+							<@uikoo9/>
 						</#if>
 						<#if user.ucenter_user_type == '010101'>
 							<#list menus as menu>
@@ -45,8 +44,7 @@
 						<li><a href="${base}/">首页</a></li>
 						<li><a href="${base}/blog/list">博客</a></li>
 						<li><a href="${base}/version">版本更新</a></li>
-						<li><a href="http://uikoo9.com/donate" target="_blank">捐助</a></li>
-						<li><a href="http://uikoo9.com/me" target="_blank">关于我</a></li>
+						<@uikoo9/>
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
