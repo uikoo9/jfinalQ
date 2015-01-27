@@ -4,13 +4,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<div class="jumbotron" style="text-align:center;padding-top:60px;padding-bottom:60px;">
-					<div class="container">
-						<h1>QBlog</h1>
-						<p style="margin:0;">
-							<a href="http://uikoo9.com/jfinalQ" target="_blank">jfinalQ</a> and <a href="http://uikoo9.com/bootstrapQ" target="_blank">bootstrapQ</a> demo blog
-						</p>
-					</div>
+				<div class="jumbotron" style="text-align:center;">
+					<h1>QBlog</h1>
+					<p style="margin:0;">
+						<a href="http://uikoo9.com/jfinalQ" target="_blank">jfinalQ</a> and <a href="http://uikoo9.com/bootstrapQ" target="_blank">bootstrapQ</a> demo blog
+					</p>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
