@@ -124,12 +124,12 @@ public class MyInterceptor implements Interceptor{
 			return "禁止为默认角色分配权限";
 		}
 		
-		// 禁止删除菜单
+		// 禁止删除，修改和添加菜单
 		if("/ucenter/menu/del".equals(url)){
 			return "禁止删除菜单";
 		}
 		if("/ucenter/menu/save".equals(url)){
-			return "禁止修改菜单";
+			return "禁止修改和添加菜单";
 		}
 		
 		
