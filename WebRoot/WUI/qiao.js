@@ -1,54 +1,6 @@
-/**
- * 扩展一些js默认的方法
- * 1.string.contains
- * 2.string.startWith
- * 3.string.endWith
- * 4.string.inArray
+/** 
+ * 将data属性转为js对象
  */
-String.prototype.contains = function(s){
-	return this.indexOf(s) != -1;
-};
-String.prototype.startWith=function(s){  
-    return this.indexOf(s) == 0;
-};
-String.prototype.endWith=function(s){
-	if(this.length == 0){
-		return false;
-	}else{
-		return this.indexOf(s) == this.length - 1;
-	}
-};
-String.prototype.inArray = function(array){
-	if(this && array){
-		for(var i=0; i<array.length; i++){
-			if(this == array[i]){
-				return true;
-			}
-		}
-	}
-	
-	return false;
-};
-
-/**
- * jquery的一些常用方法
- * 1.qser
- * 2.qdata
- * 3.qrcode
- * 4.qtotop
- */
-$.fn.qser = function(){
-	var obj = {};
-	
-	var objs = $(this).serializeArray();
-	if(objs.length != 0){
-		for(var i=0; i<objs.length; i++){
-			obj[objs[i].name] = objs[i].value;
-		}
-	}
-
-	return obj;
-};
 $.fn.qdata = function(){
 	var res = {};
 	
@@ -65,6 +17,16 @@ $.fn.qdata = function(){
 	
 	return res;
 };
+
+/** 
+ * 生成二维码
+ * text：待生成文字
+ * type：中文还是英文，cn为中文
+ * render：展示方式，table为表格方式
+ * width：宽度
+ * height：高度
+ * 注：需要引入<@jsfile 'qrcode'/>
+ */
 $.fn.qcode = function(options){
 	if(options){
 		var opt = {};
@@ -81,6 +43,10 @@ $.fn.qcode = function(options){
 		$(this).qrcode(opt);
 	}
 };
+
+/** 
+ * 返回顶部方法
+ */
 $.fn.qtotop = function(options) {
 	var $this = $(this);
 	$this.hide().click(function(){
@@ -105,9 +71,8 @@ $.fn.qtotop = function(options) {
  * 2.html
  * 3.ajaxinit
  * 4.to
- * 5.con
- * 6.on
- * 7.ue
+ * 5.on
+ * 6.ue
  */
 var qiao = {};
 
@@ -162,9 +127,6 @@ qiao.to = function(url){
 	}else{
 		alert('need url');
 	}
-};
-qiao.con = function(obj){
-	console.log(obj);
 };
 qiao.on = function(obj, event, func){
 	$(document).off(event, obj).on(event, obj, func);
@@ -512,7 +474,7 @@ qiao.bs.tree.addp = function(){
 	}, qiao.bs.tree.add);
 };
 qiao.bs.tree.add = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').qser()});
+	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').serialize()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -556,9 +518,7 @@ qiao.bs.initimg = function(){
 	$('img').each(function(){
 		var clazz = $(this).attr('class');
 		if(clazz){
-			if(!clazz.contains('img-responsive')){
-				$(this).addClass('img-responsive');
-			}
+			if(clazz.indexOf('img-responsive') == -1) $(this).addClass('img-responsive');
 		}else{
 			$(this).addClass('img-responsive');
 		}
@@ -677,7 +637,7 @@ qiao.crud.reset = function(){
 qiao.crud.savep = function(title, id){
 	if(title == '查询'){
 		qiao.bs.dialog({title:title,url:qiao.crud.url + '/savep'}, function(){
-			qiao.crud.list($('#bsmodal').find('form').qser());
+			qiao.crud.list($('#bsmodal').find('form').serialize());
 			return true;
 		});
 	}else{
@@ -688,7 +648,7 @@ qiao.crud.savep = function(title, id){
 	}
 };
 qiao.crud.save = function(){
-	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').qser()});
+	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').serialize()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -770,7 +730,7 @@ qiao.login.login = function(){
 	
 	var res = qiao.ajax({
 		url : '/login/login',
-		data : $form.qser()
+		data : $form.serialize()
 	});
 	
 	if(res){

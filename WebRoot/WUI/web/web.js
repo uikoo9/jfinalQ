@@ -1,51 +1,5 @@
 var web = {};
 
-// account
-web.account = {};
-web.account.init = function(){
-	qiao.crud.init();
-	qiao.on('.shouzhi', 'click', web.account.toshouzhi);
-	qiao.on('.zhuan', 'click', web.account.tozhuan);
-};
-web.account.toshouzhi = function(){
-	qiao.bs.dialog({
-		url : '/bill/detail/savep',
-		title : '收入&支出',
-		okbtn : '添加'
-	}, function(){
-		var res = qiao.ajax({url:'/bill/detail/save',data:$('#bsmodal').find('form').qser()});
-		qiao.bs.msg(res);
-
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				location.reload();
-			},1000);
-			return true;
-		}else{
-			return false;
-		}
-	});
-};
-web.account.tozhuan = function(){
-	qiao.bs.dialog({
-		url : '/bill/tozhuan',
-		title : '转账',
-		okbtn : '转账'
-	}, function(){
-		var res = qiao.ajax({url:'/bill/zhuan',data:$('#bsmodal').find('form').qser()});
-		qiao.bs.msg(res);
-		
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				location.reload();
-			},1000);
-			return true;
-		}else{
-			return false;
-		}
-	});
-};
-
 // blog
 web.blog = {};
 web.blog.init = function(){
@@ -82,7 +36,7 @@ web.blog.save = function(){
 	if(!title){
 		qiao.bs.msg({msg:'请填写评论昵称！',type:'danger'});
 	}else{
-		var res = qiao.ajax({url : '/blog/comment/save',data : $form.qser()});
+		var res = qiao.ajax({url : '/blog/comment/save',data : $form.serialize()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){
@@ -103,45 +57,12 @@ web.blogedit.save = function(){
 	if(!title){
 		qiao.bs.msg({msg:'请填写博客标题！',type:'danger'});
 	}else{
-		var res = qiao.ajax({url : '/blog/article/save',data : $form.qser()});
+		var res = qiao.ajax({url : '/blog/article/save',data : $form.serialize()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){
 			setTimeout(function(){
 				qiao.to(base + '/blog/detail/' + res.object.blog_article_code);
-			},1000);
-		}
-	}
-};
-
-// diary
-web.diary = {};
-web.diary.init = function(){
-	qiao.bs.initimg();
-	qiao.on('.godiary', 'click', web.diary.go);
-};
-web.diary.go = function(){
-	qiao.to(base + '/diary/detail/' + $(this).qdata().id);
-};
-
-// diary-edit
-web.diaryedit = {};
-web.diaryedit.init = function(){
-	qiao.on('.addDiary', 'click', web.diaryedit.save);
-};
-web.diaryedit.save = function(){
-	var $form = $('#addDiaryForm');
-	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
-
-	if(!title){
-		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});
-	}else{
-		var res = qiao.ajax({url : '/diary/article/save',data : $form.qser()});
-		qiao.bs.msg(res);
-		
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				qiao.to(base + '/diary/detail/' + res.object.id);
 			},1000);
 		}
 	}
