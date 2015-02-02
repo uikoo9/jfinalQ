@@ -11,7 +11,7 @@ jfinalQ
 3. [jfinalQ-blog](http://git.oschina.net/uikoo9/jfinalQ-blog)：jfinalQ最简化示例
 4. [jfinalQ-gencode](http://git.oschina.net/uikoo9/jfinalQ-gencode)：jfinalQ自带代码生成工具
 5. [jfinalQ-encrypt](http://git.oschina.net/uikoo9/jfinalQ-encrypt)：jfinalQ自带tomcat加密部署工具
-6. [jfinalQ-blog](http://git.oschina.net/uikoo9/jfinalQ-blog)：jfinalQ自带bootstrap增强组件
+6. [bootstrapQ](http://uikoo9.com/bootstrapQ)：jfinalQ自带bootstrap增强组件
 
 开始使用
 ---
