@@ -4,7 +4,7 @@
 2. 博客分类，博客文章，博客评论基础功能
 3. RBAC权限，基于角色的权限控制
 
-jfinalQ
+[jfinalQ](http://uikoo9.com/jfinalQ)
 ---
 1. 基于[jfinal1.9](http://www.jfinal.com/)，易学，开发快速，功能强大
 2. 基于[bootstrap3.x](http://v3.bootcss.com/)，简洁美观，完美适配移动端
@@ -24,6 +24,6 @@ jfinalQ
 
 更多
 ---
-更多注意事项请浏览：
+更多注意事项请浏览：[http://uikoo9.com/jfinalQ/docs#jfinalq-question](http://uikoo9.com/jfinalQ/docs#jfinalq-question)
 
 
