@@ -26,4 +26,13 @@
 ---
 更多注意事项请浏览：[http://uikoo9.com/jfinalQ/docs#jfinalq-question](http://uikoo9.com/jfinalQ/docs#jfinalq-question)
 
+捐助
+---
+希望得到您的捐助：
+
+![zhifubao](http://uikoo9.com/WUI/web/donate/img/zhifu5.png)
+（支付宝捐助）
+![weixin](http://uikoo9.com/WUI/web/donate/img/zhifu1.png)
+（微信捐助）
+
 
