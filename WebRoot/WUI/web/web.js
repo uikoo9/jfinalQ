@@ -36,7 +36,7 @@ web.blog.save = function(){
 	if(!title){
 		qiao.bs.msg({msg:'请填写评论昵称！',type:'danger'});
 	}else{
-		var res = qiao.ajax({url : '/blog/comment/save',data : $form.serialize()});
+		var res = qiao.ajax({url : '/blog/comment/save',data : $form.qser()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){
@@ -57,7 +57,7 @@ web.blogedit.save = function(){
 	if(!title){
 		qiao.bs.msg({msg:'请填写博客标题！',type:'danger'});
 	}else{
-		var res = qiao.ajax({url : '/blog/article/save',data : $form.serialize()});
+		var res = qiao.ajax({url : '/blog/article/save',data : $form.qser()});
 		qiao.bs.msg(res);
 		
 		if(res && res.type == 'success'){
