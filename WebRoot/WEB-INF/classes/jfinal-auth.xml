@@ -4,8 +4,12 @@
 		<url>/login/login</url>
 		<url>/login/logout</url>
 	</login>
+	<error>
+		<url>/error/auth</url>
+	</error>
 	<home>
 		<url>/version</url>
+		<url>/donate</url>
 		<url>/me</url>
 	</home>
 	<blog>

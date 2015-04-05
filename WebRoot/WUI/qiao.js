@@ -1,3 +1,19 @@
+/**
+ * 将表单转为js对象
+ */
+$.fn.qser = function(){
+	var obj = {};
+	
+	var objs = $(this).serializeArray();
+	if(objs.length != 0){
+		for(var i=0; i<objs.length; i++){
+			obj[objs[i].name] = objs[i].value;
+		}
+	}
+
+	return obj;
+};
+
 /** 
  * 将data属性转为js对象
  */
@@ -137,7 +153,7 @@ qiao.ue = function(id, options){
 			return UE.getEditor(id);
 		}else if(typeof options == 'string'){
 			if(options == 'mini'){
-				return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain','|','source','link','unlink']]});
+				return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain']]});
 			}
 		}else{
 			return UE.getEditor(id, options);
@@ -474,7 +490,7 @@ qiao.bs.tree.addp = function(){
 	}, qiao.bs.tree.add);
 };
 qiao.bs.tree.add = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').serialize()});
+	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').qser()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -637,7 +653,7 @@ qiao.crud.reset = function(){
 qiao.crud.savep = function(title, id){
 	if(title == '查询'){
 		qiao.bs.dialog({title:title,url:qiao.crud.url + '/savep'}, function(){
-			qiao.crud.list($('#bsmodal').find('form').serialize());
+			qiao.crud.list($('#bsmodal').find('form').qser());
 			return true;
 		});
 	}else{
@@ -648,7 +664,7 @@ qiao.crud.savep = function(title, id){
 	}
 };
 qiao.crud.save = function(){
-	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').serialize()});
+	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').qser()});
 	qiao.bs.msg(res);
 
 	if(res && res.type == 'success'){
@@ -715,10 +731,31 @@ qiao.crud.bindpage = function(){
 
 /**
  * 业务相关代码
- * 1.用户登录
- * 2.修改密码
- * 3.角色管理
+ * 1.用户注册
+ * 2.用户登录
+ * 3.修改密码
+ * 4.角色管理
  */
+qiao.reg = {};
+qiao.reg.init = function(){
+	qiao.on('.regbtn', 'click', qiao.reg.reg);
+	qiao.on('.regform', 'keydown', function(e){if(e.keyCode == 13) qiao.reg.reg();});
+};
+qiao.reg.reg = function(){
+	var $form = $('.regform');
+	var $h5 = $form.find('h5');
+	
+	var res = qiao.ajax({
+		url : '/login/reg',
+		data : $form.qser()
+	});
+	
+	if(res){
+		$h5.text(res.msg);
+	}else{
+		$h5.text('ajax fail');
+	}
+};
 qiao.login = {};
 qiao.login.init = function(options){
 	qiao.on('.loginbtn', 'click', qiao.login.login);
@@ -730,7 +767,7 @@ qiao.login.login = function(){
 	
 	var res = qiao.ajax({
 		url : '/login/login',
-		data : $form.serialize()
+		data : $form.qser()
 	});
 	
 	if(res){

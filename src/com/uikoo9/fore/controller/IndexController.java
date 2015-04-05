@@ -31,6 +31,13 @@ public class IndexController extends Controller{
 	}
 	
 	/**
+	 * 捐助
+	 */
+	public void donate(){
+		render("/WEB-INF/view/fore/home/home-donate.ftl");
+	}
+	
+	/**
 	 * 跳转到关于我
 	 */
 	public void me(){
