@@ -49,27 +49,12 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<#if user??>
-						<#if msgcount??>
-							<li><a href="${base}/blog/msg">新的评论<span class="badge">${msgcount}</span></a></li>
-						</#if>
 						<li class="dropdown">
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.ucenter_user_name}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyPwd">修改密码</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/login/logout">退出系统</a></li>
 							</ul>
-						</li>
-					<#else>
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">登录<span class="caret"></span></a>
-							<div class="dropdown-menu" role="menu" style="width:250px;height;250px;padding:20px;">
-								<@bsform class='loginform'>
-									<@bsinput col=false name='username' title='用户名' value='${username!}'/>
-									<@bsinput col=false name='password' title='密码' type='password'/>
-									<div class="form-group"><input class="btn btn-lg btn-primary btn-block loginbtn" type="button" value="登录"/></div>
-									<div class="form-group"><h5 class="text-danger"></h5></div>
-								</@bsform>
-							</div>	
 						</li>
 					</#if>
 				</ul>

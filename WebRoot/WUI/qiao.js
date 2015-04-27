@@ -174,7 +174,8 @@ qiao.ue = function(id, options){
  * 7.bstree
  * 8.scrollspy
  * 9.initimg
- * 10.bstro
+ * 10.bsdate
+ * 11.bstro
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -539,6 +540,22 @@ qiao.bs.initimg = function(){
 			$(this).addClass('img-responsive');
 		}
 	});
+};
+qiao.bs.bsdateoptions = {
+	autoclose: true,
+	language : 'zh-CN',
+	format: 'yyyy-mm-dd'
+};
+qiao.bs.bsdate = function(selector, options){
+	if(selector){
+		var $element = $(selector);
+		if($element.length > 0){
+			var opt = $.extend({}, qiao.bs.bsdateoptions, options);
+			$element.each(function(){
+				$(this).datepicker(opt);
+			});
+		}
+	}
 };
 qiao.bs.bstrooptions = {
 	width 	: '500px',
