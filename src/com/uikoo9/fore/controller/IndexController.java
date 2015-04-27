@@ -20,21 +20,21 @@ public class IndexController extends Controller{
 		String sql = "select count(*) from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
 		setAttr("msgcount", Db.queryLong(sql));
 		
-		render("/WEB-INF/view/fore/home/home-index.ftl");
+		render("/WEB-INF/view/fore/home/home-index.html");
 	}
 	
 	/**
 	 * 跳转到版本更新
 	 */
 	public void version(){
-		render("/WEB-INF/view/fore/home/home-version.ftl");
+		render("/WEB-INF/view/fore/home/home-version.html");
 	}
 	
 	/**
 	 * 捐助
 	 */
 	public void donate(){
-		render("/WEB-INF/view/fore/home/home-donate.ftl");
+		render("/WEB-INF/view/fore/home/home-donate.html");
 	}
 	
 	/**
@@ -42,7 +42,7 @@ public class IndexController extends Controller{
 	 */
 	public void me(){
 		setAttr("blog", BlogArticleModel.dao.findByCode("about-me"));
-		render("/WEB-INF/view/fore/home/home-me.ftl");
+		render("/WEB-INF/view/fore/home/home-me.html");
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class IndexController extends Controller{
 	 */
 	public void manage(){
 		setAttr("menus", UcenterMenuModel.dao.findAllByCache());
-		render("/com/uikoo9/util/jfinal/view/common/manage.ftl");
+		render("/com/uikoo9/util/jfinal/view/common/manage.html");
 	}
 	
 }

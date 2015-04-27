@@ -18,7 +18,7 @@ public class BlogController extends Controller{
 		String sql = "select t1.* from t_blog_comment t1 where t1.blog_comment_parent_id=0 and not exists(select 1 from t_blog_comment t2 where t2.blog_comment_parent_id=t1.id)";
 		setAttr("msgs", BlogCommentModel.dao.find(sql));
 		
-		render("/WEB-INF/view/fore/blog/blog-msg.ftl");
+		render("/WEB-INF/view/fore/blog/blog-msg.html");
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class BlogController extends Controller{
 				setAttr("blogs", BlogArticleModel.dao.find("select * from t_blog_article tba order by cdate desc"));
 			}
 			
-			render("/WEB-INF/view/fore/blog/blog-list.ftl");
+			render("/WEB-INF/view/fore/blog/blog-list.html");
 		} catch (Exception e) {
 			redirect("/blog/list");
 		}
@@ -51,7 +51,7 @@ public class BlogController extends Controller{
 			setAttr("blog", BlogArticleModel.dao.findById(getParaToInt(0)));
 		}
 		
-		render("/WEB-INF/view/fore/blog/blog-edit.ftl");
+		render("/WEB-INF/view/fore/blog/blog-edit.html");
 	}
 	
 	/**
@@ -68,7 +68,7 @@ public class BlogController extends Controller{
 				setAttr("prevBlog", getBlog("prev", blog));
 				setAttr("nextBlog", getBlog("next", blog));
 				
-				render("/WEB-INF/view/fore/blog/blog-detail.ftl");
+				render("/WEB-INF/view/fore/blog/blog-detail.html");
 				return;
 			}
 		} catch (Exception e) {

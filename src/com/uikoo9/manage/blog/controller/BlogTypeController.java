@@ -20,7 +20,7 @@ public class BlogTypeController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", list(BlogTypeModel.class));
-		render("/WEB-INF/view/manage/blog/blog-type-index.ftl");
+		render("/WEB-INF/view/manage/blog/blog-type-index.html");
 	}
 	
 	/**
@@ -29,7 +29,7 @@ public class BlogTypeController extends QController{
 	public void savep(){
 		setAttr("row", getRow(BlogTypeModel.class));
 		
-		render("/WEB-INF/view/manage/blog/blog-type-input.ftl");
+		render("/WEB-INF/view/manage/blog/blog-type-input.html");
 	}
 	
 	/**

@@ -18,7 +18,7 @@ public class BlogArticleController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", listBySql(getParaMap(), " (select ba.*,bt.blog_type_name tname from t_blog_article ba, t_blog_type bt where ba.blog_type_id=bt.id ) as tba ", "tba"));
-		render("/WEB-INF/view/manage/blog/blog-article-index.ftl");
+		render("/WEB-INF/view/manage/blog/blog-article-index.html");
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public class BlogArticleController extends QController{
 		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
 		setAttr("row", getRow(BlogArticleModel.class));
 		
-		render("/WEB-INF/view/manage/blog/blog-article-input.ftl");
+		render("/WEB-INF/view/manage/blog/blog-article-input.html");
 	}
 	
 	/**

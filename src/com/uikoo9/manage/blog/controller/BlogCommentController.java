@@ -20,7 +20,7 @@ public class BlogCommentController extends QController{
 	 */
 	public void index(){
 		setAttr("qpage", list(BlogCommentModel.class));
-		render("/WEB-INF/view/manage/blog/blog-comment-index.ftl");
+		render("/WEB-INF/view/manage/blog/blog-comment-index.html");
 	}
 	
 	/**
@@ -28,7 +28,7 @@ public class BlogCommentController extends QController{
 	 */
 	public void savep(){
 		setAttr("row", getRow(BlogCommentModel.class));
-		render("/WEB-INF/view/manage/blog/blog-comment-input.ftl");
+		render("/WEB-INF/view/manage/blog/blog-comment-input.html");
 	}
 	
 	/**
