@@ -1,5 +1,3 @@
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`db_blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
-
 USE `db_blog`;
 
 /*Table structure for table `t_blog_article` */
@@ -146,9 +144,6 @@ CREATE TABLE `t_ucenter_user` (
   `ucenter_user_name` varchar(200) NOT NULL COMMENT '用户名',
   `ucenter_user_key` varchar(200) NOT NULL COMMENT '用户密码',
   `ucenter_user_type` char(6) NOT NULL COMMENT '用户类型',
-  `ucenter_user_mail` varchar(200) NOT NULL COMMENT '用户邮箱',
-  `ucenter_user_mail_confirm` char(6) NOT NULL COMMENT '用户邮箱确认',
-  `ucenter_user_sys_plan` char(6) DEFAULT NULL COMMENT '计划系统用户',
   `cdate` datetime NOT NULL COMMENT '创建时间',
   `cuser_name` varchar(200) NOT NULL COMMENT '创建人姓名',
   `cuser_id` int(10) NOT NULL COMMENT '创建人id',
@@ -157,5 +152,4 @@ CREATE TABLE `t_ucenter_user` (
 
 /*Data for the table `t_ucenter_user` */
 
-insert  into `t_ucenter_user`(`id`,`ucenter_user_name`,`ucenter_user_key`,`ucenter_user_type`,`ucenter_user_mail`,`ucenter_user_mail_confirm`,`ucenter_user_sys_plan`,`cdate`,`cuser_name`,`cuser_id`) values (2,'admin','ISMvKXpXpadDiUoOSoAfww==','010101','','000102','000102','2014-10-09 14:55:38','uikoo9',0),(8,'test','CY9rzUYh03PK3k6DJie09g==','010102','test@test.com','000102','000102','2015-04-27 22:13:18','admin',2);
-
+insert  into `t_ucenter_user`(`id`,`ucenter_user_name`,`ucenter_user_key`,`ucenter_user_type`,`cdate`,`cuser_name`,`cuser_id`) values (2,'admin','ISMvKXpXpadDiUoOSoAfww==','010101','2014-10-09 14:55:38','uikoo9',0),(8,'test','CY9rzUYh03PK3k6DJie09g==','010102','2015-04-27 22:13:18','admin',2);
