@@ -18,10 +18,10 @@
 				<ul class="nav navbar-nav">
 					<#if user??>
 						<#if user.ucenter_user_type == '010102'>
-							<li><a href="${base}/">首页</a></li>
-							<li><a href="${base}/blog/list">博客</a></li>
-							<li><a href="${base}/blog/edit">写博客</a></li>
-							<li><a href="${base}/version">版本更新</a></li>
+							<li><a href="${static.base(request)}/">首页</a></li>
+							<li><a href="${static.base(request)}/blog/list">博客</a></li>
+							<li><a href="${static.base(request)}/blog/edit">写博客</a></li>
+							<li><a href="${static.base(request)}/version">版本更新</a></li>
 							<@uikoo9/>
 						</#if>
 						<#if user.ucenter_user_type == '010101'>
@@ -41,9 +41,9 @@
 							</#list>
 						</#if>
 					<#else>
-						<li><a href="${base}/">首页</a></li>
-						<li><a href="${base}/blog/list">博客</a></li>
-						<li><a href="${base}/version">版本更新</a></li>
+						<li><a href="${static.base(request)}/">首页</a></li>
+						<li><a href="${static.base(request)}/blog/list">博客</a></li>
+						<li><a href="${static.base(request)}/version">版本更新</a></li>
 						<@uikoo9/>
 					</#if>
 				</ul>
@@ -53,11 +53,11 @@
 							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.ucenter_user_name}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyPwd">修改密码</a></li>
-								<li role="presentation"><a role="menuitem" tabindex="-1" href="${base}/login/logout">退出系统</a></li>
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="${static.base(request)}/login/logout">退出系统</a></li>
 							</ul>
 						</li>
 					<#else>
-						<li><a href="${base}/login">登录</a></li>
+						<li><a href="${static.base(request)}/login">登录</a></li>
 					</#if>
 				</ul>
 			</div>

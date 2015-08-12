@@ -1,7 +1,7 @@
 package com.uikoo9.z;
 
 import com.jfinal.aop.Interceptor;
-import com.jfinal.core.ActionInvocation;
+import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.uikoo9.util.core.data.QStringUtil;
 import com.uikoo9.util.plugin.json.QJsonUtil;
@@ -13,7 +13,7 @@ import com.uikoo9.util.plugin.json.QJsonUtil;
 public class MyInterceptor implements Interceptor{
 
 	@Override
-	public void intercept(ActionInvocation ai) {
+	public void intercept(Invocation ai) {
 		String res = checkAuth(ai); 
 		if(res == null){
 			ai.invoke();
@@ -27,7 +27,7 @@ public class MyInterceptor implements Interceptor{
 	 * @param ai
 	 * @return
 	 */
-	private String checkAuth(ActionInvocation ai){
+	private String checkAuth(Invocation ai){
 		String url = ai.getActionKey();
 		Controller cl = ai.getController();
 		
