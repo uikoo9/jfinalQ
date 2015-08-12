@@ -1,11 +1,17 @@
 <#include "/WEB-INF/view/inc/inc.html"/>
 
-<@html>
+<@html t='博客-uikoo9.com'>
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-10 col-sm-9 col-md-9 col-lg-9">
 				<#list blogs as blog>
-					<blockquote style="border-left-color:#5bc0de;">
+					<#if blog.blog_article_read_times < 100>
+						<blockquote>
+					<#elseif blog.blog_article_read_times < 1000>
+						<blockquote style="border-left-color:#5bc0de;">
+					<#else>
+						<blockquote style="border-left-color:red;">
+					</#if>
 					  <p><a href="${static.base(request)}/blog/detail/${blog.blog_article_code}" target="_blank">${blog.blog_article_title}</a></p>
 					  <footer>阅读<strong>${blog.blog_article_read_times}</strong>次，创作于<strong>${blog.cdate}</strong><#if user??>，<a href="${static.base(request)}/blog/edit/${blog.id}">编辑</a></#if></footer>
 					</blockquote>

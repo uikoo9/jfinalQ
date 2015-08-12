@@ -3,7 +3,7 @@
 <@html>
 	<div class="container">
 		<div class="row">
-			<@ueditor/>
+			<@ueditor init=false>var ue = qiao.ue('ueditor', {initialFrameHeight:1000});</@ueditor>
 			<form class="form-horizontal" role="form" id="addBlogForm">
 				<input type="hidden" name="row.id" value="${(blog.id)!}"/>
 				<@bsinput title='博客类型' input=false>
