@@ -88,7 +88,9 @@ $.fn.qtotop = function(options) {
  * 3.ajaxinit
  * 4.to
  * 5.on
- * 6.ue
+ * 6.is
+ * 7.end
+ * 8.ue
  */
 var qiao = {};
 
@@ -147,6 +149,22 @@ qiao.to = function(url){
 qiao.on = function(obj, event, func){
 	$(document).off(event, obj).on(event, obj, func);
 };
+qiao.is = function(str, type){
+	if(str && type){
+		if(type == 'number') return /^\d+$/g.test(str);
+		if(type == 'mobile') return /^1\d{10}$/g.test(str);
+	}
+};
+qiao.end = function(end, $d, $c){
+	if(end){
+		var $d = $d || $(window);
+		var $c = $c || $(document);
+		
+		$d.scroll(function(){if($d.scrollTop() + $d.height() >= $c.height()) end();});
+	}else{
+		$(window).scroll(null);
+	}
+};
 qiao.ue = function(id, options){
 	if(typeof(UE) != "undefined"){
 		if(!options){
@@ -156,12 +174,122 @@ qiao.ue = function(id, options){
 				return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain']]});
 			}
 		}else{
-			return UE.getEditor(id, options);
+			var opt = $.extend({}, window.UEDITOR_CONFIG);
+			return UE.getEditor(id, $.extend(opt, options));
 		}
 	}
 	
 	return {};
 };
+
+/**
+ * 封装amazeui相关方法
+ */
+qiao.am = {};
+qiao.am.loading = function(type, msg){
+	if(type == 'open'){
+		var $modal = $('#amloading'); 
+		if($modal.length == 0){
+			var ss = [];
+			ss.push('<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="amloading">');
+			ss.push('<div class="am-modal-dialog">');
+			ss.push('<div class="am-modal-hd">' + (msg || '数据加载中...') + '</div>');
+			ss.push('<div class="am-modal-bd"><span class="am-icon-spinner am-icon-spin"></span></div>');
+			ss.push('</div>');
+			ss.push('</div>');
+			
+			$('body').append(ss.join(''));
+			$('#amloading').modal(); 
+			qiao.on('#amloading', 'closed.modal.amui', function(){$('#amloading').remove();});
+		} 
+	}
+	if(type == 'close'){
+		var $modal = $('#amloading'); 
+		if($modal.length > 0) $modal.modal('close'); 
+	}
+};
+qiao.am.alert = function(msg, ok){
+	var ss = [];
+	ss.push('<div class="am-modal am-modal-alert" tabindex="-1" id="amalert">');
+		ss.push('<div class="am-modal-dialog">');
+			ss.push('<div class="am-modal-bd">' + (msg || '提示') + '</div>');
+			ss.push('<div class="am-modal-footer">');
+				ss.push('<span class="am-modal-btn alertok">确定</span>');
+			ss.push('</div>');
+		ss.push('</div>');
+	ss.push('</div>');
+	
+	var str = ss.join('');
+	$('body').append(str);
+	
+	var $modal = $('#amalert'); 
+	$modal.modal();
+	
+	// bind
+	qiao.on('span.alertok', 'click', function(){
+		if(ok) ok();
+		$modal.modal('close');
+	});
+	qiao.on('#amalert', 'closed.modal.amui', function(){
+		$modal.remove();
+	});
+};
+qiao.am.confirm = function(msg, ok, cancel){
+	var mytitle = '提示';
+	var mymsg = '提示';
+	if(typeof msg == 'string'){
+		mymsg = msg;
+	}else{
+		mymsg = msg.msg;
+		mytitle = msg.title;
+	}
+	
+	var ss = [];
+	ss.push('<div class="am-modal am-modal-confirm" tabindex="-1" id="amconfirm">');
+		ss.push('<div class="am-modal-dialog">');
+			ss.push('<div class="am-modal-hd">' + mytitle + '</div>');
+			ss.push('<div class="am-modal-bd">' + mymsg + '</div>');
+			ss.push('<div class="am-modal-footer">');
+				ss.push('<span class="am-modal-btn" data-am-modal-cancel>取消</span>');
+				ss.push('<span class="am-modal-btn" data-am-modal-confirm>确定</span>');
+			ss.push('</div>');
+		ss.push('</div>');
+	ss.push('</div>');
+	
+	var str = ss.join('');
+	$('body').append(str);
+	
+	var $modal = $('#amconfirm'); 
+	$modal.modal({
+		relatedTarget: this,
+        onConfirm: ok,
+        onCancel: cancel
+	});
+	
+	// bind
+	qiao.on('#amconfirm', 'closed.modal.amui', function(){
+		$modal.remove();
+	});
+};
+qiao.am.modal = function(options){
+	if(!options || !options.content) return;
+	
+	var ss = [];
+	ss.push('<div class="am-modal am-modal-no-btn" tabindex="-1" id="ammodal">');
+		ss.push('<div class="am-modal-dialog">');
+			if(options.title) ss.push('<div class="am-modal-hd">提示</div>');
+			ss.push('<div class="am-modal-bd">' + options.content + '</div>');
+		ss.push('</div>');
+	ss.push('</div>');
+	$('body').append(ss.join(''));
+	
+	var $modal = $('#ammodal'); 
+	$modal.modal();
+	
+	// bind
+	qiao.on('#ammodal', 'closed.modal.amui', function(){$modal.remove();});
+};
+
 
 /**
  * 对bootstrap的封装
@@ -183,6 +311,8 @@ qiao.bs.modaloptions = {
 	fade	: 'fade',
 	close	: true,
 	title	: 'title',
+	head	: true,
+	foot	: true,
 	btn		: false,
 	okbtn	: '确定',
 	qubtn	: '取消',
@@ -192,28 +322,37 @@ qiao.bs.modaloptions = {
 	remote	: false,
 	backdrop: 'static',
 	keyboard: true,
-	style	: ''
+	style	: '',
+	mstyle	: ''
 };
 qiao.bs.modalstr = function(opt){
 	var start = '<div class="modal '+opt.fade+'" id="bsmodal" tabindex="-1" role="dialog" aria-labelledby="bsmodaltitle" aria-hidden="true" style="position:fixed;top:20px;'+opt.style+'">';
 	if(opt.big){
-		start += '<div class="modal-dialog modal-lg"><div class="modal-content">';
+		start += '<div class="modal-dialog modal-lg" style="'+opt.mstyle+'"><div class="modal-content">';
 	}else{
-		start += '<div class="modal-dialog"><div class="modal-content">';
+		start += '<div class="modal-dialog" style="'+opt.mstyle+'"><div class="modal-content">';
 	}
 	var end = '</div></div></div>';
 	
-	var head = '<div class="modal-header">';
-	if(opt.close){
-		head += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+	var head = '';
+	if(opt.head){
+		head += '<div class="modal-header">';
+		if(opt.close){
+			head += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+		}
+		head += '<h3 class="modal-title" id="bsmodaltitle">'+opt.title+'</h3></div>';
 	}
-	head += '<h3 class="modal-title" id="bsmodaltitle">'+opt.title+'</h3></div>';
+	
 	var body = '<div class="modal-body"><p><h4>'+opt.msg+'</h4></p></div>';
-	var foot = '<div class="modal-footer"><button type="button" class="btn btn-primary bsok">'+opt.okbtn+'</button>';
-	if(opt.btn){
-		foot += '<button type="button" class="btn btn-default bscancel">'+opt.qubtn+'</button>';
+	
+	var foot = '';
+	if(opt.foot){
+		foot += '<div class="modal-footer"><button type="button" class="btn btn-primary bsok">'+opt.okbtn+'</button>';
+		if(opt.btn){
+			foot += '<button type="button" class="btn btn-default bscancel">'+opt.qubtn+'</button>';
+		}
+		foot += '</div>';
 	}
-	foot += '</div>';
 	
 	return start + head + body + foot + end;
 };
@@ -319,10 +458,11 @@ qiao.bs.dialog = function(options, func){
 qiao.bs.msgoptions = {
 	msg  : 'msg',
 	type : 'info',
-	time : 2000
+	time : 2000,
+	position : 'top',
 };
-qiao.bs.msgstr = function(msg, type){
-	return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;position:fixed;top:0;left:0;width:100%;z-index:2001;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
+qiao.bs.msgstr = function(msg, type, position){
+	return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;position:fixed;' + position + ':0;left:0;width:100%;z-index:2001;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
 };
 qiao.bs.msg = function(options){
 	var opt = $.extend({},qiao.bs.msgoptions);
@@ -333,7 +473,7 @@ qiao.bs.msg = function(options){
 		$.extend(opt, options);
 	}
 	
-	$('body').prepend(qiao.bs.msgstr(opt.msg,opt.type));
+	$('body').prepend(qiao.bs.msgstr(opt.msg, opt.type , opt.position));
 	$('#bsalert').slideDown();
 	setTimeout(function(){
 		$('#bsalert').slideUp(function(){
@@ -626,6 +766,51 @@ qiao.bs.bstro = function(bss, options){
 		bootstro.start('.bootstro', opt);
 	}
 };
+qiao.bs.search = function(selector, options){
+	if(!selector || !options || !options.url || !options.make || !options.back) return;
+	
+	var $this = $(selector);
+	var zIndex = options.zIndex || 900;
+	var bgColor = options.bgColor || '#fff';
+	
+	var $table = $('<table class="table table-bordered table-hover" style="position:absolute;display:none;margin-top:10px;width:95%;z-index:' + zIndex + ';background-color:' + bgColor + ';"></table>');
+	$this.after($table);
+	
+	var tid,xhr;
+	qiao.on(selector, 'keyup', function(){
+		if(tid) clearTimeout(tid);
+		if(xhr) xhr.abort();
+		tid = setTimeout(function(){
+			var code = $this.val();
+			if(code){
+				xhr = $.ajax({
+					url: base + options.url + '?code=' + code,
+					type:'get',
+					dataType:'json'
+				}).done(function(json){
+					if(json && json.type == 'success'){
+						var codes = json.object;
+						if(codes && codes.length > 0){
+							$table.empty();
+							$.each(codes, function(i, item){
+								if(item) $table.append('<tr class="qsearchtr" style="cursor:pointer;" data-id="' + item.id + '"><td>' + options.make(item) + '</td></tr>');
+							});
+						}
+					}
+					
+					$table.show();
+				});
+			}
+		}, 500);
+	});
+	
+	qiao.on('tr.qsearchtr', 'click', function(){
+		options.back($(this).data('id'));
+		
+		$this.val($(this).find('td').text());
+		$table.hide();
+	});
+};
 
 /**
  * crud相关方法
@@ -756,14 +941,13 @@ qiao.crud.bindpage = function(){
 qiao.reg = {};
 qiao.reg.init = function(){
 	qiao.on('.regbtn', 'click', qiao.reg.reg);
-	qiao.on('.regform', 'keydown', function(e){if(e.keyCode == 13) qiao.reg.reg();});
 };
 qiao.reg.reg = function(){
 	var $form = $('.regform');
 	var $h5 = $form.find('h5');
 	
 	var res = qiao.ajax({
-		url : '/login/reg',
+		url : '/reg/reg',
 		data : $form.qser()
 	});
 	
@@ -778,6 +962,16 @@ qiao.login.init = function(options){
 	qiao.on('.loginbtn', 'click', qiao.login.login);
 	qiao.on('.loginform', 'keydown', function(e){if(e.keyCode == 13) qiao.login.login();});
 };
+qiao.login.show = function(){
+	qiao.bs.dialog({
+		url 	: '/login',
+		title 	: '登录',
+		head	: false,
+		foot	: false,
+		backdrop: true,
+		mstyle	: 'width:300px;margin:40px auto;'
+	});
+};
 qiao.login.login = function(){
 	var $form = $('.loginform');
 	var $h5 = $form.find('h5');
@@ -790,12 +984,43 @@ qiao.login.login = function(){
 	if(res){
 		if(res.type == 'success'){
 			$h5.text('登录成功，正在跳转。。。');
-			qiao.to(base + res.msg);
+			if(res.msg == '/'){
+				location.reload(true);
+			}else{
+				qiao.to(base + res.msg);
+			}
 		}else{
 			$h5.text(res.msg);
 		}
 	}else{
 		$h5.text('ajax fail');
+	}
+};
+qiao.modifyNickname = {};
+qiao.modifyNickname.init = function(){
+	qiao.on('.modifyNickname', 'click', qiao.modifyNickname.modifyNicknamep);
+};
+qiao.modifyNickname.modifyNicknamep = function(){
+	qiao.bs.dialog({
+		url : '/login/modifyNicknamep',
+		title : '修改昵称',
+		okbtn : '修改'
+	}, qiao.modifyNickname.modifyNickname);
+};
+qiao.modifyNickname.modifyNickname = function(){
+	var newname = $.trim($('input[name="newname"]').val());
+	if(!newname){
+		qiao.bs.msg({msg:'请输入新昵称！',type:'danger'});
+		return false;
+	}else{
+		var res = qiao.ajax({url:'/login/modifyNickname',data:{nickname:newname}});
+		qiao.bs.msg(res);
+		if(res && res.type == 'success'){
+			setTimeout(function(){
+				qiao.to(base + '/login/logout');
+			}, 1000);
+		}
+		return false;
 	}
 };
 qiao.modifypwd = {};
