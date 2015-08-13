@@ -59,7 +59,7 @@ public class BlogCommentModel extends Model<BlogCommentModel>{
 	 * @return
 	 */
 	public List<BlogCommentModel> comments(){
-		return BlogCommentModel.dao.find("select * from t_blog_comment where blog_id=? and blog_comment_parent_id=? order by cdate desc", get("blog_id"), get("id"));
+		return BlogCommentModel.dao.find("select tbc.*,tuu.ucenter_user_nickname from t_blog_comment tbc,t_ucenter_user tuu where tbc.cuser_id=tuu.id and tbc.blog_id=? and tbc.blog_comment_parent_id=? order by tbc.cdate desc", get("blog_id"), get("id"));
 	}
 	
 }

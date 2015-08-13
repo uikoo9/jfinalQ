@@ -40,13 +40,10 @@ public class BlogCommentController extends QController{
 		if(validate == null){
 			UcenterUserModel user = QStaticUtil.user(getRequest());
 			if(user == null){
-				user = new UcenterUserModel();
-				user.set("id", 0);
-				user.set("ucenter_user_name", "blogcomment");
-				setAttr("user", user);
+				renderJson(QJsonUtil.error("notlogin"));
+			}else{
+				renderJson(save(BlogCommentModel.class));
 			}
-			
-			renderJson(save(BlogCommentModel.class));
 		}else{
 			renderJson(QJsonUtil.error(validate));
 		}
@@ -54,9 +51,18 @@ public class BlogCommentController extends QController{
 	
 	@Override
 	public Record initRecord(Record record) {
-		removeAttr("user");
+		UcenterUserModel user = QStaticUtil.user(getRequest());
+		if(user != null){
+			record.set("blog_comment_uname", user.getStr("ucenter_user_name"));
+		}
+		
 		if(QStringUtil.isEmpty(record.getStr("blog_comment_parent_id"))){
 			record.set("blog_comment_parent_id", 0);
+		}
+		
+		String content = record.getStr("blog_comment_content");
+		if(QStringUtil.notEmpty(content)){
+			record.set("blog_comment_content", QStringUtil.filterHtml(content));
 		}
 		
 		return record;
