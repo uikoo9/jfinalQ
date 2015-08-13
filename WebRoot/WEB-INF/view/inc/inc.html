@@ -1,7 +1,7 @@
 <#include "/com/uikoo9/util/jfinal/view/common/inc.html"/>
 
 <#-- bshead -->
-<#macro bshead pos='top' sname='QBlog' shref='http://qbloger.duapp.com/'>
+<#macro bshead pos='top' sname='uikoo9.com' shref='http://uikoo9.com/'>
 	<nav role="navigation" class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-header">
@@ -16,15 +16,8 @@
 			
 			<div class="collapse navbar-collapse" id="bsnav">
 				<ul class="nav navbar-nav">
-					<#if user??>
-						<#if user.ucenter_user_type == '010102'>
-							<li><a href="${static.base(request)}/">首页</a></li>
-							<li><a href="${static.base(request)}/blog/list">博客</a></li>
-							<li><a href="${static.base(request)}/blog/edit">写博客</a></li>
-							<li><a href="${static.base(request)}/version">版本更新</a></li>
-							<@uikoo9/>
-						</#if>
-						<#if user.ucenter_user_type == '010101'>
+					<#if static.user(request)??>
+						<#if static.user(request).ucenter_user_type == '010101'>
 							<#list menus as menu>
 								<#if menu.submenus()?size gt 0>
 									<li class="dropdown">
@@ -40,6 +33,17 @@
 								</#if>
 							</#list>
 						</#if>
+						<#if static.user(request).ucenter_user_type == '010102'>
+							<li><a href="${static.base(request)}/">首页</a></li>
+							<li><a href="${static.base(request)}/blog/list">博客</a></li>
+							<li><a href="${static.base(request)}/version">版本更新</a></li>
+							<@uikoo9/>
+						</#if>
+						<#if static.user(request).ucenter_user_type == '010103'>
+							<li><a href="${static.base(request)}/bill">首页</a></li>
+							<li><a href="${static.base(request)}/blog/listForUser">看博客</a></li>
+							<li><a href="${static.base(request)}/blog/edit">写博客</a></li>
+						</#if>
 					<#else>
 						<li><a href="${static.base(request)}/">首页</a></li>
 						<li><a href="${static.base(request)}/blog/list">博客</a></li>
@@ -48,16 +52,17 @@
 					</#if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<#if user??>
+					<#if static.user(request)??>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${user.ucenter_user_name}<span class="caret"></span></a>
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">${static.user(request).ucenter_user_nickname}<span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
+								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyNickname">修改昵称</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="javascript:void(0);" class="modifyPwd">修改密码</a></li>
 								<li role="presentation"><a role="menuitem" tabindex="-1" href="${static.base(request)}/login/logout">退出系统</a></li>
 							</ul>
 						</li>
 					<#else>
-						<li><a href="${static.base(request)}/login">登录</a></li>
+						<li><a href="javascript:qiao.login.show();">登录</a></li>
 					</#if>
 				</ul>
 			</div>
