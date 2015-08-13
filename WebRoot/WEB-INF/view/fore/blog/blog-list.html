@@ -13,7 +13,7 @@
 						<blockquote style="border-left-color:red;">
 					</#if>
 					  <p><a href="${static.base(request)}/blog/detail/${blog.blog_article_code}" target="_blank">${blog.blog_article_title}</a></p>
-					  <footer>阅读<strong>${blog.blog_article_read_times}</strong>次，创作于<strong>${blog.cdate}</strong><#if user??>，<a href="${static.base(request)}/blog/edit/${blog.id}">编辑</a></#if></footer>
+					  <footer>阅读<strong>${blog.blog_article_read_times}</strong>次，创作于<strong>${blog.cdate}</strong><#if static.user(request)??>，<a href="${static.base(request)}/blog/edit/${blog.id}">编辑</a></#if></footer>
 					</blockquote>
 				</#list>
 			</div>
