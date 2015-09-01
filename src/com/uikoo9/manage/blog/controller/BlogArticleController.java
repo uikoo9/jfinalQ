@@ -22,6 +22,15 @@ public class BlogArticleController extends QController{
 	}
 	
 	/**
+	 * 跳转到搜索页 
+	 */
+	public void search(){
+		setAttr("blogTypes", BlogTypeModel.dao.findAllByCache());
+		
+		render("/WEB-INF/view/manage/blog/blog-article-search.html");
+	}
+
+	/**
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){

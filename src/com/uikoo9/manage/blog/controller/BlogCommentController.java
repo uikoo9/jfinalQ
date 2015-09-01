@@ -25,6 +25,13 @@ public class BlogCommentController extends QController{
 	}
 	
 	/**
+	 * 跳转到搜索页 
+	 */
+	public void search(){
+		render("/WEB-INF/view/manage/blog/blog-comment-search.html");
+	}
+
+	/**
 	 * 跳转到保存修改页 
 	 */
 	public void savep(){
