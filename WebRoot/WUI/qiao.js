@@ -835,7 +835,7 @@ qiao.crud.bindcrud = function(){
 	qiao.on('.allcheck','change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
 	qiao.on('.addBtn', 'click', function(){qiao.crud.savep('添加')});
 	qiao.on('.editbtn','click', function(){qiao.crud.savep('修改',$(this).parents('tr').qdata().id)});
-	qiao.on('.queBtn', 'click', function(){qiao.crud.savep('查询')});
+	qiao.on('.queBtn', 'click', function(){qiao.crud.search('查询')});
 	qiao.on('.relBtn', 'click', function(){qiao.crud.reset();});
 	qiao.on('.delBtn', 'click', function(){qiao.crud.del();});
 	qiao.on('.delbtn', 'click', function(){qiao.crud.del($(this).parents('tr').qdata().id);});
@@ -852,18 +852,17 @@ qiao.crud.reset = function(){
 	qiao.crud.listopt = {pageNumber:1,pageSize:10};
 	qiao.crud.list();
 };
+qiao.crud.search = function(title){
+	qiao.bs.dialog({title:title,url:qiao.crud.url + '/search'}, function(){
+		qiao.crud.list($('#bsmodal').find('form').qser());
+		return true;
+	});
+};
 qiao.crud.savep = function(title, id){
-	if(title == '查询'){
-		qiao.bs.dialog({title:title,url:qiao.crud.url + '/savep'}, function(){
-			qiao.crud.list($('#bsmodal').find('form').qser());
-			return true;
-		});
-	}else{
-		var url = id ? (qiao.crud.url + '/savep?id=' + id) : (qiao.crud.url + '/savep');
-		qiao.bs.dialog({title:title,url:url}, function(){
-			return qiao.crud.save();
-		});
-	}
+	var url = id ? (qiao.crud.url + '/savep?id=' + id) : (qiao.crud.url + '/savep');
+	qiao.bs.dialog({title:title,url:url}, function(){
+		return qiao.crud.save();
+	});
 };
 qiao.crud.save = function(){
 	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').qser()});
