@@ -1,0 +1,13 @@
+<#include "/WEB-INF/view/inc/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='文章类型' input=false>
+		<select class="form-control" name='row.blog_type_id'>
+			<#list blogTypes as item>
+				<option value="${item.id}">${item.blog_type_name}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='文章编码' name='row.blog_article_code'/>
+	<@bsinput title='文章标题' name='row.blog_article_title'/>
+</form>

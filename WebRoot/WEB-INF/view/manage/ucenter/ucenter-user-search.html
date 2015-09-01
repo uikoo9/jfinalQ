@@ -1,0 +1,8 @@
+<#include "/com/uikoo9/util/jfinal/view/common/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='用户名' 	 name='row.ucenter_user_name'/>
+	<@bsinput title='用户类型' input=false>
+		<@bsradios name='row.ucenter_user_type' ck='010102' list=usertypes/>
+	</@bsinput>
+</form>
