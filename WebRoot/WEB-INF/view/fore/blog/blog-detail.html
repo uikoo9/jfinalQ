@@ -10,19 +10,17 @@
 		<!-- title -->
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<h3 class="text-center">${blog.blog_article_title}  <small>作于${blog.cdate?date}</small></h3>
+				<h2 class="text-center">${blog.blog_article_title}  <small>作于${blog.cdate?date}</small></h2>
 			</div>
 		</div>
 		
 		<!-- prev,next -->
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:3px;">
-				<@bsbutton type='primary' size='xs' class='goblog' data='code:${prevBlog.blog_article_code};' dis=(prevBlog.id == 0)>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom:3px;">
+				<@bsbutton type='primary' class='goblog btn-block' data='code:${prevBlog.blog_article_code};' dis=(prevBlog.id == 0)>上一篇：${prevBlog.blog_article_title}</@bsbutton>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:3px;">
-				<@bsbutton type='primary' size='xs' class='goblog' data='code:${nextBlog.blog_article_code};' dis=(nextBlog.id == 0)>下一篇：${nextBlog.blog_article_title}</@bsbutton>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom:3px;">
+				<@bsbutton type='primary' class='goblog btn-block' data='code:${nextBlog.blog_article_code};' dis=(nextBlog.id == 0)>下一篇：${nextBlog.blog_article_title}</@bsbutton>
 			</div>
 		</div>
 		
@@ -31,19 +29,19 @@
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<@bspanel type='primary' style='margin-top:20px;' class='ueparse'>
 					${blog.blog_article_content}
+					<hr />
+					阅读：<strong>${blog.blog_article_read_times}</strong>次
 				</@bspanel>
 			</div>
 		</div>
 		
 		<!-- prev,next -->
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:3px;">
-				<@bsbutton type='primary' size='xs' class='goblog' data='code:${prevBlog.blog_article_code};' dis=(prevBlog.id == 0)>上一篇：${prevBlog.blog_article_title}</@bsbutton>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom:3px;">
+				<@bsbutton type='primary' class='goblog btn-block' data='code:${prevBlog.blog_article_code};' dis=(prevBlog.id == 0)>上一篇：${prevBlog.blog_article_title}</@bsbutton>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-bottom:15px;">
-				<@bsbutton type='primary' size='xs' class='goblog' data='code:${nextBlog.blog_article_code};' dis=(nextBlog.id == 0)>下一篇：${nextBlog.blog_article_title}</@bsbutton>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="margin-bottom:3px;">
+				<@bsbutton type='primary' class='goblog btn-block' data='code:${nextBlog.blog_article_code};' dis=(nextBlog.id == 0)>下一篇：${nextBlog.blog_article_title}</@bsbutton>
 			</div>
 		</div>
 		
