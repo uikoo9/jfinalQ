@@ -38,7 +38,7 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 	public List<BlogTypeModel> findAll(String order){
 		StringBuilder sb = new StringBuilder("select * from t_blog_type ");
 		if(QStringUtil.isEmpty(order)){
-			return dao.find(sb.append("order by cdate desc").toString());
+			return dao.find(sb.append("order by blog_type_name").toString());
 		}else{
 			return dao.find(sb.append(order).toString());
 		}
@@ -55,7 +55,7 @@ public class BlogTypeModel extends Model<BlogTypeModel>{
 		
 		Object value = QCacheUtil.getFromEHCache("blogTypes");
 		if(value == null){
-			blogTypes = BlogTypeModel.dao.findAll("order by blog_type_name");
+			blogTypes = BlogTypeModel.dao.findAll();
 			QCacheUtil.putToEHCache("blogTypes", blogTypes);
 		}else{
 			blogTypes = (List<BlogTypeModel>) value;

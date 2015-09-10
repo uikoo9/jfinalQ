@@ -47,7 +47,7 @@ public class BlogTypeController extends QController{
 		if(validate == null){
 			QJson json = save(BlogTypeModel.class);
 			if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
-				QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by blog_type_name"));
+				QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll());
 			}
 			
 			renderJson(json);
@@ -62,7 +62,7 @@ public class BlogTypeController extends QController{
 	public void del(){
 		QJson json = del(BlogTypeModel.class, BlogArticleModel.class, "blog_type_id");
 		if(QJsonUtil.TYPE_BS_SUCC.equals(json.getType())){
-			QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll("order by blog_type_name"));
+			QCacheUtil.putToEHCache("blogTypes", BlogTypeModel.dao.findAll());
 		}
 		
 		renderJson(json);
