@@ -4,7 +4,6 @@ import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.blog.model.BlogCommentModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.core.data.QStringUtil;
-import com.uikoo9.util.external.QStaticUtil;
 import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.jfinal.ucenter.model.UcenterUserModel;
 import com.uikoo9.util.plugin.json.QJsonUtil;
@@ -45,7 +44,7 @@ public class BlogCommentController extends QController{
 	public void save(){
 		String validate = validate();
 		if(validate == null){
-			UcenterUserModel user = QStaticUtil.user(getRequest());
+			UcenterUserModel user = getAttr("user");
 			if(user == null){
 				renderJson(QJsonUtil.error("notlogin"));
 			}else{
@@ -58,7 +57,7 @@ public class BlogCommentController extends QController{
 	
 	@Override
 	public Record initRecord(Record record) {
-		UcenterUserModel user = QStaticUtil.user(getRequest());
+		UcenterUserModel user = getAttr("user");
 		if(user != null){
 			record.set("blog_comment_uname", user.getStr("ucenter_user_name"));
 		}
