@@ -984,11 +984,7 @@ qiao.login.login = function(){
 	if(res){
 		if(res.type == 'success'){
 			$h5.text('登录成功，正在跳转。。。');
-			if(res.msg == '/'){
-				location.reload(true);
-			}else{
-				qiao.to(base + res.msg);
-			}
+			qiao.to(base + res.msg);
 		}else{
 			$h5.text(res.msg);
 		}
