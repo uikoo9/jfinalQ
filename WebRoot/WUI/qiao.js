@@ -692,6 +692,7 @@ qiao.bs.bsdate = function(selector, options){
 		if($element.length > 0){
 			var opt = $.extend({}, qiao.bs.bsdateoptions, options);
 			$element.each(function(){
+				$(this).datepicker('remove');
 				$(this).datepicker(opt);
 			});
 		}

@@ -10,8 +10,6 @@
 	</error>
 	<home>
 		<url>/version</url>
-		<url>/donate</url>
-		<url>/me</url>
 	</home>
 	<blog>
 		<url>/blog/list</url>
