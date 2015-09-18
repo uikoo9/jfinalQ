@@ -1,3 +1,7 @@
+注意
+---
+gitosc停止更新，转移到github：[https://github.com/uikoo9/jfinalQ](https://github.com/uikoo9/jfinalQ)
+
 jfinalQ-blog
 ==========================================
 1. jfinalQ最简化例子
