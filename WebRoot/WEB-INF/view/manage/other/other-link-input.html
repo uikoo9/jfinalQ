@@ -1,0 +1,12 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<@ueditor init=false>ue = UE.getEditor('ueditor',{zIndex:1100});</@ueditor>
+<form class="form-horizontal" role="form">
+	<input type="hidden" name="row.id" value="${(row.id)!}"/>
+	<@bsinput title='友情链接序号' name='row.other_link_sn' value='${(row.other_link_sn)!}'/>	
+	<@bsinput title='友情链接标题' name='row.other_link_title' value='${(row.other_link_title)!}'/>	
+	<@bsinput title='友情链接地址' name='row.other_link_url' value='${(row.other_link_url)!}'/>	
+	<@bsinput title='友情链接评语' input=false>
+		<script id="ueditor" name="row.other_link_content" type="text/plain">${(row.other_link_content)!}</script>
+	</@bsinput>
+</form>

@@ -1,0 +1,20 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<@ueditor init=false>ue = UE.getEditor('ueditor',{zIndex:1100});</@ueditor>
+<form class="form-horizontal" role="form">
+	<input type="hidden" name="row.id" value="${(row.id)!}"/>
+	<@bsinput title='图书' input=false>
+		<select class="form-control" name='row.book_data_id'>
+			<#list bookDataTypes as item>
+				<option value="${item.id}" <#if row?? && row.book_data_id == item.id>selected</#if>>${item.book_data_title}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='图书章节标题' name='row.book_chapter_title' value='${(row.book_chapter_title)!}'/>	
+	<#if (row.id)??>
+		<@bsinput title='图书章节阅读次数' name='row.book_chapter_readtimes' value='${(row.book_chapter_readtimes)!}'/>	
+	</#if>
+	<@bsinput title='图书章节内容' input=false>
+		<script id="ueditor" name="row.book_chapter_content" type="text/plain">${(row.book_chapter_content)!}</script>
+	</@bsinput>	
+</form>

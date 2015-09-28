@@ -1,0 +1,31 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<@bslist qpage=qpage>
+	<@bstable>
+		<thead>
+			<tr>
+		        <th><input type="checkbox" class="allcheck"/></th>
+				<th>友情链接序号</th>
+				<th>友情链接标题</th>
+				<th>友情链接地址</th>
+				<th>创建时间</th>
+				<th>操作</th>
+			</tr>
+		</thead>
+		<tbody>
+		    <#list qpage.list?if_exists as row>
+			    <tr data="id:${row.id};">
+			        <td><input type="checkbox" class="onecheck"/></td>
+				    <td>${(row.other_link_sn)!}</td>				    
+					<td>${(row.other_link_title)!}</td>				    
+					<td>${(row.other_link_url)!}</td>				    
+					<td>${(row.cdate)!}</td>				    
+					<td>
+			        	<@bsbutton size='xs' icon='pencil' class='editbtn'/>
+			        	<@bsbutton size='xs' icon='remove' class='delbtn'/>
+			        </td>
+			    </tr>
+		    </#list>
+		</tbody>
+	</@bstable>
+</@bslist>

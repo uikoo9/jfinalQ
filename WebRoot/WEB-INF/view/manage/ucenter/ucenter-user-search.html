@@ -1,7 +1,12 @@
-<#include "/com/uikoo9/util/jfinal/view/common/inc.html"/>
+<#include "/WEB-INF/view/base/inc.html"/>
 
 <form class="form-horizontal" role="form">
-	<@bsinput title='用户名' 	 name='row.ucenter_user_name'/>
+	<@bsinput title='用户名'		name='row.ucenter_user_name'/>
+	<@bsinput title='用户邮箱'	name='row.ucenter_user_mail'/>
+	<@bsinput title='用户昵称' 	name='row.ucenter_user_nickname'/>
+	<@bsinput title='用户邮箱确认' input=false>
+		<@bsradios name='row.ucenter_user_mail_confirm' ck='000102' list=yesnos/>
+	</@bsinput>
 	<@bsinput title='用户类型' input=false>
 		<@bsradios name='row.ucenter_user_type' ck='010102' list=usertypes/>
 	</@bsinput>

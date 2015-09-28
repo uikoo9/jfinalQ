@@ -1,0 +1,22 @@
+<#include "/WEB-INF/view/base/head/head.html"/>
+
+<@html qmask=0>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<@bspanel style="margin:0 auto 20px;max-width:300px;">
+					<@bsform class='regform'>
+						<@bsinput col=false name='usermail' title='邮箱'/>
+						<@bsinput col=false name='password' title='密码' type='password'/>
+						<div class="form-group"><input class="btn btn-lg btn-primary btn-block regbtn" type="button" value="注册"/></div>
+						<div class="form-group"><h5 class="text-danger"></h5></div>
+					</@bsform>
+				</@bspanel>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		web.reg.init();
+	</script>
+</@html>

@@ -1,0 +1,29 @@
+<#include "/WEB-INF/view/base/head/head.html"/>
+
+<@html qmask=0>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<@bsalert>您没有访问权限，<span id="time">3</span>秒后跳转到<a href="${base}/">首页</a>~</@bsalert>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function timeout(func){
+			setTimeout(function(){
+				if(func) func();
+			}, 1000);
+		}
+		
+		timeout(function(){
+			$('#time').text('2');
+			timeout(function(){
+				$('#time').text('1');
+				timeout(function(){
+					location.href = '${base}/';
+				});
+			});
+		});
+	</script>
+</@html>

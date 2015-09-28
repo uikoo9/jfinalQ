@@ -1,0 +1,14 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='计划' input=false>
+		<select class="form-control" name='row.plan_data_id'>
+			<#list plans as item>
+				<option value="${item.id}">${item.plan_data_title}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='计划状态' input=false>
+		<@bsradios name='row.plan_detail_status' ck='000102' list=yesnos/>
+	</@bsinput>
+</form>

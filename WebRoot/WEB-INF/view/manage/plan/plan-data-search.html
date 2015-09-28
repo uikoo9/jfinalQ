@@ -1,0 +1,8 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='计划类型' input=false>
+		<@bsradios name='row.plan_data_type' ck='020101' list=plantypes/>
+	</@bsinput>
+	<@bsinput title='计划标题' name='row.plan_data_title'/>	
+</form>

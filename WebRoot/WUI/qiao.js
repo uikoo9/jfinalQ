@@ -1,4 +1,19 @@
 /**
+ * qiao.util.js
+ * 1.qser
+ * 2.qdata
+ * 3.qiao.on
+ * 4.qiao.is
+ * 5.qiao.ajax
+ * 6.qiao.totop
+ * 7.qiao.qrcode
+ * 8.qiao.end
+ * 9.qiao.cookie
+ * 10.qiao.search
+ */
+var qiao = {};
+
+/**
  * 将表单转为js对象
  */
 $.fn.qser = function(){
@@ -34,72 +49,36 @@ $.fn.qdata = function(){
 	return res;
 };
 
-/** 
- * 生成二维码
- * text：待生成文字
- * type：中文还是英文，cn为中文
- * render：展示方式，table为表格方式
- * width：宽度
- * height：高度
- * 注：需要引入<@jsfile 'qrcode'/>
+/**
+ * qiao.on
+ * 事件绑定
  */
-$.fn.qcode = function(options){
-	if(options){
-		var opt = {};
-		if(typeof options == 'string'){
-			opt.text = options;
-		}else{
-			if(options.text) opt.text = options.text;
-			if(options.type && options.type == 'ch') opt.text = qcodetochar(opt.text);
-			if(options.render && options.render == 'table') opt.render = options.render;
-			if(options.width) opt.width = options.width;
-			if(options.height) opt.height = options.height;
-		}
-
-		$(this).qrcode(opt);
-	}
-};
-
-/** 
- * 返回顶部方法
- */
-$.fn.qtotop = function(options) {
-	var $this = $(this);
-	$this.hide().click(function(){
-		$("body, html").animate({
-			scrollTop : "0px"
-		});
-	});
-	
-	var $window = $(window);
-	$window.scroll(function(){
-		if ($window.scrollTop()>0){
-			$this.fadeIn();
-		}else{
-			$this.fadeOut();
-		}
-	});
+qiao.on = function(obj, event, func){
+	$(document).off(event, obj).on(event, obj, func);
 };
 
 /**
- * 封装一些常用方法
- * 1.ajax
- * 2.html
- * 3.ajaxinit
- * 4.to
- * 5.on
- * 6.is
- * 7.end
- * 8.ue
+ * qiao.is
+ * 一些常用的判断，例如数字，手机号等
  */
-var qiao = {};
+qiao.is = function(str, type){
+	if(str && type){
+		if(type == 'number') return /^\d+$/g.test(str);
+		if(type == 'mobile') return /^1\d{10}$/g.test(str);
+	}
+};
 
+/**
+ * qiao.ajax
+ * 对$.ajax的封装
+ */
 qiao.ajaxoptions = {
-	url 	: '',
-	data 	: {},
-	type 	: 'post',
-	dataType: 'json',
-	async 	: false
+	url 		: '',
+	data 		: {},
+	type 		: 'post',
+	dataType	: 'json',
+	async 		: true,
+	crossDomain	: false
 };
 qiao.ajaxopt = function(options){
 	var opt = $.extend({}, qiao.ajaxoptions);
@@ -111,50 +90,99 @@ qiao.ajaxopt = function(options){
 	
 	return opt;
 };
-qiao.ajax = function(options){
-	if(!options){
-		alert('need options');
-	}else{
+qiao.ajax = function(options, success, fail){
+	if(options){
 		var opt = qiao.ajaxopt(options);
-		opt.url = base + opt.url;
+		if(typeof base != 'undefined') opt.url = base + opt.url;
 		
-		var res;
-		$.ajax(opt).done(function(obj){res = obj;});
-		return res;
+		$.ajax(opt).done(function(obj){
+			if(success) success(obj);
+		}).fail(function(e){
+			if(fail){
+				fail(e);
+			}else{
+				alert('数据传输失败，请重试！');
+			}
+		});
 	}
 };
-qiao.html = function(options, target){
-	var opt = qiao.ajaxopt(options);
-	opt.dataType = 'html';
+
+/**
+ * qiao.totop
+ * 返回顶部的方法
+ * 可以参考：plugins/_01_qtotop/qtotop.html
+ */
+qiao.totop = function(el){
+	var $el = $(el);
+	$el.hide().click(function(){
+		$('body, html').animate({scrollTop : '0px'});
+	});
 	
-	var obj = target ? target : '#cruddiv';
-	$(obj).empty().append(qiao.ajax(opt));
-};
-qiao.ajaxinit = function(){
-	qmask.hide();
-	$(document).ajaxStart(function(){
-		qmask.show();
-	});
-	$(document).ajaxStop(function(){
-		qmask.hide();
+	var $window = $(window);
+	$window.scroll(function(){
+		if ($window.scrollTop()>0){
+			$el.fadeIn();
+		}else{
+			$el.fadeOut();
+		}
 	});
 };
-qiao.to = function(url){
-	if(url){
-		window.location.href = url;
-	}else{
-		alert('need url');
+
+/**
+ * qiao.qcode
+ * 生成二维码
+ * 注：需要引入qrcode，<script src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+ * text：待生成文字
+ * type：中文还是英文，cn为中文
+ * render：展示方式，table为表格方式
+ * width：宽度
+ * height：高度
+ * 可以参考：plugins/_03_qcode/qcode.html
+ */
+$.fn.qcode = function(options){
+	if(options){
+		var opt = {};
+		if(typeof options == 'string'){
+			opt.text = options;
+		}else{
+			if(options.text) opt.text = options.text;
+			if(options.type && options.type == 'ch') opt.text = qiao.qrcodetochar(opt.text);
+			if(options.render && options.render == 'table') opt.render = options.render;
+			if(options.width) opt.width = options.width;
+			if(options.height) opt.height = options.height;
+		}
+
+		$(this).qrcode(opt);
 	}
 };
-qiao.on = function(obj, event, func){
-	$(document).off(event, obj).on(event, obj, func);
+qiao.qrcodetochar = function(str){
+    var out, i, len, c;
+    out = "";
+    len = str.length;
+    for (i = 0; i < len; i++) {
+        c = str.charCodeAt(i);
+        if ((c >= 0x0001) && (c <= 0x007F)) {
+            out += str.charAt(i);
+        } else if (c > 0x07FF) {
+            out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+            out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+            out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        } else {
+            out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+            out += String.fromCharCode(0x80 | ((c >> 0) & 0x3F));
+        }
+    }
+    return out;
 };
-qiao.is = function(str, type){
-	if(str && type){
-		if(type == 'number') return /^\d+$/g.test(str);
-		if(type == 'mobile') return /^1\d{10}$/g.test(str);
-	}
-};
+
+/**
+ * qiao.end
+ * 到达页面底部后自动加载内容
+ * end：到达底部后的回调函数
+ * $d：容器，默认是$(window)
+ * $c：内容，默认是$(document)
+ * 可以参考：plugins/_04_qend/qend.html
+ */
 qiao.end = function(end, $d, $c){
 	if(end){
 		var $d = $d || $(window);
@@ -165,145 +193,62 @@ qiao.end = function(end, $d, $c){
 		$(window).scroll(null);
 	}
 };
-qiao.ue = function(id, options){
-	if(typeof(UE) != "undefined"){
-		if(!options){
-			return UE.getEditor(id);
-		}else if(typeof options == 'string'){
-			if(options == 'mini'){
-				return UE.getEditor(id, {toolbars: [['bold','italic','underline','forecolor','backcolor','|','fontfamily','fontsize','|','removeformat','formatmatch','pasteplain']]});
+
+/**
+ * qiao.cookie
+ * 对jquery.cookie.js稍作封装
+ * 注：需要引入jquery.cookie.js，<script src="http://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+ * qiao.cookie(key)：返回key对应的value
+ * qiao.cookie(key, null)： 删除key对应的cookie
+ * qiao.cookie(key, value)：设置key-value的cookie
+ * 可以参考：plugins/_05_qcookie/qcookie.html
+ */
+qiao.cookie = function(key, value){
+	if(typeof value == 'undefined'){
+		return $.cookie(key);
+	}else if(value == null){
+		$.cookie(key, value, {path:'/', expires: -1});
+	}else{
+		$.cookie(key, value, {path:'/', expires:1});
+	}
+};
+
+/**
+ * qiao.search
+ * 获取url后参数中的value
+ * qiao.search(key)：返回参数中key对应的value
+ * 可以参考：plugins/_06_qsearch/qsearch.html
+ */
+qiao.search = function(key){
+	var res;
+	
+	var s = location.search;
+	if(s){
+		s = s.substr(1);
+		if(s){
+			var ss = s.split('&');
+			for(var i=0; i<ss.length; i++){
+				var sss = ss[i].split('=');
+				if(sss && sss[0] == key) res = sss[1]; 
 			}
-		}else{
-			var opt = $.extend({}, window.UEDITOR_CONFIG);
-			return UE.getEditor(id, $.extend(opt, options));
 		}
 	}
 	
-	return {};
+	return res;
 };
 
 /**
- * 封装amazeui相关方法
- */
-qiao.am = {};
-qiao.am.loading = function(type, msg){
-	if(type == 'open'){
-		var $modal = $('#amloading'); 
-		if($modal.length == 0){
-			var ss = [];
-			ss.push('<div class="am-modal am-modal-loading am-modal-no-btn" tabindex="-1" id="amloading">');
-			ss.push('<div class="am-modal-dialog">');
-			ss.push('<div class="am-modal-hd">' + (msg || '数据加载中...') + '</div>');
-			ss.push('<div class="am-modal-bd"><span class="am-icon-spinner am-icon-spin"></span></div>');
-			ss.push('</div>');
-			ss.push('</div>');
-			
-			$('body').append(ss.join(''));
-			$('#amloading').modal(); 
-			qiao.on('#amloading', 'closed.modal.amui', function(){$('#amloading').remove();});
-		} 
-	}
-	if(type == 'close'){
-		var $modal = $('#amloading'); 
-		if($modal.length > 0) $modal.modal('close'); 
-	}
-};
-qiao.am.alert = function(msg, ok){
-	var ss = [];
-	ss.push('<div class="am-modal am-modal-alert" tabindex="-1" id="amalert">');
-		ss.push('<div class="am-modal-dialog">');
-			ss.push('<div class="am-modal-bd">' + (msg || '提示') + '</div>');
-			ss.push('<div class="am-modal-footer">');
-				ss.push('<span class="am-modal-btn alertok">确定</span>');
-			ss.push('</div>');
-		ss.push('</div>');
-	ss.push('</div>');
-	
-	var str = ss.join('');
-	$('body').append(str);
-	
-	var $modal = $('#amalert'); 
-	$modal.modal();
-	
-	// bind
-	qiao.on('span.alertok', 'click', function(){
-		if(ok) ok();
-		$modal.modal('close');
-	});
-	qiao.on('#amalert', 'closed.modal.amui', function(){
-		$modal.remove();
-	});
-};
-qiao.am.confirm = function(msg, ok, cancel){
-	var mytitle = '提示';
-	var mymsg = '提示';
-	if(typeof msg == 'string'){
-		mymsg = msg;
-	}else{
-		mymsg = msg.msg;
-		mytitle = msg.title;
-	}
-	
-	var ss = [];
-	ss.push('<div class="am-modal am-modal-confirm" tabindex="-1" id="amconfirm">');
-		ss.push('<div class="am-modal-dialog">');
-			ss.push('<div class="am-modal-hd">' + mytitle + '</div>');
-			ss.push('<div class="am-modal-bd">' + mymsg + '</div>');
-			ss.push('<div class="am-modal-footer">');
-				ss.push('<span class="am-modal-btn" data-am-modal-cancel>取消</span>');
-				ss.push('<span class="am-modal-btn" data-am-modal-confirm>确定</span>');
-			ss.push('</div>');
-		ss.push('</div>');
-	ss.push('</div>');
-	
-	var str = ss.join('');
-	$('body').append(str);
-	
-	var $modal = $('#amconfirm'); 
-	$modal.modal({
-		relatedTarget: this,
-        onConfirm: ok,
-        onCancel: cancel
-	});
-	
-	// bind
-	qiao.on('#amconfirm', 'closed.modal.amui', function(){
-		$modal.remove();
-	});
-};
-qiao.am.modal = function(options){
-	if(!options || !options.content) return;
-	
-	var ss = [];
-	ss.push('<div class="am-modal am-modal-no-btn" tabindex="-1" id="ammodal">');
-		ss.push('<div class="am-modal-dialog">');
-			if(options.title) ss.push('<div class="am-modal-hd">提示</div>');
-			ss.push('<div class="am-modal-bd">' + options.content + '</div>');
-		ss.push('</div>');
-	ss.push('</div>');
-	$('body').append(ss.join(''));
-	
-	var $modal = $('#ammodal'); 
-	$modal.modal();
-	
-	// bind
-	qiao.on('#ammodal', 'closed.modal.amui', function(){$modal.remove();});
-};
-
-
-/**
- * 对bootstrap的封装
+ * qiao.bs.js
  * 1.alert
  * 2.confirm
  * 3.dialog
  * 4.msg
  * 5.tooltip
  * 6.popover
- * 7.bstree
- * 8.scrollspy
- * 9.initimg
- * 10.bsdate
- * 11.bstro
+ * 7.scrollspy
+ * 8.initimg
+ * 9.bsdate
+ * 10.bstro
  */
 qiao.bs 	= {};
 qiao.bs.modaloptions = {
@@ -430,9 +375,8 @@ qiao.bs.dialog = function(options, func){
 	$('body').append(qiao.bs.modalstr(opt));
 	
 	// ajax page
-	var html = qiao.ajax({url:options.url, dataType:'html'});
-	$('#bsmodal div.modal-body').empty().append(html);
-	
+	qiao.ajax({url:options.url,dataType:'html'}, function(html){$('#bsmodal div.modal-body').empty().append(html);});
+		
 	// init
 	var $modal = $('#bsmodal'); 
 	$modal.modal(opt);
@@ -510,158 +454,6 @@ $.fn.bspop = function(options){
 	
 	$(this).popover(opt);
 };
-qiao.bs.tree = {};
-qiao.bs.tree.options = {
-	url 	: '/ucenter/menu',
-	height 	: '600px',
-	open	: true,
-	edit	: false,
-	checkbox: false,
-	showurl	: true
-};
-$.fn.bstree = function(options){
-	var opt = $.extend({}, qiao.bs.tree.options);
-	if(options){
-		if(typeof options == 'string'){
-			opt.url = options;
-		}else{
-			$.extend(opt, options);
-		}
-	}
-	
-	var res = '加载失败！';
-	var json = qiao.ajax(opt.url + '/tree');
-	if(json && json.object){
-		var tree = json.object;
-		
-		var start = '<div class="panel panel-info"><div class="panel-body" ';
-		if(opt.height != 'auto') 
-			start += 'style="height:600px;overflow-y:auto;"';
-			start += '><ul class="nav nav-list sidenav" id="treeul" data="url:' + opt.url +';">';
-		var children = qiao.bs.tree.sub(tree, opt);
-		var end = '</ul></div></div>';
-		res = start + children + end;
-	}
-	
-	$(this).empty().append(res);
-	qiao.bs.tree.init();
-};
-qiao.bs.tree.sub = function(tree, opt){
-	var res = '';
-	if(tree){
-		var res = 
-			'<li>' + 
-				'<a href="javascript:void(0);" data="id:' + tree.id + ';url:' + tree.url + ';">' + 
-					'<span class="glyphicon glyphicon-minus"></span>';
-		if(opt.checkbox){
-			res += '<input type="checkbox" class="treecheckbox" ';
-			if(tree.checked){
-				res += 'checked';
-			}
-			res += '/>';
-		}
-			res += tree.text;
-		if(opt.showurl){
-			res += '(' + tree.url + ')';
-		}
-		if(opt.edit)
-			res += 
-				'&nbsp;&nbsp;<span class="label label-primary bstreeadd">添加子菜单</span>' + 
-				'&nbsp;&nbsp;<span class="label label-primary bstreeedit">修改</span>' + 
-				'&nbsp;&nbsp;<span class="label label-danger  bstreedel">删除</span>';
-			res += '</a>';
-		var children = tree.children;
-		if(children && children.length > 0){
-				res += '<ul style="padding-left:20px;" id="treeid_' + tree.id + '" class="nav collapse ';
-			if(opt.open) 
-				res += 'in';
-				res += '">';
-			for(var i=0; i<children.length; i++){
-				res += qiao.bs.tree.sub(children[i], opt);
-			}
-				res += '</ul>';
-		}
-		res += '</li>';
-	}
-	
-	return res;
-};
-qiao.bs.tree.init = function(){
-	qiao.on('#treeul .glyphicon-minus', 'click', function(){
-		if($(this).parent().next().length > 0){
-			$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
-			$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
-		}
-	});
-	qiao.on('#treeul .glyphicon-plus', 'click', function(){
-		if($(this).parent().next().length > 0){
-			$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
-			$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
-		}
-	});
-	qiao.on('input.treecheckbox', 'change', function(){
-		// 检测子级的
-		var subFlag = $(this).prop('checked');
-		$(this).parent().next().find('input.treecheckbox').each(function(){
-			$(this).prop('checked', subFlag);
-		});
-		
-		// 检测父辈的
-		var parentFlag = true;
-		var $ul = $(this).parent().parent().parent(); 
-		$ul.children().each(function(){
-			var checked = $(this).children().children('input').prop('checked');
-			if(!checked) parentFlag = false;
-		});
-		$ul.prev().children('input').prop('checked', parentFlag);
-	});
-	
-	qiao.bs.tree.url = $('#treeul').qdata().url;
-	if(qiao.bs.tree.url){
-		qiao.on('.bstreeadd', 'click', qiao.bs.tree.addp);
-		qiao.on('.bstreedel', 'click', qiao.bs.tree.del);
-		qiao.on('.bstreeedit', 'click', qiao.bs.tree.editp);
-	}
-};
-qiao.bs.tree.addp = function(){
-	qiao.bs.dialog({
-		url 	: qiao.bs.tree.url + '/add/' + $(this).parent().qdata().id,
-		title 	: '添加子菜单',
-		okbtn 	: '保存'
-	}, qiao.bs.tree.add);
-};
-qiao.bs.tree.add = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + '/save',data:$('#bsmodal').find('form').qser()});
-	qiao.bs.msg(res);
-
-	if(res && res.type == 'success'){
-		qiao.crud.url = qiao.bs.tree.url;
-		qiao.crud.reset();
-		return true;
-	}else{
-		return false;
-	}
-};
-qiao.bs.tree.del = function(){
-	var res = qiao.ajax({url:qiao.bs.tree.url + '/del/' + $(this).parent().qdata().id});
-	qiao.bs.msg(res);
-	
-	if(res && res.type == 'success'){
-		qiao.crud.url = qiao.bs.tree.url;
-		qiao.crud.reset();
-	}
-};
-qiao.bs.tree.editp = function(){
-	qiao.bs.dialog({
-		url 	: qiao.bs.tree.url + '/savep?id=' + $(this).parent().qdata().id,
-		title 	: '修改菜单',
-		okbtn 	: '保存'
-	}, qiao.bs.tree.edit);
-};
-qiao.bs.tree.edit = function(){
-	qiao.crud.url = qiao.bs.tree.url;
-	return qiao.crud.save();
-};
 qiao.bs.spy = function(target,body){
 	var $body = 'body';
 	var $target = '.scrolldiv';
@@ -692,7 +484,6 @@ qiao.bs.bsdate = function(selector, options){
 		if($element.length > 0){
 			var opt = $.extend({}, qiao.bs.bsdateoptions, options);
 			$element.each(function(){
-				$(this).datepicker('remove');
 				$(this).datepicker(opt);
 			});
 		}
@@ -811,305 +602,4 @@ qiao.bs.search = function(selector, options){
 		$this.val($(this).find('td').text());
 		$table.hide();
 	});
-};
-
-/**
- * crud相关方法
- * 1.crud
- * 2.index
- */
-qiao.crud = {};
-qiao.crud.url = '';
-qiao.crud.init = function(){
-	// menu click
-	qiao.on('.menus', 'click', function(){
-		var url = $(this).qdata().url;
-		if(url){
-			qiao.crud.url = url;
-			qiao.crud.reset();
-		}
-	});
-	qiao.crud.bindcrud();
-	qiao.crud.bindpage();
-};
-qiao.crud.bindcrud = function(){
-	qiao.on('.allcheck','change', function(){$('.onecheck').prop('checked',$(this).prop('checked'));});
-	qiao.on('.addBtn', 'click', function(){qiao.crud.savep('添加')});
-	qiao.on('.editbtn','click', function(){qiao.crud.savep('修改',$(this).parents('tr').qdata().id)});
-	qiao.on('.queBtn', 'click', function(){qiao.crud.search('查询')});
-	qiao.on('.relBtn', 'click', function(){qiao.crud.reset();});
-	qiao.on('.delBtn', 'click', function(){qiao.crud.del();});
-	qiao.on('.delbtn', 'click', function(){qiao.crud.del($(this).parents('tr').qdata().id);});
-};
-qiao.crud.listopt = {pageNumber:1,pageSize:10};
-qiao.crud.list = function(data){
-	var opt = {url : qiao.crud.url + '/index'};
-	if(data) $.extend(qiao.crud.listopt, data);
-	opt.data = qiao.crud.listopt;
-	
-	qiao.html(opt);
-};
-qiao.crud.reset = function(){
-	qiao.crud.listopt = {pageNumber:1,pageSize:10};
-	qiao.crud.list();
-};
-qiao.crud.search = function(title){
-	qiao.bs.dialog({title:title,url:qiao.crud.url + '/search'}, function(){
-		qiao.crud.list($('#bsmodal').find('form').qser());
-		return true;
-	});
-};
-qiao.crud.savep = function(title, id){
-	var url = id ? (qiao.crud.url + '/savep?id=' + id) : (qiao.crud.url + '/savep');
-	qiao.bs.dialog({title:title,url:url}, function(){
-		return qiao.crud.save();
-	});
-};
-qiao.crud.save = function(){
-	var res = qiao.ajax({url:qiao.crud.url+'/save',data:$('#bsmodal').find('form').qser()});
-	qiao.bs.msg(res);
-
-	if(res && res.type == 'success'){
-		qiao.crud.list();
-		return true;
-	}else{
-		return false;
-	}
-};
-qiao.crud.del = function(id){
-	var ids = [];
-	
-	if(id){
-		ids.push(id);
-	}else{
-		$('.onecheck:checked').each(function(){ids.push($(this).parents('tr').qdata().id);});
-	}
-	
-	if(!ids.length){
-		qiao.bs.alert('请选择要删除的记录！');
-	}else{
-		qiao.bs.confirm('确认要删除所选记录吗（若有子记录也会同时删除）？',function(){
-			var res = qiao.ajax({url:qiao.crud.url+'/del',data:{ids:ids.join(',')}});
-			qiao.bs.msg(res);
-			qiao.crud.list();
-		});
-	}
-};
-qiao.crud.bindpage = function(){
-	qiao.on('.crudfirst', 'click', function(){
-		if(!$(this).parent().hasClass('disabled')){
-			qiao.crud.reset();
-		}
-	});
-	qiao.on('.crudprev', 'click', function(){
-		if(!$(this).parent().hasClass('disabled')){
-			qiao.crud.list({pageNumber:qiao.crud.listopt.pageNumber - 1});
-		}
-	});
-	qiao.on('.crudnext', 'click', function(){
-		if(!$(this).parent().hasClass('disabled')){
-			qiao.crud.list({pageNumber:qiao.crud.listopt.pageNumber + 1});
-		}
-	});
-	qiao.on('.crudlast', 'click', function(){
-		if(!$(this).parent().hasClass('disabled')){
-			qiao.crud.list({pageNumber:$(this).qdata().page});
-		}
-	});
-	qiao.on('.cruda', 'click', function(){
-		if(!$(this).parent().hasClass('disabled')){
-			qiao.crud.list({pageNumber:parseInt($(this).text())});
-		}
-	});
-	qiao.on('.pagesize', 'change', function(){
-		var value = $(this).val();
-		if(value){
-			qiao.crud.listopt.pageSize = value;
-		}
-		
-		qiao.crud.list({pageSize:value});
-	});
-};
-
-/**
- * 业务相关代码
- * 1.用户注册
- * 2.用户登录
- * 3.修改密码
- * 4.角色管理
- */
-qiao.reg = {};
-qiao.reg.init = function(){
-	qiao.on('.regbtn', 'click', qiao.reg.reg);
-};
-qiao.reg.reg = function(){
-	var $form = $('.regform');
-	var $h5 = $form.find('h5');
-	
-	var res = qiao.ajax({
-		url : '/reg/reg',
-		data : $form.qser()
-	});
-	
-	if(res){
-		$h5.text(res.msg);
-	}else{
-		$h5.text('ajax fail');
-	}
-};
-qiao.login = {};
-qiao.login.init = function(options){
-	qiao.on('.loginbtn', 'click', qiao.login.login);
-	qiao.on('.loginform', 'keydown', function(e){if(e.keyCode == 13) qiao.login.login();});
-};
-qiao.login.show = function(){
-	qiao.bs.dialog({
-		url 	: '/login',
-		title 	: '登录',
-		head	: false,
-		foot	: false,
-		backdrop: true,
-		mstyle	: 'width:300px;margin:40px auto;'
-	});
-};
-qiao.login.login = function(){
-	var $form = $('.loginform');
-	var $h5 = $form.find('h5');
-	
-	var res = qiao.ajax({
-		url : '/login/login',
-		data : $form.qser()
-	});
-	
-	if(res){
-		if(res.type == 'success'){
-			$h5.text('登录成功，正在跳转。。。');
-			qiao.to(base + res.msg);
-		}else{
-			$h5.text(res.msg);
-		}
-	}else{
-		$h5.text('ajax fail');
-	}
-};
-qiao.modifyNickname = {};
-qiao.modifyNickname.init = function(){
-	qiao.on('.modifyNickname', 'click', qiao.modifyNickname.modifyNicknamep);
-};
-qiao.modifyNickname.modifyNicknamep = function(){
-	qiao.bs.dialog({
-		url : '/login/modifyNicknamep',
-		title : '修改昵称',
-		okbtn : '修改'
-	}, qiao.modifyNickname.modifyNickname);
-};
-qiao.modifyNickname.modifyNickname = function(){
-	var newname = $.trim($('input[name="newname"]').val());
-	if(!newname){
-		qiao.bs.msg({msg:'请输入新昵称！',type:'danger'});
-		return false;
-	}else{
-		var res = qiao.ajax({url:'/login/modifyNickname',data:{nickname:newname}});
-		qiao.bs.msg(res);
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				qiao.to(base + '/login/logout');
-			}, 1000);
-		}
-		return false;
-	}
-};
-qiao.modifypwd = {};
-qiao.modifypwd.init = function(){
-	qiao.on('.modifyPwd', 'click', qiao.modifypwd.modifypwdp);
-};
-qiao.modifypwd.modifypwdp = function(){
-	qiao.bs.dialog({
-		url : '/login/modifyPwdp',
-		title : '修改密码',
-		okbtn : '修改'
-	}, qiao.modifypwd.modifypwd);
-};
-qiao.modifypwd.modifypwd = function(){
-	var newpwd = $.trim($('input[name="newpwd"]').val());
-	if(!newpwd){
-		qiao.bs.msg({msg:'请输入新密码！',type:'danger'});
-		return false;
-	}else{
-		var res = qiao.ajax({url:'/login/modifyPwd',data:{password:newpwd}});
-		qiao.bs.msg(res);
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				qiao.to(base + '/login/logout');
-			}, 1000);
-		}
-		return false;
-	}
-};
-qiao.role = {};
-qiao.role.init = function(){
-	qiao.on('.roleadduserbtn',	'click', qiao.role.setuser);
-	qiao.on('.roleaddurlbtn', 	'click', qiao.role.seturl);
-	qiao.on('.mytr',			'click', function(){$(this).toggleClass('info');});
-};
-qiao.role.setuser = function(){
-	var id = $(this).parents('tr').qdata().id;
-	qiao.bs.dialog({
-		url : '/ucenter/role/setUser/' + id,
-		title : '设置用户',
-		okbtn : '关闭'
-	});
-};
-qiao.role.addUser = function(){
-	var ids = [];
-	$('tr.outtr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
-	
-	var res = qiao.ajax({url:'/ucenter/role/addUser',data:{userids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
-	if(res && res.type == 'success'){
-		$('tr.outtr').each(function(){if($(this).hasClass('info')) $(this).removeClass('outtr').addClass('intr').prependTo('table.intable');});
-	}else{
-		qiao.bs.msg(res);
-	}
-};
-qiao.role.removeUser = function(){
-	var ids = [];
-	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
-	
-	var res = qiao.ajax({url:'/ucenter/role/removeUser',data:{rlids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
-	if(res && res.type == 'success'){
-		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
-	}else{
-		qiao.bs.msg(res);
-	}
-};
-qiao.role.seturl = function(){
-	var id = $(this).parents('tr').qdata().id;
-	qiao.bs.dialog({
-		url : '/ucenter/role/setUrl/' + id,
-		title : '设置Url',
-		okbtn : '保存'
-	}, qiao.role.addUrl);
-};
-qiao.role.addUrl = function(){
-	var ids = [];
-	$('#treeul input:checked').each(function(){ids.push($(this).parent().qdata().id);});
-	var res = qiao.ajax({url:'/ucenter/role/saveUrl',data:{ids:ids.join(','),roleid:$('input[name="roleid"]').val()}});
-	
-	if(res && res.type == 'success'){
-		return true;
-	}else{
-		qiao.bs.msg(res);
-		return false;
-	}
-};
-qiao.role.removeUrl = function(){
-	var urls = [];
-	$('tr.intr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
-	
-	var res = qiao.ajax({url:'/ucenter/role/removeUrl',data:{urls:urls.join(','),roleid:$('input[name="roleid"]').val()}});
-	if(res && res.type == 'success'){
-		$('tr.intr').each(function(){if($(this).hasClass('info')) $(this).removeClass('intr').addClass('outtr').prependTo('table.outtable');});
-	}else{
-		qiao.bs.msg(res);
-	}
 };

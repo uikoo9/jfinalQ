@@ -1,0 +1,15 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<input type="hidden" name="row.id" value="${(row.id)!}"/>
+	<@bsinput title='计划' input=false>
+		<select class="form-control" name='row.plan_data_id'>
+			<#list plans as item>
+				<option value="${item.id}" <#if row?? && rowplan_data_id == item.id>selected</#if>>${item.plan_data_title}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='计划状态' input=false>
+		<@bsradios name='row.plan_detail_status' ck='${(row.plan_detail_status)!"000102"}' list=yesnos/>
+	</@bsinput>
+</form>

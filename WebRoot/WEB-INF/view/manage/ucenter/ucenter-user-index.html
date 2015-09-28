@@ -1,4 +1,4 @@
-<#include "/com/uikoo9/util/jfinal/view/common/inc.html"/>
+<#include "/WEB-INF/view/base/inc.html"/>
 
 <@bslist qpage=qpage>
 	<@bstable>
@@ -6,6 +6,9 @@
 		    <tr>
 		        <th><input type="checkbox" class="allcheck"/></th>
 		        <th>用户名</th>
+		        <th>用户邮箱</th>
+		        <th>用户昵称</th>
+		        <th>用户确认</th>
 		        <th>用户类型</th>
 		        <th>创建时间</th>
 		        <th>创建人</th>
@@ -17,6 +20,9 @@
 			    <tr data="id:${row.id};">
 			        <td><input type="checkbox" class="onecheck"/></td>
 			        <td>${row.ucenter_user_name}</td>
+			        <td>${row.ucenter_user_mail}</td>
+			        <td>${(row.ucenter_user_nickname)!}</td>
+			        <td>${static.get(row.ucenter_user_mail_confirm)}</td>
 			        <td>${static.get(row.ucenter_user_type)}</td>
 			        <td>${row.cdate}</td>
 			        <td>${row.cuser_name}</td>

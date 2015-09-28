@@ -1,0 +1,12 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='项目' input=false>
+		<select class="form-control" name='row.pro_project_id'>
+			<#list projects as item>
+				<option value="${item.id}">${item.pro_project_name}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='项目版本代码' name='row.pro_version_code'/>	
+</form>

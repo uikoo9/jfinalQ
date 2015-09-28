@@ -1,0 +1,11 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<input type="hidden" name="row.ucenter_menu_parent_id" value="${(ucenter_menu_parent_id)!}"/>
+	<@bsinput title='菜单名称' name='row.ucenter_menu_title' value='${(row.ucenter_menu_title)!}'/>
+	<@bsinput title='菜单地址' name='row.ucenter_menu_url'  value='${(row.ucenter_menu_url)!}'/>
+	<@bsinput title='菜单序号' name='row.ucenter_menu_sn'   value='${(row.ucenter_menu_sn)!}'/>
+	<@bsinput title='后台菜单' input=false>
+		<@bsradios name='row.ucenter_menu_type' ck='${(row.ucenter_menu_type)!"000101"}' list=yesnos/>
+	</@bsinput>
+</form>

@@ -1,0 +1,15 @@
+<#include "/WEB-INF/view/base/head/head.html"/>
+
+<@html qmask=0>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+				<#if regMsg?contains("登录")>
+					<@bsalert type='success'>${regMsg}</@bsalert>
+				<#else>
+					<@bsalert type='danger'>${regMsg}</@bsalert>
+				</#if>
+			</div>
+		</div>
+	</div>
+</@html>

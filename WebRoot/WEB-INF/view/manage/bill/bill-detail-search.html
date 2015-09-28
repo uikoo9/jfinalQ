@@ -1,0 +1,13 @@
+<#include "/WEB-INF/view/base/head/head.html"/>
+
+<form class="form-horizontal" role="form">
+	<@bsinput title='所属账户' input=false>
+		<select class="form-control" name='row.bill_account_id'>
+			<#list accounts as item>
+				<option value="${item.id}">${item.bill_account_name}</option>
+			</#list>
+		</select>
+	</@bsinput>
+	<@bsinput title='收支明细' name='row.bill_detail_shouzhi'/>
+	<@bsinput title='收支备注' name='row.bill_detail_remark'/>
+</form>

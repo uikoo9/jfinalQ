@@ -1,0 +1,7 @@
+<#include "/WEB-INF/view/base/inc.html"/>
+
+<form class="form-horizontal" role="form">
+	<input type="hidden" name="row.id" value="${(row.id)!}"/>
+	<@bsinput title='书籍类型序号' name='row.book_type_sn' value='${(row.book_type_sn)!}'/>	
+	<@bsinput title='书籍类型名称' name='row.book_type_name' value='${(row.book_type_name)!}'/>	
+</form>
