@@ -8,11 +8,7 @@
 		<@bsinput title='用户名' 	 name='row.ucenter_user_name' 		value='${(row.ucenter_user_name)!}' />
 		<@bsinput title='用户密码' name='row.ucenter_user_key' 		value='${(row.ucenter_user_key)!}'/>
 	</#if>
-	<@bsinput title='用户邮箱' 	 name='row.ucenter_user_mail' 		value='${(row.ucenter_user_mail)!}'/>
 	<@bsinput title='用户昵称' 	 name='row.ucenter_user_nickname' 	value='${(row.ucenter_user_nickname)!}'/>
-	<@bsinput title='用户邮箱确认' input=false>
-		<@bsradios name='row.ucenter_user_mail_confirm' ck='${(row.ucenter_user_mail_confirm)!"000102"}' list=yesnos/>
-	</@bsinput>
 	<@bsinput title='用户类型' input=false>
 		<@bsradios name='row.ucenter_user_type' ck='${(row.ucenter_user_type)!"010102"}' list=usertypes/>
 	</@bsinput>

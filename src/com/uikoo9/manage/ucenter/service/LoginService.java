@@ -18,7 +18,6 @@ import com.uikoo9.util.function.QCacheUtil;
 import com.uikoo9.util.function.QEncodeUtil;
 import com.uikoo9.util.plugin.json.QJson;
 import com.uikoo9.util.plugin.json.QJsonUtil;
-import com.uikoo9.z.QContants;
 import com.uikoo9.z.jfinal.QController;
 
 /**
@@ -47,9 +46,6 @@ public class LoginService {
 				if(checkUsers == null || checkUsers.size() != 1) return QJsonUtil.error("用户名或密码错误！");
 				
 				UcenterUserModel user = checkUsers.get(0);
-				String confirmMail = user.getStr("ucenter_user_mail_confirm");
-				if(confirmMail.equals(QContants.YESNO_NO)) return QJsonUtil.error("请先激活您的注册邮箱！");
-
 				putInCookie(user, response);
 				if("admin".equals(user.getStr("ucenter_user_name"))){
 					return QJsonUtil.suc("/manage");
