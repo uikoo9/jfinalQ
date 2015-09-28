@@ -15,7 +15,7 @@ public class IndexController extends Controller{
 	 * 跳转到首页 
 	 */
 	public void index(){
-		render("/WEB-INF/view/fore/home/home-index.html");
+		render("/WEB-INF/view/manage/ucenter/ucenter-login.html");
 	}
 	
 	/**
@@ -30,7 +30,7 @@ public class IndexController extends Controller{
 	 */
 	public void manage(){
 		setAttr("menus", UcenterMenuModel.dao.findAllByCache());
-		render("/com/uikoo9/util/jfinal/view/common/manage.html");
+		render("/WEB-INF/view/base/common/manage.html");
 	}
 	
 }
