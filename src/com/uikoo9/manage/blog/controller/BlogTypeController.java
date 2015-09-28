@@ -4,9 +4,9 @@ import com.uikoo9.manage.blog.model.BlogArticleModel;
 import com.uikoo9.manage.blog.model.BlogTypeModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.function.QCacheUtil;
-import com.uikoo9.util.jfinal.QController;
 import com.uikoo9.util.plugin.json.QJson;
 import com.uikoo9.util.plugin.json.QJsonUtil;
+import com.uikoo9.z.jfinal.QController;
 
 /**
  * BlogTypeController

@@ -2,11 +2,11 @@ package com.uikoo9.manage.blog.controller;
 
 import com.jfinal.plugin.activerecord.Record;
 import com.uikoo9.manage.blog.model.BlogCommentModel;
+import com.uikoo9.manage.ucenter.model.UcenterUserModel;
 import com.uikoo9.util.core.annotation.QControllerUrl;
 import com.uikoo9.util.core.data.QStringUtil;
-import com.uikoo9.util.jfinal.QController;
-import com.uikoo9.util.jfinal.ucenter.model.UcenterUserModel;
 import com.uikoo9.util.plugin.json.QJsonUtil;
+import com.uikoo9.z.jfinal.QController;
 
 /**
  * BlogCommentController
