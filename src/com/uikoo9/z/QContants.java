@@ -14,13 +14,6 @@ public class QContants {
 	// 用户类型
 	public static final String USER_TYPE_ADMIN		= "010101";
 	public static final String USER_TYPE_CUSTOM		= "010102";
-	public static final String USER_TYPE_PRIVATE	= "010103";
-	public static final String[] USER_TYPE 			= new String[]{USER_TYPE_ADMIN,USER_TYPE_CUSTOM,USER_TYPE_PRIVATE};
-	
-	// 日计划，月计划，年计划
-	public static final String PLAN_DAY		= "020101";
-	public static final String PLAN_MONTH	= "020102";
-	public static final String PLAN_YEAR	= "020103";
-	public static final String[] PLANS		= new String[]{PLAN_DAY,PLAN_MONTH,PLAN_YEAR};
+	public static final String[] USER_TYPE 			= new String[]{USER_TYPE_ADMIN,USER_TYPE_CUSTOM};
 	
 }
