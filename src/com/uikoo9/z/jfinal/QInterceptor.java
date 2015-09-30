@@ -32,15 +32,11 @@ public class QInterceptor implements Interceptor{
 		init(ai.getController());
 		
 		// visit auth
-		if(normalVisit(ai)){// 公开的地址
+		String res = authVisit(ai);
+		if(res == null){
 			ai.invoke();
-		}else{// 私有的地址,只有登录且有权限的用户可以访问
-			String res = authVisit(ai);
-			if(res == null){
-				ai.invoke();
-			}else{
-				ai.getController().redirect(res);
-			}
+		}else{
+			ai.getController().redirect(res);
 		}
 	}
 	
@@ -114,6 +110,8 @@ public class QInterceptor implements Interceptor{
 				}
 				
 				return user.role().getStr("ucenter_role_login_url");
+			}else{
+				return normalVisit(ai) ? null : "/error/auth";
 			}
 		} catch (Exception e) {
 			logger.error(QStringUtil.fromException(e));

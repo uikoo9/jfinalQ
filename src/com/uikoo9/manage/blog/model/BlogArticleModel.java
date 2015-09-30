@@ -54,12 +54,4 @@ public class BlogArticleModel extends Model<BlogArticleModel>{
 		return BlogArticleModel.dao.findFirst("select * from t_blog_article where blog_article_code=?", blogCode);
 	}
 	
-	/**
-	 * get comments
-	 * @return
-	 */
-	public List<BlogCommentModel> comments(){
-		return BlogCommentModel.dao.find("select tbc.*,tuu.ucenter_user_nickname from t_blog_comment tbc, t_ucenter_user tuu where tbc.cuser_id=tuu.id and tbc.blog_id=? and tbc.blog_comment_parent_id=0 order by tbc.cdate desc", get("id"));
-	}
-	
 }
