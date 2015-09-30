@@ -1,5 +1,5 @@
 -------------------------------------------------------------------
-version 1.0.0.20150929
+version 1.0.0.20150930
 新增：
 	1.升级为jfinalQ2.0
 	2.详细说明请看：https://github.com/uikoo9/jfinalQ/blob/master/README.md
