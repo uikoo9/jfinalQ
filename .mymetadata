@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="jfinalq_01_blog"
+  name="jfinalQ"
   id="myeclipse.1401341815277"
   context-root="/_mine_02_com"
   j2ee-spec="6.0"
-  archive="jfinalq_01_blog.war">
+  archive="jfinalQ.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>
