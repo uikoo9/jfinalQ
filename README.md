@@ -2,8 +2,8 @@
 ==========================================
 1. 基于[jfinal2.0](http://www.jfinal.com/)，易学，开发快速，功能强大
 2. 基于[bootstrap3.x](http://v3.bootcss.com/)，简洁美观，完美适配移动端
-3. [jfinalQ-gencode](http://git.oschina.net/uikoo9/jfinalQ-gencode)：jfinalQ自带代码生成工具
-4. [jfinalQ-encrypt](http://git.oschina.net/uikoo9/jfinalQ-encrypt)：jfinalQ自带tomcat加密部署工具
+3. [jfinalQ-gencode](https://github.com/uikoo9/jfinalQ-gencode)：jfinalQ自带代码生成工具
+4. [jfinalQ-encrypt](https://github.com/uikoo9/jfinalQ-encrypt)：jfinalQ自带tomcat加密部署工具
 5. [bootstrapQ](http://uikoo9.com/bootstrapQ)：jfinalQ自带bootstrap增强组件
 
 升级说明
