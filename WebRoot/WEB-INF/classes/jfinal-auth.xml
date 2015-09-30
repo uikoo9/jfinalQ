@@ -11,9 +11,4 @@
 	<home>
 		<url>/version</url>
 	</home>
-	<blog>
-		<url>/blog/list</url>
-		<url>/blog/detail</url>
-		<url>/blog/comment/save</url>
-	</blog>
 </auth>
