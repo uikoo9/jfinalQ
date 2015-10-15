@@ -81,14 +81,16 @@ public class RoleService {
 			
 			if(QStringUtil.notEmpty(ids)){
 				for(String id : ids.split(",")){
-					new UcenterRoleRMenuModel()
-					.set("ucenter_role_id", roleId)
-					.set("ucenter_menu_id", id)
-					.set("ucenter_menu_url", UcenterMenuModel.dao.findById(id).getStr("ucenter_menu_url"))
-					.set("cdate", new Date())
-					.set("cuser_id", loginUser.get("id"))
-					.set("cuser_name", loginUser.get("ucenter_user_name"))
-					.save();
+					if(!"0".equals(id)){
+						new UcenterRoleRMenuModel()
+							.set("ucenter_role_id", roleId)
+							.set("ucenter_menu_id", id)
+							.set("ucenter_menu_url", UcenterMenuModel.dao.findById(id).getStr("ucenter_menu_url"))
+							.set("cdate", new Date())
+							.set("cuser_id", loginUser.get("id"))
+							.set("cuser_name", loginUser.get("ucenter_user_name"))
+							.save();
+					}
 				}
 			}
 
