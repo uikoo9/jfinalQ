@@ -171,7 +171,7 @@ web.role.setuser = function(){
 };
 web.role.addUser = function(){
 	var ids = [];
-	$('tr.outtr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	$('tr.outtr').each(function(){if($(this).hasClass('info')) ids.push($(this).qdata().id);});
 	
 	qiao.ajax({
 		url: '/ucenter/role/addUser',
@@ -186,7 +186,7 @@ web.role.addUser = function(){
 };
 web.role.removeUser = function(){
 	var ids = [];
-	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).attr('data'));});
+	$('tr.intr').each(function(){if($(this).hasClass('info')) ids.push($(this).qdata().id);});
 	
 	qiao.ajax({
 		url: '/ucenter/role/removeUser',
@@ -229,7 +229,7 @@ web.role.addUrl = function(){
 };
 web.role.removeUrl = function(){
 	var urls = [];
-	$('tr.intr').each(function(){if($(this).hasClass('info')) urls.push($(this).attr('data'));});
+	$('tr.intr').each(function(){if($(this).hasClass('info')) urls.push($(this).qdata().id);});
 	
 	qiao.ajax({
 		url: '/ucenter/role/removeUrl',
@@ -242,107 +242,6 @@ web.role.removeUrl = function(){
 		}
 	});
 };
-
-// account
-web.bill = {};
-web.bill.init = function(){
-	qiao.crud.init();
-	qiao.on('.shouzhi', 'click', web.bill.toshouzhi);
-	qiao.on('.zhuan', 'click', web.bill.tozhuan);
-	qiao.on('.stock', 'click', web.bill.tostock);
-	qiao.on('.stockA', 'click', web.bill.stockDetail);
-};
-web.bill.toshouzhi = function(){
-	qiao.bs.dialog({
-		url : '/bill/detail/savep',
-		title : '收入&支出',
-		okbtn : '添加'
-	}, function(){
-		var res;
-		qiao.ajax({
-			async: false,
-			url: '/bill/detail/save',
-			data:$('#bsmodal').find('form').qser()
-		}, function(json){
-			res = json;
-		});
-		
-		qiao.bs.msg(res);
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				location.reload();
-			},1000);
-			return true;
-		}else{
-			return false;
-		}
-	});
-};
-web.bill.tozhuan = function(){
-	qiao.bs.dialog({
-		url : '/bill/tozhuan',
-		title : '转账',
-		okbtn : '转账'
-	}, function(){
-		var res;
-		qiao.ajax({
-			async: false,
-			url: '/bill/zhuan',
-			data:$('#bsmodal').find('form').qser()
-		}, function(json){
-			res = json;
-		});
-
-		qiao.bs.msg(res);
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				location.reload();
-			},1000);
-			return true;
-		}else{
-			return false;
-		}
-	});
-};
-web.bill.tostock = function(){
-	var title = $.trim($(this).text());
-	qiao.bs.dialog({
-		url : '/stock/detail/savep',
-		title : title,
-		okbtn : title
-	}, function(){
-		var $form = $('#bsmodal').find('form');
-		if(title == '买入'){
-			var $input = $form.find('input[name="row.stock_detail_price"]');
-			$input.val('-' + $input.val());
-		}
-		
-		var res;
-		qiao.ajax({
-			async: false,
-			url: '/stock/detail/save',
-			data:$form.qser()
-		}, function(json){
-			res = json;
-		});
-		
-		qiao.bs.msg(res);
-		if(res && res.type == 'success'){
-			setTimeout(function(){
-				location.reload();
-			},1000);
-			return true;
-		}else{
-			return false;
-		}
-	});
-};
-web.bill.stockDetail = function(){
-	var title = '【' +　$(this).text() + '】交易明细';
-	var url = '/stock/detail?row.stock_data_id=' + $(this).qdata().id;
-	qiao.bs.dialog({url : url,title : title});
-};
-
 
 // blog
 web.blog = {};
@@ -413,80 +312,6 @@ web.blogedit.save = function(){
 			if(res && res.type == 'success'){
 				setTimeout(function(){
 					location.href = base + '/blog/detail/' + res.object.blog_article_code;
-				},1000);
-			}
-		});
-	}
-};
-
-// diary
-web.diary = {};
-web.diary.init = function(){
-	qiao.bs.initimg();
-	qiao.on('.godiary', 'click', web.diary.go);
-};
-web.diary.go = function(){
-	location.href = base + '/diary/detail/' + $(this).qdata().id;
-};
-
-// diary-edit
-web.diaryedit = {};
-web.diaryedit.init = function(){
-	qiao.on('.addDiary', 'click', web.diaryedit.save);
-};
-web.diaryedit.save = function(){
-	var $form = $('#addDiaryForm');
-	var title = $.trim($form.find('input[name="row.diary_article_title"]').val()); 
-
-	if(!title){
-		qiao.bs.msg({msg:'请填写日记标题！',type:'danger'});
-	}else{
-		qiao.ajax({
-			url : '/diary/article/save',
-			data : $form.qser()
-		}, function(res){
-			qiao.bs.msg(res);
-			
-			if(res && res.type == 'success'){
-				setTimeout(function(){
-					location.href = base + '/diary/detail/' + res.object.id;
-				},1000);
-			}
-		});
-	}
-};
-
-// book
-web.chapter = {};
-web.chapter.init = function(){
-	qiao.bs.initimg();
-	qiao.on('.gochapter', 'click', web.chapter.go);
-};
-web.chapter.go = function(){
-	location.href = base + '/book/chapterDetail/' + $(this).qdata().id;
-};
-
-// chapter-edit
-web.chapteredit = {};
-web.chapteredit.init = function(){
-	qiao.on('.addChapter', 'click', web.chapteredit.save);
-};
-web.chapteredit.save = function(){
-	var $form = $('#addChapterForm');
-	var title = $.trim($form.find('input[name="row.book_chapter_title"]').val()); 
-
-	if(!title){
-		qiao.bs.msg({msg:'请填写章节标题！',type:'danger'});
-	}else{
-		qiao.ajax({
-			url : '/book/chapter/save',
-			data : $form.qser()
-		}, function(res){
-			qiao.bs.msg(res);
-			
-			if(res && res.type == 'success'){
-				setTimeout(function(){
-					location.href = base + '/book/chapterDetail/' + res.object.id;
 				},1000);
 			}
 		});
